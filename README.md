@@ -12,7 +12,7 @@ https://web.dev/state-of-css-2022
 
 ## Live example
 
-https://ui-system-gold.vercel.app
+https://gotpop-starter.vercel.app
 
 ## Local
 
@@ -22,4 +22,4 @@ http://localhost:3000
 
 https://vercel.com/dashboard
 
-![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=subgrid-teamgotpop)
+![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=gotpop-starter-teamgotpop)
