@@ -6,6 +6,7 @@
     margin: var(--local-margin);
     color: var(--white);
     font-size: clamp(1.5rem, 3.5vw, 3rem);
+    font-weight: 200;
     
     @media (--ipad) {      
       --local-margin: 0;
