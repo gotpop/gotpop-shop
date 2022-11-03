@@ -11,11 +11,11 @@ export default function Nav() {
         <span>LocalHost</span>
         <AiFillHome />
       </a>
-      <a href="https://github.com/gotpop/ui-system">
+      <a href="https://github.com/gotpop/gotpop-starter">
         <span>GitHub</span>
         <TfiGithub />
       </a>
-      <a href="https://ui-system-gold.vercel.app/">
+      <a href="https://gotpop-starter.vercel.app">
         <span>Live</span>
         <GoZap />
       </a>
