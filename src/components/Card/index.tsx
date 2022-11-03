@@ -7,9 +7,10 @@ import { TfiGithub } from 'react-icons/tfi'
 import { SiCsswizardry, SiMozilla } from 'react-icons/si'
 import { DiCssTricks } from 'react-icons/di'
 import { AiFillChrome, AiOutlineLink } from 'react-icons/ai'
+import Link from 'next/link'
 
 export default function Card({ content }) {
-  const { title, text, links } = content
+  const { id, title, text, links } = content
 
   return (
     <div className={styles.card}>
@@ -18,6 +19,9 @@ export default function Card({ content }) {
           <h3>{title}</h3>
           <p>{text}</p>
         </section>
+        <Link href="/card/[id]" as={`/card/${id}`}>
+          Go!
+        </Link>
         <aside className={stylesIcon.icons}>
           {links.map(link => (
             <a key={link.name} href={link.href} className={stylesIcon.link}>

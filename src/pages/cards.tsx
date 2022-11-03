@@ -13,12 +13,10 @@ export default function Cards() {
   if (error) return <div>Failed to load</div>
   if (!cards) return <div>Loading...</div>
 
-  return ( 
+  return (
     <Layout>
       {cards.map((card: cardy) => (
-        <Link href="/card/[id]" as={`/card/${card.id}`}>
-          <Card key={card.id} content={card} />
-        </Link>
+        <Card key={card.id} content={card} />
       ))}
     </Layout>
   )
