@@ -4,7 +4,7 @@ import styles from './Logo.module.css'
 export default function Logo() {
   return (
     <Link className={styles.logo} href="/">
-      <h1>CSS 2023</h1>
+      <h1>GotPop Starter</h1>
     </Link>
   )
 }

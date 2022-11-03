@@ -23,7 +23,7 @@
     padding: var(--padding);
     flex: 1 1 100%;
 
-    @container card (min-width: 800px) {
+    @media (--laptop) {
       --local-direction: row;
       --local-gap: calc(var(--padding) * 2);
     }

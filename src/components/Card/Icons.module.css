@@ -5,11 +5,11 @@
   display: flex;
   gap: calc(var(--padding) / 2);
 
-  @container card (min-width: 400px) {
+  @media (--ipad) {
     flex-direction: column;
   }
 
-  @container card (min-width: 800px) {
+  @media (--laptop) {
     flex: 1 1 40%;
     align-self: baseline;
   }
@@ -29,13 +29,13 @@
       background-color: var(--accent);
     }
 
-    @container card (min-width: 400px) {
+    @media (--ipad) {
       --local-link-padding: var(--padding);
-      
+
       justify-content: space-between;
     }
 
-    @container card (min-width: 800px) {
+    @media (--laptop) {
       --local-link-padding: calc(var(--padding) / 2);
     }
 
@@ -43,7 +43,7 @@
       display: var(--local-display);
       font-weight: 600;
 
-      @container card (min-width: 400px) {
+      @media (--ipad) {
         --local-display: flex;
       }
     }

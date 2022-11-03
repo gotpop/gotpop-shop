@@ -1,15 +1,16 @@
 .logo {  
+  --local-margin: 0 0 1.2rem 0;
+
   & h1 {
-    font-family: PlakatoColorHappy2022, var(--font-fallback);
-    letter-spacing: .6rem;
     padding: 0;
-    margin: 0 0 2rem 0;
+    margin: var(--local-margin);
+    color: var(--white);
+    font-size: clamp(1.5rem, 3.5vw, 3rem);
     
     @media (--ipad) {      
-      margin: 0 0 0 1rem;
-      height: 55px;
-      font-size: clamp(1rem, 3.5vw, 3rem);
-      line-height: 2.3rem;
+      --local-margin: 0;
+      
+      line-height: 1.2em;
     }
   }
 }

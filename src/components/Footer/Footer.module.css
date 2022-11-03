@@ -3,7 +3,7 @@
 
   grid-area: foot;
   background: var(--local-bg);
-  color: color-contrast(var(--local-bg) vs var(--black), var(--white));
+  color: var(--white);
   display: flex;
   flex-direction: column;
   padding: calc(var(--padding) * 3);

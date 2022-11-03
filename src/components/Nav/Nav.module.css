@@ -12,6 +12,7 @@
   & a {
     border-radius: var(--radius);
     border: 1px solid var(--white);
+    color: var(--white);
     display: inline-flex;
     gap: calc(var(--paddingBtn) / 2);
     padding: calc(var(--paddingBtn) / 2) var(--paddingBtn);
