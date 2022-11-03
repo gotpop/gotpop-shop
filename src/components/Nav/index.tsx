@@ -10,8 +10,8 @@ import { TfiGithub } from 'react-icons/tfi'
 export default function Nav() {
   return (
     <nav className={styles.nav}>
-      <Link href="/people">
-        <span>People</span>
+      <Link href="/cards">
+        <span>Cards</span>
         <BsPeopleFill />
       </Link>
       <a href="http://localhost:3000">

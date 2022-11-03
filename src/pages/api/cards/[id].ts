@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { people } from '@content/data'
-import { Person } from 'types'
+import { cards } from '@content/cards'
+import { Card } from 'types'
 
 type ResponseError = {
   message: string
@@ -8,11 +8,13 @@ type ResponseError = {
 
 export default function personHandler(
   req: NextApiRequest,
-  res: NextApiResponse<Person | ResponseError>
+  res: NextApiResponse<Card | ResponseError>
 ) {
   const { query } = req
   const { id } = query
-  const filtered = people.filter((p) => p.id === id)
+  console.log('query :', query);
+  const filtered = cards.filter((p) => p.id === id)
+  console.log('filtered :', filtered);
 
   // User with id exists
   return filtered.length > 0

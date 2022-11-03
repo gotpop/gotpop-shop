@@ -1,17 +1,6 @@
 import { MouseEventHandler } from "react";
 import { IconType } from "react-icons";
 
-declare global {
-    namespace JSX {
-        interface IntrinsicElements {
-            selectmenu: React.DetailedHTMLProps<
-                React.HTMLAttributes<HTMLSelectElement>,
-                HTMLSelectElement
-            >
-        }
-    }
-}
-
 export interface IButtonIcon {
     content: string
     properties?: { local: string; global: string }[]
@@ -19,14 +8,16 @@ export interface IButtonIcon {
     doClick?: MouseEventHandler<HTMLButtonElement>
 }
 
-
-export type Person = {
+export type Card = {
     id: string
-    name: string
-    height: string
-    mass: string
-    hair_color: string
-    skin_color: string
-    eye_color: string
-    gender: string
+    text: string
+    title: string
+    links: Link[]
 }
+
+export type Link = {
+    name: string
+    href: string
+}
+
+
