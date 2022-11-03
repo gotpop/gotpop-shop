@@ -12,10 +12,11 @@
   transition: translate var(--timing) ease;
   translate: var(--local-translate);
   width: var(--local-width);
+  min-height: 100vh;
 
   @media (--ipad) {
     --local-columns: 1fr;
-    --local-rows: auto;
+    --local-rows: auto 1fr auto;
     --local-template: "head" "main" "foot";
     --local-translate: var(--menu-open);
     --local-width: auto;
