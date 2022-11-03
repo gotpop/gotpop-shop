@@ -1,0 +1,123 @@
+.top {
+  animation-name: topIn;
+
+  @nest [open*="true"] & {
+    animation-name: topOut;
+    background-color: var(--error);
+  }
+
+  @nest button:hover [open*="true"] & {
+    background-color: var(--white);
+  }
+}
+
+.middle {
+  animation-name: middleIn;
+  translate: 0 calc(var(--local-size) * 0.45);
+
+  @nest [open*="true"] & {
+    background-color: var(--error);
+    animation-name: middleOut;
+  }
+}
+
+.bottom {
+  animation-name: bottomIn;
+
+  @nest [open*="true"] & {
+    background-color: var(--error);
+    animation-name: bottomOut;
+  }
+
+  @nest button:hover [open*="true"] & {
+    background-color: var(--white);
+  }
+}
+
+@keyframes topOut {
+  0% {
+    translate: 0 0em;
+  }
+  50% {
+    rotate: 0deg;
+    translate: var(--local-translate);
+  }
+  100% {
+    rotate: 45deg;
+    translate: var(--local-translate);
+  }
+}
+
+@keyframes topIn {
+  0% {
+    rotate: 45deg;
+    translate: var(--local-translate);
+  }
+  50% {
+    rotate: 0deg;
+    translate: var(--local-translate);
+  }
+  100% {
+    translate: 0 0em;
+  }
+}
+
+@keyframes middleOut {
+  0% {
+    width: var(--local-size);
+  }
+
+  50% {
+    opacity: 1;
+    width: 0em;
+  }
+
+  100% {
+    opacity: 0;
+    width: 0em;
+  }
+}
+
+@keyframes middleIn {
+  0% {
+    opacity: 0;
+    width: 0em;
+  }
+
+  50% {
+    opacity: 1;
+    width: 0em;
+  }
+
+  100% {
+    width: var(--local-size);
+  }
+}
+
+@keyframes bottomOut {
+  0% {
+    translate: 0 calc(var(--local-size) * 0.9);
+  }
+  50% {
+    rotate: 0deg;
+    translate: var(--local-translate);
+  }
+  100% {
+    translate: var(--local-translate);
+    rotate: -45deg;
+  }
+}
+
+@keyframes bottomIn {
+  0% {
+    translate: var(--local-translate);
+    rotate: -45deg;
+  }
+  50% {
+    rotate: 0deg;
+    translate: var(--local-translate);
+  }
+  100% {
+    translate: 0 calc(var(--local-size) * 0.9);
+  }
+}

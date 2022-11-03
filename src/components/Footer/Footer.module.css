@@ -1,0 +1,19 @@
+.footer {
+  --local-bg: var(--hwb-grape-4);
+
+  grid-area: foot;
+  background: var(--local-bg);
+  color: color-contrast(var(--local-bg) vs var(--black), var(--white));
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--padding) * 3);
+  place-content: center;
+  border-radius: var(--radius) var(--radius) 0 0;
+  font-size: 0.8rem;
+  margin-top: calc(var(--padding) * 3);
+  gap: 3rem;
+
+  & small {
+    align-self: center;
+  }
+}

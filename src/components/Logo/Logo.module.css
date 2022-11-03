@@ -1,0 +1,15 @@
+.logo {  
+  & h1 {
+    font-family: PlakatoColorHappy2022, var(--font-fallback);
+    letter-spacing: .6rem;
+    padding: 0;
+    margin: 0 0 2rem 0;
+    
+    @media (--ipad) {      
+      margin: 0 0 0 1rem;
+      height: 55px;
+      font-size: clamp(1rem, 3.5vw, 3rem);
+      line-height: 2.3rem;
+    }
+  }
+}

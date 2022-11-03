@@ -1,0 +1,17 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "src"
+    }
+  ],
+  "settings": {
+    "files.associations": {
+      "*.css": "postcss"
+    },
+    "spellchecker.ignoreFileExtensions": ["*.stylelintrc"],
+    "css.format.enable": false
+  }
+}

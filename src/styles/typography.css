@@ -1,0 +1,35 @@
+h1 {
+  font-weight: 1000;
+  font-size: var(--size-l-5);
+}
+
+h2 {
+  font-weight: 800;
+  font-size: var(--size-l-4);
+}
+
+h3 {
+  font-size: var(--size-l-3);
+  font-weight: 600;
+}
+
+h4 {
+  font-size: var(--size-l-2);
+}
+
+h5 {
+  font-size: var(--size-l-1);
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p {
+  max-width: 500px;
+}

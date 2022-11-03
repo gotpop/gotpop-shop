@@ -1,0 +1,22 @@
+.header {
+  --local-bg: var(--hwb-grape-4);
+
+  background: var(--local-bg);
+  color: color-contrast(var(--local-bg) vs var(--black), var(--white));
+  display: flex;
+  flex-direction: column;
+  grid-area: head;
+  justify-content: flex-start;
+  padding: calc(var(--padding) / 2);
+  
+  @media (--ipad) {
+    align-items: center;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    box-shadow: rgba(0, 0, 0, 70%) 1px 1px 9px;
+    flex-direction: row;
+    justify-content: space-between; 
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+}

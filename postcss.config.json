@@ -1,0 +1,22 @@
+{
+    "plugins": [
+        "stylelint",
+        "postcss-nesting",
+        [
+            "postcss-custom-media",
+            {
+                "importFrom": "./src/styles/media.css"
+            }
+        ],
+        [
+            "postcss-preset-env",
+            {
+                "stage": 0,
+                "features": {
+                    "custom-properties": true,
+                    "nesting-rules": true
+                }
+            }
+        ]
+    ]
+}

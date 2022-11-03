@@ -1,0 +1,27 @@
+.icon {
+  --iconColour: var(--white);
+  --local-size: 1em;
+  --local-translate: 0 calc(var(--local-size) / 2.2);
+  --local-duration: 0.3s;
+  --local-name: top;
+
+  width: var(--local-size);
+  height: var(--local-size);
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  & span {
+    animation-duration: var(--local-duration);
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    background-color: var(--hwb-grape-4);
+    border-radius: 0.25em;
+    display: flex;
+    height: calc(var(--local-size) / 6);
+    position: absolute;
+    top: 0;
+    transform-origin: center;
+    width: var(--local-size);
+  }
+}

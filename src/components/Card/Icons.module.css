@@ -1,0 +1,51 @@
+.icons {
+  --local-link-padding: calc(var(--padding) / 2);
+  --local-display: none;
+
+  display: flex;
+  gap: calc(var(--padding) / 2);
+
+  @container card (min-width: 400px) {
+    flex-direction: column;
+  }
+
+  @container card (min-width: 800px) {
+    flex: 1 1 40%;
+    align-self: baseline;
+  }
+
+  & .link {
+    align-items: center;
+    border-color: color-contrast(var(--local-bg) vs var(--black), var(--white));
+    border-radius: var(--radius);
+    border: 1px solid;
+    display: flex;
+    flex-basis: 100%;
+    padding: var(--local-link-padding);
+    place-content: center;
+    transition: background-color var(--timing) ease;
+
+    &:hover {
+      background-color: var(--accent);
+    }
+
+    @container card (min-width: 400px) {
+      --local-link-padding: var(--padding);
+      
+      justify-content: space-between;
+    }
+
+    @container card (min-width: 800px) {
+      --local-link-padding: calc(var(--padding) / 2);
+    }
+
+    & .text {
+      display: var(--local-display);
+      font-weight: 600;
+
+      @container card (min-width: 400px) {
+        --local-display: flex;
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--padding) / 2);
+  font-size: var(--size-s-1);
+  
+  @media (--ipad) {
+    align-self: center;
+    flex-direction: row;
+  }
+
+  & a {
+    border-radius: var(--radius);
+    border: 1px solid var(--white);
+    display: inline-flex;
+    gap: calc(var(--paddingBtn) / 2);
+    padding: calc(var(--paddingBtn) / 2) var(--paddingBtn);
+    transition: background-color var(--timing) ease;
+    justify-content: space-between;
+    
+    &:hover {
+      background-color: var(--accent);
+    }
+  }
+}

@@ -1,0 +1,51 @@
+.card {
+  --local-bg: var(--hwb-grape-2);
+  --local-direction: column;
+  --local-gap: calc(var(--padding) / 2);
+
+  &:nth-child(odd) {
+    --local-bg: var(--hwb-grape-3);
+  }
+
+  background: var(--local-bg);
+  border-radius: var(--radius-lg);
+  color: color-contrast(var(--local-bg) vs var(--black), var(--white));
+  container-name: card;
+  container-type: inline-size;
+  display: flex;
+  justify-content: center;
+
+  & .inner {
+    display: flex;
+    flex-direction: var(--local-direction);
+    gap: var(--local-gap);
+    justify-content: space-between;
+    padding: var(--padding);
+    flex: 1 1 100%;
+
+    @container card (min-width: 800px) {
+      --local-direction: row;
+      --local-gap: calc(var(--padding) * 2);
+    }
+
+    & h3 {
+      margin: 0 0 calc(var(--textMB) * 2) 0;
+
+      &::after {
+        content: "";
+        display: flex;
+        height: 1px;
+        width: calc(100% - 1rem);
+        margin: 0 0.5rem;
+        background-color: currentColor;
+        opacity: 0.3;
+        translate: 0 0.33em;
+      }
+    }
+
+    & p {
+      margin: 0 0 var(--textMB) 0;
+      opacity: var(--textOpacity);
+    }
+  }
+}

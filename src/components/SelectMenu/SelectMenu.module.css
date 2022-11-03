@@ -1,0 +1,39 @@
+.menu {
+  display: none;
+
+  @media (--ipad) {
+    display: inline-flex;
+  }
+
+  &::part(button) {
+    color: var(--hwb-grape-5);
+    background-color: var(--white);
+    padding: 1rem 3rem;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: var(--size-l-1);
+  }
+
+  &::part(listbox) {
+    padding: 20px;
+    margin-top: 5px;
+    border: 1px solid var(--white);
+    border-radius: var(--radius);
+  }
+
+  & option {
+    align-items: center;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-between;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.2s ease;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+      scale: 1.02;
+    }
+  }
+}

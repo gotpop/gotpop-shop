@@ -1,0 +1,59 @@
+:root {
+  --black: black;
+  --white: white;
+
+  --success: green;
+  --error: red;
+  --warning: yellow;
+
+  --hwb-grey-1: hwb(0 100% 0%);
+  --hwb-grey-2: hwb(0 77% 23%);
+  --hwb-grey-3: hwb(0 55% 45%);
+  --hwb-grey-4: hwb(0 33% 67%);
+  --hwb-grey-5: hwb(0 20% 80%);
+
+  --hwb-grape-1: hwb(283 75% 0%);
+  --hwb-grape-2: hwb(283 50% 25%);
+  --hwb-grape-3: hwb(283 25% 50%);
+  --hwb-grape-4: hwb(283 0% 75%);
+  --hwb-grape-5: hwb(283 0% 90%);
+
+  --accent: hwb(321 6% 24%);
+
+  --scale: 1.333;
+  --size-l-1: calc(1rem * var(--scale));
+  --size-l-2: calc(var(--size-l-1) * var(--scale));
+  --size-l-3: calc(var(--size-l-2) * var(--scale));
+  --size-l-4: calc(var(--size-l-3) * var(--scale));
+  --size-l-5: calc(var(--size-l-4) * var(--scale));
+  --size-l-6: calc(var(--size-l-5) * var(--scale));
+  --size-l-7: calc(var(--size-l-6) * var(--scale));
+  --size-s-1: calc(1rem / var(--scale));
+  --size-s-2: calc(var(--size-s-1) / var(--scale));
+  --size-s-3: calc(var(--size-s-2) / var(--scale));
+
+  --textOpacity: 0.9;
+  --font-primary: "RobotoFlex";
+  --font-fallback: " Arial, Helvetica, sans-serif";
+
+  --grid-columns: 1;
+
+  --padding: 2rem;
+  --paddingBtn: 2em;
+  --textMB: 1rem;
+
+  --radius: 0.5rem;
+  --radius-lg: 0.7rem;
+
+  --timing: 0.4s;
+
+  --menu-side-width: 250px;
+  --menu-side-offset: calc(
+    var(--menu-side-width) - (var(--menu-side-width) * 2)
+  );
+  --menu-open: 0px;
+  --menu-closed: var(--menu-side-offset);
+  --menu-state: var(--menu-closed);
+
+  --backdrop: blur(5px);
+}

@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "RobotoFlex";
+  src: url("../../public/fonts/RobotoFlex-VariableFont_GRAD,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.ttf") format("woff2-variations");
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: PlakatoColorHappy2022;
+  src: url(https://cdn.glitch.global/b2727eba-f6b3-4e8e-b32e-53eab7755195/PlakatoColorHappy2022_v1patched.ttf?v=1657190908465);
+}
