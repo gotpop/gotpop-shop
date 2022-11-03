@@ -1,3 +1,4 @@
+import Layout from '@components/layout/layout'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 
@@ -22,7 +23,8 @@ export default function Person() {
   if (!data) return <div>Loading...</div>
 
   return (
-    <table>
+    <Layout>
+      <table>
       <thead>
         <tr>
           <th>Name</th>
@@ -46,5 +48,6 @@ export default function Person() {
         </tr>
       </tbody>
     </table>
+    </Layout>
   )
 }
