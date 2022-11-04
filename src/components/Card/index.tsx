@@ -2,7 +2,7 @@ import Icons from './Icons'
 import styles from './Card.module.css'
 import LinkIcon from '@components/LinkIcon'
 
-export default function Card({ content, fullCard }) {
+export default function Card({ content, fullCard, childPath = 'cards' }) {
   const { id, title, text, links } = content
 
   return (
@@ -15,7 +15,7 @@ export default function Card({ content, fullCard }) {
         {fullCard ? (
           <Icons links={links} />
         ) : (
-          <LinkIcon href={`/cards/${id}`} />
+          <LinkIcon href={`/${childPath}/${id}`} />
         )}
       </article>
     </div>

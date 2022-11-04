@@ -15,25 +15,25 @@ export interface ILinkIcon {
     href: string
 }
 
-export type Card = {
+export interface Card {
     id: string
     text: string
     title: string
     links: Link[]
 }
 
-export type Link = {
+export interface Link {
     name: string
     href: string
 }
 
-export type Panel = {
+export interface IPanel {
     id: string
     text: string
     title: string
 }
 
-export type Form = {
+export interface IForm {
     id: string
     text: string
     title: string
