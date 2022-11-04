@@ -7,7 +7,7 @@ export default function Card({ content, fullCard }) {
   const { id, title, text, links } = content
 
   const Navigation = ({ id }) => (
-    <Link href="/card/[id]" as={`/card/${id}`}>
+    <Link href="/cards/[id]" as={`/cards/${id}`}>
       Visit page
     </Link>
   )
