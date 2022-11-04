@@ -1,16 +1,9 @@
-import * as React from 'react'
-import Link from 'next/link'
 import Icons from './Icons'
 import styles from './Card.module.css'
+import LinkIcon from '@components/LinkIcon'
 
 export default function Card({ content, fullCard }) {
   const { id, title, text, links } = content
-
-  const Navigation = ({ id }) => (
-    <Link href="/cards/[id]" as={`/cards/${id}`}>
-      Visit page
-    </Link>
-  )
 
   return (
     <div className={styles.card}>
@@ -19,7 +12,11 @@ export default function Card({ content, fullCard }) {
           <h3>{title}</h3>
           <p>{text}</p>
         </section>
-        {fullCard ? <Icons links={links} /> : <Navigation id={id} />}
+        {fullCard ? (
+          <Icons links={links} />
+        ) : (
+          <LinkIcon href={`/cards/${id}`} />
+        )}
       </article>
     </div>
   )

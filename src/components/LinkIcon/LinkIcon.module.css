@@ -1,0 +1,37 @@
+.link {
+  --local-icon-colour: var(--white);
+  --local-font-size: var(--size-s-1);
+
+  align-items: center;
+  background-color: var(--hwb-grape-4);
+  border-radius: var(--radius);
+  color: var(--local-icon-colour);
+  cursor: pointer;
+  display: flex;
+  gap: calc(var(--paddingBtn) / 2);
+  padding: calc(var(--paddingBtn) / 2) var(--paddingBtn);
+  transition: background-color var(--timing) ease;
+  justify-content: space-between;
+  
+  &:hover {
+    background-color: var(--accent);
+    color: var(--white);
+  }
+
+  @media (--laptop) {
+    align-self: flex-start;
+  }
+  
+  & span {
+    color: var(--white);
+    font-size: var(--local-font-size);
+
+    @media (--ipad) {
+      --local-font-size: var(--size-l-1);
+    }
+  }
+
+  & svg {
+    transition: fill var(--timing) ease;
+  }
+}

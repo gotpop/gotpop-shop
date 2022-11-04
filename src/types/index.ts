@@ -8,6 +8,13 @@ export interface IButtonIcon {
     doClick?: MouseEventHandler<HTMLButtonElement>
 }
 
+export interface ILinkIcon {
+    content?: string
+    properties?: { local: string; global: string }[]
+    icon?: IconType
+    href: string
+}
+
 export type Card = {
     id: string
     text: string
