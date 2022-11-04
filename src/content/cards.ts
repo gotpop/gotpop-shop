@@ -5,14 +5,17 @@ export const cards = [
         title: '@container queries',
         links: [
             {
+                id: '4',
                 name: "Chrome",
                 href: "https://web.dev/state-of-css-2022/#container-queries"
             },
             {
+                id: '2',
                 name: "CSS",
                 href: "https://drafts.csswg.org/css-contain-3"
             },
             {
+                id: '6',
                 name: "MDN",
                 href: "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Container_Queries"
             }
@@ -24,14 +27,17 @@ export const cards = [
         title: 'Color Contrast',
         links: [
             {
+                id: '4',
                 name: "Chrome",
                 href: "https://web.dev/state-of-css-2022/#color-contrast"
             },
             {
+                id: '2',
                 name: "CSS",
                 href: "https://w3c.github.io/csswg-drafts/css-color-6/#colorcontrast"
             },
             {
+                id: '6',
                 name: "MDN",
                 href: "https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-contrast"
             }
@@ -43,14 +49,17 @@ export const cards = [
         title: 'Select Menu Element',
         links: [
             {
+                id: '4',
                 name: "Chrome",
                 href: "https://web.dev/state-of-css-2022/#customizing-select-elements"
             },
             {
+                id: '3',
                 name: "CSS Tricks",
                 href: "https://css-tricks.com/the-selectmenu-element"
             },
             {
+                id: '5',
                 name: "Edge",
                 href: "https://microsoftedge.github.io/Demos/selectmenu"
             }
@@ -62,14 +71,17 @@ export const cards = [
         title: '@custom-media',
         links: [
             {
+                id: '4',
                 name: "Chrome",
                 href: "https://web.dev/state-of-css-2022/#no-media-query-variables"
             },
             {
+                id: '3',
                 name: "CSS Tricks",
                 href: "https://css-tricks.com/can-we-have-custom-media-queries-please"
             },
             {
+                id: '2',
                 name: "CSS",
                 href: "https://drafts.csswg.org/mediaqueries-5/#custom-mq"
             }
@@ -81,14 +93,17 @@ export const cards = [
         title: 'HWB colour format',
         links: [
             {
+                id: '4',
                 name: "Chrome",
                 href: "https://web.dev/state-of-css-2022/#hwb"
             },
             {
+                id: '2',
                 name: "CSS",
                 href: "https://www.w3.org/TR/css-color-4/#the-hwb-notation"
             },
             {
+                id: '6',
                 name: "MDN",
                 href: "https://developer.mozilla.org/docs/Web/CSS/color_value/hwb()"
             }
@@ -100,14 +115,17 @@ export const cards = [
         title: 'CSS Nesting Rules',
         links: [
             {
+                id: '4',
                 name: "Chrome",
                 href: "https://web.dev/state-of-css-2022/#nesting-selectors-is-so-nice"
             },
             {
+                id: '2',
                 name: "CSS",
                 href: "https://www.w3.org/TR/css-nesting-1"
             },
             {
+                id: '3',
                 name: "CSS Tricks",
                 href: "https://css-tricks.com/css-nesting-specificity-and-you"
             }
