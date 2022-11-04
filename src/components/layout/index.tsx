@@ -15,11 +15,11 @@ export default function Layout({ children }) {
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>CSS 2023</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, user-scalable=no" />
-      </Head>
+      </Head> */}
       <div className={styles.site}>
         <Header />
         <div className={stylesMain.mainwrap}>
