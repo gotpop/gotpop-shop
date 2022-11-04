@@ -1,6 +1,6 @@
 import Card from '@components/Card'
 import Form1 from '@components/Form1'
-import Layout from '@components/layout/layout'
+import Layout from '@components/layout'
 import Loading from '@components/Loading'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'

@@ -1,5 +1,5 @@
 // @ts-ignore 
-import Layout from '@components/layout/layout'
+import Layout from '@components/layout'
 
 export default function Dashboard() {
   return (
