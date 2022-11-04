@@ -1,7 +1,7 @@
 .header {
   --local-bg: var(--hwb-grape-4);
 
-  background: var(--local-bg);
+  background-color: var(--local-bg);
   color: color-contrast(var(--local-bg) vs var(--black), var(--white));
   display: flex;
   flex-direction: column;
@@ -11,8 +11,8 @@
   
   @media (--ipad) {
     align-items: center;
-    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-    box-shadow: rgba(0, 0, 0, 70%) 1px 1px 9px;
+    background-color: hwb(283.1 0% 74.9% / 0.9);
+    backdrop-filter: blur(3px);
     flex-direction: row;
     justify-content: space-between; 
     position: sticky;
