@@ -13,17 +13,20 @@ const fetcher = async (url: string) => {
   return data
 }
 
-export default function Person() {
+export default function CardPage() {
   const { query } = useRouter()
   const { data: cards, error } = useSWR(
     () => query.id && `/api/cards/${query.id}`,
     fetcher
   )
 
+  if (error) return <div>{error.message}</div>
+  if (!cards) return <div>Loading...</div>
+
   return (
     <Layout>
-      {error && <div>{error.message}</div>}
-      {!cards && <div>Loading...</div>}
+      {/* {error && <div>{error.message}</div>}
+      {!cards && <div>Loading...</div>} */}
       <Card content={cards} fullCard={true} />
     </Layout>
   )
