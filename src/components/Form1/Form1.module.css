@@ -1,0 +1,21 @@
+.logo {  
+  --local-margin: 0 0 1.2rem 0;
+
+  & h1 {
+    padding: 0;
+    margin: var(--local-margin);
+    color: var(--white);
+    font-size: clamp(1.5rem, 3.5vw, 3rem);
+    font-weight: 200;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    
+    @media (--ipad) {      
+      --local-margin: 0;
+      
+      line-height: 1.2em;
+    }
+  }
+}
