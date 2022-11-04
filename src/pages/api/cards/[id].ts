@@ -12,9 +12,7 @@ export default function personHandler(
 ) {
   const { query } = req
   const { id } = query
-  console.log('query :', query);
   const filtered = cards.filter((p) => p.id === id)
-  console.log('filtered :', filtered);
 
   // User with id exists
   return filtered.length > 0
