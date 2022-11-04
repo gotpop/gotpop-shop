@@ -1,3 +1,4 @@
+// @ts-ignore 
 import Card from '@components/Card'
 import Layout from '../../components/Layout'
 import Loading from '@components/Loading'

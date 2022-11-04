@@ -14,8 +14,7 @@ export default function Layout({ children }) {
 
   return (
     <>
-      <h1>Layout</h1>
-      {/* <Head>
+      <Head>
         <title>CSS 2023</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, user-scalable=no" />
@@ -29,7 +28,7 @@ export default function Layout({ children }) {
           </main>
         </div>
         <Footer />
-      </div> */}
+      </div>
     </>
   )
 }
