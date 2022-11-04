@@ -8,7 +8,7 @@ import stylesMain from './Main.module.css'
 import { getScrollBarWidth } from '@utils/scrollBarWidth'
 import { useEffect } from 'react'
 
-export default function Layout({ children }) {
+export default function LayoutStandard({ children }) {
   useEffect(() => {
     getScrollBarWidth()
   }, [])

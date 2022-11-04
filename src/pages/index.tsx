@@ -1,12 +1,12 @@
 import type { NextPage } from 'next'
-import Layout from '@components/Layout'
 import Intro from '@components/Intro'
 import { introContent } from '@content/intro'
+import LayoutStandard from '@components/LayoutStandard'
 
 export default function Home() {
   return (
-    <Layout>
+    <LayoutStandard>
       <Intro content={introContent} />
-    </Layout>
+    </LayoutStandard>
   )
 }
