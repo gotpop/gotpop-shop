@@ -7,9 +7,7 @@ import styles from './Site.module.css'
 import stylesMain from './Main.module.css'
 import { getScrollBarWidth } from '@utils/scrollBarWidth'
 
-export default function Layout(props) {
-  const { children } = props
-
+export default function Layout({ children }) {
   useEffect(() => {
     getScrollBarWidth()
   }, [])
