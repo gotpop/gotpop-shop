@@ -1,12 +1,11 @@
-// @ts-ignore 
-import Layout from '@components/layout'
+import LayoutStandard from '@components/LayoutStandard'
 
 export default function Brochure() {
   return (
-    <Layout>
+    <LayoutStandard>
       <>
         <h1>Brochure</h1>
       </>
-    </Layout>
+    </LayoutStandard>
   )
 }

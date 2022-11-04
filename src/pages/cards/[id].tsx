@@ -1,6 +1,6 @@
 // @ts-ignore 
 import Card from '@components/Card'
-import Layout from '@components/layout'
+import LayoutStandard from '@components/LayoutStandard'
 import Loading from '@components/Loading'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
@@ -23,10 +23,10 @@ export default function CardPage() {
   )
 
   return (
-    <Layout>
+    <LayoutStandard>
       {error && <div>{error.message}</div>}
       {!cards && <Loading />}
       {cards && <Card content={cards} fullCard={true} />}
-    </Layout>
+    </LayoutStandard>
   )
 }

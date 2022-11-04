@@ -1,12 +1,11 @@
-// @ts-ignore 
-import Layout from '@components/layout'
+import LayoutStandard from '@components/LayoutStandard'
 
 export default function Dashboard() {
   return (
-    <Layout>
+    <LayoutStandard>
       <>
         <h1>Dashboard</h1>
       </>
-    </Layout>
+    </LayoutStandard>
   )
 }
