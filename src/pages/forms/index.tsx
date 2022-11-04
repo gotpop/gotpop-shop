@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 import { Card as CardType, IForm } from 'types'
-import Layout from '@components/Layout'
+import Layout from '@components/Layout/layout'
 import Card from '@components/Card'
 import Loading from '@components/Loading'
 
