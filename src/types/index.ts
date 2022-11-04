@@ -27,4 +27,15 @@ export type Link = {
     href: string
 }
 
+export type Panel = {
+    id: string
+    text: string
+    title: string
+}
+
+export type Form = {
+    id: string
+    text: string
+    title: string
+}
 

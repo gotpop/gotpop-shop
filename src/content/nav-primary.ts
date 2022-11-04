@@ -7,8 +7,8 @@ export const navPrimary = [
     },
     {
         id: '2',
-        text: 'Form',
-        href: '/form',
+        text: 'Forms',
+        href: '/forms',
         internal: true
     },
     {
