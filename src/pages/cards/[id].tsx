@@ -1,6 +1,6 @@
 // @ts-ignore 
 import Card from '@components/Card'
-import Layout from '@components/Layout/layout'
+import Layout from '@components/layout/layout'
 import Loading from '@components/Loading'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'

@@ -1,5 +1,5 @@
 // @ts-ignore 
-import Layout from '@components/Layout/layout'
+import Layout from '@components/layout/layout'
 
 export default function Brochure() {
   return (

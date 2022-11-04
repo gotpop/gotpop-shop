@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import Layout from '@components/Layout/layout'
+import Layout from '@components/layout/layout'
 import Intro from '@components/Intro'
 import { introContent } from '@content/intro'
 
