@@ -8,8 +8,8 @@
   color: var(--local-icon-colour);
   cursor: pointer;
   display: flex;
-  gap: calc(var(--paddingBtn) / 2);
-  padding: calc(var(--paddingBtn) / 2) var(--paddingBtn);
+  gap: calc(var(--padding-btn) / 2);
+  padding: calc(var(--padding-btn) / 2) var(--padding-btn);
   transition: background-color var(--timing) ease;
   justify-content: space-between;
   

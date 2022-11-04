@@ -8,8 +8,8 @@
   cursor: pointer;
   display: flex;
   font-size: var(--size-l-1);
-  gap: calc(var(--paddingBtn) / 2);
-  padding: calc(var(--paddingBtn) / 3);
+  gap: calc(var(--padding-btn) / 2);
+  padding: calc(var(--padding-btn) / 3);
   transition: background-color var(--timing) ease;
   
   @media (--ipad) {
