@@ -1,5 +1,5 @@
 import Card from '@components/Card'
-import Layout from '../../components/Layout/index'
+import Layout from '../../components/Layout'
 import Loading from '@components/Loading'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
