@@ -1,10 +1,9 @@
 import stylesIcon from './Icons.module.css'
-
 import { FaEdge } from 'react-icons/fa'
 import { TfiGithub } from 'react-icons/tfi'
 import { SiCsswizardry, SiMozilla } from 'react-icons/si'
 import { DiCssTricks } from 'react-icons/di'
-import { AiFillChrome, AiOutlineLink } from 'react-icons/ai'
+import { AiFillChrome } from 'react-icons/ai'
 import { getIcon } from '@utils/getIcon'
 
 const icons = new Map([
