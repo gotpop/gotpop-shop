@@ -1,5 +1,5 @@
 import useSWR from 'swr'
-import { Card as cardy } from 'types'
+import { Card as CardType } from 'types'
 import Layout from '@components/layout/layout'
 import Card from '@components/Card'
 
@@ -12,7 +12,7 @@ export default function Cards() {
     <Layout>
       {error && <div>Failed to load</div>}
       {!cards && <div>Loading...</div>}
-      {cards?.map((card: cardy) => (
+      {cards?.map((card: CardType) => (
         <Card key={card.id} content={card} fullCard={false} />
       ))}
     </Layout>
