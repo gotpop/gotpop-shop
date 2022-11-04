@@ -1,5 +1,6 @@
 import Card from '@components/Card'
 import Layout from '@components/layout/layout'
+import Loading from '@components/Loading'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 
@@ -20,13 +21,10 @@ export default function CardPage() {
     fetcher
   )
 
-  // if (error) return <div>{error.message}</div>
-  // if (!cards) return <div>Loading...</div>
-
   return (
     <Layout>
       {error && <div>{error.message}</div>}
-      {!cards && <div>Loading...</div>}
+      {!cards && <Loading />}
       {cards && <Card content={cards} fullCard={true} />}
     </Layout>
   )
