@@ -1,4 +1,5 @@
 import Card from '@components/Card'
+import Form1 from '@components/Form1'
 import Layout from '@components/Layout'
 import Loading from '@components/Loading'
 import { useRouter } from 'next/router'
@@ -26,6 +27,7 @@ export default function CardPage() {
       {error && <div>{error.message}</div>}
       {!form && <Loading />}
       <h2>{form?.text}</h2>
+      {/* <Form1 /> */}
     </Layout>
   )
 }
