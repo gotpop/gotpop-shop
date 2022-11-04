@@ -8,13 +8,13 @@ const fetcher = (url: string) => fetch(url).then(res => res.json())
 export default function Cards() {
   const { data: cards, error } = useSWR('/api/cards', fetcher)
 
-  if (error) return <div>{error.message}</div>
-  if (!cards) return <div>Loading...</div>
+  // if (error) return <div>{error.message}</div>
+  // if (!cards) return <div>Loading...</div>
 
   return (
     <Layout>
-      {/* {error && <div>Failed to load</div>}
-      {!cards && <div>Loading...</div>} */}
+      {error && <div>Failed to load</div>}
+      {!cards && <div>Loading...</div>}
       {cards?.map((card: CardType) => (
         <Card key={card.id} content={card} fullCard={false} />
       ))}
