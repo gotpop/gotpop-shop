@@ -1,0 +1,24 @@
+.site {
+  --local-columns: var(--menu-side-width) calc(100vw - var(--scrollbar-width));
+  --local-rows: 1fr 1fr auto;
+  --local-template: "head main" "head main" "head foot";
+  --local-translate: var(--menu-state);
+  --local-width: calc(100vw + var(--menu-side-width) - var(--scrollbar-width));
+
+  display: grid;
+  grid-template-areas: var(--local-template);
+  grid-template-columns: var(--local-columns);
+  grid-template-rows: var(--local-rows);
+  transition: translate var(--timing) ease;
+  translate: var(--local-translate);
+  width: var(--local-width);
+  min-height: 100vh;
+
+  @media (--ipad) {
+    --local-columns: 1fr;
+    --local-rows: auto 1fr auto;
+    --local-template: "head" "main" "foot";
+    --local-translate: var(--menu-open);
+    --local-width: auto;
+  }
+}
