@@ -1,5 +1,4 @@
 import useSWR from 'swr'
-import PersonComponent from '@components/Person'
 import { Card as cardy } from 'types'
 import Layout from '@components/layout/layout'
 import Card from '@components/Card'
@@ -16,7 +15,7 @@ export default function Cards() {
   return (
     <Layout>
       {cards.map((card: cardy) => (
-        <Card key={card.id} content={card} />
+        <Card key={card.id} content={card} fullCard={false} />
       ))}
     </Layout>
   )

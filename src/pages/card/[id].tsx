@@ -20,12 +20,12 @@ export default function Person() {
     fetcher
   )
 
-  if (error) return <div>Liam: {error.message}</div>
+  if (error) return <div>{error.message}</div>
   if (!data) return <div>Loading...</div>
 
   return (
     <Layout>
-      <Card content={data} />
+      <Card content={data} fullCard={true}/>
     </Layout>
   )
 }
