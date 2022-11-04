@@ -1,12 +1,7 @@
 import * as React from 'react'
 import Link from 'next/link'
 import styles from './Nav.module.css'
-
-const getIcon = (iconsMap, id) => {
-  const icon = iconsMap.get(parseInt(id))
-
-  return icon ? icon() : null
-}
+import { getIcon } from '@utils/getIcon'
 
 export default function Nav({ navItems, iconsMap }) {
   return (
