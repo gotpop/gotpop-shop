@@ -10,18 +10,18 @@
 
   & h4 {
     font-size: 1.5rem;
-    margin: 0 0 var(--textMB) 0;
+    margin: 0 0 var(--text-mb) 0;
   }
 
   & p {
-    margin: 0 0 calc(var(--textMB) * 2) 0;
+    margin: 0 0 calc(var(--text-mb) * 2) 0;
   }
 
   & pre {
     background-color: var(--hwb-grey-2);
     border-radius: calc(var(--radius) * 2);
     display: inline-flex;
-    margin: 0 0 calc(var(--textMB) * 2) 0;
+    margin: 0 0 calc(var(--text-mb) * 2) 0;
     padding: var(--padding);
     white-space: break-spaces;
     word-break: break-all;

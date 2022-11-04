@@ -29,7 +29,7 @@
     }
 
     & h3 {
-      margin: 0 0 calc(var(--textMB) * 2) 0;
+      margin: 0 0 calc(var(--text-mb) * 2) 0;
 
       &::after {
         content: "";
@@ -44,7 +44,7 @@
     }
 
     & p {
-      margin: 0 0 var(--textMB) 0;
+      margin: 0 0 var(--text-mb) 0;
       opacity: var(--textOpacity);
     }
   }
