@@ -39,3 +39,11 @@ export interface IForm {
     title: string
 }
 
+export interface IForm2 {
+    [key: string]: {
+        value: string;
+        valid: boolean;
+        error: string;
+    }
+}
+
