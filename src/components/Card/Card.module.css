@@ -45,7 +45,7 @@
 
     & p {
       margin: 0 0 var(--text-mb) 0;
-      opacity: var(--textOpacity);
+      opacity: var(--text-opacity);
     }
   }
 }

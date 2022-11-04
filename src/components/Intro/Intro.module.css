@@ -29,6 +29,6 @@
 
   & p {
     margin: 0 0 calc(var(--text-mb) * 2) 0;
-    opacity: var(--textOpacity);
+    opacity: var(--text-opacity);
   }
 }
