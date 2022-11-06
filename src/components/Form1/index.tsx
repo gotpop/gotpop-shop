@@ -1,4 +1,5 @@
 import ButtonIcon from '@components/ButtonIcon'
+import InputText from '@components/InputText'
 import { BsCheckLg } from 'react-icons/bs'
 const cssSuccess = [
   { local: '--iconColour', global: 'var(--success)' },
@@ -33,15 +34,8 @@ export default function Form1() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="first">First Name</label>
-        <input type="text" id="first" name="first" required />
-      </div>
-      <div>
-        <label htmlFor="last">Last Name</label>
-        <input type="text" id="last" name="last" required />
-      </div>
-      {/* <button type="submit">Submit</button> */}
+      <InputText name={'first'}>First Name</InputText>
+      <InputText name={'last'}>Last Name</InputText>
       <ButtonIcon content={'Submit'} properties={cssSuccess} icon={BsCheckLg} />
     </form>
   )

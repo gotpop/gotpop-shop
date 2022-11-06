@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   accent-color: var(--accent);
   font-family: var(--font-primary), var(--font-fallback);

@@ -1,6 +1,8 @@
 import Form1 from '@components/Form1'
+import Intro from '@components/Intro'
 import LayoutStandard from '@components/LayoutStandard'
 import Loading from '@components/Loading'
+import { introFormContent } from '@content/intro'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 
@@ -25,8 +27,7 @@ export default function CardPage() {
     <LayoutStandard>
       {error && <div>{error.message}</div>}
       {!form && <Loading />}
-      <h2>{form?.title}</h2>
-      <p>{form?.text}</p>
+      <Intro content={introFormContent} /> 
       <Form1 />
     </LayoutStandard>
   )
