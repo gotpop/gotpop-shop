@@ -47,3 +47,7 @@ export interface IForm2 {
     }
 }
 
+export type User = {
+    id: number
+    name?: string
+}

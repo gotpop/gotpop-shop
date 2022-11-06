@@ -1,4 +1,3 @@
-import Card from '@components/Card'
 import Form1 from '@components/Form1'
 import LayoutStandard from '@components/LayoutStandard'
 import Loading from '@components/Loading'
@@ -26,8 +25,9 @@ export default function CardPage() {
     <LayoutStandard>
       {error && <div>{error.message}</div>}
       {!form && <Loading />}
-      <h2>{form?.text}</h2>
-      {/* <Form1 /> */}
+      <h2>{form?.title}</h2>
+      <p>{form?.text}</p>
+      <Form1 />
     </LayoutStandard>
   )
 }

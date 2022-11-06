@@ -18,7 +18,7 @@ export default function ButtonIcon({
   }, [])
 
   return (
-    <button onClick={doClick} className={styles.button} ref={first}>
+    <button onClick={doClick} type="submit" className={styles.button} ref={first}>
       <span>{content}</span>
       <Icon />
     </button>
