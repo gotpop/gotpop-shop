@@ -4,6 +4,7 @@
   align-items: center;
   background-color: var(--hwb-grape-4);
   border-radius: var(--radius);
+  border: none;
   color: var(--iconColour);
   cursor: pointer;
   display: flex;
