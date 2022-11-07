@@ -6,9 +6,14 @@ import styles from './Form1.module.css'
 
 const cssSuccess = [{ local: '--iconColour', global: 'var(--success)' }]
 
+interface IData {
+  first?: string
+  last?: string
+}
+
 export default function Form1() {
-  const [data, setData] = useState({})
-  
+  const [data, setData] = useState<IData>({})
+
   const handleChange = e => {
     setData(old => {
       return {
@@ -19,16 +24,11 @@ export default function Form1() {
   }
 
   useEffect(() => {
-    console.log('data :', data);
+    console.log('data :', data)
   }, [data])
-  
+
   const handleSubmit = async event => {
     event.preventDefault()
-
-    const data = {
-      first: event.target.first.value,
-      last: event.target.last.value
-    }
 
     const JSONdata = JSON.stringify(data)
     const endpoint = '/api/form'
@@ -48,8 +48,12 @@ export default function Form1() {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      <InputText name={'first'} handleChange={handleChange} value={data.first}>First Name</InputText>
-      <InputText name={'last'} handleChange={handleChange} value={data.last}>Last Name</InputText>
+      <InputText name={'first'} handleChange={handleChange} value={data.first}>
+        First Name
+      </InputText>
+      <InputText name={'last'} handleChange={handleChange} value={data.last}>
+        Last Name
+      </InputText>
       <ButtonIcon content={'Submit'} properties={cssSuccess} icon={BsCheckLg} />
     </form>
   )
