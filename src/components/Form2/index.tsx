@@ -184,7 +184,6 @@ const Form2: NextPage = () => {
             icon={BsCheckLg}
           />
         </form>
-        {showResults && <FormResults form={inputValues} />}
       </>
   )
 }
