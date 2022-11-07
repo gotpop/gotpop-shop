@@ -1,93 +1,12 @@
-import LayoutStandard from '@components/LayoutStandard'
-import { IForm2 } from 'types'
-import type { NextPage } from 'next'
 import { useReducer, useState } from 'react'
-import FormResults from '@components/table'
 import InputText from '@components/InputText'
 import ButtonIcon from '@components/ButtonIcon'
 import { BsCheckLg } from 'react-icons/bs'
 import styles from './Form2.module.css'
+import { cssSuccess, formInitialState } from './state'
+import { reducer } from './reducer'
 
-const cssSuccess = [{ local: '--iconColour', global: 'var(--success)' }]
-
-const formInitialState = {
-  firstName: {
-    value: '',
-    valid: true,
-    error: 'First name must be between 4 & 8 characters'
-  },
-  lastName: {
-    value: '',
-    valid: true,
-    error: 'Last name must be between 4 & 8 characters'
-  },
-  email: {
-    value: '',
-    valid: true,
-    error: 'Add a valid email!'
-  },
-  password: {
-    value: '',
-    valid: true,
-    error: 'Add a valid password!'
-  }
-}
-
-const types = {
-  FIRSTNAME: 'firstName',
-  LASTNAME: 'lastName',
-  EMAIL: 'email',
-  PASSWORD: 'password'
-}
-
-const reducer = (state: any, action: IForm2) => {
-  const key = Object.keys(action)[0]
-
-  switch (key) {
-    case types.FIRSTNAME:
-      return {
-        ...state,
-        firstName: {
-          value: action.firstName.value,
-          valid: action.firstName.valid,
-          error: action.firstName.error
-        }
-      }
-    case types.LASTNAME:
-      return {
-        ...state,
-        lastName: {
-          value: action.lastName.value,
-          valid: action.lastName.valid,
-          error: action.lastName.error
-        }
-      }
-    case types.EMAIL:
-      return {
-        ...state,
-        email: {
-          value: action.email.value,
-          valid: action.email.valid,
-          error: action.email.error
-        }
-      }
-    case types.PASSWORD:
-      return {
-        ...state,
-        password: {
-          value: action.password.value,
-          valid: action.password.valid,
-          error: action.password.error
-        }
-      }
-    default:
-      return {
-        ...state
-      }
-  }
-}
-
-const Form2: NextPage = () => {
+const Form2 = () => {
   const [showResults, setShowResults] = useState(false)
   const [formIsValid, setFormIsValid] = useState(false)
   const [inputValues, dispatchFormValue] = useReducer(reducer, formInitialState)
@@ -107,12 +26,7 @@ const Form2: NextPage = () => {
     })
   }
 
-  // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault()
-  //   setShowResults(true)
-  // }
-
-  const handleSubmit = async event => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     const JSONdata = JSON.stringify(inputValues)
