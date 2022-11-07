@@ -1,0 +1,9 @@
+.box {
+  --local-bg: var(--hwb-grey-2);
+
+  background-color: var(--local-bg);
+  padding: var(--padding);
+  place-content: center;
+  margin-bottom: var(--padding);
+  border-radius: var(--radius-lg);
+}

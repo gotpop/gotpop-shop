@@ -5,6 +5,7 @@ import { BsCheckLg } from 'react-icons/bs'
 import styles from './Form2.module.css'
 import { cssSuccess, formInitialState } from './state'
 import { reducer } from './reducer'
+import Box from '@components/Box'
 
 const Form2 = () => {
   const [showResults, setShowResults] = useState(false)
@@ -46,7 +47,7 @@ const Form2 = () => {
   }
 
   return (
-      <>
+      <Box>
         <form
           onSubmit={handleSubmit}
           onChange={(e: React.ChangeEvent<HTMLFormElement>) =>
@@ -98,7 +99,7 @@ const Form2 = () => {
             icon={BsCheckLg}
           />
         </form>
-      </>
+      </Box>
   )
 }
 
