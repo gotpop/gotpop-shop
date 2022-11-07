@@ -7,7 +7,7 @@ const cssSuccess = [
   { local: '--iconColour', global: 'var(--success)' }
 ]
 
-export default function Form1() {
+export default function Form2() {
   const handleSubmit = async event => {
     event.preventDefault()
 

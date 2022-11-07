@@ -7,7 +7,7 @@
 // import Paper from '@mui/material/Paper'
 // import { IFormProps } from 'types/index'
 
-export default function FormResults({ form }: IFormProps) {
+export default function FormResults({ form }) {
   return (
     <h1>Header</h1>
     // <TableContainer component={Paper}>

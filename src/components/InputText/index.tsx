@@ -1,4 +1,15 @@
+import { ChangeEventHandler } from 'react';
 import styles from './InputText.module.css'
+
+interface Props {
+  children? : string;
+  doChange?: any;
+  error? : string;
+  name? : string;
+  valid? : string;
+  value? : string;
+  required? : string;
+}
 
 export default function InputText({
   children,
@@ -8,7 +19,7 @@ export default function InputText({
   valid,
   value,
   ...rest
-}) {
+}: any) {
   console.log('valid :', valid)
 
   return (

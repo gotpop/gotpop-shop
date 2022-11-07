@@ -39,6 +39,10 @@ export interface IForm {
     title: string
 }
 
+export interface IFormProps {
+    form: IForm2;
+}
+
 export interface IForm2 {
     [key: string]: {
         value: string;

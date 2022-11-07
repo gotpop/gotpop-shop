@@ -1,5 +1,5 @@
 import LayoutStandard from '@components/LayoutStandard'
-import { IForm } from 'types'
+import { IForm2 } from 'types'
 import type { NextPage } from 'next'
 import { useReducer, useState } from 'react'
 import FormResults from '@components/table'
@@ -39,7 +39,7 @@ const types = {
   PASSWORD: 'password'
 }
 
-const reducer = (state: any, action) => {
+const reducer = (state: any, action: IForm2) => {
   const key = Object.keys(action)[0]
 
   switch (key) {
