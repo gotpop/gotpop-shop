@@ -3,7 +3,7 @@ import Form2 from '@components/Form2'
 import Intro from '@components/Intro'
 import LayoutStandard from '@components/LayoutStandard'
 import Loading from '@components/Loading'
-import { introFormContent } from '@content/intro'
+import { introForm1Content, introForm2Content } from '@content/intro'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 
@@ -29,8 +29,17 @@ export default function CardPage() {
       {error && <div>{error.message}</div>}
       {form ? (
         <>
-          <Intro content={introFormContent} />
-          {query.id === '1' ? <Form1 /> : <Form2 />}
+          {query.id === '1' ? (
+            <>
+              <Intro content={introForm1Content} />
+              <Form1 />
+            </>
+          ) : (
+            <>
+              <Intro content={introForm2Content} />
+              <Form2 />
+            </>
+          )}
         </>
       ) : (
         <Loading />

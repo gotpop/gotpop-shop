@@ -114,7 +114,6 @@ const Form2: NextPage = () => {
 
   return (
       <>
-        <h2>useReducer used for form data</h2>
         <form
           onSubmit={onFormSubmit}
           onChange={(e: React.ChangeEvent<HTMLFormElement>) =>
