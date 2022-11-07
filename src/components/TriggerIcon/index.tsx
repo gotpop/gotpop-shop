@@ -8,8 +8,6 @@ export default function TriggerIcon({ menuState }) {
   const { open } = menuState
 
   useEffect(() => {
-    console.log('menuState :', menuState)
-
     open
       ? trigger.current.setAttribute('open', true)
       : trigger.current.setAttribute('open', false)
