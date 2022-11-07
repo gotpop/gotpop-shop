@@ -96,9 +96,6 @@ const Form: NextPage = () => {
     const { name, value } = e.target
     const valid = e.target.checkValidity()
     const error = formInitialState[name].error
-    // console.log('error :', error);
-    // console.log('name, value :', name, value);
-    // console.log('valid :', valid);
 
     dispatchFormValue({
       [name]: {
@@ -131,7 +128,7 @@ const Form: NextPage = () => {
             required
             type="text"
             pattern="[A-Za-z]{4,8}"
-            doChange={reducerInputChange}>
+            handleChange={reducerInputChange}>
             First Name
           </InputText>
           <InputText
@@ -141,7 +138,7 @@ const Form: NextPage = () => {
             error={lastName.error}
             valid={lastName.valid}
             pattern="[A-Za-z]{4,8}"
-            doChange={reducerInputChange}>
+            handleChange={reducerInputChange}>
             Last Name
           </InputText>
           <InputText
@@ -150,7 +147,7 @@ const Form: NextPage = () => {
             value={email.value}
             error={email.error}
             valid={email.valid}
-            doChange={reducerInputChange}>
+            handleChange={reducerInputChange}>
             Email
           </InputText>
           <InputText
@@ -160,7 +157,7 @@ const Form: NextPage = () => {
             error={password.error}
             valid={password.valid}
             pattern="[A-Za-z]{4,8}"
-            doChange={reducerInputChange}>
+            handleChange={reducerInputChange}>
             Password
           </InputText>
           <ButtonIcon

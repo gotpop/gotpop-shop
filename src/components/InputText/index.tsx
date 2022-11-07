@@ -1,27 +1,27 @@
-import { ChangeEventHandler } from 'react';
+import { ChangeEventHandler } from 'react'
 import styles from './InputText.module.css'
 
-interface Props {
-  children? : string;
-  doChange?: any;
-  error?: string;
-  name?: string;
-  valid?: string;
-  value?: string;
-  required?: string;
+interface IInputText {
+  children?: string
+  handleChange?: ChangeEventHandler<HTMLInputElement>
+  error?: string
+  name?: string
+  valid?: string
+  value?: string
+  required?: boolean
+  type?: string
+  pattern?: string
 }
 
 export default function InputText({
   children,
-  doChange = null,
+  handleChange,
   error = null,
   name,
   valid = null,
-  value = '',
+  value,
   ...rest
-}: any) {
-  console.log('valid :', valid)
-
+}: IInputText) {
   return (
     <div className={styles.input}>
       <label htmlFor={name}>{children}</label>
@@ -29,7 +29,7 @@ export default function InputText({
         id={name}
         name={name}
         value={value}
-        onChange={doChange}
+        onChange={handleChange}
         {...rest}
       />
       {!valid ? <span className={styles.message}>{error}</span> : null}

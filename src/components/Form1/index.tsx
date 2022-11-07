@@ -1,11 +1,27 @@
 import ButtonIcon from '@components/ButtonIcon'
 import InputText from '@components/InputText'
+import { useEffect, useState } from 'react'
 import { BsCheckLg } from 'react-icons/bs'
 import styles from './Form1.module.css'
 
 const cssSuccess = [{ local: '--iconColour', global: 'var(--success)' }]
 
 export default function Form1() {
+  const [data, setData] = useState({})
+  
+  const handleChange = e => {
+    setData(old => {
+      return {
+        ...old,
+        [e.target.name]: e.target.value
+      }
+    })
+  }
+
+  useEffect(() => {
+    console.log('data :', data);
+  }, [data])
+  
   const handleSubmit = async event => {
     event.preventDefault()
 
@@ -32,8 +48,8 @@ export default function Form1() {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      <InputText name={'first'}>First Name</InputText>
-      <InputText name={'last'}>Last Name</InputText>
+      <InputText name={'first'} handleChange={handleChange} value={data.first}>First Name</InputText>
+      <InputText name={'last'} handleChange={handleChange} value={data.last}>Last Name</InputText>
       <ButtonIcon content={'Submit'} properties={cssSuccess} icon={BsCheckLg} />
     </form>
   )
