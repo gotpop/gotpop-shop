@@ -3,12 +3,9 @@ import InputText from '@components/InputText'
 import { BsCheckLg } from 'react-icons/bs'
 import styles from './Form1.module.css'
 
-
 const cssSuccess = [
-  { local: '--iconColour', global: 'var(--success)' },
-  // { local: 'type', global: 'submit' }
+  { local: '--iconColour', global: 'var(--success)' }
 ]
-
 
 export default function Form1() {
   const handleSubmit = async event => {

@@ -26,8 +26,14 @@ export default function CardPage() {
   return (
     <LayoutStandard>
       {error && <div>{error.message}</div>}
-      {form ? <Intro content={introFormContent} /> : <Loading />}
-      <Form1 />
+      {form ? (
+        <>
+          <Intro content={introFormContent} />
+          <Form1 />
+        </>
+      ) : (
+        <Loading />
+      )}
     </LayoutStandard>
   )
 }

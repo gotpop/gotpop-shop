@@ -1,7 +1,9 @@
 .input {
   margin-bottom: 1rem;
+  padding-bottom: 2rem;
   display: flex;
   flex-direction: column;
+  position: relative;
 
   & label {
     margin-bottom: 1rem;
@@ -9,8 +11,22 @@
 
   & input {
     border-radius: var(--radius);
-    padding: .5rem;
+    padding: 0.5rem;
     border: 1px solid var(--hwb-grey-2);
     max-width: 600px;
+
+    &:valid {
+      accent-color: var(--success);
+    }
+
+    &:invalid {
+      accent-color: var(--error);
+    } 
+  }
+
+  & .message {
+    color: var(--error);
+    position: absolute;
+    bottom: 0;
   }
 }
