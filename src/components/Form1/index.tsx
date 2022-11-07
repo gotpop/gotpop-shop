@@ -31,7 +31,7 @@ export default function Form1() {
     event.preventDefault()
 
     const JSONdata = JSON.stringify(data)
-    const endpoint = '/api/form'
+    const endpoint = '/api/forms/formSimple'
 
     const options = {
       method: 'POST',

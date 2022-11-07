@@ -107,15 +107,34 @@ const Form2: NextPage = () => {
     })
   }
 
-  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setShowResults(true)
+  // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault()
+  //   setShowResults(true)
+  // }
+
+  const handleSubmit = async event => {
+    event.preventDefault()
+
+    const JSONdata = JSON.stringify(inputValues)
+    const endpoint = '/api/forms/form'
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSONdata
+    }
+
+    const response = await fetch(endpoint, options)
+    const result = await response.json()
+    alert(`Is this your full name: ${result.data}`)
   }
 
   return (
       <>
         <form
-          onSubmit={onFormSubmit}
+          onSubmit={handleSubmit}
           onChange={(e: React.ChangeEvent<HTMLFormElement>) =>
             setFormIsValid(e.currentTarget.checkValidity())
           }>
