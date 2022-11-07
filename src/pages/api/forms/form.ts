@@ -10,6 +10,8 @@ export default function handler(req, res) {
 
   res.status(200).json({
     firstName: body.firstName.value,
-    lastName: body.lastName.value
+    lastName: body.lastName.value,
+    email: body.email.value,
+    password: body.password.value
   })
 }
