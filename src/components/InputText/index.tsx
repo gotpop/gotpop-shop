@@ -4,20 +4,20 @@ import styles from './InputText.module.css'
 interface Props {
   children? : string;
   doChange?: any;
-  error? : string;
-  name? : string;
-  valid? : string;
-  value? : string;
-  required? : string;
+  error?: string;
+  name?: string;
+  valid?: string;
+  value?: string;
+  required?: string;
 }
 
 export default function InputText({
   children,
-  doChange,
-  error,
+  doChange = null,
+  error = null,
   name,
-  valid,
-  value,
+  valid = null,
+  value = '',
   ...rest
 }: any) {
   console.log('valid :', valid)
