@@ -6,9 +6,11 @@ import styles from './Form2.module.css'
 import { cssSuccess, formInitialState } from './state'
 import { reducer } from './reducer'
 import Box from '@components/Box'
+import Dialog from '@components/Dialog'
 
 const Form2 = () => {
   const [showResults, setShowResults] = useState(false)
+  const [results, setResults] = useState({})
   const [formIsValid, setFormIsValid] = useState(false)
   const [inputValues, dispatchFormValue] = useReducer(reducer, formInitialState)
   const { firstName, lastName, email, password } = inputValues
@@ -27,8 +29,8 @@ const Form2 = () => {
     })
   }
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
 
     const JSONdata = JSON.stringify(inputValues)
     const endpoint = '/api/forms/form'
@@ -43,63 +45,66 @@ const Form2 = () => {
 
     const response = await fetch(endpoint, options)
     const result = await response.json()
-    alert(`Is this your full name: ${result.data}`)
+
+    setResults(result)
+    setShowResults(true)
   }
 
   return (
-      <Box>
-        <form
-          onSubmit={handleSubmit}
-          onChange={(e: React.ChangeEvent<HTMLFormElement>) =>
-            setFormIsValid(e.currentTarget.checkValidity())
-          }>
-          <InputText
-            name={'firstName'}
-            value={firstName.value}
-            error={firstName.error}
-            valid={firstName.valid}
-            required
-            type="text"
-            pattern="[A-Za-z]{4,8}"
-            handleChange={reducerInputChange}>
-            First Name
-          </InputText>
-          <InputText
-            type="text"
-            name={'lastName'}
-            value={lastName.value}
-            error={lastName.error}
-            valid={lastName.valid}
-            pattern="[A-Za-z]{4,8}"
-            handleChange={reducerInputChange}>
-            Last Name
-          </InputText>
-          <InputText
-            type="email"
-            name={'email'}
-            value={email.value}
-            error={email.error}
-            valid={email.valid}
-            handleChange={reducerInputChange}>
-            Email
-          </InputText>
-          <InputText
-            type="password"
-            name={'password'}
-            value={password.value}
-            error={password.error}
-            valid={password.valid}
-            pattern="[A-Za-z]{4,8}"
-            handleChange={reducerInputChange}>
-            Password
-          </InputText>
-          <ButtonIcon
-            content={'Submit'}
-            properties={cssSuccess}
-            icon={BsCheckLg}
-          />
-        </form>
-      </Box>
+    <Box>
+      {showResults ? <Dialog content={results} /> : null}
+      <form
+        onSubmit={handleSubmit}
+        onChange={(e: React.ChangeEvent<HTMLFormElement>) =>
+          setFormIsValid(e.currentTarget.checkValidity())
+        }>
+        <InputText
+          name={'firstName'}
+          value={firstName.value}
+          error={firstName.error}
+          valid={firstName.valid}
+          required
+          type="text"
+          pattern="[A-Za-z]{4,8}"
+          handleChange={reducerInputChange}>
+          First Name
+        </InputText>
+        <InputText
+          type="text"
+          name={'lastName'}
+          value={lastName.value}
+          error={lastName.error}
+          valid={lastName.valid}
+          pattern="[A-Za-z]{4,8}"
+          handleChange={reducerInputChange}>
+          Last Name
+        </InputText>
+        <InputText
+          type="email"
+          name={'email'}
+          value={email.value}
+          error={email.error}
+          valid={email.valid}
+          handleChange={reducerInputChange}>
+          Email
+        </InputText>
+        <InputText
+          type="password"
+          name={'password'}
+          value={password.value}
+          error={password.error}
+          valid={password.valid}
+          pattern="[A-Za-z]{4,8}"
+          handleChange={reducerInputChange}>
+          Password
+        </InputText>
+        <ButtonIcon
+          content={'Submit'}
+          properties={cssSuccess}
+          icon={BsCheckLg}
+        />
+      </form>
+    </Box>
   )
 }
 

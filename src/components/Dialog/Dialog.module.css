@@ -4,7 +4,7 @@
   padding: 1rem;
 
   &::backdrop {
-    backdrop-filter: var(--backdrop);
+    backdrop-filter: blur(5px);
     background-color: hwb(0deg 0% 100% / 70%);
   }
 
@@ -41,10 +41,10 @@
   & .inner {
     background-color: var(--white);
     border-radius: calc(var(--radius) * 2);
-  
     flex-direction: column;
     max-width: 600px;
     padding: var(--padding);
+    width: calc(90vw - 2rem);
   
     @media (--ipad) {
       padding: calc(var(--padding) * 2);
