@@ -20,7 +20,7 @@ export default function LayoutStandard({ children }) {
   return (
     <>
       <Head>
-        <title>CSS 2023</title>
+        <title>Starter</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, user-scalable=no" />
       </Head>
