@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 // import './styles.css';
 import styles from './BreadCrumbs.module.css'
+import { AiOutlineHome } from 'react-icons/ai'
 
 const getPathFromUrl = (url: string): string => {
   return url.split(/[?#]/)[0]
@@ -171,6 +172,7 @@ const Breadcrumbs = ({
         {!omitRootLabel && (
           <li style={inactiveItemStyle} className={inactiveItemClassName}>
             <Link href="/">
+              <AiOutlineHome className={styles.iconhome} />
               {convertBreadcrumb(
                 rootLabel || 'Home',
                 labelsToUppercase,

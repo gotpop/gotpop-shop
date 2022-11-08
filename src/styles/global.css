@@ -6,6 +6,10 @@ html {
   scroll-behavior: smooth;
 }
 
+::selection {
+  background: var(--accent);
+}
+
 body {
   accent-color: var(--accent);
   font-family: var(--font-primary), var(--font-fallback);

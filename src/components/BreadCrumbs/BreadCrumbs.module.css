@@ -5,6 +5,10 @@
   font-size: var(--size-s-1);
   overflow: hidden;
 
+  & .iconhome {
+    margin: 0 .3rem 0 0;
+  }
+
   & ol {
     display: flex;
     padding: 0;
