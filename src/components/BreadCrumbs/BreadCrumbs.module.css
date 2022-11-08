@@ -1,9 +1,5 @@
 .breadcrumbs {
-  --local-bg: var(--hwb-grey-2);
-
-  place-content: center;
   font-size: var(--size-s-1);
-  overflow: hidden;
 
   & .iconhome {
     margin: 0 .3rem 0 0;
@@ -23,6 +19,10 @@
 
     &:first-child::marker {
       content: "";
+    }
+
+    &:last-child {
+      font-style: italic;
     }
   }
 
