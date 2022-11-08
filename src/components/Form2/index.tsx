@@ -8,9 +8,16 @@ import { reducer } from './reducer'
 import Box from '@components/Box'
 import Dialog from '@components/Dialog'
 
+interface IData {
+  firstName?: string
+  lastName?: string
+  email?: string
+  password?: string
+}
+
 const Form2 = () => {
   const [showResults, setShowResults] = useState(false)
-  const [results, setResults] = useState({})
+  const [results, setResults] = useState<IData>({})
   const [formIsValid, setFormIsValid] = useState(false)
   const [inputValues, dispatchFormValue] = useReducer(reducer, formInitialState)
   const { firstName, lastName, email, password } = inputValues
@@ -52,7 +59,27 @@ const Form2 = () => {
 
   return (
     <Box>
-      {showResults ? <Dialog content={results} /> : null}
+      {showResults ? (
+        <Dialog>
+          <h4>Http2 Response</h4>
+          <p>
+            <span>First name: </span>
+            <span>{results.firstName}</span>
+          </p>
+          <p>
+            <span>Last name: </span>
+            <span>{results.lastName}</span>
+          </p>
+          <p>
+            <span>Email: </span>
+            <span>{results.email}</span>
+          </p>
+          <p>
+            <span>Password: </span>
+            <span>{results.password}</span>
+          </p>
+        </Dialog>
+      ) : null}
       <form
         onSubmit={handleSubmit}
         onChange={(e: React.ChangeEvent<HTMLFormElement>) =>

@@ -1,5 +1,6 @@
 import Box from '@components/Box'
 import ButtonIcon from '@components/ButtonIcon'
+import Dialog from '@components/Dialog'
 import InputText from '@components/InputText'
 import { useEffect, useState } from 'react'
 import { BsCheckLg } from 'react-icons/bs'
@@ -15,6 +16,9 @@ interface IData {
 export default function Form1() {
   const [data, setData] = useState<IData>({})
 
+  const [showResults, setShowResults] = useState(false)
+  const [results, setResults] = useState<IData>({})
+
   const handleChange = e => {
     setData(old => {
       return {
@@ -23,10 +27,6 @@ export default function Form1() {
       }
     })
   }
-
-  useEffect(() => {
-    console.log('data :', data)
-  }, [data])
 
   const handleSubmit = async event => {
     event.preventDefault()
@@ -44,11 +44,26 @@ export default function Form1() {
 
     const response = await fetch(endpoint, options)
     const result = await response.json()
-    alert(`Is this your full name: ${result.data}`)
+
+    setResults(result)
+    setShowResults(true)
   }
 
   return (
     <Box>
+      {showResults ? (
+        <Dialog>
+          <h4>Http3 Response</h4>
+          <p>
+            <span>First name: </span>
+            <span>{results.first}</span>
+          </p>
+          <p>
+            <span>Last name: </span>
+            <span>{results.last}</span>
+          </p>
+        </Dialog>
+      ) : null}
       <form onSubmit={handleSubmit} className={styles.form}>
         <InputText
           name={'first'}
