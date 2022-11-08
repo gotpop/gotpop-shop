@@ -1,7 +1,7 @@
 .mainwrap {
   display: grid;
   grid-template-columns: minmax(100px, 1000px);
-  place-content: center;
+  justify-content: center;
   grid-area: main;
 
   & .main {
@@ -12,6 +12,7 @@
   
     @media (--ipad) {
       grid-template-columns: repeat(var(--grid-columns), 1fr);
+      grid-template-rows: min-content;
     }
   }
 }

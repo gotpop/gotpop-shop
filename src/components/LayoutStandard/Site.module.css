@@ -16,7 +16,7 @@
 
   @media (--ipad) {
     --local-columns: 1fr;
-    --local-rows: auto 1fr auto;
+    --local-rows: auto minmax(80vh, max-content) auto;
     --local-template: "head" "main" "foot";
     --local-translate: var(--menu-open);
     --local-width: auto;
