@@ -1,3 +1,4 @@
+import Box from '@components/Box'
 import ButtonIcon from '@components/ButtonIcon'
 import InputText from '@components/InputText'
 import { useEffect, useState } from 'react'
@@ -47,14 +48,23 @@ export default function Form1() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
-      <InputText name={'first'} handleChange={handleChange} value={data.first}>
-        First Name
-      </InputText>
-      <InputText name={'last'} handleChange={handleChange} value={data.last}>
-        Last Name
-      </InputText>
-      <ButtonIcon content={'Submit'} properties={cssSuccess} icon={BsCheckLg} />
-    </form>
+    <Box>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <InputText
+          name={'first'}
+          handleChange={handleChange}
+          value={data.first}>
+          First Name
+        </InputText>
+        <InputText name={'last'} handleChange={handleChange} value={data.last}>
+          Last Name
+        </InputText>
+        <ButtonIcon
+          content={'Submit'}
+          properties={cssSuccess}
+          icon={BsCheckLg}
+        />
+      </form>
+    </Box>
   )
 }

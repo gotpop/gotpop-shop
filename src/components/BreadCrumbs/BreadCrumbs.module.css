@@ -1,0 +1,40 @@
+.breadcrumbs {
+  --local-bg: var(--hwb-grey-2);
+
+  border-color: var(--local-bg);
+  border: 1px solid;
+  place-content: center;
+  font-size: var(--size-s-1);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+
+  & ol {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  & a {
+    padding: calc(var(--padding) / 2);
+    display: inline-flex;
+  }
+
+  & li:nth-child(1) {
+    & a {
+      background-color: var(--hwb-grey-4);
+    }
+  }
+  
+  & li:nth-child(2) {
+    & a {
+      background-color: var(--hwb-grey-3);
+    }
+  }
+  
+  & li:nth-child(3) {
+    & a {
+      background-color: var(--hwb-grey-2);
+    }
+  }
+}

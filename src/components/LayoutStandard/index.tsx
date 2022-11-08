@@ -7,8 +7,12 @@ import styles from './Site.module.css'
 import stylesMain from './Main.module.css'
 import { getScrollBarWidth } from '@utils/scrollBarWidth'
 import { useEffect } from 'react'
+import Breadcrumbs from '@components/BreadCrumbs'
+import { useRouter } from 'next/router'
 
 export default function LayoutStandard({ children }) {
+  const { pathname } = useRouter()
+
   useEffect(() => {
     getScrollBarWidth()
   }, [])
@@ -24,6 +28,7 @@ export default function LayoutStandard({ children }) {
         <Header />
         <div className={stylesMain.mainwrap}>
           <main className={stylesMain.main}>
+            {pathname === '/' ? null : <Breadcrumbs />}
             <Trigger />
             {children}
           </main>
