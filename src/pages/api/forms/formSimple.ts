@@ -6,8 +6,8 @@ export default function handler(req, res) {
     }
   
     res.status(200).json({
-      first: body.first.value,
-      last: body.last.value
+      first: body.first,
+      last: body.last
     })
   }
   
