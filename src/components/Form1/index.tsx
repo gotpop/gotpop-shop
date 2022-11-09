@@ -15,9 +15,9 @@ interface IData {
 
 export default function Form1() {
   const [data, setData] = useState<IData>({})
-
   const [showResults, setShowResults] = useState(false)
   const [results, setResults] = useState<IData>({})
+  const handleClose = () => setShowResults(false)
 
   const handleChange = e => {
     setData(old => {
@@ -52,7 +52,7 @@ export default function Form1() {
   return (
     <Box>
       {showResults ? (
-        <Dialog>
+        <Dialog handleClose={handleClose}>
           <h4>Http3 Response</h4>
           <p>
             <span>First name: </span>
