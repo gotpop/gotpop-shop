@@ -17,7 +17,7 @@ const fetcher = async (url: string) => {
   return data
 }
 
-export default function CardPage() {
+export default function FormPage() {
   const { query } = useRouter()
   const { data: form, error } = useSWR(
     () => query.id && `/api/forms/${query.id}`,

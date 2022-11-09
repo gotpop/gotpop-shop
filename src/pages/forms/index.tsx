@@ -6,7 +6,7 @@ import LayoutStandard from '@components/LayoutStandard'
 
 const fetcher = (url: string) => fetch(url).then(res => res.json())
 
-export default function Cards() {
+export default function Forms() {
   const { data: forms, error } = useSWR('/api/forms', fetcher)
 
   return (
