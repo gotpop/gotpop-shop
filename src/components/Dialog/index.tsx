@@ -4,22 +4,20 @@ import ButtonIcon from '@components/ButtonIcon'
 import { ImCross } from 'react-icons/im'
 import styles from './Dialog.module.css'
 
-export default function Dialog({ children }) {
+export default function Dialog({ children, handleClose }) {
   const dialog = useRef(null)
   const cssError = [{ local: '--iconColour', global: 'var(--error)' }]
 
   useEffect(() => {
     dialog.current.showModal()
-
-    return () => dialog.current.close();
-  })
+  }, [])
 
   return (
     <dialog ref={dialog} className={styles.dialog}>
       <div className={styles.inner}>
         {children}
         <form method="dialog" className={styles.buttons}>
-          <ButtonIcon content={'Close'} properties={cssError} icon={ImCross} />
+          <ButtonIcon doClick={handleClose} content={'Close'} properties={cssError} icon={ImCross} />
         </form>
       </div>
     </dialog>

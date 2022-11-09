@@ -23,6 +23,7 @@ const Form2 = () => {
   const [loading, setLoading] = useState(false)
   const [inputValues, dispatchFormValue] = useReducer(reducer, formInitialState)
   const { firstName, lastName, email, password } = inputValues
+  const handleClose = () => setShowResults(false)
 
   const reducerInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -39,8 +40,6 @@ const Form2 = () => {
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    console.log('handleSubmit : FIRED!');
-    
     e.preventDefault()
     setLoading(true)
 
@@ -66,7 +65,7 @@ const Form2 = () => {
   return (
     <Box>
       {showResults ? (
-        <Dialog>
+        <Dialog handleClose={handleClose}>
           <h4>Http2 Response</h4>
           <p>
             <span>First name: </span>
