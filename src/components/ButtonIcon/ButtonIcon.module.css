@@ -16,6 +16,7 @@
   &[disabled] {
     opacity: .6;
     filter: grayscale(50%);
+    cursor: not-allowed;
   }
   
   &:hover {
