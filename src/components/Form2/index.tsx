@@ -39,12 +39,14 @@ const Form2 = () => {
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    console.log('handleSubmit : FIRED!');
+    
     e.preventDefault()
     setLoading(true)
-    
+
     const JSONdata = JSON.stringify(inputValues)
     const endpoint = '/api/forms/form'
-    
+
     const options = {
       method: 'POST',
       headers: {
@@ -52,10 +54,10 @@ const Form2 = () => {
       },
       body: JSONdata
     }
-    
+
     const response = await fetch(endpoint, options)
     const result = await response.json()
-    
+
     setResults(result)
     setShowResults(true)
     setLoading(false)
