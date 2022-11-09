@@ -1,15 +1,15 @@
 .icon {
   --iconColour: var(--white);
-  --local-size: 1em;
-  --local-translate: 0 calc(var(--local-size) / 2.2);
   --local-duration: 0.3s;
   --local-name: top;
+  --local-size: 1em;
+  --local-translate: 0 calc(var(--local-size) / 2.2);
 
-  width: var(--local-size);
-  height: var(--local-size);
-  position: relative;
   display: flex;
+  height: var(--local-size);
   justify-content: center;
+  position: relative;
+  width: var(--local-size);
 
   & span {
     animation-duration: var(--local-duration);

@@ -1,4 +1,5 @@
-import { MouseEventHandler } from "react";
+import { ChangeEventHandler, MouseEventHandler } from "react";
+
 import { IconType } from "react-icons";
 
 export interface IButtonIcon {
@@ -63,3 +64,15 @@ export interface IData {
     email?: string
     password?: string
 }
+
+export interface IInputText {
+    children?: string
+    error?: string
+    handleChange?: ChangeEventHandler<HTMLInputElement>
+    name?: string
+    pattern?: string
+    required?: boolean
+    type?: string
+    valid?: string
+    value?: string
+  }

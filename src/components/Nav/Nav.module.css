@@ -1,8 +1,8 @@
 .nav {
   display: flex;
   flex-direction: column;
-  gap: calc(var(--padding) / 2);
   font-size: var(--size-s-1);
+  gap: calc(var(--padding) / 2);
   
   @media (--ipad) {
     align-self: center;
@@ -15,9 +15,9 @@
     color: var(--white);
     display: inline-flex;
     gap: calc(var(--padding-btn) / 2);
+    justify-content: space-between;
     padding: calc(var(--padding-btn) / 2) var(--padding-btn);
     transition: background-color var(--timing) ease;
-    justify-content: space-between;
     
     &:hover {
       background-color: var(--accent);

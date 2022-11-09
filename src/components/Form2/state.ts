@@ -2,12 +2,12 @@ export const formInitialState = {
     firstName: {
         value: '',
         valid: true,
-        error: 'First name must be between 4 & 8 characters'
+        error: 'First name must be between 4 & 8 characters.'
     },
     lastName: {
         value: '',
         valid: true,
-        error: 'Last name must be between 4 & 8 characters'
+        error: 'Last name must be between 4 & 8 characters.'
     },
     email: {
         value: '',

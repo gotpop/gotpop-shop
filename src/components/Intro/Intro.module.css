@@ -2,11 +2,11 @@
   --local-bg: var(--hwb-grape-5);
 
   background: var(--local-bg);
+  border-radius: var(--radius-lg);
   color: var(--white);
   display: flex;
   flex-direction: column;
   padding: var(--padding);
-  border-radius: var(--radius-lg);
 
   @media (--ipad) {
     grid-column: span var(--grid-columns);
@@ -16,14 +16,14 @@
     margin: 0 0 calc(var(--text-mb) * 2) 0;
 
     &::after {
+      background-color: currentColor;
       content: "";
       display: flex;
       height: 1px;
-      width: calc(100% - 1rem);
       margin: 0 0.5rem;
-      background-color: currentColor;
       opacity: 0.3;
       translate: 0 0.33em;
+      width: calc(100% - 1rem);
     }
   }
 

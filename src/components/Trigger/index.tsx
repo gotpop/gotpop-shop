@@ -1,9 +1,11 @@
 import * as React from 'react'
+
 import { useContext, useRef } from 'react'
-import styles from './Trigger.module.css'
+
 import ColumnContext from '@context/MenuContext'
-import { set } from '@utils/setPropsOnRoot'
 import TriggerIcon from '@components/TriggerIcon'
+import { set } from '@utils/setPropsOnRoot'
+import styles from './Trigger.module.css'
 
 export default function Trigger() {
   const trigger = useRef(null)

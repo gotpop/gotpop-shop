@@ -1,5 +1,7 @@
 import * as React from 'react'
+
 import { useEffect, useRef } from 'react'
+
 import styles from './TriggerIcon.module.css'
 import stylesSpan from './Span.module.css'
 

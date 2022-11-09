@@ -1,8 +1,8 @@
 .mainwrap {
   display: grid;
+  grid-area: main;
   grid-template-columns: minmax(100px, 1000px);
   justify-content: center;
-  grid-area: main;
 
   & .main {
     background: var(--hwb-grey-1);
@@ -11,8 +11,8 @@
     padding: var(--padding);
 
     @media (--ipad) {
-      grid-template-columns: repeat(var(--grid-columns), 1fr);
       align-content: start;
+      grid-template-columns: repeat(var(--grid-columns), 1fr);
     }
   }
 }

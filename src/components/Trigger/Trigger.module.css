@@ -2,8 +2,8 @@
   --iconColour: var(--white);
 
   align-items: center;
-  border-color: var(--hwb-grape-4);
   background-color: transparent;
+  border-color: var(--hwb-grape-4);
   border-radius: var(--radius);
   cursor: pointer;
   display: flex;

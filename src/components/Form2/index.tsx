@@ -1,18 +1,18 @@
+import { cssSuccess, formInitialState } from './state'
+import { useReducer, useState } from 'react'
+
 import Box from '@components/Box'
+import { BsCheckLg } from 'react-icons/bs'
 import ButtonIcon from '@components/ButtonIcon'
 import Dialog from '@components/Dialog'
+import { IData } from 'types'
 import InputText from '@components/InputText'
 import LoadingIcon from '@components/LoadingIcon'
-import styles from './Form2.module.css'
-
-import { useReducer, useState } from 'react'
-import { BsCheckLg } from 'react-icons/bs'
-import { IData } from 'types'
-import { reducer } from './reducer'
 import { Results } from './results'
-import { cssSuccess, formInitialState } from './state'
-import { reducerInputChange } from './reducerInputChange'
 import { handleSubmit } from './handleSubmit'
+import { reducer } from './reducer'
+import { reducerInputChange } from './reducerInputChange'
+import styles from './Form2.module.css'
 
 export default function Form2() {
   const [showResults, setShowResults] = useState(false)
@@ -94,7 +94,7 @@ export default function Form2() {
           content={'Submit'}
           disabled={!formIsValid}
           icon={loading ? LoadingIcon : BsCheckLg}
-          properties={cssSuccess}
+          properties={loading ? cssSuccess : null}
         />
       </form>
     </Box>

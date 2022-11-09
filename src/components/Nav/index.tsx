@@ -1,7 +1,8 @@
 import * as React from 'react'
+
 import Link from 'next/link'
-import styles from './Nav.module.css'
 import { getIcon } from '@utils/getIcon'
+import styles from './Nav.module.css'
 
 export default function Nav({ navItems, iconsMap }) {
   return (

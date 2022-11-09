@@ -9,10 +9,10 @@
   grid-template-areas: var(--local-template);
   grid-template-columns: var(--local-columns);
   grid-template-rows: var(--local-rows);
+  min-height: 100vh;
   transition: translate var(--timing) ease;
   translate: var(--local-translate);
   width: var(--local-width);
-  min-height: 100vh;
 
   @media (--ipad) {
     --local-columns: 1fr;

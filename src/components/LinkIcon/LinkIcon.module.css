@@ -1,6 +1,6 @@
 .link {
-  --local-icon-colour: var(--white);
   --local-font-size: var(--size-s-1);
+  --local-icon-colour: var(--white);
 
   align-items: center;
   background-color: var(--hwb-grape-4);
@@ -9,9 +9,9 @@
   cursor: pointer;
   display: flex;
   gap: calc(var(--padding-btn) / 2);
+  justify-content: space-between;
   padding: calc(var(--padding-btn) / 2) var(--padding-btn);
   transition: background-color var(--timing) ease;
-  justify-content: space-between;
   
   &:hover {
     background-color: var(--accent);

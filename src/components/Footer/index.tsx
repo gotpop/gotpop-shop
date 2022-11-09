@@ -1,9 +1,9 @@
-import Nav from '@components/Nav'
-import styles from './Footer.module.css'
-import { navSecondary } from '@content/nav-secondary'
 import { AiFillHome } from 'react-icons/ai'
 import { GoZap } from 'react-icons/go'
+import Nav from '@components/Nav'
 import { TfiGithub } from 'react-icons/tfi'
+import { navSecondary } from '@content/nav-secondary'
+import styles from './Footer.module.css'
 
 const icons = new Map([
   [1, AiFillHome],

@@ -1,9 +1,11 @@
 import * as React from 'react'
-import Link from 'next/link'
+
 import { useEffect, useRef } from 'react'
-import { ILinkIcon } from 'types'
-import styles from './LinkIcon.module.css'
+
 import { AiOutlineLink } from 'react-icons/ai'
+import { ILinkIcon } from 'types'
+import Link from 'next/link'
+import styles from './LinkIcon.module.css'
 
 export default function LinkIcon({
   content = 'Visit',
