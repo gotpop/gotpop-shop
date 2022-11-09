@@ -75,4 +75,9 @@ export interface IInputText {
     type?: string
     valid?: string
     value?: string
-  }
+}
+
+export interface IData3 {
+    first?: string
+    last?: string
+}

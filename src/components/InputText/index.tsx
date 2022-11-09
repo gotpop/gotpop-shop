@@ -7,7 +7,7 @@ export default function InputText({
   error = null,
   name,
   valid = null,
-  value,
+  value = '',
   ...rest
 }: IInputText) {
   return (

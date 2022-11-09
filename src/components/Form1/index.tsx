@@ -1,23 +1,28 @@
+import { cssSuccess, handleSubmit } from './handleSubmit'
+
 import Box from '@components/Box'
+import { BsCheckLg } from 'react-icons/bs'
 import ButtonIcon from '@components/ButtonIcon'
 import Dialog from '@components/Dialog'
+import { IData3 } from 'types'
 import InputText from '@components/InputText'
-import { useEffect, useState } from 'react'
-import { BsCheckLg } from 'react-icons/bs'
+import { Results } from './results'
 import styles from './Form1.module.css'
-
-const cssSuccess = [{ local: '--iconColour', global: 'var(--success)' }]
-
-interface IData {
-  first?: string
-  last?: string
-}
+import { useState } from 'react'
 
 export default function Form1() {
-  const [data, setData] = useState<IData>({})
+  const [data, setData] = useState<IData3>({})
   const [showResults, setShowResults] = useState(false)
-  const [results, setResults] = useState<IData>({})
+  const [results, setResults] = useState<IData3>({})
+
   const handleClose = () => setShowResults(false)
+
+  const handleSubmitEvent = async e => {
+    e.preventDefault()
+    const result = await handleSubmit(data)
+    setResults(result)
+    setShowResults(true)
+  }
 
   const handleChange = e => {
     setData(old => {
@@ -28,43 +33,14 @@ export default function Form1() {
     })
   }
 
-  const handleSubmit = async event => {
-    event.preventDefault()
-
-    const JSONdata = JSON.stringify(data)
-    const endpoint = '/api/forms/formSimple'
-
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSONdata
-    }
-
-    const response = await fetch(endpoint, options)
-    const result = await response.json()
-
-    setResults(result)
-    setShowResults(true)
-  }
-
   return (
     <Box>
       {showResults ? (
         <Dialog handleClose={handleClose}>
-          <h4>Http3 Response</h4>
-          <p>
-            <span>First name: </span>
-            <span>{results.first}</span>
-          </p>
-          <p>
-            <span>Last name: </span>
-            <span>{results.last}</span>
-          </p>
+          <Results results={results} />
         </Dialog>
       ) : null}
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <form onSubmit={handleSubmitEvent} className={styles.form}>
         <InputText
           name={'first'}
           handleChange={handleChange}
