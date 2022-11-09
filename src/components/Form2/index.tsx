@@ -1,64 +1,36 @@
-import { useReducer, useState } from 'react'
-import InputText from '@components/InputText'
-import ButtonIcon from '@components/ButtonIcon'
-import { BsCheckLg } from 'react-icons/bs'
-import styles from './Form2.module.css'
-import { cssSuccess, formInitialState } from './state'
-import { reducer } from './reducer'
 import Box from '@components/Box'
+import ButtonIcon from '@components/ButtonIcon'
 import Dialog from '@components/Dialog'
+import InputText from '@components/InputText'
 import LoadingIcon from '@components/LoadingIcon'
+import styles from './Form2.module.css'
 
-interface IData {
-  firstName?: string
-  lastName?: string
-  email?: string
-  password?: string
-}
+import { useReducer, useState } from 'react'
+import { BsCheckLg } from 'react-icons/bs'
+import { IData } from 'types'
+import { reducer } from './reducer'
+import { Results } from './results'
+import { cssSuccess, formInitialState } from './state'
+import { reducerInputChange } from './reducerInputChange'
+import { handleSubmit } from './handleSubmit'
 
-const Form2 = () => {
+export default function Form2() {
   const [showResults, setShowResults] = useState(false)
   const [results, setResults] = useState<IData>({})
   const [formIsValid, setFormIsValid] = useState(false)
   const [loading, setLoading] = useState(false)
   const [inputValues, dispatchFormValue] = useReducer(reducer, formInitialState)
   const { firstName, lastName, email, password } = inputValues
+
   const handleClose = () => setShowResults(false)
+  const handleInputEvent = e => reducerInputChange(e, dispatchFormValue)
 
-  const reducerInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    const valid = e.target.checkValidity()
-    const error = formInitialState[name].error
-
-    dispatchFormValue({
-      [name]: {
-        value,
-        valid,
-        error
-      }
-    })
-  }
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitEvent = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setLoading(true)
-
-    const JSONdata = JSON.stringify(inputValues)
-    const endpoint = '/api/forms/form'
-
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSONdata
-    }
-
-    const response = await fetch(endpoint, options)
-    const result = await response.json()
-
-    setResults(result)
+    const result = await handleSubmit(inputValues)
     setLoading(false)
+    setResults(result)
     setShowResults(true)
   }
 
@@ -66,32 +38,15 @@ const Form2 = () => {
     <Box>
       {showResults ? (
         <Dialog handleClose={handleClose}>
-          <h4>Http2 Response</h4>
-          <p>
-            <span>First name: </span>
-            <span>{results.firstName}</span>
-          </p>
-          <p>
-            <span>Last name: </span>
-            <span>{results.lastName}</span>
-          </p>
-          <p>
-            <span>Email: </span>
-            <span>{results.email}</span>
-          </p>
-          <p>
-            <span>Password: </span>
-            <span>{results.password}</span>
-          </p>
+          <Results results={results} />
         </Dialog>
       ) : null}
       <form
         className={styles.form}
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmitEvent}
         onChange={(e: React.ChangeEvent<HTMLFormElement>) =>
           setFormIsValid(e.currentTarget.checkValidity())
-        }
-        >
+        }>
         <InputText
           error={firstName.error}
           name={'firstName'}
@@ -100,7 +55,7 @@ const Form2 = () => {
           type="text"
           valid={firstName.valid}
           value={firstName.value}
-          handleChange={reducerInputChange}>
+          handleChange={handleInputEvent}>
           First Name
         </InputText>
         <InputText
@@ -111,7 +66,7 @@ const Form2 = () => {
           type="text"
           valid={lastName.valid}
           value={lastName.value}
-          handleChange={reducerInputChange}>
+          handleChange={handleInputEvent}>
           Last Name
         </InputText>
         <InputText
@@ -121,7 +76,7 @@ const Form2 = () => {
           type="email"
           valid={email.valid}
           value={email.value}
-          handleChange={reducerInputChange}>
+          handleChange={handleInputEvent}>
           Email
         </InputText>
         <InputText
@@ -132,7 +87,7 @@ const Form2 = () => {
           type="password"
           valid={password.valid}
           value={password.value}
-          handleChange={reducerInputChange}>
+          handleChange={handleInputEvent}>
           Password
         </InputText>
         <ButtonIcon
@@ -145,5 +100,3 @@ const Form2 = () => {
     </Box>
   )
 }
-
-export default Form2

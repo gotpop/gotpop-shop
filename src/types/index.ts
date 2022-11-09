@@ -56,3 +56,10 @@ export type User = {
     id: number;
     name?: string;
 }
+
+export interface IData {
+    firstName?: string
+    lastName?: string
+    email?: string
+    password?: string
+}
