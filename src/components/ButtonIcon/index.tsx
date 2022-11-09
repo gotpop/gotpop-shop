@@ -5,9 +5,9 @@ import styles from './ButtonIcon.module.css'
 
 export default function ButtonIcon({
   content = 'Click',
-  properties,
-  icon: Icon,
   doClick,
+  icon: Icon,
+  properties,
   ...rest
 }: IButtonIcon) {
   const first = useRef(null)
@@ -20,10 +20,10 @@ export default function ButtonIcon({
 
   return (
     <button
-      onClick={doClick}
-      type="submit"
       className={styles.button}
+      onClick={doClick}
       ref={first}
+      type="submit"
       {...rest}>
       <span>{content}</span>
       <Icon />
