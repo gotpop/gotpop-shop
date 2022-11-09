@@ -15,7 +15,7 @@
 
   &[disabled] {
     opacity: .6;
-    filter: grayscale(100%);
+    filter: grayscale(50%);
   }
   
   &:hover {
