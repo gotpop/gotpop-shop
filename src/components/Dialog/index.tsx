@@ -10,6 +10,8 @@ export default function Dialog({ children }) {
 
   useEffect(() => {
     dialog.current.showModal()
+
+    return () => dialog.current.close();
   })
 
   return (
