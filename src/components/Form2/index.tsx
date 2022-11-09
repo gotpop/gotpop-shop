@@ -58,8 +58,8 @@ const Form2 = () => {
     const result = await response.json()
 
     setResults(result)
-    setShowResults(true)
     setLoading(false)
+    setShowResults(true)
   }
 
   return (
@@ -86,56 +86,60 @@ const Form2 = () => {
         </Dialog>
       ) : null}
       <form
-        onSubmit={handleSubmit}
         className={styles.form}
+        onSubmit={handleSubmit}
         onChange={(e: React.ChangeEvent<HTMLFormElement>) =>
           setFormIsValid(e.currentTarget.checkValidity())
-        }>
+        }
+        >
         <InputText
-          name={'firstName'}
-          value={firstName.value}
           error={firstName.error}
-          valid={firstName.valid}
+          name={'firstName'}
+          pattern="[A-Za-z]{4,8}"
           required
           type="text"
-          pattern="[A-Za-z]{4,8}"
+          valid={firstName.valid}
+          value={firstName.value}
           handleChange={reducerInputChange}>
           First Name
         </InputText>
         <InputText
-          type="text"
-          name={'lastName'}
-          value={lastName.value}
           error={lastName.error}
-          valid={lastName.valid}
+          name={'lastName'}
           pattern="[A-Za-z]{4,8}"
+          required
+          type="text"
+          valid={lastName.valid}
+          value={lastName.value}
           handleChange={reducerInputChange}>
           Last Name
         </InputText>
         <InputText
-          type="email"
-          name={'email'}
-          value={email.value}
           error={email.error}
+          name={'email'}
+          required
+          type="email"
           valid={email.valid}
+          value={email.value}
           handleChange={reducerInputChange}>
           Email
         </InputText>
         <InputText
-          type="password"
-          name={'password'}
-          value={password.value}
           error={password.error}
-          valid={password.valid}
+          name={'password'}
           pattern="[A-Za-z]{4,8}"
+          required
+          type="password"
+          valid={password.valid}
+          value={password.value}
           handleChange={reducerInputChange}>
           Password
         </InputText>
         <ButtonIcon
-          disabled={!formIsValid}
           content={'Submit'}
-          properties={cssSuccess}
+          disabled={!formIsValid}
           icon={loading ? LoadingIcon : BsCheckLg}
+          properties={cssSuccess}
         />
       </form>
     </Box>
