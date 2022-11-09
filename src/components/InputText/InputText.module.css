@@ -4,16 +4,16 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  max-width: 600px;
 
   & label {
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
   }
 
   & input {
     border-radius: var(--radius);
-    padding: 0.5rem;
+    padding: 0.9rem;
     border: 1px solid var(--hwb-grey-2);
-    max-width: 600px;
 
     &:valid {
       accent-color: var(--success);
@@ -27,6 +27,7 @@
   & .message {
     color: var(--error);
     position: absolute;
-    bottom: 0;
+    font-size: var(--size-s-1);
+    bottom: .2em;
   }
 }

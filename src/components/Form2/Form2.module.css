@@ -1,3 +1,19 @@
-.form {  
-  padding: 2rem;
+.form {
+  @media (--ipad) {
+    display: grid;
+    place-content: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  & > div {
+    @media (--ipad) {
+      grid-column: 2/5;
+    }
+  }
+
+  & > button {
+    @media (--ipad) {
+      grid-column: 4/5;
+    }
+  }
 }
