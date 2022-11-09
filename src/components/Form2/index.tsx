@@ -7,6 +7,7 @@ import { cssSuccess, formInitialState } from './state'
 import { reducer } from './reducer'
 import Box from '@components/Box'
 import Dialog from '@components/Dialog'
+import LoadingIcon from '@components/LoadingIcon'
 
 interface IData {
   firstName?: string
@@ -19,6 +20,7 @@ const Form2 = () => {
   const [showResults, setShowResults] = useState(false)
   const [results, setResults] = useState<IData>({})
   const [formIsValid, setFormIsValid] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [inputValues, dispatchFormValue] = useReducer(reducer, formInitialState)
   const { firstName, lastName, email, password } = inputValues
 
@@ -38,10 +40,11 @@ const Form2 = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-
+    setLoading(true)
+    
     const JSONdata = JSON.stringify(inputValues)
     const endpoint = '/api/forms/form'
-
+    
     const options = {
       method: 'POST',
       headers: {
@@ -49,12 +52,13 @@ const Form2 = () => {
       },
       body: JSONdata
     }
-
+    
     const response = await fetch(endpoint, options)
     const result = await response.json()
-
+    
     setResults(result)
     setShowResults(true)
+    setLoading(false)
   }
 
   return (
@@ -82,6 +86,7 @@ const Form2 = () => {
       ) : null}
       <form
         onSubmit={handleSubmit}
+        className={styles.form}
         onChange={(e: React.ChangeEvent<HTMLFormElement>) =>
           setFormIsValid(e.currentTarget.checkValidity())
         }>
@@ -126,9 +131,10 @@ const Form2 = () => {
           Password
         </InputText>
         <ButtonIcon
+          disabled={!formIsValid}
           content={'Submit'}
           properties={cssSuccess}
-          icon={BsCheckLg}
+          icon={loading ? LoadingIcon : BsCheckLg}
         />
       </form>
     </Box>

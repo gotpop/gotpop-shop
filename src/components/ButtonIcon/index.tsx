@@ -7,7 +7,8 @@ export default function ButtonIcon({
   content = 'Click',
   properties,
   icon: Icon,
-  doClick
+  doClick,
+  ...rest
 }: IButtonIcon) {
   const first = useRef(null)
 
@@ -18,7 +19,12 @@ export default function ButtonIcon({
   }, [])
 
   return (
-    <button onClick={doClick} type="submit" className={styles.button} ref={first}>
+    <button
+      onClick={doClick}
+      type="submit"
+      className={styles.button}
+      ref={first}
+      {...rest}>
       <span>{content}</span>
       <Icon />
     </button>
