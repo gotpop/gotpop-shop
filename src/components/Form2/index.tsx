@@ -49,7 +49,7 @@ export default function Form2() {
         }>
         <InputText
           error={firstName.error}
-          name={'firstName'}
+          name="firstName"
           pattern="[A-Za-z]{4,8}"
           required
           type="text"
@@ -60,7 +60,7 @@ export default function Form2() {
         </InputText>
         <InputText
           error={lastName.error}
-          name={'lastName'}
+          name="lastName"
           pattern="[A-Za-z]{4,8}"
           required
           type="text"
@@ -71,7 +71,7 @@ export default function Form2() {
         </InputText>
         <InputText
           error={email.error}
-          name={'email'}
+          name="email"
           required
           type="email"
           valid={email.valid}
@@ -81,7 +81,7 @@ export default function Form2() {
         </InputText>
         <InputText
           error={password.error}
-          name={'password'}
+          name="password"
           pattern="[A-Za-z]{4,8}"
           required
           type="password"
@@ -91,7 +91,7 @@ export default function Form2() {
           Password
         </InputText>
         <ButtonIcon
-          content={'Submit'}
+          content="Submit"
           disabled={!formIsValid}
           icon={loading ? LoadingIcon : BsCheckLg}
           properties={loading ? cssSuccess : null}
