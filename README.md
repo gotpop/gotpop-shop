@@ -3,12 +3,16 @@
 A Next.js starter template.
 
 <h1 align="center">
-	<img width="100%" src="./public/starter.png" alt="Image of starter website">
+	<img width="100%" src="./public/next.png" alt="Next.js logo">
 </h1>
 
 ## Live example
 
 https://gotpop-starter.vercel.app
+
+<h1 align="center">
+	<img width="100%" src="./public/starter.png" alt="Image of starter website">
+</h1>
 
 ## Local
 
