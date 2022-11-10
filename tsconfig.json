@@ -16,11 +16,12 @@
     "jsx": "preserve",
     "baseUrl": "./src",
     "paths": {
-      "@types": ["./types/index"],
-      "@data/*": ["./data/*"],
-      "@utils/*": ["./utils/*"],
+      "@components/*": ["./components/*"],
+      "@config": ["../config/index"],
       "@context/*": ["./context/*"],
-      "@components/*": ["./components/*"]
+      "@data/*": ["./data/*"],
+      "@types": ["./types/index"],
+      "@utils/*": ["./utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
