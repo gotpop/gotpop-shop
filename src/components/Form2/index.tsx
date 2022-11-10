@@ -15,14 +15,14 @@ import { reducerInputChange } from './reducerInputChange'
 import styles from './Form2.module.css'
 
 export default function Form2() {
-  const [showResults, setShowResults] = useState(false)
+  const [showResultsDialog, setShowResultsDialog] = useState(false)
   const [results, setResults] = useState<IData>({})
   const [formIsValid, setFormIsValid] = useState(false)
   const [loading, setLoading] = useState(false)
   const [inputValues, dispatchFormValue] = useReducer(reducer, formInitialState)
   const { firstName, lastName, email, password } = inputValues
 
-  const handleClose = () => setShowResults(false)
+  const handleClose = () => setShowResultsDialog(false)
   const handleInputEvent = e => reducerInputChange(e, dispatchFormValue)
 
   const handleSubmitEvent = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -31,12 +31,12 @@ export default function Form2() {
     const result = await handleSubmit(inputValues)
     setLoading(false)
     setResults(result)
-    setShowResults(true)
+    setShowResultsDialog(true)
   }
 
   return (
     <Box>
-      {showResults ? (
+      {showResultsDialog ? (
         <Dialog handleClose={handleClose}>
           <Results results={results} />
         </Dialog>

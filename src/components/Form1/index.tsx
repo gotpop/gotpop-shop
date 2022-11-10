@@ -12,16 +12,16 @@ import { useState } from 'react'
 
 export default function Form1() {
   const [data, setData] = useState<IData3>({})
-  const [showResults, setShowResults] = useState(false)
+  const [showResultsDialog, setShowResultsDialog] = useState(false)
   const [results, setResults] = useState<IData3>({})
 
-  const handleClose = () => setShowResults(false)
+  const handleClose = () => setShowResultsDialog(false)
 
   const handleSubmitEvent = async e => {
     e.preventDefault()
     const result = await handleSubmit(data)
     setResults(result)
-    setShowResults(true)
+    setShowResultsDialog(true)
   }
 
   const handleChange = e => {
@@ -35,7 +35,7 @@ export default function Form1() {
 
   return (
     <Box>
-      {showResults ? (
+      {showResultsDialog ? (
         <Dialog handleClose={handleClose}>
           <Results results={results} />
         </Dialog>
