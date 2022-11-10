@@ -1,17 +1,15 @@
-import * as React from 'react'
-
 import { useEffect, useRef } from 'react'
 
 import { IButtonIcon } from '@types'
 import styles from './ButtonIcon.module.css'
 
-export default function ButtonIcon({
-  content = 'Click',
+const ButtonIcon = ({
+  content,
   doClick,
   icon: Icon,
   properties,
   ...rest
-}: IButtonIcon) {
+}: IButtonIcon) => {
   const first = useRef(null)
 
   useEffect(() => {
@@ -32,3 +30,9 @@ export default function ButtonIcon({
     </button>
   )
 }
+
+ButtonIcon.defaultProps = {
+  content: 'Click'
+}
+
+export default ButtonIcon
