@@ -1,9 +1,10 @@
+import { introForm1Content, introForm2Content } from 'data/intro'
+
 import Form1 from '@components/Form1'
 import Form2 from '@components/Form2'
 import Intro from '@components/Intro'
 import LayoutStandard from '@components/LayoutStandard'
 import Loading from '@components/Loading'
-import { introForm1Content, introForm2Content } from '@content/intro'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 

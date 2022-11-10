@@ -1,7 +1,7 @@
-import type { NextPage } from 'next'
 import Intro from '@components/Intro'
-import { introContent } from '@content/intro'
 import LayoutStandard from '@components/LayoutStandard'
+import type { NextPage } from 'next'
+import { introContent } from 'data/intro'
 
 export default function Home() {
   return (

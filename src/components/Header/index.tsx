@@ -6,7 +6,7 @@ import { DiSmashingMagazine } from 'react-icons/di'
 import Logo from '@components/Logo'
 import Nav from '@components/Nav'
 import { RiDashboard3Line } from 'react-icons/ri'
-import { navPrimary } from '@content/nav-primary'
+import { navPrimary } from 'data/nav-primary'
 import styles from './Header.module.css'
 
 const icons = new Map([

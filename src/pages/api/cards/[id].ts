@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { cards } from '@content/cards'
+
 import { Card } from 'types'
+import { cards } from 'data/cards'
 
 type ResponseError = {
   message: string

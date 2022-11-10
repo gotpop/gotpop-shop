@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { forms } from '@content/forms'
+
 import { IForm } from 'types'
+import { forms } from 'data/forms'
 
 type ResponseError = {
   message: string
