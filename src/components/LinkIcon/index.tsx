@@ -5,12 +5,7 @@ import { ILinkIcon } from '@types'
 import Link from 'next/link'
 import styles from './LinkIcon.module.css'
 
-export default function LinkIcon({
-  content = 'Visit',
-  properties,
-  icon: Icon,
-  href
-}: ILinkIcon) {
+const LinkIcon = ({ content, properties, icon: Icon, href }: ILinkIcon) => {
   const first = useRef(null)
 
   useEffect(() => {
@@ -26,3 +21,9 @@ export default function LinkIcon({
     </Link>
   )
 }
+
+LinkIcon.defaultProps = {
+  content: 'Visit'
+}
+
+export default LinkIcon

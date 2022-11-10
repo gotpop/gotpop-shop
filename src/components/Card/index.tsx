@@ -2,7 +2,7 @@ import Icons from './Icons'
 import LinkIcon from '@components/LinkIcon'
 import styles from './Card.module.css'
 
-export default function Card({ content, fullCard, childPath = 'cards' }) {
+const Card = ({ content, fullCard, childPath }) => {
   const { id, title, text, links } = content
 
   return (
@@ -21,3 +21,9 @@ export default function Card({ content, fullCard, childPath = 'cards' }) {
     </div>
   )
 }
+
+Card.defaultProps = {
+  childPath: 'cards'
+}
+
+export default Card

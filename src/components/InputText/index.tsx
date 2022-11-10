@@ -1,15 +1,15 @@
 import { IInputText } from 'types'
 import styles from './InputText.module.css'
 
-export default function InputText({
+const InputText = ({
   children,
+  error,
   handleChange,
-  error = null,
   name,
-  valid = null,
-  value = '',
+  valid,
+  value,
   ...rest
-}: IInputText) {
+}: IInputText) => {
   return (
     <div className={styles.input}>
       <label htmlFor={name}>{children}</label>
@@ -24,3 +24,11 @@ export default function InputText({
     </div>
   )
 }
+
+InputText.defaultProps = {
+  error: null,
+  valid: null,
+  value: ''
+}
+
+export default InputText
