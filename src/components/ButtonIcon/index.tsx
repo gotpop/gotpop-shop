@@ -1,6 +1,8 @@
 import * as React from 'react'
+
 import { useEffect, useRef } from 'react'
-import { IButtonIcon } from 'types'
+
+import { IButtonIcon } from '@types'
 import styles from './ButtonIcon.module.css'
 
 export default function ButtonIcon({

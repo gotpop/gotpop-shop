@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import Breadcrumbs from '@components/BreadCrumbs'
 import Footer from '@components/Footer'
 import Head from 'next/head'

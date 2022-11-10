@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import Link from 'next/link'
 import { getIcon } from '@utils/getIcon'
 import styles from './Nav.module.css'

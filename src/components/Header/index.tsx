@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import { AiOutlineForm } from 'react-icons/ai'
 import { CgCardSpades } from 'react-icons/cg'
 import { DiSmashingMagazine } from 'react-icons/di'

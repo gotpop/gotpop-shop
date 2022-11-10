@@ -1,6 +1,6 @@
 import Icons from './Icons'
-import styles from './Card.module.css'
 import LinkIcon from '@components/LinkIcon'
+import styles from './Card.module.css'
 
 export default function Card({ content, fullCard, childPath = 'cards' }) {
   const { id, title, text, links } = content

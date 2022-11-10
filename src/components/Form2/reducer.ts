@@ -1,4 +1,4 @@
-import { IForm2 } from "types"
+import { IForm2 } from "@types"
 
 const types = {
     FIRSTNAME: 'firstName',

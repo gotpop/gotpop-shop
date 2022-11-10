@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import { useContext, useRef } from 'react'
 
 import ColumnContext from '@context/MenuContext'
