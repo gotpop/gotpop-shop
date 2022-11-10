@@ -3,11 +3,11 @@ import Head from 'next/head'
 const Meta = ({ title, keywords, description }) => {
   return (
     <Head>
-      <meta name='viewport' content='width=device-width, initial-scale=1' />
-      <meta name='keywords' content={keywords} />
-      <meta name='description' content={description} />
-      <meta charSet='utf-8' />
-      <link rel='icon' href='/favicon.ico' />
+      <meta name="viewport" content="width=device-width, user-scalable=no" />
+      <meta name="keywords" content={keywords} />
+      <meta name="description" content={description} />
+      <meta charSet="utf-8" />
+      <link rel="icon" href="/favicon.ico" />
       <title>{title}</title>
     </Head>
   )
@@ -16,7 +16,7 @@ const Meta = ({ title, keywords, description }) => {
 Meta.defaultProps = {
   title: 'GotPop Starter',
   keywords: 'web development, programming',
-  description: 'A Next.js starter template',
+  description: 'A Next.js starter template'
 }
 
 export default Meta

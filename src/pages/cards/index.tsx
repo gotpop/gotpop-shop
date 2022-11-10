@@ -1,11 +1,13 @@
 import Card from '@components/Card'
 import { Card as ICard } from '@types'
 import LayoutStandard from '@components/LayoutStandard'
+import Meta from '@components/Meta'
 import { server } from '@config'
 
 export default function Cards({ cards }) {
   return (
     <LayoutStandard>
+      <Meta />
       {cards.map((card: ICard) => (
         <Card key={card.id} content={card} fullCard={false} />
       ))}

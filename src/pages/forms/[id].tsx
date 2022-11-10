@@ -5,6 +5,7 @@ import Form2 from '@components/Form2'
 import Intro from '@components/Intro'
 import LayoutStandard from '@components/LayoutStandard'
 import Loading from '@components/Loading'
+import Meta from '@components/Meta'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 
@@ -27,6 +28,7 @@ export default function FormPage() {
 
   return (
     <LayoutStandard>
+      <Meta />
       {error && <div>{error.message}</div>}
       {form ? (
         <>
