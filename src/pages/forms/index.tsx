@@ -1,8 +1,8 @@
-import useSWR from 'swr'
-import { Card as CardType, IForm } from 'types'
 import Card from '@components/Card'
-import Loading from '@components/Loading'
+import { IForm } from '@types'
 import LayoutStandard from '@components/LayoutStandard'
+import Loading from '@components/Loading'
+import useSWR from 'swr'
 
 const fetcher = (url: string) => fetch(url).then(res => res.json())
 

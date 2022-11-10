@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { IForm } from 'types'
-import { forms } from 'data/forms'
+import { IForm } from '@types'
+import { forms } from '@data/forms'
 
 export default function handler(
   _req: NextApiRequest,

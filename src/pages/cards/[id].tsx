@@ -1,4 +1,3 @@
-// @ts-ignore 
 import Card from '@components/Card'
 import LayoutStandard from '@components/LayoutStandard'
 import Loading from '@components/Loading'

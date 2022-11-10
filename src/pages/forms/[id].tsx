@@ -1,4 +1,4 @@
-import { introForm1Content, introForm2Content } from 'data/intro'
+import { introForm1Content, introForm2Content } from '@data/intro'
 
 import Form1 from '@components/Form1'
 import Form2 from '@components/Form2'
