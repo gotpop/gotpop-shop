@@ -48,6 +48,7 @@ export interface IFormProps {
 export interface IForm2 {
     [key: string]: {
         value: string;
+        text: string;
         valid: boolean;
         error: string;
     }
@@ -58,15 +59,33 @@ export type User = {
     name?: string;
 }
 
+export interface IResults {
+    firstName?: {
+        text: string,
+        value: string
+    }
+    lastName?: {
+        text: string,
+        value: string
+    }
+    email?: {
+        text: string,
+        value: string
+    }
+    password?: {
+        text: string,
+        value: string
+    }
+}
+
 export interface IData {
-    firstName?: string
-    lastName?: string
-    email?: string
-    password?: string
+    response?: Response;
+    results?: IResults;
 }
 
 export interface IInputText {
     children?: string
+    label?: string
     error?: string
     handleChange?: ChangeEventHandler<HTMLInputElement>
     name?: string

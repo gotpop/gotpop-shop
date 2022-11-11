@@ -2,9 +2,9 @@ import { IInputText } from 'types'
 import styles from './InputText.module.css'
 
 const InputText = ({
-  children,
   error,
   handleChange,
+  label,
   name,
   valid,
   value,
@@ -12,7 +12,7 @@ const InputText = ({
 }: IInputText) => {
   return (
     <div className={styles.input}>
-      <label htmlFor={name}>{children}</label>
+      <label htmlFor={name}>{label}</label>
       <input
         id={name}
         name={name}

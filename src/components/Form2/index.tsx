@@ -16,8 +16,7 @@ import styles from './Form2.module.css'
 
 export default function Form2() {
   const [showResultsDialog, setShowResultsDialog] = useState(false)
-  // const [results, setResults] = useState<IData>({})
-  const [results, setResults] = useState({})
+  const [results, setResults] = useState<IData>({})
   const [formIsValid, setFormIsValid] = useState(false)
   const [loading, setLoading] = useState(false)
   const [inputValues, dispatchFormValue] = useReducer(reducer, formInitialState)
@@ -48,50 +47,51 @@ export default function Form2() {
         onSubmit={handleSubmitEvent}
         onChange={(e: React.ChangeEvent<HTMLFormElement>) =>
           setFormIsValid(e.currentTarget.checkValidity())
-        }>
+        }
+      >
         <InputText
           error={firstName.error}
+          handleChange={handleInputEvent}
+          label={firstName.text}
           name="firstName"
           pattern="[A-Za-z]{4,8}"
           required
           type="text"
           valid={firstName.valid}
           value={firstName.value}
-          handleChange={handleInputEvent}>
-          First Name
-        </InputText>
+        />
         <InputText
           error={lastName.error}
+          handleChange={handleInputEvent}
+          label={lastName.text}
           name="lastName"
           pattern="[A-Za-z]{4,8}"
           required
           type="text"
           valid={lastName.valid}
           value={lastName.value}
-          handleChange={handleInputEvent}>
-          Last Name
-        </InputText>
+        />
         <InputText
           error={email.error}
+          handleChange={handleInputEvent}
+          label={email.text}
           name="email"
           required
           type="email"
           valid={email.valid}
           value={email.value}
-          handleChange={handleInputEvent}>
-          Email
-        </InputText>
+        />
         <InputText
           error={password.error}
+          handleChange={handleInputEvent}
+          label={password.text}
           name="password"
           pattern="[A-Za-z]{4,8}"
           required
           type="password"
           valid={password.valid}
           value={password.value}
-          handleChange={handleInputEvent}>
-          Password
-        </InputText>
+        />
         <ButtonIcon
           content="Submit"
           disabled={!formIsValid}

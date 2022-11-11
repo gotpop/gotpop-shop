@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import Box from '@components/Box'
 
 export const Results = ({ res }) => {
-  const { response, result } = res
+  const { response, results } = res
   const [headersArray, setHeadersArray] = useState<object[]>()
 
   useEffect(() => {
@@ -32,8 +32,8 @@ export const Results = ({ res }) => {
       <Box>
         <details>
           <summary>Body</summary>
-          {Object.entries(result).map(([key, value], i) => (
-            <BodyItem key={i} objKey={key} value={value} />
+          {Object.keys(results).map((key, i) => (
+            <BodyItem key={i} result={results[key]} />
           ))}
         </details>
       </Box>

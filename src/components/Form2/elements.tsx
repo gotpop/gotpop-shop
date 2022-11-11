@@ -9,9 +9,9 @@ export const HeaderItem = ({ item }) => {
   )
 }
 
-export const BodyItem = ({ objKey, value }) => (
+export const BodyItem = ({ result }) => (
   <p>
-    <span>{objKey}</span>
-    <span>{value}</span>
+    <span>{result.text}</span>
+    <span>{result.value}</span>
   </p>
 )

@@ -5,7 +5,6 @@ export default function handler(req, res) {
     return res.status(400).json({ data: 'First or last name not found!' })
   }
   
-  // console.log('res :', res);
   console.log('res :', res.rawHeaders);
   console.log('res :', res.httpVersion);
 
@@ -16,4 +15,3 @@ export default function handler(req, res) {
     password: body.password
   })
 }
-

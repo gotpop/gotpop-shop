@@ -42,14 +42,17 @@ export default function Form1() {
       ) : null}
       <form onSubmit={handleSubmitEvent} className={styles.form}>
         <InputText
-          name={'first'}
+          name="first"
+          label="First"
           handleChange={handleChange}
-          value={data.first}>
-          First Name
-        </InputText>
-        <InputText name={'last'} handleChange={handleChange} value={data.last}>
-          Last Name
-        </InputText>
+          value={data.first}
+        />
+        <InputText
+          name="last"
+          label="Last"
+          handleChange={handleChange}
+          value={data.last}
+        />
         <ButtonIcon
           content={'Submit'}
           properties={cssSuccess}

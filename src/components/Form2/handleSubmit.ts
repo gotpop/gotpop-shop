@@ -1,11 +1,24 @@
 export const handleSubmit = async (inputValues) => {
+    const { firstName, lastName, email, password } = inputValues
     const endpoint = '/api/forms/form'
 
     const postObject = {
-        firstName: inputValues.firstName.value,
-        lastName: inputValues.lastName.value,
-        email: inputValues.email.value,
-        password: inputValues.password.value
+        firstName: {
+            text: firstName.text,
+            value: firstName.value
+        },
+        lastName: {
+            text: lastName.text,
+            value: lastName.value
+        },
+        email: {
+            text: email.text,
+            value: email.value
+        },
+        password: {
+            text: password.text,
+            value: password.value
+        }
     }
 
     const JSONdata = JSON.stringify(postObject)
@@ -19,10 +32,10 @@ export const handleSubmit = async (inputValues) => {
     }
 
     const response = await fetch(endpoint, options)
-    const result = await response.json()
+    const results = await response.json()
 
     return {
         response,
-        result
+        results
     }
 }
