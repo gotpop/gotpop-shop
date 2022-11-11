@@ -1,5 +1,5 @@
+import { ChangeEvent, FormEvent, useReducer, useState } from 'react'
 import { cssSuccess, formInitialState } from './state'
-import { useReducer, useState } from 'react'
 
 import Box from '@components/Box'
 import { BsCheckLg } from 'react-icons/bs'
@@ -24,9 +24,10 @@ export default function Form2() {
   const { firstName, lastName, email, password } = inputValues
 
   const handleClose = () => setShowResultsDialog(false)
-  const handleInputEvent = e => reducerInputChange(e, dispatchFormValue)
+  const handleInputEvent = (e: ChangeEvent<HTMLInputElement>) =>
+    reducerInputChange(e, dispatchFormValue)
 
-  const handleSubmitEvent = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitEvent = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setLoading(true)
     const res = await handleSubmit(inputValues)
