@@ -1,25 +1,42 @@
+import { BodyItem, HeaderItem } from './elements'
+import { useEffect, useState } from 'react'
+
 import Box from '@components/Box'
 
-export const Results = ({ results }) => (
-  <>
-    <h4>Http Response Body</h4>
-    <Box>
-      <p>
-        <span>First name: </span>
-        <span>{results.firstName}</span>
-      </p>
-      <p>
-        <span>Last name: </span>
-        <span>{results.lastName}</span>
-      </p>
-      <p>
-        <span>Email: </span>
-        <span>{results.email}</span>
-      </p>
-      <p>
-        <span>Password: </span>
-        <span>{results.password}</span>
-      </p>
-    </Box>
-  </>
-)
+export const Results = ({ res }) => {
+  const { response, result } = res
+  const [headersArray, setHeadersArray] = useState<object[]>()
+
+  useEffect(() => {
+    let myheadersArr = []
+    const entries = response.headers.entries()
+
+    for (const pair of entries) {
+      myheadersArr.push({ [pair[0]]: pair[1] })
+    }
+
+    setHeadersArray(myheadersArr)
+  }, [])
+
+  return (
+    <>
+      <h4>Http Post</h4>
+      <Box>
+        <details>
+          <summary>Headers</summary>
+          {headersArray?.map((item, i) => (
+            <HeaderItem key={i} item={item} />
+          ))}
+        </details>
+      </Box>
+      <Box>
+        <details>
+          <summary>Body</summary>
+          {Object.entries(result).map(([key, value], i) => (
+            <BodyItem key={i} objKey={key} value={value} />
+          ))}
+        </details>
+      </Box>
+    </>
+  )
+}

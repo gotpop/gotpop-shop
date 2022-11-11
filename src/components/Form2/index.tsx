@@ -16,7 +16,8 @@ import styles from './Form2.module.css'
 
 export default function Form2() {
   const [showResultsDialog, setShowResultsDialog] = useState(false)
-  const [results, setResults] = useState<IData>({})
+  // const [results, setResults] = useState<IData>({})
+  const [results, setResults] = useState({})
   const [formIsValid, setFormIsValid] = useState(false)
   const [loading, setLoading] = useState(false)
   const [inputValues, dispatchFormValue] = useReducer(reducer, formInitialState)
@@ -28,9 +29,9 @@ export default function Form2() {
   const handleSubmitEvent = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setLoading(true)
-    const result = await handleSubmit(inputValues)
+    const res = await handleSubmit(inputValues)
     setLoading(false)
-    setResults(result)
+    setResults(res)
     setShowResultsDialog(true)
   }
 
@@ -38,7 +39,7 @@ export default function Form2() {
     <Box>
       {showResultsDialog ? (
         <Dialog handleClose={handleClose}>
-          <Results results={results} />
+          <Results res={results} />
         </Dialog>
       ) : null}
       <form
