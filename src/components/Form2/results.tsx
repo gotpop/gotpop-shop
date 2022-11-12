@@ -1,45 +1,45 @@
-import { BodyItem, HeaderItem } from './elements'
+import { Details, Intro, ListItem } from './elements'
 import { useEffect, useState } from 'react'
-
-import Box from '@components/Box'
 
 export const Results = ({ res }) => {
   const { response, results } = res
-  const [headersArray, setHeadersArray] = useState<object[]>()
+  const { form, requestHeaders } = results
+  const reqHeaders = JSON.parse(requestHeaders)
+  const [resHeaders, setResHeaders] = useState<object[]>()
 
   useEffect(() => {
-    let myheadersArr = []
+    let headersArr = []
     const entries = response.headers.entries()
 
     for (const pair of entries) {
-      myheadersArr.push({ [pair[0]]: pair[1] })
+      headersArr.push({ [pair[0]]: pair[1] })
     }
 
-    setHeadersArray(myheadersArr)
+    setResHeaders(headersArr)
   }, [])
 
   return (
     <>
-      <h4>Http Post</h4>
-
-      {response.ok && <><h4>OK: {response.ok.toString()}</h4></>}
-      {response.ok && <><h4>Status: {response.status.toString()}</h4></>}
-      <Box>
-        <details>
-          <summary>Response Headers</summary>
-          {headersArray?.map((item, i) => (
-            <HeaderItem key={i} item={item} />
-          ))}
-        </details>
-      </Box>
-      <Box>
-        <details>
-          <summary>Body</summary>
-          {Object.keys(results).map((key, i) => (
-            <BodyItem key={i} result={results[key]} />
-          ))}
-        </details>
-      </Box>
+      <Intro response={response} />
+      <Details summary="Request headers">
+        {Object.keys(reqHeaders).map((text, i) => (
+          <ListItem key={i} text={text} value={reqHeaders[text]} />
+        ))}
+      </Details>
+      <Details summary="Response Headers">
+        {resHeaders?.map((item, i) => (
+          <ListItem
+            key={i}
+            text={Object.keys(item)[0]}
+            value={item[Object.keys(item)[0]]}
+          />
+        ))}
+      </Details>
+      <Details summary="Body">
+        {Object.keys(form).map((key, i) => (
+          <ListItem key={i} text={form[key].text} value={form[key].value} />
+        ))}
+      </Details>
     </>
   )
 }

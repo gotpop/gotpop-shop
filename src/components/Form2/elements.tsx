@@ -1,17 +1,33 @@
-export const HeaderItem = ({ item }) => {
-  const key = Object.keys(item)[0]
+import Box from '@components/Box'
 
-  return (
-    <div>
-      <strong>{key}</strong>
-      <span>{item[key]}</span>
-    </div>
-  )
-}
-
-export const BodyItem = ({ result }) => (
+export const ListItem = ({ text, value }) => (
   <p>
-    <span>{result.text}</span>
-    <span>{result.value}</span>
+    <strong>{text}</strong>
+    <span>{value}</span>
   </p>
+)
+
+export const Details = ({ children, summary }) => (
+  <Box>
+    <details>
+      <summary>{summary}</summary>
+      {children}
+    </details>
+  </Box>
+)
+
+export const Intro = ({ response }) => (
+  <Box>
+    <h4>Http Post</h4>
+    {response.ok && (
+      <>
+        <h4>OK: {response.ok.toString()}</h4>
+      </>
+    )}
+    {response.ok && (
+      <>
+        <h4>Status: {response.status.toString()}</h4>
+      </>
+    )}
+  </Box>
 )

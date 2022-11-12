@@ -9,10 +9,12 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   }
 
   res.status(200).json({
-    email,
-    firstName,
-    lastName,
-    password,
+    form: {
+      firstName,
+      lastName,
+      email,
+      password,
+    },
     requestHeaders
   })
 }
