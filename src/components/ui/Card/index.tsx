@@ -1,5 +1,5 @@
 import Icons from './Icons'
-import LinkIcon from '@components/LinkIcon'
+import LinkIcon from '@ui/LinkIcon'
 import styles from './Card.module.css'
 
 const Card = ({ content, fullCard, childPath }) => {

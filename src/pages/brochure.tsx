@@ -1,5 +1,5 @@
-import LayoutStandard from '@components/LayoutStandard'
-import Meta from '@components/Meta'
+import LayoutStandard from '@layouts/LayoutStandard'
+import Meta from '@head/Meta'
 import { NextPage } from 'next'
 
 const Brochure: NextPage = () => {

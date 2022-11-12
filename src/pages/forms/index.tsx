@@ -1,10 +1,10 @@
 import { GetStaticProps, NextPage } from 'next'
 
-import Card from '@components/Card'
+import Card from '@ui/Card'
 import { IForm } from '@types'
-import LayoutStandard from '@components/LayoutStandard'
-import Loading from '@components/Loading'
-import Meta from '@components/Meta'
+import LayoutStandard from '@layouts/LayoutStandard'
+import Loading from '@ui/Loading'
+import Meta from '@head/Meta'
 import { server } from '@config'
 
 interface Props {

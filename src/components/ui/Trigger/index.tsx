@@ -1,7 +1,7 @@
 import { useContext, useRef } from 'react'
 
 import ColumnContext from '@context/MenuContext'
-import TriggerIcon from '@components/TriggerIcon'
+import TriggerIcon from '@ui/TriggerIcon'
 import { set } from '@utils/setPropsOnRoot'
 import styles from './Trigger.module.css'
 

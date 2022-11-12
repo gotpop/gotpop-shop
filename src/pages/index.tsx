@@ -1,6 +1,6 @@
-import Intro from '@components/Intro'
-import LayoutStandard from '@components/LayoutStandard'
-import Meta from '@components/Meta'
+import Intro from '@ui/Intro'
+import LayoutStandard from '@layouts/LayoutStandard'
+import Meta from '@head/Meta'
 import type { NextPage } from 'next'
 import { introContent } from '@data/intro'
 

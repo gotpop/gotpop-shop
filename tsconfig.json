@@ -17,6 +17,11 @@
     "baseUrl": "./src",
     "paths": {
       "@components/*": ["./components/*"],
+      "@features/*": ["./components/features/*"],
+      "@layouts/*": ["./components/layouts/*"],
+      "@ui/*": ["./components/ui/*"],
+      "@blocks/*": ["./components/blocks/*"],
+      "@head/*": ["./components/head/*"],
       "@config": ["../config/index"],
       "@context/*": ["./context/*"],
       "@data/*": ["./data/*"],

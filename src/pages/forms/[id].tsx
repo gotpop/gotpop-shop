@@ -1,12 +1,12 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { introForm1Content, introForm2Content } from '@data/intro'
 
-import Form1 from '@components/Form1'
-import Form2 from '@components/Form2'
-import Intro from '@components/Intro'
-import LayoutStandard from '@components/LayoutStandard'
-import Loading from '@components/Loading'
-import Meta from '@components/Meta'
+import Form1 from '@features/Form1'
+import Form2 from '@features/Form2'
+import Intro from '@ui/Intro'
+import LayoutStandard from '@layouts/LayoutStandard'
+import Loading from '@ui/Loading'
+import Meta from '@head/Meta'
 import { server } from '@config'
 import { useRouter } from 'next/router'
 

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-import ButtonIcon from '@components/ButtonIcon'
+import ButtonIcon from '@ui/ButtonIcon'
 import { ImCross } from 'react-icons/im'
 import styles from './Dialog.module.css'
 

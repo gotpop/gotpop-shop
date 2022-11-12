@@ -1,9 +1,9 @@
 import { GetStaticProps, NextPage } from 'next'
 
-import Card from '@components/Card'
+import Card from '@ui/Card'
 import { Card as ICard } from '@types'
-import LayoutStandard from '@components/LayoutStandard'
-import Meta from '@components/Meta'
+import LayoutStandard from '@layouts/LayoutStandard'
+import Meta from '@head/Meta'
 import { server } from '@config'
 
 interface Props {

@@ -1,6 +1,6 @@
 import { AiFillHome } from 'react-icons/ai'
 import { GoZap } from 'react-icons/go'
-import Nav from '@components/Nav'
+import Nav from '@ui/Nav'
 import { TfiGithub } from 'react-icons/tfi'
 import { navSecondary } from 'data/nav-secondary'
 import styles from './Footer.module.css'
