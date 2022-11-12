@@ -21,29 +21,17 @@ export const handleSubmit = async (inputValues) => {
         }
     }
 
-    const headers = new Headers({
-        'Content-Type': 'application/json; charset=UTF-8',
-    })
-
     const JSONdata = JSON.stringify(postObject)
 
     const options = {
         method: 'POST',
-        // headers: {
-        //     'Content-Type': 'application/json'
-        // },
-        headers,
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: JSONdata
     }
 
-    console.log('options.headers :', options.headers);
-
     const response = await fetch(endpoint, options)
-
-    if (response.ok) {
-        console.log('response.ok :', response.ok);
-    }
-
     const results = await response.json()
 
     return {
