@@ -20,22 +20,16 @@ const FormPage: NextPage<Props> = ({ form }) => {
   return (
     <LayoutStandard>
       <Meta />
-      {form ? (
+      {query.id === '1' ? (
         <>
-          {query.id === '1' ? (
-            <>
-              <Intro content={introForm1Content} />
-              <Form1 />
-            </>
-          ) : (
-            <>
-              <Intro content={introForm2Content} />
-              <Form2 />
-            </>
-          )}
+          <Intro content={introForm1Content} />
+          <Form1 />
         </>
       ) : (
-        <Loading />
+        <>
+          <Intro content={introForm2Content} />
+          <Form2 />
+        </>
       )}
     </LayoutStandard>
   )
@@ -65,4 +59,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths,
     fallback: false
   }
+}
+
+{
+  /* <>
+          {query.id === '1' ? (
+            <>
+              <Intro content={introForm1Content} />
+              <Form1 />
+            </>
+          ) : (
+            <>
+              <Intro content={introForm2Content} />
+              <Form2 />
+            </>
+          )}
+        </> */
 }
