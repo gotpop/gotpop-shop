@@ -1,11 +1,8 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import { introForm1Content, introForm2Content } from '@data/intro'
 
 import Form1 from '@features/Form1'
 import Form2 from '@features/Form2'
-import Intro from '@ui/Intro'
 import LayoutStandard from '@layouts/LayoutStandard'
-import Loading from '@ui/Loading'
 import Meta from '@head/Meta'
 import { server } from '@config'
 import { useRouter } from 'next/router'
@@ -20,17 +17,7 @@ const FormPage: NextPage<Props> = ({ form }) => {
   return (
     <LayoutStandard>
       <Meta />
-      {query.id === '1' ? (
-        <>
-          <Intro content={introForm1Content} />
-          <Form1 />
-        </>
-      ) : (
-        <>
-          <Intro content={introForm2Content} />
-          <Form2 />
-        </>
-      )}
+      {query.id === '1' ? <Form1 /> : <Form2 />}
     </LayoutStandard>
   )
 }

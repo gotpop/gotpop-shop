@@ -6,7 +6,9 @@ import ButtonIcon from '@ui/ButtonIcon'
 import Dialog from '@ui/Dialog'
 import { IData3 } from '@types'
 import InputText from '@ui/InputText'
+import Intro from '@components/ui/Intro'
 import { Results } from './results'
+import { introForm1Content } from '@data/intro'
 import styles from './Form1.module.css'
 import { useState } from 'react'
 
@@ -34,31 +36,34 @@ export default function Form1() {
   }
 
   return (
-    <Box>
-      {showResultsDialog ? (
-        <Dialog handleClose={handleClose}>
-          <Results results={results} />
-        </Dialog>
-      ) : null}
-      <form onSubmit={handleSubmitEvent} className={styles.form}>
-        <InputText
-          name="first"
-          label="First"
-          handleChange={handleChange}
-          value={data.first}
-        />
-        <InputText
-          name="last"
-          label="Last"
-          handleChange={handleChange}
-          value={data.last}
-        />
-        <ButtonIcon
-          content={'Submit'}
-          properties={cssSuccess}
-          icon={BsCheckLg}
-        />
-      </form>
-    </Box>
+    <>
+      <Intro content={introForm1Content} />
+      <Box>
+        {showResultsDialog ? (
+          <Dialog handleClose={handleClose}>
+            <Results results={results} />
+          </Dialog>
+        ) : null}
+        <form onSubmit={handleSubmitEvent} className={styles.form}>
+          <InputText
+            name="first"
+            label="First"
+            handleChange={handleChange}
+            value={data.first}
+          />
+          <InputText
+            name="last"
+            label="Last"
+            handleChange={handleChange}
+            value={data.last}
+          />
+          <ButtonIcon
+            content={'Submit'}
+            properties={cssSuccess}
+            icon={BsCheckLg}
+          />
+        </form>
+      </Box>
+    </>
   )
 }
