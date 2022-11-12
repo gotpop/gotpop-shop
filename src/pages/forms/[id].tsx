@@ -60,19 +60,3 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: false
   }
 }
-
-{
-  /* <>
-          {query.id === '1' ? (
-            <>
-              <Intro content={introForm1Content} />
-              <Form1 />
-            </>
-          ) : (
-            <>
-              <Intro content={introForm2Content} />
-              <Form2 />
-            </>
-          )}
-        </> */
-}
