@@ -21,9 +21,12 @@ export const Results = ({ res }) => {
   return (
     <>
       <h4>Http Post</h4>
+
+      {response.ok && <><h4>OK: {response.ok.toString()}</h4></>}
+      {response.ok && <><h4>Status: {response.status.toString()}</h4></>}
       <Box>
         <details>
-          <summary>Headers</summary>
+          <summary>Response Headers</summary>
           {headersArray?.map((item, i) => (
             <HeaderItem key={i} item={item} />
           ))}
