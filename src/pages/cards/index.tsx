@@ -1,10 +1,16 @@
+import { GetStaticProps, NextPage } from 'next'
+
 import Card from '@components/Card'
 import { Card as ICard } from '@types'
 import LayoutStandard from '@components/LayoutStandard'
 import Meta from '@components/Meta'
 import { server } from '@config'
 
-export default function Cards({ cards }) {
+interface Props {
+  cards: object[]
+}
+
+const Cards: NextPage<Props> = ({ cards }) => {
   return (
     <LayoutStandard>
       <Meta />
@@ -15,7 +21,9 @@ export default function Cards({ cards }) {
   )
 }
 
-export const getStaticProps = async () => {
+export default Cards
+
+export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch(`${server}/api/cards`)
   const cards = await res.json()
 

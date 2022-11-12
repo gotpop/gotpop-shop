@@ -1,7 +1,8 @@
 import LayoutStandard from '@components/LayoutStandard'
 import Meta from '@components/Meta'
+import { NextPage } from 'next'
 
-export default function Brochure() {
+const Brochure: NextPage = () => {
   return (
     <LayoutStandard>
       <Meta />
@@ -9,3 +10,5 @@ export default function Brochure() {
     </LayoutStandard>
   )
 }
+
+export default Brochure

@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { introForm1Content, introForm2Content } from '@data/intro'
 
 import Form1 from '@components/Form1'
@@ -10,7 +10,11 @@ import Meta from '@components/Meta'
 import { server } from '@config'
 import { useRouter } from 'next/router'
 
-export default function FormPage({ form }) {
+interface Props {
+  form: object
+}
+
+const FormPage: NextPage<Props> = ({ form }) => {
   const { query } = useRouter()
 
   return (
@@ -36,6 +40,8 @@ export default function FormPage({ form }) {
     </LayoutStandard>
   )
 }
+
+export default FormPage
 
 export const getStaticProps: GetStaticProps = async context => {
   const res = await fetch(`${server}/api/forms/${context.params.id}`)

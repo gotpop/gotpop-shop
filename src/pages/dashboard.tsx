@@ -1,7 +1,8 @@
 import LayoutStandard from '@components/LayoutStandard'
 import Meta from '@components/Meta'
+import { NextPage } from 'next'
 
-export default function Dashboard() {
+const Dashboard: NextPage = () => {
   return (
     <LayoutStandard>
       <Meta />
@@ -9,3 +10,5 @@ export default function Dashboard() {
     </LayoutStandard>
   )
 }
+
+export default Dashboard

@@ -4,7 +4,7 @@ import Meta from '@components/Meta'
 import type { NextPage } from 'next'
 import { introContent } from '@data/intro'
 
-export default function Home() {
+const Home: NextPage = () => {
   return (
     <LayoutStandard>
       <Meta />
@@ -12,3 +12,5 @@ export default function Home() {
     </LayoutStandard>
   )
 }
+
+export default Home
