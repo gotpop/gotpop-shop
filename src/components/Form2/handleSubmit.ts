@@ -1,6 +1,6 @@
 export const handleSubmit = async (inputValues) => {
     const { firstName, lastName, email, password } = inputValues
-    const endpoint = '/api/forms/form'
+    const endpoint = '/api/forms/formSubmit2'
 
     const postObject = {
         firstName: {

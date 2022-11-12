@@ -15,7 +15,6 @@ export default function personHandler(
   const { id } = query
   const filtered = cards.filter((p) => p.id === id)
 
-  // User with id exists
   return filtered.length > 0
     ? res.status(200).json(filtered[0])
     : res.status(404).json({ message: `User with id: ${id} not found.` })

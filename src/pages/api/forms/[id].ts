@@ -15,7 +15,6 @@ export default function formHandler(
   const { id } = query
   const filtered = forms.filter((p) => p.id === id)
 
-  // User with id exists
   return filtered.length > 0
     ? res.status(200).json(filtered[0])
     : res.status(404).json({ message: `Form with id: ${id} not found.` })
