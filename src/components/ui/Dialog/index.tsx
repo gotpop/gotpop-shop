@@ -5,15 +5,19 @@ import { ImCross } from 'react-icons/im'
 import styles from './Dialog.module.css'
 
 export default function Dialog({ children, handleClose }) {
-  const dialog = useRef(null)
+  const dialogRef = useRef(null)
   const cssError = [{ local: '--iconColour', global: 'var(--error)' }]
 
   useEffect(() => {
-    dialog.current.showModal()
+    const dialog = dialogRef.current
+
+    dialog.showModal()
+    
+    return () => dialog.close();
   }, [])
 
   return (
-    <dialog ref={dialog} className={styles.dialog}>
+    <dialog ref={dialogRef} className={styles.dialog}>
       <div className={styles.inner}>
         {children}
         <form method="dialog" className={styles.buttons}>
