@@ -16,7 +16,7 @@ export const Results = ({ res }) => {
     }
 
     setResHeaders(headersArr)
-  }, [])
+  }, [response.headers])
 
   return (
     <>
