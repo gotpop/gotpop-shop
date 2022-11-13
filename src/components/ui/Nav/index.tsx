@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getIcon } from '@utils/getIcon'
+import { getComponent } from '@utils/getComponent'
 import styles from './Nav.module.css'
 
 export default function Nav({ navItems, iconsMap }) {
@@ -8,7 +8,7 @@ export default function Nav({ navItems, iconsMap }) {
       {navItems?.map(item => (
         <Link key={item.id} href={item.href}>
           <span>{item.text}</span>
-          {getIcon(iconsMap, item.id)}
+          {getComponent(iconsMap, item.id)}
         </Link>
       ))}
     </nav>

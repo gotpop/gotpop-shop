@@ -4,7 +4,7 @@ import { AiFillChrome } from 'react-icons/ai'
 import { DiCssTricks } from 'react-icons/di'
 import { FaEdge } from 'react-icons/fa'
 import { TfiGithub } from 'react-icons/tfi'
-import { getIcon } from '@utils/getIcon'
+import { getComponent } from '@utils/getComponent'
 import stylesIcon from './Icons.module.css'
 
 const icons = new Map([
@@ -21,7 +21,7 @@ const Icons = ({ links }) => (
     {links.map(link => (
       <a key={link.name} href={link.href} className={stylesIcon.link}>
         <span className={stylesIcon.text}>{link.name}</span>
-        {getIcon(icons, link.id)}
+        {getComponent(icons, link.id)}
       </a>
     ))}
   </aside>

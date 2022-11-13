@@ -4,6 +4,7 @@ import Form1 from '@features/Form1'
 import Form2 from '@features/Form2'
 import LayoutStandard from '@layouts/LayoutStandard'
 import Meta from '@head/Meta'
+import { getComponent } from '@utils/getComponent'
 import { server } from '@config'
 import { useRouter } from 'next/router'
 
@@ -11,13 +12,18 @@ interface Props {
   form: object
 }
 
+const formsMap = new Map([
+  [1, Form1],
+  [2, Form2]
+])
+
 const FormPage: NextPage<Props> = ({ form }) => {
   const { query } = useRouter()
 
   return (
     <LayoutStandard>
       <Meta />
-      {query.id === '1' ? <Form1 /> : <Form2 />}
+      {getComponent(formsMap, query.id)}
     </LayoutStandard>
   )
 }
