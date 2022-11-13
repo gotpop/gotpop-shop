@@ -12,7 +12,7 @@ const LinkIcon = ({ content, properties, icon: Icon, href }: ILinkIcon) => {
     properties?.forEach(prop => {
       first.current.style.setProperty(prop.local, prop.global)
     })
-  }, [])
+  }, [properties])
 
   return (
     <Link href={href} className={styles.link} ref={first}>

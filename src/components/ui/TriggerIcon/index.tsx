@@ -11,7 +11,7 @@ export default function TriggerIcon({ menuState }) {
     open
       ? trigger.current.setAttribute('open', true)
       : trigger.current.setAttribute('open', false)
-  }, [menuState])
+  }, [menuState, open])
 
   return (
     <span className={styles.icon} ref={trigger}>

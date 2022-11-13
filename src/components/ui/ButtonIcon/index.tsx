@@ -16,7 +16,7 @@ const ButtonIcon = ({
     properties?.forEach(prop => {
       first.current.style.setProperty(prop.local, prop.global)
     })
-  }, [])
+  }, [properties])
 
   return (
     <button
