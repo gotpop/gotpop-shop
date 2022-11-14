@@ -16,16 +16,17 @@
     "jsx": "preserve",
     "baseUrl": "./src",
     "paths": {
-      "@components/*": ["./components/*"],
-      "@features/*": ["./components/features/*"],
-      "@layouts/*": ["./components/layouts/*"],
-      "@ui/*": ["./components/ui/*"],
       "@blocks/*": ["./components/blocks/*"],
-      "@head/*": ["./components/head/*"],
+      "@components/*": ["./components/*"],
       "@config": ["../config/index"],
       "@context/*": ["./context/*"],
       "@data/*": ["./data/*"],
+      "@features/*": ["./components/features/*"],
+      "@head/*": ["./components/head/*"],
+      "@images/*": ["../public/images/*"],
+      "@layouts/*": ["./components/layouts/*"],
       "@types": ["./types/index"],
+      "@ui/*": ["./components/ui/*"],
       "@utils/*": ["./utils/*"]
     }
   },

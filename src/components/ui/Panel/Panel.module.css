@@ -1,0 +1,23 @@
+.panel {
+  --local-bg: var(--hwb-grey-2);
+
+  /* background-color: var(--local-bg);
+  padding: var(--padding);
+  place-content: center;
+  margin-bottom: var(--padding);
+  border-radius: var(--radius-lg); */
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.content {
+  display: flex;
+  grid-column: 1/7;
+}
+
+.image {
+  aspect-ratio: auto;
+  height: auto;
+  max-width: 100%;
+  grid-column: 7/13;
+}
