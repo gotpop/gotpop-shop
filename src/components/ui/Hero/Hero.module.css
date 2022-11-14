@@ -1,0 +1,42 @@
+.hero {
+  --local-direction: initial;
+
+  display: grid;
+  direction: var(--local-direction);
+  place-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--padding);
+  z-index: 999;
+  backdrop-filter: blur(5px);
+  border: 2px solid;
+  border-color: hwb(283.1 0% 74.9% / 0.9);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  color: var(--hwb-grape-5);
+  background-color: hwb(0 100% 0% / 0.4);
+  gap: var(--padding);
+
+  & h3 {
+    margin: 0;
+    font-weight: 900;
+  }
+  & p {
+    margin: 0;
+  }
+}
+
+.image {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: -1;
+  object-fit: cover;
+  top: 0;
+}

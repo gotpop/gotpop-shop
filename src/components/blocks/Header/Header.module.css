@@ -1,8 +1,5 @@
 .header {
-  --local-bg: var(--hwb-grape-4);
-
-  background-color: var(--local-bg);
-  color: color-contrast(var(--local-bg) vs var(--black), var(--white));
+  background-color: var(--hwb-grape-4);
   display: flex;
   flex-direction: column;
   grid-area: head;
@@ -16,8 +13,9 @@
     border-radius: 0 0 var(--radius-lg) var(--radius-lg);
     flex-direction: row;
     justify-content: space-between;
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 999;
+    z-index: 9999;
+    width: 100%;
   }
 }

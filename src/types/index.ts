@@ -100,3 +100,14 @@ export interface IData3 {
     first?: string
     last?: string
 }
+
+export interface IPage {
+    id: string;
+    direction: string;
+    link: {
+        href: string;
+        text: string;
+    }
+    excerpt: string;
+    title: string;
+}

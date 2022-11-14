@@ -1,5 +1,7 @@
 .footer {
   --local-bg: var(--hwb-grape-4);
+  --local-mt: calc(var(--padding) * 3);
+  --local-radius: var(--radius-lg) var(--radius-lg) 0 0;
 
   grid-area: foot;
   background: var(--local-bg);
@@ -9,11 +11,11 @@
   padding: calc(var(--padding) * 3);
   place-content: center;
   font-size: 0.8rem;
-  margin-top: calc(var(--padding) * 3);
+  margin-top: var(--local-mt);
   gap: 3rem;
-  
+
   @media (--ipad) {
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    border-radius: var(--local-radius);
   }
 
   & small {

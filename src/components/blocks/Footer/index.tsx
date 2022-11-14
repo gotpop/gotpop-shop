@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react'
+
 import { AiFillHome } from 'react-icons/ai'
 import { GoZap } from 'react-icons/go'
 import Nav from '@ui/Nav'
@@ -11,9 +13,17 @@ const icons = new Map([
   [3, GoZap]
 ])
 
-export default function Footer() {
+const Footer = ({ properties }) => {
+  const footerRef = useRef(null)
+
+  useEffect(() => {
+    properties?.forEach(prop => {
+      footerRef.current?.style.setProperty(prop.var, prop.value)
+    })
+  }, [properties])
+
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} ref={footerRef}>
       <Nav navItems={navSecondary} iconsMap={icons} />
       <small>
         Copyright © {new Date().getFullYear()}. All rights reserved.
@@ -21,3 +31,9 @@ export default function Footer() {
     </footer>
   )
 }
+
+Footer.defaultProps = {
+  properties: null
+}
+
+export default Footer

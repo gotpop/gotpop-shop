@@ -1,18 +1,28 @@
 .panel {
-  --local-bg: var(--hwb-grey-2);
+  --local-direction: initial;
+  --local-bg-colour: var(--hwb-grey-1);
 
-  /* background-color: var(--local-bg);
-  padding: var(--padding);
-  place-content: center;
-  margin-bottom: var(--padding);
-  border-radius: var(--radius-lg); */
   display: grid;
+  background-color: var(--local-bg-colour);
   grid-template-columns: repeat(12, 1fr);
+  direction: var(--local-direction);
 }
 
 .content {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  direction: initial;
   grid-column: 1/7;
+  padding: var(--padding);
+  gap: var(--padding);
+
+  & h3 {
+    margin: 0;
+  }
+  & p {
+    margin: 0;
+  }
 }
 
 .image {

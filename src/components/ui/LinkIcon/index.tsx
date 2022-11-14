@@ -23,7 +23,9 @@ const LinkIcon = ({ content, properties, icon: Icon, href }: ILinkIcon) => {
 }
 
 LinkIcon.defaultProps = {
-  content: 'Visit'
+  content: 'Visit',
+  properties: [{ local: '--iconColour', global: 'var(--success)' }],
+  icon: ''
 }
 
 export default LinkIcon

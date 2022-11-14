@@ -12,16 +12,12 @@
   justify-content: space-between;
   padding: calc(var(--padding-btn) / 2) var(--padding-btn);
   transition: background-color var(--timing) ease;
-  
+
   &:hover {
     background-color: var(--accent);
     color: var(--white);
   }
 
-  @media (--laptop) {
-    align-self: flex-start;
-  }
-  
   & span {
     color: var(--white);
     font-size: var(--local-font-size);

@@ -1,11 +1,27 @@
+import { useEffect, useRef } from 'react'
+
 import Image from 'next/image'
+import LinkIcon from '@ui/LinkIcon'
 import styles from './Panel.module.css'
 
-export default function Panel({ image }) {
+export default function Panel({ image, page }) {
+  const { link, excerpt, title } = page
+  const sectionRef = useRef(null)
+
+  useEffect(() => {
+    const right = page?.direction === 'rtl'
+
+    right
+      ? sectionRef.current.style.setProperty('--local-direction', 'rtl')
+      : null
+  }, [page])
+
   return (
-    <section className={styles.panel}>
+    <section ref={sectionRef} className={styles.panel}>
       <div className={styles.content}>
-        <h3>Panel</h3>
+        <h3>{title}</h3>
+        <p>{excerpt}</p>
+        <LinkIcon href={link.href} />
       </div>
       <Image
         className={styles.image}
