@@ -7,7 +7,12 @@ export default function Panel({ image }) {
       <div className={styles.content}>
         <h3>Panel</h3>
       </div>
-      <Image className={styles.image} src={image} alt="Picture of the author" />
+      <Image
+        className={styles.image}
+        src={image}
+        alt="Picture of the author"
+        placeholder="blur"
+      />
     </section>
   )
 }
