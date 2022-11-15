@@ -1,7 +1,16 @@
 .logo {
   --local-margin: 0 0 1.2rem 0;
+  --local-grid-column: 2/4;
 
   display: flex;
+
+  @media (--ipad) {
+    grid-column: var(--local-grid-column);
+  }
+
+  @media (--desktop) {
+    --local-grid-column: 1/5;
+  }
 
   & h1 {
     align-items: center;

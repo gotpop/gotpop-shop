@@ -1,4 +1,6 @@
 .nav {
+  --local-grid-column: 5/12;
+
   display: flex;
   flex-direction: column;
   font-size: var(--size-s-1);
@@ -8,7 +10,11 @@
     justify-self: end;
     align-self: center;
     flex-direction: row;
-    grid-column: 7/13;
+    grid-column: var(--local-grid-column);
+  }
+
+  @media (--desktop) {
+    --local-grid-column: 7/13;
   }
 
   & a {
