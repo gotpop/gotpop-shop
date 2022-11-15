@@ -13,9 +13,10 @@
   flex-direction: column;
   align-items: flex-start;
   direction: initial;
-  grid-column: 1/7;
-  padding: var(--padding);
+  grid-column: 3/7;
+  padding: calc(var(--padding) * 2);
   gap: var(--padding);
+  justify-content: center;
 
   & h3 {
     margin: 0;

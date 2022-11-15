@@ -28,9 +28,17 @@ const Brochure: NextPage<Props> = ({ pageData }) => {
     <LayoutFull>
       <Meta />
       <Hero />
-      {pageData.map((page: IPage, i) => (
-        <Panel key={i} image={getImage(imagesMap, page.id)} page={page} />
-      ))}
+      <div
+        style={{
+          borderRadius: '100px 100px 0 0',
+          overflow: 'hidden',
+          paddingTop: '2rem'
+        }}
+      >
+        {pageData.map((page: IPage, i) => (
+          <Panel key={i} image={getImage(imagesMap, page.id)} page={page} />
+        ))}
+      </div>
     </LayoutFull>
   )
 }

@@ -7,7 +7,10 @@ import stylesMain from './Main.module.css'
 import { useEffect } from 'react'
 
 export default function LayoutFull({ children }) {
-  const varsHeader = [{ var: '--local-position', value: 'fixed' }]
+  const varsHeader = [
+    { var: '--local-position', value: 'fixed' },
+    { var: '--local-colour', value: 'var(--hwb-grape-5)' }
+  ]
 
   const varsFooter = [
     { var: '--local-mt', value: '0' },

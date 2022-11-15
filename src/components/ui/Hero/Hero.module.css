@@ -12,15 +12,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: var(--padding);
+  padding: calc(var(--padding) * 2);
   z-index: 999;
   backdrop-filter: blur(5px);
-  border: 2px solid;
-  border-color: hwb(283.1 0% 74.9% / 0.9);
+  /* border: 2px solid;
+  border-color: hwb(283.1 0% 74.9% / 0.9); */
   border-radius: var(--radius-lg);
   text-align: center;
   color: var(--hwb-grape-5);
-  background-color: hwb(0 100% 0% / 0.4);
+  background-color: hwb(0 100% 0% / 0.8);
   gap: var(--padding);
 
   & h3 {

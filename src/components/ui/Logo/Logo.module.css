@@ -5,7 +5,7 @@
 
   & h1 {
     align-items: center;
-    color: var(--white);
+    color: var(--local-colour);
     display: flex;
     font-size: clamp(1.5rem, 3.5vw, 3rem);
     font-weight: 200;

@@ -13,8 +13,9 @@
 
   & a {
     border-radius: var(--radius);
-    border: 1px solid var(--white);
-    color: var(--white);
+    border: 1px solid;
+    border-color: inherit;
+    color: inherit;
     display: inline-flex;
     gap: calc(var(--padding-btn) / 2);
     justify-content: space-between;

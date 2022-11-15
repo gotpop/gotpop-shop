@@ -1,7 +1,9 @@
 .header {
   --local-position: sticky;
+  --local-bg-colour: var(--hwb-grape-4);
 
-  background-color: var(--hwb-grape-4);
+  background-color: var(--local-bg-colour);
+  transition: background-color 0.5s ease;
   display: flex;
   flex-direction: column;
   grid-area: head;
@@ -9,9 +11,10 @@
   padding: calc(var(--padding) / 2);
 
   @media (--ipad) {
+    --local-bg-colour: hwb(0 100% 0% / 0.9);
+
     align-items: center;
     backdrop-filter: blur(3px);
-    background-color: hwb(283.1 0% 74.9% / 0.9);
     border-radius: 0 0 var(--radius-lg) var(--radius-lg);
     flex-direction: row;
     position: var(--local-position);
