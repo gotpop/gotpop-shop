@@ -36,51 +36,16 @@ export default function Brochure({ pageData }) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  // const res = await fetch(`${server}/api/liam`, {
-  //   method: 'GET',
-  //   headers: {
-  //     Accept: 'application/json, text/plain, */*',
-  //     'User-Agent': '*'
-  //   }
-  // })
-
-  // const pages = await res.json()
-  // // console.log('pages :', pages)
-
-  // return {
-  //   props: {
-  //     pages
-  //   }
-  // }
   const res = await fetch(`${server}/api/pages`, {
     method: 'GET',
     headers: {
-      // update with your user-agent
-      // 'User-Agent': '*',
-      'User-Agent':
-        'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36',
+      'User-Agent': '*',
+      // 'User-Agent':
+      //   'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36',
       Accept: 'application/json; charset=UTF-8'
     }
   })
   const pageData = await res.json()
-
-  // let data = []
-  // let error = ''
-  // try {
-  //   const res = await fetch(`${server}/api/pages`, {
-  //     method: 'GET',
-  //     headers: {
-  //       // update with your user-agent
-  //       'User-Agent':
-  //         'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36',
-  //       Accept: 'application/json; charset=UTF-8'
-  //     }
-  //   })
-
-  //   data = await res.json()
-  // } catch (e) {
-  //   error = e.toString()
-  // }
 
   return {
     props: {
