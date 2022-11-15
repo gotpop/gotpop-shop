@@ -6,6 +6,7 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 122px;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 ::selection {
@@ -17,5 +18,4 @@ body {
   font-size: clamp(0.8rem, 2.5vw, 1.5rem);
   margin: 0;
   min-height: 100vh;
-  overflow-x: hidden;
 }
