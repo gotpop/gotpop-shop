@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import LinkIcon from '@ui/LinkIcon'
-import keyboardPic from '@images/keyboard.png'
+import keyboardPic from '@images/hero/keyboard.png'
 import styles from './Hero.module.css'
 
 const Hero = ({ image, page }) => {
