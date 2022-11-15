@@ -2,26 +2,27 @@
   --local-bg: var(--hwb-grape-2);
   --local-direction: column;
   --local-gap: calc(var(--padding) / 2);
+  --local-colour: var(--hwb-grape-5);
 
   &:nth-child(odd) {
     --local-bg: var(--hwb-grape-3);
+    --local-colour: var(--white);
   }
 
   background: var(--local-bg);
   border-radius: var(--radius-lg);
-  color: color-contrast(var(--local-bg) vs var(--black), var(--white));
-  container-name: card;
-  container-type: inline-size;
+  color: var(--local-colour);
   display: flex;
   justify-content: center;
 
   & .inner {
+    align-items: flex-end;
     display: flex;
     flex-direction: var(--local-direction);
+    flex: 1 1 100%;
     gap: var(--local-gap);
     justify-content: space-between;
     padding: var(--padding);
-    flex: 1 1 100%;
 
     @media (--laptop) {
       --local-direction: row;
