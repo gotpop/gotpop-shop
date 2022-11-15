@@ -14,10 +14,17 @@
     background-color: hwb(283.1 0% 74.9% / 0.9);
     border-radius: 0 0 var(--radius-lg) var(--radius-lg);
     flex-direction: row;
-    justify-content: space-between;
     position: var(--local-position);
     top: 0;
     z-index: 9999;
     width: 100%;
+    display: grid;
+    grid-template-columns: minmax(100px, 1000px);
+    justify-content: center;
+  }
+
+  & .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
   }
 }

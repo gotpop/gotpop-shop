@@ -3,10 +3,12 @@
   flex-direction: column;
   font-size: var(--size-s-1);
   gap: calc(var(--padding) / 2);
-  
+
   @media (--ipad) {
+    justify-self: end;
     align-self: center;
     flex-direction: row;
+    grid-column: 7/13;
   }
 
   & a {
@@ -18,7 +20,7 @@
     justify-content: space-between;
     padding: calc(var(--padding-btn) / 2) var(--padding-btn);
     transition: background-color var(--timing) ease;
-    
+
     &:hover {
       background-color: var(--accent);
     }

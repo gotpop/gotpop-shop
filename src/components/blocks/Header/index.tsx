@@ -24,8 +24,10 @@ const Header = ({ properties }) => {
 
   return (
     <header className={styles.header} ref={headerRef}>
-      <Logo />
-      <Nav navItems={navPrimary} iconsMap={icons} />
+      <section className={styles.grid}>
+        <Logo />
+        <Nav navItems={navPrimary} iconsMap={icons} />
+      </section>
     </header>
   )
 }
