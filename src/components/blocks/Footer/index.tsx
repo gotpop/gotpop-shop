@@ -25,9 +25,7 @@ const Footer = ({ properties }) => {
   return (
     <footer className={styles.footer} ref={footerRef}>
       <Nav navItems={navSecondary} iconsMap={icons} />
-      <small>
-        Copyright © {new Date().getFullYear()}. All rights reserved.
-      </small>
+      <span>Copyright © {new Date().getFullYear()}. All rights reserved.</span>
     </footer>
   )
 }
