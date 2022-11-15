@@ -19,6 +19,6 @@
     --local-rows: auto minmax(0vh, max-content) auto;
     --local-template: "head" "main" "foot";
     --local-translate: none;
-    --local-width: auto;
+    --local-width: 100vw;
   }
 }
