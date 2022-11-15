@@ -13,7 +13,7 @@ import macPic from '@images/mac.png'
 import { server } from '@config'
 
 interface Props {
-  pages: IPage[]
+  pageData: IPage[]
 }
 
 const imagesMap = new Map([
@@ -23,7 +23,7 @@ const imagesMap = new Map([
   [4, macPic]
 ])
 
-export default function Brochure({ pageData }) {
+const Brochure: NextPage<Props> = ({ pageData }) => {
   return (
     <LayoutFull>
       <Meta />
@@ -35,14 +35,10 @@ export default function Brochure({ pageData }) {
   )
 }
 
+export default Brochure
+
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(`${server}/api/pages`, {
-    method: 'GET',
-    headers: {
-      'User-Agent': '*',
-      Accept: 'application/json; charset=UTF-8'
-    }
-  })
+  const res = await fetch(`${server}/api/pages`)
   const pageData = await res.json()
 
   return {
