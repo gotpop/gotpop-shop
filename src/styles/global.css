@@ -2,15 +2,15 @@
   box-sizing: border-box;
 }
 
+::selection {
+  background: var(--accent);
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 122px;
   overflow-y: scroll;
   overflow-x: hidden;
-}
-
-::selection {
-  background: var(--accent);
 }
 
 body {
