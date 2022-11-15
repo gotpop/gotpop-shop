@@ -12,6 +12,7 @@ const Hero = ({ image, page }) => {
         <h3>{title}</h3>
         <p>{excerpt}</p>
         <LinkIcon href={link.href} content={link.text} />
+        <a href={link.href}>Linky time</a>
       </div>
       <Image
         className={styles.image}
@@ -30,7 +31,7 @@ Hero.defaultProps = {
     excerpt: 'A Next.js starter template using Next.js 13',
     link: {
       text: 'Find out more!',
-      href: '/cards'
+      href: '#panel-1'
     }
   }
 }

@@ -4,6 +4,8 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 122px;
+  overflow-y: scroll;
 }
 
 ::selection {

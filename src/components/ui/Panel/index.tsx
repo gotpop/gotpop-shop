@@ -5,7 +5,7 @@ import LinkIcon from '@ui/LinkIcon'
 import styles from './Panel.module.css'
 
 export default function Panel({ image, page }) {
-  const { link, excerpt, title } = page
+  const { link, excerpt, title, id } = page
   const sectionRef = useRef(null)
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function Panel({ image, page }) {
   return (
     <section ref={sectionRef} className={styles.panel}>
       <div className={styles.content}>
-        <h3>{title}</h3>
+        <h3 id={`panel-${id}`}>{title}</h3>
         <p>{excerpt}</p>
         <LinkIcon href={link.href} />
       </div>

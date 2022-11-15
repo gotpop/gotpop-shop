@@ -1,18 +1,5 @@
-/* .mainwrap {
-  display: grid;
-  grid-area: main;
-  grid-template-columns: minmax(100px, 1000px);
-  justify-content: center;
-
-  & .main {
-    background: var(--hwb-grey-1);
-    display: grid;
-    grid-gap: calc(var(--padding) / 2);
-    padding: var(--padding);
-
-    @media (--ipad) {
-      align-content: start;
-      grid-template-columns: repeat(var(--grid-columns), 1fr);
-    }
-  }
+/* 
+.main {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 } */
