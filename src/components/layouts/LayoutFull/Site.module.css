@@ -1,6 +1,6 @@
 .site {
   --local-columns: var(--menu-side-width) calc(100vw - var(--scrollbar-width));
-  --local-rows: 1fr 1fr auto;
+  --local-rows: 1fr 0 auto;
   --local-template: "head main" "head main" "head foot";
   --local-translate: var(--menu-state);
   --local-width: calc(100vw + var(--menu-side-width) - var(--scrollbar-width));

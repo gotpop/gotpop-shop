@@ -1,6 +1,7 @@
 .logo {
-  --local-margin: 0 0 1.2rem 0;
+  --local-margin: 0 0 var(--text-mb) 0;
   --local-grid-column: 2/4;
+  --local-gap: 0.5rem;
 
   display: flex;
 
@@ -18,15 +19,17 @@
     display: flex;
     font-size: clamp(1.5rem, 3.5vw, 3rem);
     font-weight: 200;
-    gap: 1rem;
+    gap: var(--local-gap);
     justify-content: space-between;
     margin: var(--local-margin);
     padding: 0;
 
     @media (--ipad) {
       --local-margin: 0;
+    }
 
-      line-height: 1.2em;
+    @media (--laptop) {
+      --local-gap: 1rem;
     }
   }
 }

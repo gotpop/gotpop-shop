@@ -1,11 +1,9 @@
 .header {
   --local-position: sticky;
-  --local-bg-colour: var(--hwb-grape-4);
+  --local-bg-colour: var(--white);
 
   background-color: var(--local-bg-colour);
   transition: background-color 0.5s ease;
-  display: flex;
-  flex-direction: column;
   grid-area: head;
   justify-content: flex-start;
   padding: calc(var(--padding) / 2);
@@ -27,7 +25,9 @@
   }
 
   & .grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    @media (--ipad) {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+    }
   }
 }
