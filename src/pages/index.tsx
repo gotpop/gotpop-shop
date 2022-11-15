@@ -1,16 +1,49 @@
-import Intro from '@ui/Intro'
-import LayoutStandard from '@layouts/LayoutStandard'
-import Meta from '@head/Meta'
-import type { NextPage } from 'next'
-import { introContent } from '@data/intro'
+import { GetStaticProps, NextPage } from 'next'
 
-const Home: NextPage = () => {
+import Hero from '@components/ui/Hero'
+import { IPage } from '@types'
+import LayoutFull from '@components/layouts/LayoutFull'
+import Meta from '@head/Meta'
+import Panel from '@components/ui/Panel'
+import booksPic from '@images/books.png'
+import { getImage } from '@utils/getComponent'
+import htmlPic from '@images/html.png'
+import keyboardPic from '@images/keyboard.png'
+import macPic from '@images/mac.png'
+import { server } from '@config'
+
+interface Props {
+  pageData: IPage[]
+}
+
+const imagesMap = new Map([
+  [1, booksPic],
+  [2, htmlPic],
+  [3, keyboardPic],
+  [4, macPic]
+])
+
+const Brochure: NextPage<Props> = ({ pageData }) => {
   return (
-    <LayoutStandard>
+    <LayoutFull>
       <Meta />
-      <Intro content={introContent} />
-    </LayoutStandard>
+      <Hero />
+      {pageData.map((page: IPage, i) => (
+        <Panel key={i} image={getImage(imagesMap, page.id)} page={page} />
+      ))}
+    </LayoutFull>
   )
 }
 
-export default Home
+export default Brochure
+
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await fetch(`${server}/api/pages`)
+  const pageData = await res.json()
+
+  return {
+    props: {
+      pageData
+    }
+  }
+}
