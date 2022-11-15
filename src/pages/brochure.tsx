@@ -23,13 +23,12 @@ const imagesMap = new Map([
   [4, macPic]
 ])
 
-export default function Brochure({ data, error }) {
-  console.log(' data, error :', data, error)
+export default function Brochure({ pageData }) {
   return (
     <LayoutFull>
       <Meta />
       <Hero />
-      {data.map((page: IPage, i) => (
+      {pageData.map((page: IPage, i) => (
         <Panel key={i} image={getImage(imagesMap, page.id)} page={page} />
       ))}
     </LayoutFull>
@@ -53,29 +52,39 @@ export const getStaticProps: GetStaticProps = async () => {
   //     pages
   //   }
   // }
+  const res = await fetch(`${server}/api/pages`, {
+    method: 'GET',
+    headers: {
+      // update with your user-agent
+      // 'User-Agent': '*',
+      'User-Agent':
+        'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36',
+      Accept: 'application/json; charset=UTF-8'
+    }
+  })
+  const pageData = await res.json()
 
-  let data = []
-  let error = ''
-  try {
-    const res = await fetch(`${server}/api/pages`, {
-      method: 'GET',
-      headers: {
-        // update with your user-agent
-        'User-Agent':
-          'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36',
-        Accept: 'application/json; charset=UTF-8'
-      }
-    })
+  // let data = []
+  // let error = ''
+  // try {
+  //   const res = await fetch(`${server}/api/pages`, {
+  //     method: 'GET',
+  //     headers: {
+  //       // update with your user-agent
+  //       'User-Agent':
+  //         'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36',
+  //       Accept: 'application/json; charset=UTF-8'
+  //     }
+  //   })
 
-    data = await res.json()
-  } catch (e) {
-    error = e.toString()
-  }
+  //   data = await res.json()
+  // } catch (e) {
+  //   error = e.toString()
+  // }
 
   return {
     props: {
-      data,
-      error
+      pageData
     }
   }
 }
