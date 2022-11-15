@@ -10,6 +10,13 @@ export interface IButtonIcon {
     disabled?: boolean;
 }
 
+export interface ILinkInternal {
+    children?: string;
+    properties?: { local: string; global: string }[];
+    icon?: IconType;
+    href: string;
+}
+
 export interface ILinkIcon {
     content?: string;
     properties?: { local: string; global: string }[];

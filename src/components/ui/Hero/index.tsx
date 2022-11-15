@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import LinkIcon from '@ui/LinkIcon'
+import LinkInternal from '../LinkInternal'
 import keyboardPic from '@images/hero/keyboard.png'
 import styles from './Hero.module.css'
 
@@ -11,8 +11,7 @@ const Hero = ({ image, page }) => {
       <div className={styles.content}>
         <h3>{title}</h3>
         <p>{excerpt}</p>
-        <LinkIcon href={link.href} content={link.text} />
-        <a href={link.href}>Linky time</a>
+        <LinkInternal href={link.href}>Find out more</LinkInternal>
       </div>
       <Image
         className={styles.image}
