@@ -23,12 +23,13 @@ const imagesMap = new Map([
   [4, macPic]
 ])
 
-export default function Brochure({ data: pages }) {
+export default function Brochure({ data, error }) {
+  console.log(' data, error :', data, error)
   return (
     <LayoutFull>
       <Meta />
       <Hero />
-      {pages.map((page: IPage, i) => (
+      {data.map((page: IPage, i) => (
         <Panel key={i} image={getImage(imagesMap, page.id)} page={page} />
       ))}
     </LayoutFull>
