@@ -3,6 +3,7 @@ import { GetStaticProps, NextPage } from 'next'
 import Hero from '@components/ui/Hero'
 import { IPage } from '@types'
 import LayoutFull from '@components/layouts/LayoutFull'
+import Main from '@components/ui/Main'
 import Meta from '@head/Meta'
 import Panel from '@components/ui/Panel'
 import booksPic from '@images/books.png'
@@ -28,17 +29,11 @@ const Brochure: NextPage<Props> = ({ pageData }) => {
     <LayoutFull>
       <Meta />
       <Hero />
-      <div
-        style={{
-          borderRadius: '100px 100px 0 0',
-          overflow: 'hidden',
-          paddingTop: '2rem'
-        }}
-      >
+      <Main>
         {pageData.map((page: IPage, i) => (
           <Panel key={i} image={getImage(imagesMap, page.id)} page={page} />
         ))}
-      </div>
+      </Main>
     </LayoutFull>
   )
 }

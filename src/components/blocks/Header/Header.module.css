@@ -15,7 +15,7 @@
 
     align-items: center;
     backdrop-filter: blur(3px);
-    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    border-radius: 0 0 var(--radius-xl) var(--radius-xl);
     flex-direction: row;
     position: var(--local-position);
     top: 0;
