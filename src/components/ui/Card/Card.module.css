@@ -3,6 +3,7 @@
   --local-direction: column;
   --local-gap: calc(var(--padding) / 2);
   --local-colour: var(--hwb-grape-5);
+  --local-align: unset;
 
   &:nth-child(odd) {
     --local-bg: var(--hwb-grape-3);
@@ -16,7 +17,7 @@
   justify-content: center;
 
   & .inner {
-    align-items: flex-end;
+    align-items: var(--local-align);
     display: flex;
     flex-direction: var(--local-direction);
     flex: 1 1 100%;
@@ -25,8 +26,12 @@
     padding: var(--padding);
 
     @media (--ipad) {
-      --local-direction: row;
+      --local-align: flex-start;
       --local-gap: calc(var(--padding) * 2);
+    }
+
+    @media (--laptop) {
+      --local-direction: row;
     }
 
     & h3 {

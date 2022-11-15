@@ -5,7 +5,7 @@
   display: flex;
   gap: calc(var(--padding) / 2);
 
-  @media (--ipad) {
+  @media (--laptop) {
     flex-direction: column;
   }
 
@@ -33,6 +33,7 @@
       --local-link-padding: var(--padding);
 
       justify-content: space-between;
+      gap: var(--padding);
     }
 
     @media (--laptop) {
