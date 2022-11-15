@@ -11,6 +11,8 @@ export default function LayoutFull({ children }) {
     { var: '--local-colour', value: 'var(--hwb-grape-5)' }
   ]
 
+  const varsTrigger = [{ var: '--local-position', value: 'absolute' }]
+
   const varsFooter = [
     { var: '--local-mt', value: '0' },
     { var: '--local-radius', value: '0' }
@@ -24,7 +26,7 @@ export default function LayoutFull({ children }) {
     <div className={styles.site}>
       <Header properties={varsHeader} />
       <main>
-        <Trigger />
+        <Trigger properties={varsTrigger} />
         {children}
       </main>
       <Footer properties={varsFooter} />

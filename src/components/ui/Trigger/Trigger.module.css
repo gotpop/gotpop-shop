@@ -1,6 +1,7 @@
 .trigger {
   --iconColour: var(--white);
   --local-display: flex;
+  --local-position: static;
 
   align-items: center;
   background-color: var(--white);
@@ -12,7 +13,7 @@
   gap: calc(var(--padding-btn) / 2);
   padding: calc(var(--padding-btn) / 2);
   transition: background-color var(--timing) ease;
-  position: absolute;
+  position: var(--local-position);
 
   @media (--ipad) {
     --local-display: none;

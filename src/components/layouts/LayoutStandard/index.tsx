@@ -19,9 +19,9 @@ export default function LayoutStandard({ children }) {
     <div className={styles.site}>
       <Header />
       <div className={stylesMain.mainwrap}>
+        <Trigger />
         <main className={stylesMain.main}>
           {pathname === '/' ? null : <Breadcrumbs />}
-          <Trigger />
           {children}
         </main>
       </div>
