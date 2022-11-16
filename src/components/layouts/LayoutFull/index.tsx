@@ -1,3 +1,5 @@
+import { varsFooter, varsHeader, varsTrigger } from './styleVarOverrides'
+
 import Footer from '@blocks/Footer'
 import Header from '@blocks/Header'
 import Trigger from '@ui/Trigger'
@@ -6,20 +8,6 @@ import styles from './Site.module.css'
 import { useEffect } from 'react'
 
 export default function LayoutFull({ children }) {
-  const varsHeader = {
-    ['--local-position']: 'fixed',
-    ['--local-colour']: 'var(--hwb-grape-5)'
-  }
-
-  const varsTrigger = {
-    ['--local-position']: 'absolute'
-  }
-
-  const varsFooter = {
-    ['--local-mt']: '0',
-    ['--local-radius']: '0'
-  }
-
   useEffect(() => {
     getScrollBarWidth()
   }, [])
