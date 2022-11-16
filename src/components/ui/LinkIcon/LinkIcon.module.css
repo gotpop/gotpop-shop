@@ -6,7 +6,6 @@
   background-color: var(--hwb-grape-4);
   border-radius: var(--radius);
   color: var(--local-icon-colour);
-  cursor: pointer;
   display: flex;
   gap: calc(var(--padding-btn) / 2);
   justify-content: space-between;

@@ -11,6 +11,7 @@ export interface IButtonIcon {
 }
 
 export interface ILinkInternal {
+    vars?: object;
     children?: string;
     properties?: { local: string; global: string }[];
     icon?: IconType;
@@ -18,7 +19,9 @@ export interface ILinkInternal {
 }
 
 export interface ILinkIcon {
-    content?: string;
+    text?: string;
+    children?: string;
+    vars?: object;
     properties?: { local: string; global: string }[];
     icon?: IconType;
     href: string;
