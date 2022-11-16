@@ -4,12 +4,26 @@
 // https://github.com/cypress-io/eslint-plugin-cypress
 
 describe('Navigation', () => {
-    it('should navigate to the about page', () => {
+    it('should navigate to the cards page', () => {
         // Start from the index page
         cy.visit('http://localhost:3000/')
 
         // Find a link with an href attribute containing "about" and click it
-        cy.get('a[href*="forms"]').click()
+        cy.get('a[data-test="cards"]').click()
+
+        // The new url should include "/about"
+        cy.url().should('include', 'cards')
+
+        // The new page should contain an h1 with "About page"
+        cy.get('h3').contains('@container queries')
+    })
+
+    it('should navigate to the forms page', () => {
+        // Start from the index page
+        cy.visit('http://localhost:3000/')
+
+        // Find a link with an href attribute containing "about" and click it
+        cy.get('a[data-test="forms"]').click()
 
         // The new url should include "/about"
         cy.url().should('include', 'forms')
