@@ -4,7 +4,8 @@
     "dev": "next dev",
     "build": "next build",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "cypress": "cypress open"
   },
   "prettier": {
     "trailingComma": "none",
@@ -29,6 +30,7 @@
   },
   "dependencies": {
     "@next/font": "^13.0.3",
+    "cypress": "^11.1.0",
     "next": "^13.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.2.0",
