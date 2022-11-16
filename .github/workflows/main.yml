@@ -1,19 +1,17 @@
-name: E2E on Chrome
+name: Cypress Tests
 
 on: [push]
 
 jobs:
-  install:
+  cypress-run:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
       - name: Cypress run
-        uses: cypress-io/github-action@v3
+        uses: cypress-io/github-action@v4.x.x # use the explicit version number
         with:
-          project: ./site
-          browser: chrome
-          build: yarn build
-          start: yarn start
-          wait-on: 'http://localhost:3000'
+          build: npm run build
+          start: npm start
