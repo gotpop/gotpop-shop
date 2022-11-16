@@ -1,5 +1,4 @@
 import { ChangeEvent, FormEvent, useReducer, useState } from 'react'
-import { cssSuccess, formInitialState } from './state'
 
 import Box from '@ui/Box'
 import { BsCheckLg } from 'react-icons/bs'
@@ -10,6 +9,7 @@ import InputText from '@ui/InputText'
 import Intro from '@components/ui/Intro'
 import LoadingIcon from '@ui/LoadingIcon'
 import { Results } from './results'
+import { formInitialState } from './state'
 import { handleSubmit } from './handleSubmit'
 import { introForm2Content } from '@data/intro'
 import { reducer } from './reducer'
@@ -100,7 +100,7 @@ export default function Form2() {
             content="Submit"
             disabled={!formIsValid}
             icon={loading ? LoadingIcon : BsCheckLg}
-            properties={loading ? cssSuccess : null}
+            vars={{ ['--iconColour']: 'var(--success)' }}
           />
         </form>
       </Box>

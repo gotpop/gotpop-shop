@@ -1,5 +1,3 @@
-export const cssSuccess = [{ local: '--iconColour', global: 'var(--success)' }]
-
 export const handleSubmit = async (data) => {
     const JSONdata = JSON.stringify(data)
     const endpoint = '/api/forms/formSubmit1'

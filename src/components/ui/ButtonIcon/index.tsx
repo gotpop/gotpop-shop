@@ -1,5 +1,3 @@
-import { useEffect, useRef } from 'react'
-
 import { IButtonIcon } from '@types'
 import styles from './ButtonIcon.module.css'
 
@@ -7,24 +5,17 @@ const ButtonIcon = ({
   content,
   doClick,
   icon: Icon,
-  properties,
+  vars,
   ...rest
 }: IButtonIcon) => {
-  const first = useRef(null)
-
-  useEffect(() => {
-    properties?.forEach(prop => {
-      first.current.style.setProperty(prop.local, prop.global)
-    })
-  }, [properties])
-
   return (
     <button
       className={styles.button}
       onClick={doClick}
-      ref={first}
+      style={vars}
       type="submit"
-      {...rest}>
+      {...rest}
+    >
       <span>{content}</span>
       <Icon />
     </button>
@@ -32,7 +23,8 @@ const ButtonIcon = ({
 }
 
 ButtonIcon.defaultProps = {
-  content: 'Click'
+  content: 'Click',
+  vars: null
 }
 
 export default ButtonIcon

@@ -24,5 +24,3 @@ export const formInitialState = {
         error: 'Add a valid password!'
     }
 }
-
-export const cssSuccess = [{ local: '--iconColour', global: 'var(--success)' }]

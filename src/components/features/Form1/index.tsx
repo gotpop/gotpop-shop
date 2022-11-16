@@ -1,5 +1,3 @@
-import { cssSuccess, handleSubmit } from './handleSubmit'
-
 import Box from '@ui/Box'
 import { BsCheckLg } from 'react-icons/bs'
 import ButtonIcon from '@ui/ButtonIcon'
@@ -8,6 +6,7 @@ import { IData3 } from '@types'
 import InputText from '@ui/InputText'
 import Intro from '@components/ui/Intro'
 import { Results } from './results'
+import { handleSubmit } from './handleSubmit'
 import { introForm1Content } from '@data/intro'
 import styles from './Form1.module.css'
 import { useState } from 'react'
@@ -58,8 +57,8 @@ export default function Form1() {
             value={data.last}
           />
           <ButtonIcon
-            content={'Submit'}
-            properties={cssSuccess}
+            content="Submit"
+            vars={{ ['--iconColour']: 'var(--success)' }}
             icon={BsCheckLg}
           />
         </form>
