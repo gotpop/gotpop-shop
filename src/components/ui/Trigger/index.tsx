@@ -5,15 +5,8 @@ import TriggerIcon from '@ui/TriggerIcon'
 import { set } from '@utils/setPropsOnRoot'
 import styles from './Trigger.module.css'
 
-const Trigger = ({ properties }) => {
-  const trigger = useRef(null)
+const Trigger = ({ vars }) => {
   const { menu, setMenu } = useContext(ColumnContext)
-
-  useEffect(() => {
-    properties?.forEach(prop => {
-      trigger.current?.style.setProperty(prop.var, prop.value)
-    })
-  }, [properties])
 
   const handleClick = () => {
     setMenu(prevState => {
@@ -28,7 +21,7 @@ const Trigger = ({ properties }) => {
   }
 
   return (
-    <button onClick={handleClick} className={styles.trigger} ref={trigger}>
+    <button onClick={handleClick} className={styles.trigger} style={vars}>
       <TriggerIcon menuState={menu} />
       {!menu.open && <span>Open menu</span>}
       {menu.open && <span>Close menu</span>}
@@ -37,7 +30,7 @@ const Trigger = ({ properties }) => {
 }
 
 Trigger.defaultProps = {
-  properties: null
+  vars: {}
 }
 
 export default Trigger

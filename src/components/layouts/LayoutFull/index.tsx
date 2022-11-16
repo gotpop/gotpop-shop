@@ -6,17 +6,19 @@ import styles from './Site.module.css'
 import { useEffect } from 'react'
 
 export default function LayoutFull({ children }) {
-  const varsHeader = [
-    { var: '--local-position', value: 'fixed' },
-    { var: '--local-colour', value: 'var(--hwb-grape-5)' }
-  ]
+  const varsHeader = {
+    ['--local-position']: 'fixed',
+    ['--local-colour']: 'var(--hwb-grape-5)'
+  }
 
-  const varsTrigger = [{ var: '--local-position', value: 'absolute' }]
+  const varsTrigger = {
+    ['--local-position']: 'absolute'
+  }
 
-  const varsFooter = [
-    { var: '--local-mt', value: '0' },
-    { var: '--local-radius', value: '0' }
-  ]
+  const varsFooter = {
+    ['--local-mt']: '0',
+    ['--local-radius']: '0'
+  }
 
   useEffect(() => {
     getScrollBarWidth()
@@ -24,12 +26,12 @@ export default function LayoutFull({ children }) {
 
   return (
     <div className={styles.site}>
-      <Header properties={varsHeader} />
+      <Header vars={varsHeader} />
       <main>
-        <Trigger properties={varsTrigger} />
+        <Trigger vars={varsTrigger} />
         {children}
       </main>
-      <Footer properties={varsFooter} />
+      <Footer vars={varsFooter} />
     </div>
   )
 }

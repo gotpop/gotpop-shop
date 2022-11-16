@@ -1,5 +1,4 @@
 import { AiOutlineForm, AiOutlineHome } from 'react-icons/ai'
-import { useEffect, useRef } from 'react'
 
 import { CgCardSpades } from 'react-icons/cg'
 import Logo from '@ui/Logo'
@@ -13,17 +12,9 @@ const icons = new Map([
   [3, AiOutlineHome]
 ])
 
-const Header = ({ properties }) => {
-  const headerRef = useRef(null)
-
-  useEffect(() => {
-    properties?.forEach(prop => {
-      headerRef.current?.style.setProperty(prop.var, prop.value)
-    })
-  }, [properties])
-
+const Header = ({ vars }) => {
   return (
-    <header className={styles.header} ref={headerRef}>
+    <header className={styles.header} style={vars}>
       <section className={styles.grid}>
         <Logo />
         <Nav navItems={navPrimary} iconsMap={icons} />
@@ -33,7 +24,7 @@ const Header = ({ properties }) => {
 }
 
 Header.defaultProps = {
-  properties: null
+  vars: {}
 }
 
 export default Header
