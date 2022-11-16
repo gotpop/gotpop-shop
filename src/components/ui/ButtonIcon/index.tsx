@@ -1,13 +1,9 @@
 import { IButtonIcon } from '@types'
 import styles from './ButtonIcon.module.css'
 
-const ButtonIcon = ({
-  content,
-  doClick,
-  icon: Icon,
-  vars,
-  ...rest
-}: IButtonIcon) => {
+const ButtonIcon = ({ content, doClick, icon, vars, ...rest }: IButtonIcon) => {
+  const Icon = icon
+
   return (
     <button
       className={styles.button}
