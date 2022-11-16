@@ -8,39 +8,6 @@
   direction: var(--local-direction);
 }
 
-.content {
-  --local-align: center;
-  --local-padding: var(--padding);
-  --local-grid-column: 1/13;
-
-  align-items: var(--local-align);
-  direction: initial;
-  display: flex;
-  flex-direction: column;
-  font-size: clamp(0.8rem, 1.5vw, 1.5rem);
-  grid-column: var(--local-grid-column);
-  justify-content: center;
-  padding: var(--local-padding);
-
-  @media (--laptop) {
-    --local-align: flex-start;
-    --local-padding: calc(var(--padding) * 1.5);
-    --local-grid-column: 3/7;
-  }
-
-  @media (--desktop) {
-    --local-padding: calc(var(--padding) * 2);
-  }
-
-  & h3 {
-    margin: 0 0 var(--text-mb) 0;
-    font-size: clamp(0.8rem, 2.5vw, 1.5rem);
-  }
-  & p {
-    margin: 0 0 var(--text-mb) 0;
-  }
-}
-
 .image {
   --local-grid-column: 1/13;
 
