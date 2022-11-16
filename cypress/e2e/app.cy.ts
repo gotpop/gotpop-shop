@@ -12,7 +12,7 @@ describe('Navigation', () => {
         cy.get('a[href*="forms"]').click()
 
         // The new url should include "/about"
-        cy.url().should('include', '/forms')
+        cy.url().should('include', 'forms')
 
         // The new page should contain an h1 with "About page"
         cy.get('h3').contains('Form demo')
