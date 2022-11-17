@@ -103,7 +103,7 @@ export interface IInputText {
     pattern?: string
     required?: boolean
     type?: string
-    valid?: string
+    valid?: boolean
     value?: string
 }
 

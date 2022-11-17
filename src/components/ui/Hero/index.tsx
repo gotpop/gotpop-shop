@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import LinkInternal from '../LinkInternal'
+import LinkInternal from '@ui/LinkInternal'
 import keyboardPic from '@images/hero/keyboard.png'
 import styles from './Hero.module.css'
 

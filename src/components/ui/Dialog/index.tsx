@@ -4,7 +4,7 @@ import ButtonIcon from '@ui/ButtonIcon'
 import { ImCross } from 'react-icons/im'
 import styles from './Dialog.module.css'
 
-export default function Dialog({ children, handleClose }) {
+const Dialog = ({ children, handleClose }) => {
   const dialogRef = useRef(null)
 
   useEffect(() => {
@@ -31,3 +31,9 @@ export default function Dialog({ children, handleClose }) {
     </dialog>
   )
 }
+
+Dialog.defaultProps = {
+  handleClose: null
+}
+
+export default Dialog

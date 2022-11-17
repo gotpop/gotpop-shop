@@ -1,6 +1,6 @@
 import styles from './Intro.module.css'
 
-export default function Intro({ content }) {
+const Intro = ({ content }) => {
   const { title, text } = content
 
   return (
@@ -10,3 +10,12 @@ export default function Intro({ content }) {
     </section>
   )
 }
+
+Intro.defaultProps = {
+  content: {
+    title: 'This Is The Intro Component',
+    text: 'This is the body text of the intro component.'
+  }
+}
+
+export default Intro

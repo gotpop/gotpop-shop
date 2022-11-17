@@ -15,7 +15,7 @@ export default function TriggerIcon({ menuState }) {
 
   return (
     <span className={styles.icon} ref={trigger}>
-      <span className={stylesSpan.top}></span>
+      <span className={stylesSpan.top} data-test="top"></span>
       <span className={stylesSpan.middle}></span>
       <span className={stylesSpan.bottom}></span>
     </span>

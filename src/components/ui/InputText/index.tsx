@@ -28,6 +28,7 @@ const InputText = ({
 InputText.defaultProps = {
   error: null,
   valid: null,
+  handleChange: null,
   value: ''
 }
 
