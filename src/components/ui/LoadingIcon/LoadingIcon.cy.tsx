@@ -1,7 +1,7 @@
 import LoadingIcon from '@ui/LoadingIcon'
 
-describe('LinkInternaaaal.cy.ts', () => {
-  it('playground', () => {
+describe('LoadingIcon', () => {
+  it('loads', () => {
     cy.mount(<LoadingIcon />)
   })
 })
