@@ -100,7 +100,7 @@ export default function Form2() {
             content="Submit"
             disabled={!formIsValid}
             icon={loading ? LoadingIcon : BsCheckLg}
-            vars={{ ['--iconColour']: 'var(--success)' }}
+            vars={{ ['--icon-colour']: 'var(--success)' }}
           />
         </form>
       </Box>

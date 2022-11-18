@@ -24,7 +24,7 @@ const Dialog = ({ children, handleClose }) => {
             content={'Close'}
             doClick={handleClose}
             icon={ImCross}
-            vars={{ ['--iconColour']: 'var(--error)' }}
+            vars={{ ['--icon-colour']: 'var(--error)' }}
           />
         </form>
       </div>

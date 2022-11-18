@@ -58,7 +58,7 @@ export default function Form1() {
           />
           <ButtonIcon
             content="Submit"
-            vars={{ ['--iconColour']: 'var(--success)' }}
+            vars={{ ['--icon-colour']: 'var(--success)' }}
             icon={BsCheckLg}
           />
         </form>

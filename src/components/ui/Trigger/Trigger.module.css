@@ -1,5 +1,5 @@
 .trigger {
-  --iconColour: var(--white);
+  --icon-colour: var(--white);
   --local-display: flex;
   --local-position: static;
 
