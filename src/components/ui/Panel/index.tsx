@@ -1,19 +1,12 @@
 import Image from 'next/image'
 import LinkIcon from '@ui/LinkIcon'
-import keyboardPic from '../../../../public/images/books.png'
 import macPic from '@images/mac.png'
 import styles from './Panel.module.css'
 import stylesContent from './PanelContent.module.css'
 
-// import keyboardPic from '@images/hero/keyboard.png'
-
 const Panel = ({ image, page }) => {
-  // console.log('image :', image.src)
   const { link, excerpt, title, id, direction } = page
   const vars = { ['--local-direction' as string]: 'rtl' }
-
-  const liam = `http://localhost:3000${image.src}`
-  console.log('liam :', liam)
 
   return (
     <section style={direction === 'rtl' ? vars : null} className={styles.panel}>
@@ -24,19 +17,16 @@ const Panel = ({ image, page }) => {
       </div>
       <Image
         className={styles.image}
-        src={liam}
-        width={image.width}
-        height={image.height}
-        alt="Image alt2"
-        // placeholder="blur"
+        src={image}
+        alt="Image alt"
+        placeholder="blur"
       />
     </section>
   )
 }
 
 Panel.defaultProps = {
-  // image: macPic,
-  image: keyboardPic,
+  image: macPic,
   page: {
     id: '1',
     direction: 'ltr',
