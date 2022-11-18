@@ -20,6 +20,8 @@ const ButtonIcon = ({ content, doClick, icon, vars, ...rest }: IButtonIcon) => {
 
 ButtonIcon.defaultProps = {
   content: 'Click',
+  doClick: null,
+  icon: null,
   vars: null
 }
 
