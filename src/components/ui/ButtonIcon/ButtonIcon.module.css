@@ -1,11 +1,11 @@
 .button {
-  --iconColour: var(--white);
+  --icon-colour: var(--white);
 
   align-items: center;
   background-color: var(--hwb-grape-4);
   border-radius: var(--radius);
   border: none;
-  color: var(--iconColour);
+  color: var(--icon-colour);
   cursor: pointer;
   display: flex;
   gap: calc(var(--padding-btn) / 2);
@@ -14,16 +14,16 @@
   justify-content: space-between;
 
   &[disabled] {
-    opacity: .6;
+    opacity: 0.6;
     filter: grayscale(50%);
     cursor: not-allowed;
   }
-  
+
   &:hover {
     background-color: var(--accent);
     color: var(--white);
   }
-  
+
   & span {
     color: var(--white);
     font-size: var(--size-s-1);
