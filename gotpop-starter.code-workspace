@@ -9,6 +9,7 @@
       "*.css": "postcss"
     },
     "spellchecker.ignoreFileExtensions": ["*.stylelintrc"],
-    "css.format.enable": false
+    "css.format.enable": false,
+    "workbench.colorTheme": "Solarized Dark"
   }
 }
