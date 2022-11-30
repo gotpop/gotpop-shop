@@ -16,3 +16,19 @@ model NavItem {
   test String
   href String
 }
+
+model PanelLink {
+  id    Int     @id @default(autoincrement())
+  href  String
+  text  String
+  Panel Panel[]
+}
+
+model Panel {
+  id          Int       @id @default(autoincrement())
+  direction   String
+  link        PanelLink @relation(fields: [panelLinkId], references: [id])
+  excerpt     String
+  title       String
+  panelLinkId Int
+}
