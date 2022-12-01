@@ -20,4 +20,11 @@ export const navPrimary = [
         href: '/forms',
         internal: true
     },
+    {
+        id: '3',
+        text: 'Shop',
+        test: 'shop',
+        href: '/shop',
+        internal: true
+    },
 ]
