@@ -6,13 +6,10 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🧪
+      - name: Checkout 🛒
         uses: actions/checkout@v2
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
       - name: Cypress build & run 🏗️
         env:
-          ## Environment variable for step 1
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         uses: cypress-io/github-action@v4.2.0
         with:
@@ -21,7 +18,5 @@ jobs:
       - name: Run Component tests 🔬
         uses: cypress-io/github-action@v4
         with:
-          # we have already installed everything
           install: false
-          # to run component tests we need to use "component: true"
           component: true
