@@ -6,6 +6,8 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
+      - name: Print name
+        run: echo "My API_KEY is ${{secrets.API_KEY}}"
       - name: Checkout 🧪
         env:
           ## Environment variable for step 1
