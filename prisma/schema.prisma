@@ -17,18 +17,57 @@ model NavItem {
   href String
 }
 
-model PanelLink {
-  id    Int     @id @default(autoincrement())
-  href  String
-  text  String
-  Panel Panel[]
+model Panel {
+  id        Int    @id @default(autoincrement())
+  direction String
+  linktext  String
+  linkhref  String
+  excerpt   String
+  title     String
 }
 
-model Panel {
-  id          Int       @id @default(autoincrement())
-  direction   String
-  link        PanelLink @relation(fields: [panelLinkId], references: [id])
-  excerpt     String
-  title       String
-  panelLinkId Int
+model Photo {
+  id      String    @id @default(uuid())
+  height  Int
+  width   Int
+  url     String
+  alt     String
+  Product Product[]
+}
+
+model User {
+  id       String @id @default(uuid())
+  email    String @unique
+  password String
+  name     String
+  Cart     Cart[]
+}
+
+model Product {
+  id        String     @id @default(uuid())
+  name      String     @unique
+  price     Float
+  stock     Int
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  brand     String?
+  photo     Photo?     @relation(fields: [photoId], references: [id])
+  CartItem  CartItem[]
+  photoId   String
+}
+
+model CartItem {
+  id        String  @id @default(uuid())
+  product   Product @relation(fields: [productId], references: [id])
+  quantity  Int
+  productId String
+  Cart      Cart?   @relation(fields: [cartId], references: [id])
+  cartId    String?
+}
+
+model Cart {
+  id        String     @id @default(uuid())
+  userId    String
+  user      User       @relation(fields: [userId], references: [id])
+  cartItems CartItem[]
 }
