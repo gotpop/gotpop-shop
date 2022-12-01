@@ -8,7 +8,6 @@ jobs:
     steps:
       - name: Checkout 🧪
         uses: actions/checkout@v2
-        run: env
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress build & run 🏗️
