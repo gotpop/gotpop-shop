@@ -11,7 +11,9 @@ import { getImage } from '@utils/getComponent'
 import htmlPic from '@images/html.png'
 import keyboardPic from '@images/keyboard.png'
 import macPic from '@images/mac.png'
-import { server } from '@config'
+import prisma from '@lib/prisma'
+
+// import { server } from '@config'
 
 interface Props {
   pageData: IPage[]
@@ -41,12 +43,15 @@ const Brochure: NextPage<Props> = ({ pageData }) => {
 export default Brochure
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(`${server}/api/pages`)
-  const pageData = await res.json()
+  const navItems = await prisma.navItem.findMany()
+  const pageData = await prisma.panel.findMany()
+
+  // console.log('pageData :', pageData)
 
   return {
     props: {
-      pageData
+      pageData: pageData,
+      navItems: navItems
     }
   }
 }

@@ -33,7 +33,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-#Cypress
+# Cypress
 cypress/videos
 cypress/screenshots
 .nyc_output
+
+# Env
+.env
