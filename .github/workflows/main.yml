@@ -1,6 +1,8 @@
 name: Cypress Tests 🧪
 
 on: [push]
+env:
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
 jobs:
   cypress-run:
