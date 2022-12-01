@@ -6,16 +6,14 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
-      - name: Print name
-        run: echo "My API_KEY is ${{secrets.API_KEY}}"
       - name: Checkout 🧪
-        env:
-          ## Environment variable for step 1
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         uses: actions/checkout@v2
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress build & run 🏗️
+        env:
+          ## Environment variable for step 1
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         uses: cypress-io/github-action@v4.2.0
         with:
           build: npm run build
