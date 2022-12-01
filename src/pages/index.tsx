@@ -6,15 +6,14 @@ import LayoutFull from '@components/layouts/LayoutFull'
 import Main from '@components/ui/Main'
 import Meta from '@head/Meta'
 import Panel from '@components/ui/Panel'
-import { PrismaClient } from '@prisma/client'
 import booksPic from '@images/books.png'
 import { getImage } from '@utils/getComponent'
 import htmlPic from '@images/html.png'
 import keyboardPic from '@images/keyboard.png'
 import macPic from '@images/mac.png'
-import { server } from '@config'
+import prisma from '@lib/prisma'
 
-const prisma = new PrismaClient()
+// import { server } from '@config'
 
 interface Props {
   pageData: IPage[]
@@ -45,10 +44,9 @@ export default Brochure
 
 export const getStaticProps: GetStaticProps = async () => {
   const navItems = await prisma.navItem.findMany()
-  console.log('navItems :', navItems)
+  const pageData = await prisma.panel.findMany()
 
-  const res = await fetch(`${server}/api/pages`)
-  const pageData = await res.json()
+  // console.log('pageData :', pageData)
 
   return {
     props: {

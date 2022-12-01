@@ -5,7 +5,7 @@ import styles from './Panel.module.css'
 import stylesContent from './PanelContent.module.css'
 
 const Panel = ({ image, page }) => {
-  const { link, excerpt, title, id, direction } = page
+  const { linkhref, linktext, excerpt, title, id, direction } = page
   const vars = { ['--local-direction' as string]: 'rtl' }
 
   return (
@@ -13,7 +13,7 @@ const Panel = ({ image, page }) => {
       <div className={stylesContent.content}>
         <h3 id={`panel-${id}`}>{title}</h3>
         <p>{excerpt}</p>
-        <LinkIcon href={link.href} />
+        <LinkIcon href={linkhref} />
       </div>
       <Image
         className={styles.image}

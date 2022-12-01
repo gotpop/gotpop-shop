@@ -16,6 +16,7 @@
     "jsx": "preserve",
     "baseUrl": "./src",
     "paths": {
+      "@lib/*": ["./lib/*"],
       "@blocks/*": ["./components/blocks/*"],
       "@components/*": ["./components/*"],
       "@config": ["../config/index"],
