@@ -1,14 +1,15 @@
 name: Cypress Tests 🧪
 
 on: [push]
-env:
-  DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🧪
+        env:
+          ## Environment variable for step 1
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         uses: actions/checkout@v2
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
