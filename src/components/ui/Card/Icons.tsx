@@ -4,7 +4,7 @@ import { AiFillChrome } from 'react-icons/ai'
 import { DiCssTricks } from 'react-icons/di'
 import { FaEdge } from 'react-icons/fa'
 import { TfiGithub } from 'react-icons/tfi'
-import { getComponent } from '@utils/getComponent'
+import { getComponent } from 'utilities/getComponent'
 import stylesIcon from './Icons.module.css'
 
 const icons = new Map([

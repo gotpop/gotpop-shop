@@ -1,0 +1,8 @@
+.gridwrap {
+  --local-grid-area: initial;
+  
+  display: grid;
+  grid-area: var(--local-grid-area);
+  grid-template-columns: minmax(100px, 1000px);
+  justify-content: center;
+}

@@ -2,20 +2,29 @@
   --local-direction: initial;
   --local-bg-colour: var(--hwb-grey-1);
 
-  display: grid;
   background-color: var(--local-bg-colour);
-  grid-template-columns: repeat(12, 1fr);
   direction: var(--local-direction);
+  scroll-snap-stop: always;
+  scroll-snap-align: center;
+
+  &:nth-of-type(odd) {
+    --local-bg-colour: hwb(38deg 90% 2%);
+  }
 }
 
 .image {
-  --local-grid-column: 1/13;
+  --local-grid-column: 1 / 13;
 
   height: auto;
   max-width: 100%;
   grid-column: var(--local-grid-column);
+  border-radius: var(--radius-lg);
+  align-self: center;
 
-  @media (--laptop) {
-    --local-grid-column: 7/13;
+  @media (width > 600px) {
+    --local-grid-column: 4 / 13;
+
+    margin: 3rem 0 3rem 0;
+    grid-row: 1;
   }
 }

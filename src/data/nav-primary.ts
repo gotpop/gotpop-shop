@@ -21,7 +21,7 @@ export const navPrimary = [
         internal: true
     },
     {
-        id: '3',
+        id: '4',
         text: 'Shop',
         test: 'shop',
         href: '/shop',

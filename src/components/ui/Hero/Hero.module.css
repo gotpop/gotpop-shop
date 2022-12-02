@@ -1,17 +1,19 @@
 .hero {
   --local-direction: initial;
-  --local-image: url("/images/keyboard.png");
+  --local-image: none;
   --local-display: none;
 
   display: grid;
   place-content: center;
   width: 100vw;
   height: 100vh;
+  background-color: var(--white);
   background-image: var(--local-image);
   background-repeat: no-repeat;
   background-size: cover;
+  scroll-snap-align: start;
 
-  @media (--ipad) {
+  @media (width > 600px) {
     --local-image: none;
   }
 }
@@ -26,22 +28,23 @@
   color: var(--hwb-grape-5);
   display: flex;
   flex-direction: column;
-  gap: var(--padding);
   padding: var(--local-padding);
   text-align: center;
   z-index: 999;
   margin: var(--local-padding);
+  font-size: 1rem;
 
-  @media (--ipad) {
+  @media (width > 600px) {
     --local-padding: calc(var(--padding) * 2);
   }
 
   & h3 {
-    margin: 0;
-    font-weight: 900;
+    margin: 0 0 var(--text-mb) 0;
+    font-weight: 700;
   }
   & p {
-    margin: 0;
+    margin: 0 0 calc(var(--text-mb) * 2) 0;
+    color: var(--hwb-grey-5);
   }
 }
 
@@ -54,7 +57,7 @@
   top: 0;
   display: var(--local-display);
 
-  @media (--ipad) {
+  @media (width > 600px) {
     --local-display: block;
   }
 }

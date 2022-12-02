@@ -1,0 +1,17 @@
+.gridauto {
+  display: grid;
+  grid-gap: calc(var(--padding) / 2);
+  margin: 0 var(--padding);
+  
+  @media (width > 400px) {
+    grid-auto-flow: column;
+    grid-template-rows: repeat(6, auto);
+    grid-auto-columns: auto;
+  }
+  
+  @media (width > 600px) {
+    grid-auto-flow: column;
+    grid-template-rows: repeat(3, auto);
+    grid-auto-columns: 6fr 6fr;
+  }
+}
