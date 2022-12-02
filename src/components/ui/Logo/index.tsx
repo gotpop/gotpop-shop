@@ -10,18 +10,19 @@ type Props = {
 }
 
 const Logo = ({ vars }: Props) => {
-  const { setMenu } = useContext(MenuContext)
+  // const { setMenu } = useContext(MenuContext)
 
-  const handleClick = () => {
-    setMenu((prevState: { open: boolean }) => {
-      set('--menu-state', 'var(--menu-closed)')
+  // const handleClick = () => {
+  //   setMenu((prevState: { open: boolean }) => {
+  //     set('--menu-state', 'var(--menu-closed)')
 
-      return { open: false }
-    })
-  }
+  //     return { open: false }
+  //   })
+  // }
 
   return (
-    <Link className={styles.logo} href="/" onClick={handleClick}>
+    <Link className={styles.logo} href="/">
+      {/* <Link className={styles.logo} href="/" onClick={handleClick}> */}
       <h1 id="logo">
         <GiSpiralLollipop />
         <span>Starter</span>
