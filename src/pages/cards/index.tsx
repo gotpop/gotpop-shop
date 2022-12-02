@@ -13,10 +13,12 @@ interface Props {
 const Cards: NextPage<Props> = ({ cards }) => {
   return (
     <LayoutStandard>
-      <Meta />
-      {cards.map((card: ICard) => (
-        <Card key={card.id} content={card} fullCard={false} />
-      ))}
+      <>
+        <Meta />
+        {cards.map((card: ICard) => (
+          <Card key={card.id} content={card} fullCard={false} />
+        ))}
+      </>
     </LayoutStandard>
   )
 }

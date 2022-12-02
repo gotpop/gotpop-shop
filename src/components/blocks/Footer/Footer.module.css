@@ -1,24 +1,32 @@
+@custom-media --ipad (width > 600px);
+@custom-media --desktop (width > 1200px);
+
 .footer {
   --local-bg: var(--hwb-grape-4);
-  --local-mt: calc(var(--padding) * 3);
-  --local-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  --local-radius: var(--radius-lg);
+  --local-border-radius: var(--local-radius) var(--local-radius) 0 0;
+  --local-scroll-snap-align: initial;
 
   grid-area: foot;
   background: var(--local-bg);
-  color: var(--white);
-  display: flex;
-  flex-direction: column;
-  padding: calc(var(--padding) * 3);
-  place-content: center;
-  font-size: 0.8rem;
-  margin-top: var(--local-mt);
-  gap: 3rem;
+  padding: calc(var(--spacing-lg) * 3) 0;
+  scroll-snap-align: var(--local-scroll-snap-align);
+  scroll-snap-stop: always;
 
   @media (--ipad) {
-    border-radius: var(--local-radius);
+    border-radius: var(--local-border-radius);
+    width: calc(100vw - var(--scrollbar-width));
   }
 
-  & span {
-    align-self: center;
+  @media (--desktop) {
+    --local-radius: var(--radius-xl);
   }
+}
+
+.copyright {
+  margin: var(--spacing) 0 0 0;
+  grid-column: span 12;
+  color: var(--white);
+  font-size: var(--size-s-1);
+  text-align: center;
 }

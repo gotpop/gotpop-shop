@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { CSSProperties, useEffect, useRef } from 'react'
 
 import ButtonIcon from '@ui/ButtonIcon'
 import { ImCross } from 'react-icons/im'
@@ -21,10 +21,10 @@ const Dialog = ({ children, handleClose }) => {
         {children}
         <form method="dialog" className={styles.buttons}>
           <ButtonIcon
-            content={'Close'}
-            doClick={handleClose}
+            text={'Close'}
+            handleClick={handleClose}
             icon={ImCross}
-            vars={{ ['--icon-colour']: 'var(--error)' }}
+            vars={{ ['--icon-colour']: 'var(--error)' } as CSSProperties}
           />
         </form>
       </div>

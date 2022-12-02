@@ -1,15 +1,17 @@
+import { CSSProperties, ReactElement, useState } from 'react'
+
 import Box from '@ui/Box'
 import { BsCheckLg } from 'react-icons/bs'
 import ButtonIcon from '@ui/ButtonIcon'
 import Dialog from '@ui/Dialog'
 import { IData3 } from '@types'
+import { IconType } from 'react-icons'
 import InputText from '@ui/InputText'
 import Intro from '@components/ui/Intro'
 import { Results } from './results'
 import { handleSubmit } from './handleSubmit'
 import { introForm1Content } from '@data/intro'
 import styles from './Form1.module.css'
-import { useState } from 'react'
 
 export default function Form1() {
   const [data, setData] = useState<IData3>({})
@@ -57,8 +59,8 @@ export default function Form1() {
             value={data.last}
           />
           <ButtonIcon
-            content="Submit"
-            vars={{ ['--icon-colour']: 'var(--success)' }}
+            text="Submit"
+            vars={{ ['--icon-colour']: 'var(--success)' } as CSSProperties}
             icon={BsCheckLg}
           />
         </form>

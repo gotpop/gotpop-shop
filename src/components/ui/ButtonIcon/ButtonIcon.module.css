@@ -1,10 +1,13 @@
 .button {
   --icon-colour: var(--white);
+  --local-bg-colour: var(--hwb-grape-4);
+  --local-font-size: var(--size-s-1);
+  --local-font-colour: var(--white);
 
   align-items: center;
-  background-color: var(--hwb-grape-4);
+  background-color: var(--local-bg-colour);
   border-radius: var(--radius);
-  border: none;
+  border-color: transparent;
   color: var(--icon-colour);
   cursor: pointer;
   display: flex;
@@ -25,12 +28,8 @@
   }
 
   & span {
-    color: var(--white);
-    font-size: var(--size-s-1);
-
-    @media (--ipad) {
-      font-size: var(--size-l-1);
-    }
+    color: var(--local-font-colour);
+    font-size: var(--local-font-size);
   }
 
   & svg {

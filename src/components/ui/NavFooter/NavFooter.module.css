@@ -1,0 +1,53 @@
+@custom-media --ipad (width > 600px);
+@custom-media --laptop (width > 1000px);
+
+.navfooter {
+  --local-grid-column: span 12;
+  --local-direction: column;
+
+  color: var(--white);
+  display: flex;
+  flex-direction: var(--local-direction);
+  font-size: var(--size-s-1);
+  gap: calc(var(--padding) / 2);
+  grid-column: var(--local-grid-column);
+
+  @media (--ipad) {
+    --local-direction: row;
+
+    align-self: center;
+    border-radius: var(--radius);
+    justify-content: end;
+    justify-self: initial;
+    padding: calc(var(--padding) / 2);
+  }
+
+  @media (--laptop) {
+    --local-grid-column: 3 / 11;
+  }
+
+  & button {
+    background-color: transparent;
+    border-color: inherit;
+    border: 1px solid;
+    flex: auto;
+  }
+
+  & a {
+    align-items: center;
+    border-color: inherit;
+    border-radius: var(--radius);
+    border: 1px solid;
+    color: inherit;
+    display: inline-flex;
+    flex: auto;
+    gap: calc(var(--padding-btn) / 2);
+    justify-content: space-between;
+    padding: calc(var(--padding-btn) / 2) var(--padding-btn);
+    transition: background-color var(--timing) ease;
+
+    &:hover {
+      background-color: var(--accent);
+    }
+  }
+}

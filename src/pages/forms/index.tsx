@@ -8,25 +8,27 @@ import Meta from '@head/Meta'
 import { server } from '@config'
 
 interface Props {
-  forms: object[];
+  forms: object[]
 }
 
 const Forms: NextPage<Props> = ({ forms }) => {
   return (
     <LayoutStandard>
-      <Meta />
-      {forms ? (
-        forms.map((form: IForm) => (
-          <Card
-            key={form.id}
-            content={form}
-            fullCard={false}
-            childPath={'forms'}
-          />
-        ))
-      ) : (
-        <Loading />
-      )}
+      <>
+        <Meta />
+        {forms ? (
+          forms.map((form: IForm) => (
+            <Card
+              key={form.id}
+              content={form}
+              fullCard={false}
+              childPath={'forms'}
+            />
+          ))
+        ) : (
+          <Loading />
+        )}
+      </>
     </LayoutStandard>
   )
 }

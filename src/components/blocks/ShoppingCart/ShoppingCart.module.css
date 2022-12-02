@@ -1,0 +1,26 @@
+.intro {
+  grid-column: span 12;
+  display: flex;
+  gap: var(--spacing);
+  justify-content: space-between;
+  align-items: center;
+
+  & h2 {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin: 0;
+  }
+}
+
+.cart {
+  --local-bg-colour: var(--hwb-grey-1);
+}
+
+.total {
+  grid-column: span 12;
+  font-weight: 900;
+  font-size: var(--size-l-1);
+  display: flex;
+  gap: var(--padding);
+}
