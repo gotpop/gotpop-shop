@@ -1,24 +1,30 @@
 .site {
   --local-columns: var(--menu-side-width) calc(100vw - var(--scrollbar-width));
-  --local-rows: 1fr 0 auto;
+  --local-rows: 1fr 1fr auto;
   --local-template: "head main" "head main" "head foot";
   --local-translate: var(--menu-state);
   --local-width: calc(100vw + var(--menu-side-width) - var(--scrollbar-width));
+  --local-gap: 0;
 
+  background-color: var(--hwb-grey-1);
   display: grid;
+  gap: var(--local-gap);
   grid-template-areas: var(--local-template);
   grid-template-columns: var(--local-columns);
   grid-template-rows: var(--local-rows);
   min-height: 100vh;
+  position: relative;
   transition: translate var(--timing) ease;
   translate: var(--local-translate);
   width: var(--local-width);
+  z-index: 0;
 
-  @media (--ipad) {
+  @media (width > 600px) {
     --local-columns: 1fr;
-    --local-rows: auto minmax(0vh, max-content) auto;
+    --local-rows: auto minmax(80vh, max-content) auto;
     --local-template: "head" "main" "foot";
     --local-translate: none;
-    --local-width: 100vw;
+    --local-width: auto;
+    --local-gap: 0;
   }
 }

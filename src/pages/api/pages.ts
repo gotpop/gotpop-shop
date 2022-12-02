@@ -1,11 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { IPage } from '@types'
-import { pages } from '@data/pages'
+import { Panel } from '@prisma/client'
+import prisma from '@lib/prisma'
 
-export default function handler(
+export default async function handler(
   _req: NextApiRequest,
-  res: NextApiResponse<IPage[]>
+  res: NextApiResponse<Panel[]>
 ) {
-  return res.status(200).json(pages)
+  const panelData = await prisma.panel.findMany()
+
+  return res.status(200).json(panelData)
 }

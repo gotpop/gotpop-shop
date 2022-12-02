@@ -1,6 +1,6 @@
 import ColumnContext from '@context/MenuContext'
 import TriggerIcon from '@ui/TriggerIcon'
-import { set } from '@utils/setPropsOnRoot'
+import { set } from 'utilities/setPropsOnRoot'
 import styles from './Trigger.module.css'
 import { useContext } from 'react'
 

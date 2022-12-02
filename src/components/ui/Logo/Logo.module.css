@@ -1,23 +1,23 @@
+@custom-media --ipad (width > 600px);
+
 .logo {
-  --local-margin: 0 0 var(--text-mb) 0;
-  --local-grid-column: 2/4;
+  --local-margin: var(--spacing) 0 var(--text-mb) 0;
+  --local-grid-column: 1 / 4;
   --local-gap: 0.5rem;
 
   display: flex;
 
   @media (--ipad) {
     grid-column: var(--local-grid-column);
-  }
-
-  @media (--desktop) {
-    --local-grid-column: 1/5;
+    padding: calc(var(--padding) / 2) 0;
+    align-self: start;
   }
 
   & h1 {
     align-items: center;
     color: var(--local-colour);
     display: flex;
-    font-size: clamp(1.5rem, 3.5vw, 3rem);
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
     font-weight: 200;
     gap: var(--local-gap);
     justify-content: space-between;
@@ -26,9 +26,6 @@
 
     @media (--ipad) {
       --local-margin: 0;
-    }
-
-    @media (--laptop) {
       --local-gap: 1rem;
     }
   }

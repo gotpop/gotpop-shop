@@ -4,7 +4,7 @@ import Form1 from '@features/Form1'
 import Form2 from '@features/Form2'
 import LayoutStandard from '@layouts/LayoutStandard'
 import Meta from '@head/Meta'
-import { getComponent } from '@utils/getComponent'
+import { getComponent } from 'utilities/getComponent'
 import { server } from '@config'
 import { useRouter } from 'next/router'
 

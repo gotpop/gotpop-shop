@@ -6,7 +6,7 @@ describe('TriggerIcon', () => {
     cy.get('[data-test="top"]').should(
       'have.css',
       'background-color',
-      'rgb(255, 0, 0)'
+      'rgb(189, 60, 60)'
     )
   })
 })

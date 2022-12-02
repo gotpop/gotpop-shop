@@ -3,10 +3,10 @@
   --white: white;
 
   --success: green;
-  --error: red;
+  --error: #bd3c3c;
   --warning: yellow;
 
-  --hwb-grey-1: hwb(0 100% 0%);
+  --hwb-grey-1: hwb(0 95% 0%);
   --hwb-grey-2: hwb(0 77% 23%);
   --hwb-grey-3: hwb(0 55% 45%);
   --hwb-grey-4: hwb(0 33% 67%);
@@ -33,10 +33,12 @@
   --size-s-3: calc(var(--size-s-2) / var(--scale));
 
   --text-opacity: 0.9;
-  --font-primary: "RobotoFlex";
+  --font-primary: "Roboto Flex";
 
   --grid-columns: 1;
 
+  --spacing: 1rem;
+  --spacing-lg: calc(var(--spacing) * 2);
   --padding: 2rem;
   --padding-btn: 2em;
   --text-mb: 1rem;

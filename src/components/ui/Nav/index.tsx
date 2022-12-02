@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getComponent } from '@utils/getComponent'
+import { getComponent } from 'utilities/getComponent'
 import styles from './Nav.module.css'
 
 export default function Nav({ navItems, iconsMap }) {

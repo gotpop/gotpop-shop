@@ -18,6 +18,8 @@
     "paths": {
       "@lib/*": ["./lib/*"],
       "@blocks/*": ["./components/blocks/*"],
+      "@pages/*": ["./pages/*"],
+      "@hooks/*": ["./hooks/*"],
       "@components/*": ["./components/*"],
       "@config": ["../config/index"],
       "@context/*": ["./context/*"],
@@ -28,7 +30,7 @@
       "@layouts/*": ["./components/layouts/*"],
       "@types": ["./types/index"],
       "@ui/*": ["./components/ui/*"],
-      "@utils/*": ["./utils/*"]
+      "@utilities/*": ["./utilities/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

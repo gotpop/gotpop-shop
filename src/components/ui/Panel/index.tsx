@@ -1,26 +1,64 @@
+import { CSSProperties, useEffect, useRef } from 'react'
+
+import { AiOutlineArrowRight } from 'react-icons/ai'
+import Grid from '../Grid'
+import GridWrap from '../GridWrap'
 import Image from 'next/image'
 import LinkIcon from '@ui/LinkIcon'
+import { Panel as PanelType } from '@prisma/client'
 import macPic from '@images/mac.png'
+import { panelAnimations } from './Panel.animation'
 import styles from './Panel.module.css'
 import stylesContent from './PanelContent.module.css'
+import { useOnScreen } from '@hooks/useOnScreen'
 
-const Panel = ({ image, page }) => {
+type Props = {
+  compact: boolean
+  image: string | null | undefined
+  page: PanelType
+}
+
+const Panel = ({ compact, image, page }: Props) => {
   const { linkhref, linktext, excerpt, title, id, direction } = page
-  const vars = { ['--local-direction' as string]: 'rtl' }
+
+  const sectionRef = useRef<HTMLElement | null>(null)
+  const contentRef = useRef<HTMLDivElement | null>(null)
+  const imageRef = useRef<HTMLImageElement>(null)
+  const isOnScreen = useOnScreen(sectionRef)
+
+  const vars = { ['--local-direction']: 'rtl' } as CSSProperties
+  const varsGrid = { ['--local-min-height']: '100vh' } as CSSProperties
+
+  useEffect(() => {
+    panelAnimations(contentRef.current, imageRef.current, isOnScreen)
+  }, [isOnScreen])
 
   return (
-    <section style={direction === 'rtl' ? vars : null} className={styles.panel}>
-      <div className={stylesContent.content}>
-        <h3 id={`panel-${id}`}>{title}</h3>
-        <p>{excerpt}</p>
-        <LinkIcon href={linkhref} />
-      </div>
-      <Image
-        className={styles.image}
-        src={image}
-        alt="Image alt"
-        placeholder="blur"
-      />
+    <section
+      style={direction === 'rtl' ? vars : undefined}
+      className={styles.panel}
+      id={`panel-${id}`}
+      ref={sectionRef}
+    >
+      <GridWrap>
+        <Grid vars={!compact ? varsGrid : undefined}>
+          <>
+            <div ref={contentRef} className={stylesContent.content}>
+              <h3>{title}</h3>
+              <p>{excerpt}</p>
+              <LinkIcon href={linkhref} icon={<AiOutlineArrowRight />}>
+                Buy now
+              </LinkIcon>
+            </div>
+            <Image
+              className={styles.image}
+              src={image}
+              alt="Image alt"
+              placeholder="blur"
+            />
+          </>
+        </Grid>
+      </GridWrap>
     </section>
   )
 }

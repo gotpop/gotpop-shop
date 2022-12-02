@@ -1,4 +1,4 @@
-import { ChangeEventHandler, MouseEventHandler } from "react";
+import { ChangeEventHandler, MouseEventHandler, ReactElement } from "react";
 
 import { IconType } from "react-icons";
 
@@ -15,7 +15,7 @@ export interface ILinkInternal {
     vars?: object;
     children?: string;
     properties?: { local: string; global: string }[];
-    icon?: IconType;
+    icon?: any;
     href: string;
 }
 
@@ -24,7 +24,7 @@ export interface ILinkIcon {
     children?: string;
     vars?: object;
     properties?: { local: string; global: string }[];
-    icon?: IconType;
+    icon?: any;
     href: string;
 }
 
@@ -113,12 +113,10 @@ export interface IData3 {
 }
 
 export interface IPage {
-    id: string;
+    id: number;
     direction: string;
-    link: {
-        href: string;
-        text: string;
-    }
+    linkhref: string;
+    linktext: string;
     excerpt: string;
     title: string;
 }
