@@ -1,15 +1,21 @@
 .intro {
-  --local-bg: var(--hwb-grape-5);
+  --local-bg: none;
+  --local-padding: none;
+  --local-colour: inherit;
 
-  background: var(--local-bg);
+  background-color: var(--local-bg);
   border-radius: var(--radius-lg);
-  color: var(--white);
+  color: var(--local-colour);
   display: flex;
   flex-direction: column;
-  padding: var(--padding);
+  padding: var(--local-padding);
 
-  @media (--ipad) {
-    grid-column: span var(--grid-columns);
+  @media (width > 500px) {
+    grid-column: span 2;
+  }
+
+  @media (width > 800px) {
+    grid-column: span 2;
   }
 
   & h2 {

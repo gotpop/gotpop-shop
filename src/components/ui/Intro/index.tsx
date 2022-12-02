@@ -1,6 +1,13 @@
 import styles from './Intro.module.css'
 
-const Intro = ({ content }) => {
+type Props = {
+  content: {
+    text: string
+    title: string
+  }
+}
+
+const Intro = ({ content }: Props) => {
   const { title, text } = content
 
   return (

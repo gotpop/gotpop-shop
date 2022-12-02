@@ -22,8 +22,10 @@ const FormPage: NextPage<Props> = ({ form }) => {
 
   return (
     <LayoutStandard>
-      <Meta />
-      {getComponent(formsMap, query.id)}
+      <>
+        <Meta />
+        {/* {getComponent(formsMap, query.id)} */}
+      </>
     </LayoutStandard>
   )
 }

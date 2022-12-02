@@ -1,28 +1,37 @@
-import { IButtonIcon } from '@types'
+import { CSSProperties, MouseEvent, ReactElement } from 'react'
+
 import styles from './ButtonIcon.module.css'
 
-const ButtonIcon = ({ content, doClick, icon, vars, ...rest }: IButtonIcon) => {
-  const Icon = icon
+type ButtonIconProps = {
+  text?: string
+  icon?: any
+  handleClick?: (event: MouseEvent<HTMLButtonElement>) => void
+  vars?: CSSProperties
+  disabled?: boolean
+}
+
+const ButtonIcon = ({
+  text,
+  handleClick,
+  icon,
+  vars,
+  ...rest
+}: ButtonIconProps) => {
+  const ButtonIcon = icon
 
   return (
     <button
       className={styles.button}
-      onClick={doClick}
+      onClick={handleClick}
       style={vars}
-      type="submit"
       {...rest}
     >
-      <span>{content}</span>
-      <Icon />
+      <>
+        {text ? <span>{text}</span> : null}
+        {ButtonIcon}
+      </>
     </button>
   )
-}
-
-ButtonIcon.defaultProps = {
-  content: 'Click',
-  doClick: null,
-  icon: null,
-  vars: null
 }
 
 export default ButtonIcon

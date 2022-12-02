@@ -21,7 +21,7 @@ const Icons = ({ links }) => (
     {links.map(link => (
       <a key={link.name} href={link.href} className={stylesIcon.link}>
         <span className={stylesIcon.text}>{link.name}</span>
-        {getComponent(icons, link.id)}
+        {/* {getComponent(icons, link.id)} */}
       </a>
     ))}
   </aside>

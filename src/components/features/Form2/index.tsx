@@ -1,4 +1,10 @@
-import { ChangeEvent, FormEvent, useReducer, useState } from 'react'
+import {
+  CSSProperties,
+  ChangeEvent,
+  FormEvent,
+  useReducer,
+  useState
+} from 'react'
 
 import Box from '@ui/Box'
 import { BsCheckLg } from 'react-icons/bs'
@@ -97,10 +103,10 @@ export default function Form2() {
             value={password.value}
           />
           <ButtonIcon
-            content="Submit"
+            text="Submit"
             disabled={!formIsValid}
             icon={loading ? LoadingIcon : BsCheckLg}
-            vars={{ ['--icon-colour']: 'var(--success)' }}
+            vars={{ ['--icon-colour']: 'var(--success)' } as CSSProperties}
           />
         </form>
       </Box>

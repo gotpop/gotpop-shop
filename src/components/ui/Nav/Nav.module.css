@@ -1,23 +1,41 @@
 .nav {
-  --local-grid-column: 5/12;
+  --local-grid-column: 4 / 13;
 
   display: flex;
   flex-direction: column;
   font-size: var(--size-s-1);
   gap: calc(var(--padding) / 2);
 
-  @media (--ipad) {
-    justify-self: end;
+  @media (width > 600px) {
+    justify-self: initial;
     align-self: center;
     flex-direction: row;
     grid-column: var(--local-grid-column);
   }
 
-  @media (--desktop) {
-    --local-grid-column: 7/13;
+  @media (width > 800px) {
+    --local-grid-column: 7 / 13;
+  }
+
+  & button {
+    flex: auto;
+    background-color: var(--white);
+    border-color: var(--hwb-grape-5);
+    border: 1px solid;
+    color: var(--hwb-grape-5);
+    align-items: center;
+
+    & span {
+      color: var(--hwb-grape-5);
+    }
+
+    &:hover {
+      border-color: var(--hwb-grape-5);
+    }
   }
 
   & a {
+    background-color: var(--white);
     border-radius: var(--radius);
     border: 1px solid;
     border-color: inherit;
@@ -27,6 +45,8 @@
     justify-content: space-between;
     padding: calc(var(--padding-btn) / 2) var(--padding-btn);
     transition: background-color var(--timing) ease;
+    flex: auto;
+    align-items: center;
 
     &:hover {
       background-color: var(--accent);

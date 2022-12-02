@@ -12,8 +12,10 @@ interface Props {
 const CardPage: NextPage<Props> = ({ card }) => {
   return (
     <LayoutStandard>
-      <Meta />
-      <Card content={card} fullCard={true} />
+      <>
+        <Meta />
+        <Card content={card} fullCard={true} />
+      </>
     </LayoutStandard>
   )
 }

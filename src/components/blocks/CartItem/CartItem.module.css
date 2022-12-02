@@ -1,0 +1,43 @@
+.cart {
+  background-color: var(--white);
+  grid-column: span 6;
+  overflow: hidden;
+
+  @media (width > 600px) {
+    border-radius: var(--radius);
+  }
+
+  .content {
+    padding: var(--padding);
+  }
+
+  & img {
+    max-width: 100%;
+    height: auto; 
+  }
+
+  & span {
+    align-self: center;
+  }
+}
+
+.intro {
+  margin-bottom: var(--padding);
+}
+
+.title {
+  display: flex;
+  gap: var(--padding);
+
+  & span {
+    font-weight: 700;
+  }
+}
+
+.price {
+  font-stayle: italic;
+}
+
+.total {
+  font-weight: 900;
+}

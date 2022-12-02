@@ -23,7 +23,7 @@ async function main() {
             brand: 'Acme',
             photo: {
                 create: {
-                    url: '/books.png',
+                    url: '/images/books.png',
                     alt: 'books',
                     width: 1000,
                     height: 640,
@@ -42,7 +42,7 @@ async function main() {
             brand: 'Acme',
             photo: {
                 create: {
-                    url: '/html.png',
+                    url: '/images/html.png',
                     alt: 'html',
                     width: 1000,
                     height: 640,
@@ -61,7 +61,7 @@ async function main() {
             brand: 'Acme',
             photo: {
                 create: {
-                    url: '/keyboard.png',
+                    url: '/images/keyboard.png',
                     alt: 'keyboard',
                     width: 1000,
                     height: 640,
@@ -80,7 +80,7 @@ async function main() {
             brand: 'Acme',
             photo: {
                 create: {
-                    url: '/mac.png',
+                    url: '/images/mac.png',
                     alt: 'mac',
                     width: 1000,
                     height: 640,

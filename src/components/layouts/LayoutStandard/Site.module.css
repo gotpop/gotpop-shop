@@ -4,21 +4,26 @@
   --local-template: "head main" "head main" "head foot";
   --local-translate: var(--menu-state);
   --local-width: calc(100vw + var(--menu-side-width) - var(--scrollbar-width));
+  --local-gap: 0;
 
   display: grid;
+  gap: var(--local-gap);
   grid-template-areas: var(--local-template);
   grid-template-columns: var(--local-columns);
   grid-template-rows: var(--local-rows);
   min-height: 100vh;
+  position: relative;
   transition: translate var(--timing) ease;
   translate: var(--local-translate);
   width: var(--local-width);
+  z-index: 0;
 
-  @media (--ipad) {
+  @media (width > 600px) {
     --local-columns: 1fr;
     --local-rows: auto minmax(80vh, max-content) auto;
     --local-template: "head" "main" "foot";
     --local-translate: var(--menu-open);
     --local-width: auto;
+    --local-gap: var(--spacing-lg);
   }
 }

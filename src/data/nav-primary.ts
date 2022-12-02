@@ -1,12 +1,5 @@
 export const navPrimary = [
     {
-        id: '3',
-        text: 'Home',
-        test: 'home',
-        href: '/',
-        internal: true
-    },
-    {
         id: '1',
         text: 'Cards',
         test: 'cards',
