@@ -2,11 +2,10 @@ import { GetStaticProps, NextPage } from 'next'
 import { useEffect, useState } from 'react'
 
 import Hero from '@components/ui/Hero'
-import { IPage } from '@types'
 import LayoutFull from '@components/layouts/LayoutFull'
-import Main from '@components/ui/Main'
 import Meta from '@head/Meta'
 import Panel from '@components/ui/Panel'
+import { Panel as PanelType } from '@prisma/client'
 import booksPic from '@images/books.png'
 import { getImage } from 'utilities/getComponent'
 import htmlPic from '@images/html.png'
@@ -15,10 +14,8 @@ import macPic from '@images/mac.png'
 import prisma from '@lib/prisma'
 import { useTrackPad } from '@hooks/useTrackPad'
 
-// import { server } from '@config'
-
-interface Props {
-  pageData: IPage[]
+type Props = {
+  panelData: PanelType[]
 }
 
 const imagesMap = new Map([
@@ -33,7 +30,7 @@ const trackPadActive = () => {
   document.documentElement.style.setProperty('--scroll-type', 'proximity')
 }
 
-const Brochure: NextPage<Props> = ({ pageData }) => {
+const Brochure = ({ panelData }: Props) => {
   const isTrackPad = useTrackPad()
   const [trackPadTrigger, setTrackPadTrigger] = useState(false)
 
@@ -53,16 +50,14 @@ const Brochure: NextPage<Props> = ({ pageData }) => {
       <>
         <Meta />
         <Hero />
-        <Main>
-          {pageData.map((page: IPage, i) => (
-            <Panel
-              key={i}
-              compact={trackPadTrigger}
-              image={getImage(imagesMap, page.id)}
-              page={page}
-            />
-          ))}
-        </Main>
+        {panelData.map((page, i) => (
+          <Panel
+            key={i}
+            compact={trackPadTrigger}
+            image={getImage(imagesMap, page.id)}
+            page={page}
+          />
+        ))}
       </>
     </LayoutFull>
   )
@@ -71,15 +66,11 @@ const Brochure: NextPage<Props> = ({ pageData }) => {
 export default Brochure
 
 export const getStaticProps: GetStaticProps = async () => {
-  const navItems = await prisma.navItem.findMany()
-  const pageData = await prisma.panel.findMany()
-
-  // console.log('pageData :', pageData)
+  const panelData = await prisma.panel.findMany()
 
   return {
     props: {
-      pageData: pageData,
-      navItems: navItems
+      panelData: panelData
     }
   }
 }

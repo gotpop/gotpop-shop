@@ -5,6 +5,7 @@ import Grid from '../Grid'
 import GridWrap from '../GridWrap'
 import Image from 'next/image'
 import LinkIcon from '@ui/LinkIcon'
+import { Panel as PanelType } from '@prisma/client'
 import macPic from '@images/mac.png'
 import { panelAnimations } from './Panel.animation'
 import styles from './Panel.module.css'
@@ -14,14 +15,7 @@ import { useOnScreen } from '@hooks/useOnScreen'
 type Props = {
   compact: boolean
   image: string | null | undefined
-  page: {
-    title: string
-    excerpt: string
-    id: string
-    direction: string
-    linkhref: string
-    linktext: string
-  }
+  page: PanelType
 }
 
 const Panel = ({ compact, image, page }: Props) => {
