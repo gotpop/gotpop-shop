@@ -1,7 +1,8 @@
+import { CSSProperties, useEffect } from 'react'
+
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import { BsFillCartCheckFill } from 'react-icons/bs'
 import ButtonIcon from '@components/ui/ButtonIcon'
-import { CSSProperties } from 'react'
 import { CartItem } from '@blocks/CartItem'
 import { Drawer } from '@components/ui/Drawer'
 import Grid from '@components/ui/Grid'
@@ -22,6 +23,10 @@ const closeVars = {
 export function ShoppingCart({ isOpen }: ShoppingCartProps) {
   const { closeCart, cartItems } = useShoppingCart()
 
+  useEffect(() => {
+    console.log('cartItems in ShoppingCart:', cartItems)
+  }, [cartItems])
+
   return (
     <Drawer isOpen={isOpen}>
       <section className={styles.cart}>
@@ -38,18 +43,18 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
                 <BsFillCartCheckFill />
               </h2>
             </section>
-            {/* {cartItems.map(item => (
-              <CartItem key={item.id} {...item} />
-            ))} */}
+            {cartItems.map((item, i) => (
+              <CartItem key={i} id={item.id} quantity={item.quantity} />
+            ))}
             <div className={styles.total}>
               <span>Cart total: </span>
               <span>
-                {/* {formatCurrency(
+                {formatCurrency(
                   cartItems.reduce((total, cartItem) => {
                     const item = shopItems.find(i => i.id === cartItem.id)
                     return total + (item?.price || 0) * cartItem.quantity
                   }, 0)
-                )} */}
+                )}
               </span>
             </div>
           </>

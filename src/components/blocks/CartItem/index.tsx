@@ -1,6 +1,7 @@
+import { CSSProperties, useEffect } from 'react'
+
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import ButtonIcon from '@components/ui/ButtonIcon'
-import { CSSProperties } from 'react'
 import Image from 'next/image'
 import { formatCurrency } from '@utilities/formatCurrency'
 import { shopItems } from '@data/shop'
@@ -13,14 +14,18 @@ const buttonRemoveVars = {
 } as CSSProperties
 
 type Props = {
-  id: number
-  baseQuanity: number
+  id: string
   quantity: number
 }
 
 export function CartItem({ id, quantity }: Props) {
   const { removeFromCart } = useShoppingCart()
   const item = shopItems.find(i => i.id === id)
+
+  useEffect(() => {
+    console.log('id, quantity :', id, quantity)
+  }, [id, quantity])
+
   if (item == null) return null
 
   return (
@@ -42,12 +47,12 @@ export function CartItem({ id, quantity }: Props) {
             Total: {formatCurrency(item.price * quantity)}
           </div>
         </div>
-        {/* <ButtonIcon
+        <ButtonIcon
           icon={<AiOutlineCloseCircle />}
           text="Remove from cart"
           handleClick={() => removeFromCart(item.id)}
           vars={buttonRemoveVars}
-        /> */}
+        />
       </section>
     </section>
   )
