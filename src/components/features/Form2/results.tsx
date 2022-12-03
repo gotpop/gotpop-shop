@@ -1,7 +1,8 @@
-import { Details, Intro, ListItem } from './elements'
+// import { Details, Intro, ListItem } from './elements'
+
 import { useEffect, useState } from 'react'
 
-export const Results = ({ res }) => {
+export const Results = ({ res }: any) => {
   const { response, results } = res
   const { form, requestHeaders } = results
   const reqHeaders = JSON.parse(requestHeaders)
@@ -20,7 +21,7 @@ export const Results = ({ res }) => {
 
   return (
     <>
-      <Intro response={response} />
+      {/* <Intro response={response} />
       <Details summary="Request headers">
         {Object.keys(reqHeaders).map((text, i) => (
           <ListItem key={i} text={text} value={reqHeaders[text]} />
@@ -39,7 +40,7 @@ export const Results = ({ res }) => {
         {Object.keys(form).map((key, i) => (
           <ListItem key={i} text={form[key].text} value={form[key].value} />
         ))}
-      </Details>
+      </Details> */}
     </>
   )
 }

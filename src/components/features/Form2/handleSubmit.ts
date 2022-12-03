@@ -1,4 +1,4 @@
-export const handleSubmit = async (inputValues) => {
+export const handleSubmit = async (inputValues: { firstName: any; lastName: any; email: any; password: any }) => {
     const { firstName, lastName, email, password } = inputValues
     const endpoint = '/api/forms/formSubmit2'
 

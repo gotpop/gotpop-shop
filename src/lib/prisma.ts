@@ -2,16 +2,16 @@ import { Prisma, PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient()
 
-const PanelWithPhotos = Prisma.validator<Prisma.ProductArgs>()({
+const PanelWithPhotos = Prisma.validator<Prisma.PanelArgs>()({
     include: { photos: true }
 })
 
-export type PanelWithPhotos = Prisma.ProductGetPayload<typeof PanelWithPhotos>
+export type PanelWithPhotos = Prisma.PanelGetPayload<typeof PanelWithPhotos>
 
-const productWithPhotos = Prisma.validator<Prisma.ProductArgs>()({
+const ProductWithPhotos = Prisma.validator<Prisma.ProductArgs>()({
     include: { photos: true }
 })
 
-export type productWithPhotos = Prisma.ProductGetPayload<typeof productWithPhotos>
+export type ProductWithPhotos = Prisma.ProductGetPayload<typeof ProductWithPhotos>
 
 export default prisma

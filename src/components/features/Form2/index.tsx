@@ -1,52 +1,57 @@
-import {
-  CSSProperties,
-  ChangeEvent,
-  FormEvent,
-  useReducer,
-  useState
-} from 'react'
+// import {
+//   CSSProperties,
+//   ChangeEvent,
+//   FormEvent,
+//   useReducer,
+//   useState
+// } from 'react'
 
-import Box from '@ui/Box'
-import { BsCheckLg } from 'react-icons/bs'
-import ButtonIcon from '@ui/ButtonIcon'
-import Dialog from '@ui/Dialog'
-import { IData } from '@types'
-import InputText from '@ui/InputText'
+// import Box from '@ui/Box'
+// import { BsCheckLg } from 'react-icons/bs'
+// import ButtonIcon from '@ui/ButtonIcon'
+// import Dialog from '@ui/Dialog'
+// import { IData } from '@types'
+// import InputText from '@ui/InputText'
+
 import Intro from '@components/ui/Intro'
-import LoadingIcon from '@ui/LoadingIcon'
-import { Results } from './results'
-import { formInitialState } from './state'
-import { handleSubmit } from './handleSubmit'
 import { introForm2Content } from '@data/intro'
-import { reducer } from './reducer'
-import { reducerInputChange } from './reducerInputChange'
-import styles from './Form2.module.css'
+
+// import LoadingIcon from '@ui/LoadingIcon'
+// import { Results } from './results'
+// import { formInitialState } from './state'
+// import { handleSubmit } from './handleSubmit'
+
+
+
+// import { reducer } from './reducer'
+// import { reducerInputChange } from './reducerInputChange'
+// import styles from './Form2.module.css'
 
 export default function Form2() {
-  const [showResultsDialog, setShowResultsDialog] = useState(false)
-  const [results, setResults] = useState<IData>({})
-  const [formIsValid, setFormIsValid] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [inputValues, dispatchFormValue] = useReducer(reducer, formInitialState)
-  const { firstName, lastName, email, password } = inputValues
+  // const [showResultsDialog, setShowResultsDialog] = useState(false)
+  // const [results, setResults] = useState<IData>({})
+  // const [formIsValid, setFormIsValid] = useState(false)
+  // const [loading, setLoading] = useState(false)
+  // const [inputValues, dispatchFormValue] = useReducer(reducer, formInitialState)
+  // const { firstName, lastName, email, password } = inputValues
 
-  const handleClose = () => setShowResultsDialog(false)
-  const handleInputEvent = (e: ChangeEvent<HTMLInputElement>) =>
-    reducerInputChange(e, dispatchFormValue)
+  // const handleClose = () => setShowResultsDialog(false)
+  // const handleInputEvent = (e: ChangeEvent<HTMLInputElement>) =>
+  //   reducerInputChange(e, dispatchFormValue)
 
-  const handleSubmitEvent = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setLoading(true)
-    const res = await handleSubmit(inputValues)
-    setLoading(false)
-    setResults(res)
-    setShowResultsDialog(true)
-  }
+  // const handleSubmitEvent = async (e: FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault()
+  //   setLoading(true)
+  //   const res = await handleSubmit(inputValues)
+  //   setLoading(false)
+  //   setResults(res)
+  //   setShowResultsDialog(true)
+  // }
 
   return (
     <>
       <Intro content={introForm2Content} />
-      <Box>
+      {/* <Box>
         {showResultsDialog ? (
           <Dialog handleClose={handleClose}>
             <Results res={results} />
@@ -109,7 +114,7 @@ export default function Form2() {
             vars={{ ['--icon-colour']: 'var(--success)' } as CSSProperties}
           />
         </form>
-      </Box>
+      </Box> */}
     </>
   )
 }

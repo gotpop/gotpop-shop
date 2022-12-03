@@ -20,21 +20,21 @@ export default function Form1() {
 
   const handleClose = () => setShowResultsDialog(false)
 
-  const handleSubmitEvent = async e => {
-    e.preventDefault()
-    const result = await handleSubmit(data)
-    setResults(result)
-    setShowResultsDialog(true)
-  }
+  // const handleSubmitEvent = async e => {
+  //   e.preventDefault()
+  //   const result = await handleSubmit(data)
+  //   setResults(result)
+  //   setShowResultsDialog(true)
+  // }
 
-  const handleChange = e => {
-    setData(old => {
-      return {
-        ...old,
-        [e.target.name]: e.target.value
-      }
-    })
-  }
+  // const handleChange = e => {
+  //   setData(old => {
+  //     return {
+  //       ...old,
+  //       [e.target.name]: e.target.value
+  //     }
+  //   })
+  // }
 
   return (
     <>
@@ -45,7 +45,7 @@ export default function Form1() {
             <Results results={results} />
           </Dialog>
         ) : null}
-        <form onSubmit={handleSubmitEvent} className={styles.form}>
+        {/* <form onSubmit={handleSubmitEvent} className={styles.form}>
           <InputText
             name="first"
             label="First"
@@ -63,7 +63,7 @@ export default function Form1() {
             vars={{ ['--icon-colour']: 'var(--success)' } as CSSProperties}
             icon={BsCheckLg}
           />
-        </form>
+        </form> */}
       </Box>
     </>
   )
