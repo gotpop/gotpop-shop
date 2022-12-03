@@ -16,7 +16,7 @@ const Forms: NextPage<Props> = ({ forms }) => {
     <LayoutStandard>
       <>
         <Meta />
-        {forms ? (
+        {/* {forms ? (
           forms.map((form: IForm) => (
             <Card
               key={form.id}
@@ -27,7 +27,7 @@ const Forms: NextPage<Props> = ({ forms }) => {
           ))
         ) : (
           <Loading />
-        )}
+        )} */}
       </>
     </LayoutStandard>
   )
@@ -35,13 +35,13 @@ const Forms: NextPage<Props> = ({ forms }) => {
 
 export default Forms
 
-export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(`${server}/api/forms`)
-  const forms = await res.json()
+// export const getStaticProps: GetStaticProps = async () => {
+//   const res = await fetch(`${server}/api/forms`)
+//   const forms = await res.json()
 
-  return {
-    props: {
-      forms
-    }
-  }
-}
+//   return {
+//     props: {
+//       forms
+//     }
+//   }
+// }

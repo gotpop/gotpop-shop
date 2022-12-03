@@ -1,6 +1,10 @@
 import Box from '@components/ui/Box'
 
-export const Results = ({ results }) => (
+type Props = {
+  results: any
+}
+
+export const Results = ({ results }: any) => (
   <>
     <h4>Http Response Body</h4>
     <Box>

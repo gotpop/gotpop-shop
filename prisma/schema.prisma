@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,20 +7,38 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model NavItem {
-  id   Int    @id @default(autoincrement())
-  text String
-  test String
-  href String
-}
-
 model Panel {
-  id        Int    @id @default(autoincrement())
+  id        Int     @id @default(autoincrement())
   direction String
   linktext  String
   linkhref  String
   excerpt   String
-  title     String
+  title     String  @unique
+  photos    Photo[]
+}
+
+model User {
+  id         String       @id @default(uuid())
+  email      String       @unique
+  password   String
+  name       String?
+  address    String?
+  role       Role         @default(USER)
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @default(now())
+  Purchase   Purchase[]
+  UserTokens UserTokens[]
+}
+
+model UserTokens {
+  id           String   @id @default(uuid())
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       String
+  refreshToken String
+  family       String   @unique
+  browserInfo  String?
+  expiresAt    DateTime
+  createdAt    DateTime @default(now())
 }
 
 model Photo {
@@ -33,41 +48,105 @@ model Photo {
   url     String
   alt     String
   Product Product[]
-}
-
-model User {
-  id       String @id @default(uuid())
-  email    String @unique
-  password String
-  name     String
-  Cart     Cart[]
+  Panel   Panel[]
 }
 
 model Product {
-  id        String     @id @default(uuid())
-  name      String     @unique
-  price     Float
-  stock     Int
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  brand     String?
-  photo     Photo?     @relation(fields: [photoId], references: [id])
-  CartItem  CartItem[]
-  photoId   String
+  id                 String     @id @default(uuid())
+  name               String     @unique
+  urlName            String     @unique
+  basePrice          Float
+  discountPercentage Int        @default(0)
+  stock              Int        @default(0)
+  description        String?
+  createdAt          DateTime   @default(now())
+  photos             Photo[]
+  categories         Category[]
+  Purchase           Purchase[]
 }
 
-model CartItem {
-  id        String  @id @default(uuid())
-  product   Product @relation(fields: [productId], references: [id])
-  quantity  Int
-  productId String
-  Cart      Cart?   @relation(fields: [cartId], references: [id])
-  cartId    String?
+model Category {
+  id       String    @id @default(uuid())
+  name     String    @unique
+  products Product[]
 }
 
-model Cart {
-  id        String     @id @default(uuid())
-  userId    String
-  user      User       @relation(fields: [userId], references: [id])
-  cartItems CartItem[]
+model Purchase {
+  id            String   @id @default(uuid())
+  user          User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  userId        String?
+  product       Product  @relation(fields: [productId], references: [id])
+  productId     String
+  amount        Int      @default(1)
+  totalPrice    Decimal
+  reviewNote    Int?
+  reviewComment String?
+  createdAt     DateTime @default(now())
 }
+
+enum Role {
+  USER
+  ADMIN
+}
+
+// model NavItem {
+//   id   Int    @id @default(autoincrement())
+//   text String
+//   test String
+//   href String
+// }
+
+// model Panel {
+//   id        Int    @id @default(autoincrement())
+//   direction String
+//   linktext  String
+//   linkhref  String
+//   excerpt   String
+//   title     String
+// }
+
+// model Photo {
+//   id      String    @id @default(uuid())
+//   height  Int
+//   width   Int
+//   url     String
+//   alt     String
+//   Product Product[]
+// }
+
+// model User {
+//   id       String @id @default(uuid())
+//   email    String @unique
+//   password String
+//   name     String
+//   userId   String @unique @default(uuid())
+//   Cart     Cart?  @relation(fields: [userId], references: [id])
+// }
+
+// model Product {
+//   id        String     @id @default(uuid())
+//   name      String     @unique
+//   price     Float
+//   stock     Int
+//   createdAt DateTime   @default(now())
+//   updatedAt DateTime   @updatedAt
+//   brand     String?
+//   photo     Photo?     @relation(fields: [photoId], references: [id])
+//   CartItem  CartItem[]
+//   photoId   String
+// }
+
+// model CartItem {
+//   id        String  @id @default(uuid())
+//   product   Product @relation(fields: [productId], references: [id])
+//   quantity  Int
+//   productId String
+//   Cart      Cart?   @relation(fields: [cartId], references: [id])
+//   cartId    String?
+// }
+
+// model Cart {
+//   id        String     @id @default(uuid())
+//   cartItems CartItem[]
+//   User      User?
+// }

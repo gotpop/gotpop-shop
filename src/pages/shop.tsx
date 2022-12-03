@@ -1,10 +1,9 @@
-import prisma, { productWithPhotos } from '@lib/prisma'
+import prisma, { ProductWithPhotos } from '@lib/prisma'
 
 import { GetStaticProps } from 'next'
 import Intro from '@components/ui/Intro'
 import LayoutStandard from '@components/layouts/LayoutStandard'
 import Product from '@components/ui/Product'
-import { Product as ProductType } from '@prisma/client'
 import { useEffect } from 'react'
 
 const content = {
@@ -12,7 +11,11 @@ const content = {
   text: 'Buy your developer accessories here.'
 }
 
-export default function Shop({ shopData }) {
+type Props = {
+  shopData: ProductWithPhotos[]
+}
+
+export default function Shop({ shopData }: Props) {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -21,7 +24,7 @@ export default function Shop({ shopData }) {
     <LayoutStandard>
       <>
         <Intro content={content} />
-        {shopData.map((product: productWithPhotos, key) => (
+        {shopData.map((product: ProductWithPhotos, key: number) => (
           <Product key={key} product={product} />
         ))}
       </>
@@ -32,7 +35,7 @@ export default function Shop({ shopData }) {
 export const getStaticProps: GetStaticProps = async () => {
   const shopData = await prisma.product.findMany({
     include: {
-      photo: true
+      photos: true
     }
   })
 

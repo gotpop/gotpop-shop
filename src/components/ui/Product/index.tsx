@@ -8,15 +8,13 @@ import { BsTrash } from 'react-icons/bs'
 import ButtonIcon from '../ButtonIcon'
 import { CSSProperties } from 'react'
 import Image from 'next/image'
-import { Prisma } from '@prisma/client'
-import { Product as ProductType } from '@prisma/client'
+import { ProductWithPhotos } from '@lib/prisma'
 import { formatCurrency } from '@utilities/formatCurrency'
-import { productWithPhotos } from '@lib/prisma'
 import styles from './Product.module.css'
 import { useShoppingCart } from '@context/ShoppingCartContext'
 
 type Props = {
-  product: productWithPhotos
+  product: ProductWithPhotos
 }
 
 const buttonRemoveVars = {
@@ -25,31 +23,33 @@ const buttonRemoveVars = {
 } as CSSProperties
 
 const Product = ({ product }: Props) => {
-  const { name, price, id } = product
+  const { name, basePrice, id, photos } = product
+  const photo = photos[0]
+
   const {
     getItemQuantity,
     increaseCartQuantity,
     decreaseCartQuantity,
     removeFromCart
   } = useShoppingCart()
-  // const quantity = getItemQuantity(id)
-  const quantity = 5
+  const quantity = getItemQuantity(id)
+  // const quantity = 5
 
   return (
     <section className={styles.product}>
       <Image
         className={styles.image}
-        src={product.photo.url}
-        width={product.photo.width}
-        height={product.photo.height}
-        alt={product.photo.alt}
+        src={photo.url}
+        width={photo.width}
+        height={photo.height}
+        alt={photo.alt}
       />
       <div className={styles.content}>
         <section className={styles.intro}>
           <h3>{name}</h3>
-          <span className={styles.price}>{formatCurrency(price)}</span>
+          <span className={styles.basePrice}>{formatCurrency(basePrice)}</span>
         </section>
-        {/* {quantity === 0 ? (
+        {quantity === 0 ? (
           <ButtonIcon
             handleClick={() => increaseCartQuantity(id)}
             text="Add to cart"
@@ -72,7 +72,7 @@ const Product = ({ product }: Props) => {
               handleClick={() => increaseCartQuantity(id)}
             />
           </div>
-        )} */}
+        )}
       </div>
     </section>
   )

@@ -34,21 +34,22 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
                 vars={closeVars}
               />
               <h2>
-                Cart <BsFillCartCheckFill />
+                <span>Cart</span>
+                <BsFillCartCheckFill />
               </h2>
             </section>
-            {cartItems.map(item => (
+            {/* {cartItems.map(item => (
               <CartItem key={item.id} {...item} />
-            ))}
+            ))} */}
             <div className={styles.total}>
               <span>Cart total: </span>
               <span>
-                {formatCurrency(
+                {/* {formatCurrency(
                   cartItems.reduce((total, cartItem) => {
                     const item = shopItems.find(i => i.id === cartItem.id)
                     return total + (item?.price || 0) * cartItem.quantity
                   }, 0)
-                )}
+                )} */}
               </span>
             </div>
           </>

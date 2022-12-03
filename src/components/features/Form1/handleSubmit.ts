@@ -1,4 +1,6 @@
-export const handleSubmit = async (data) => {
+import { IData3 } from "@types"
+
+export const handleSubmit = async (data: IData3) => {
     const JSONdata = JSON.stringify(data)
     const endpoint = '/api/forms/formSubmit1'
 
