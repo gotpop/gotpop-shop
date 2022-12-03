@@ -18,12 +18,12 @@ type Props = {
   panelData: PanelType[]
 }
 
-const imagesMap = new Map([
-  [1, booksPic],
-  [2, htmlPic],
-  [3, keyboardPic],
-  [4, macPic]
-])
+// const imagesMap = new Map([
+//   [1, booksPic],
+//   [2, htmlPic],
+//   [3, keyboardPic],
+//   [4, macPic]
+// ])
 
 const trackPadActive = () => {
   localStorage.setItem('trackPad', 'true')
@@ -33,6 +33,10 @@ const trackPadActive = () => {
 const Brochure = ({ panelData }: Props) => {
   const isTrackPad = useTrackPad()
   const [trackPadTrigger, setTrackPadTrigger] = useState(false)
+
+  useEffect(() => {
+    console.log('panelData :', panelData)
+  }, [panelData])
 
   useEffect(() => {
     if (isTrackPad) {
@@ -51,12 +55,7 @@ const Brochure = ({ panelData }: Props) => {
         <Meta />
         <Hero />
         {panelData.map((page, i) => (
-          <Panel
-            key={i}
-            compact={trackPadTrigger}
-            image={getImage(imagesMap, page.id)}
-            page={page}
-          />
+          <Panel key={i} compact={trackPadTrigger} page={page} />
         ))}
       </>
     </LayoutFull>
@@ -66,7 +65,11 @@ const Brochure = ({ panelData }: Props) => {
 export default Brochure
 
 export const getStaticProps: GetStaticProps = async () => {
-  const panelData = await prisma.panel.findMany()
+  const panelData = await prisma.panel.findMany({
+    include: {
+      photos: true
+    }
+  })
 
   return {
     props: {

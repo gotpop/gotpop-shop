@@ -14,12 +14,12 @@ import { useOnScreen } from '@hooks/useOnScreen'
 
 type Props = {
   compact: boolean
-  image: string | null | undefined
   page: PanelType
 }
 
-const Panel = ({ compact, image, page }: Props) => {
-  const { linkhref, linktext, excerpt, title, id, direction } = page
+const Panel = ({ compact, page }: Props) => {
+  const { linkhref, linktext, excerpt, title, id, direction, photos } = page
+  const photo = photos[0]
 
   const sectionRef = useRef<HTMLElement | null>(null)
   const contentRef = useRef<HTMLDivElement | null>(null)
@@ -50,12 +50,14 @@ const Panel = ({ compact, image, page }: Props) => {
                 Buy now
               </LinkIcon>
             </div>
-            <Image
-              className={styles.image}
-              src={image}
-              alt="Image alt"
-              placeholder="blur"
-            />
+            <div ref={imageRef} className={styles.image}>
+              <Image
+                src={photo.url}
+                alt={photo.alt}
+                width={photo.width}
+                height={photo.height}
+              />
+            </div>
           </>
         </Grid>
       </GridWrap>

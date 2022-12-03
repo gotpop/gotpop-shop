@@ -25,31 +25,33 @@ const buttonRemoveVars = {
 } as CSSProperties
 
 const Product = ({ product }: Props) => {
-  const { name, price, id } = product
+  const { name, basePrice, id, photos } = product
+  const photo = photos[0]
+
   const {
     getItemQuantity,
     increaseCartQuantity,
     decreaseCartQuantity,
     removeFromCart
   } = useShoppingCart()
-  // const quantity = getItemQuantity(id)
-  const quantity = 5
+  const quantity = getItemQuantity(id)
+  // const quantity = 5
 
   return (
     <section className={styles.product}>
       <Image
         className={styles.image}
-        src={product.photo.url}
-        width={product.photo.width}
-        height={product.photo.height}
-        alt={product.photo.alt}
+        src={photo.url}
+        width={photo.width}
+        height={photo.height}
+        alt={photo.alt}
       />
       <div className={styles.content}>
         <section className={styles.intro}>
           <h3>{name}</h3>
-          <span className={styles.price}>{formatCurrency(price)}</span>
+          <span className={styles.basePrice}>{formatCurrency(basePrice)}</span>
         </section>
-        {/* {quantity === 0 ? (
+        {quantity === 0 ? (
           <ButtonIcon
             handleClick={() => increaseCartQuantity(id)}
             text="Add to cart"
@@ -72,7 +74,7 @@ const Product = ({ product }: Props) => {
               handleClick={() => increaseCartQuantity(id)}
             />
           </div>
-        )} */}
+        )}
       </div>
     </section>
   )

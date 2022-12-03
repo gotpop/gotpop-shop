@@ -1,29 +1,31 @@
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import ButtonIcon from '@components/ui/ButtonIcon'
 import { CSSProperties } from 'react'
+import { CartItem as CartItemType } from '@prisma/client'
+import Image from 'next/image'
 import { formatCurrency } from '@utilities/formatCurrency'
 import { shopItems } from '@data/shop'
 import styles from './CartItem.module.css'
 import { useShoppingCart } from '@context/ShoppingCartContext'
-
-type CartItemProps = {
-  id: number
-  quantity: number
-}
 
 const buttonRemoveVars = {
   ['--local-bg-colour']: 'var(--error)',
   ['--local-font-size']: 'var(--size-s-1)'
 } as CSSProperties
 
-export function CartItem({ id, quantity }: CartItemProps) {
+export function CartItem({ id, quantity }: CartItemType) {
   const { removeFromCart } = useShoppingCart()
   const item = shopItems.find(i => i.id === id)
   if (item == null) return null
 
   return (
     <section className={styles.cart}>
-      <img src={item.url} />
+      {/* <Image
+        src={item.photo.url}
+        width={item.photo.width}
+        height={item.photo.height}
+        alt={item.photo.alt}
+      /> */}
       <section className={styles.content}>
         <div className={styles.intro}>
           <div className={styles.title}>

@@ -34,7 +34,8 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
                 vars={closeVars}
               />
               <h2>
-                Cart <BsFillCartCheckFill />
+                <span>Cart</span>
+                <BsFillCartCheckFill />
               </h2>
             </section>
             {cartItems.map(item => (
