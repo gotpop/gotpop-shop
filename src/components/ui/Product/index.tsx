@@ -8,15 +8,13 @@ import { BsTrash } from 'react-icons/bs'
 import ButtonIcon from '../ButtonIcon'
 import { CSSProperties } from 'react'
 import Image from 'next/image'
-import { Prisma } from '@prisma/client'
-import { Product as ProductType } from '@prisma/client'
+import { ProductWithPhotos } from '@lib/prisma'
 import { formatCurrency } from '@utilities/formatCurrency'
-import { productWithPhotos } from '@lib/prisma'
 import styles from './Product.module.css'
 import { useShoppingCart } from '@context/ShoppingCartContext'
 
 type Props = {
-  product: productWithPhotos
+  product: ProductWithPhotos
 }
 
 const buttonRemoveVars = {

@@ -1,10 +1,9 @@
-import prisma, { productWithPhotos } from '@lib/prisma'
+import prisma, { ProductWithPhotos } from '@lib/prisma'
 
 import { GetStaticProps } from 'next'
 import Intro from '@components/ui/Intro'
 import LayoutStandard from '@components/layouts/LayoutStandard'
 import Product from '@components/ui/Product'
-import { Product as ProductType } from '@prisma/client'
 import { useEffect } from 'react'
 
 const content = {
@@ -13,7 +12,7 @@ const content = {
 }
 
 type Props = {
-  shopData: productWithPhotos
+  shopData: ProductWithPhotos[]
 }
 
 export default function Shop({ shopData }: Props) {
@@ -25,7 +24,7 @@ export default function Shop({ shopData }: Props) {
     <LayoutStandard>
       <>
         <Intro content={content} />
-        {shopData?.map((product: productWithPhotos, key) => (
+        {shopData.map((product: ProductWithPhotos, key: number) => (
           <Product key={key} product={product} />
         ))}
       </>
@@ -39,8 +38,6 @@ export const getStaticProps: GetStaticProps = async () => {
       photos: true
     }
   })
-
-  console.log('shopData :', shopData)
 
   return {
     props: {

@@ -1,29 +1,16 @@
 import { GetStaticProps, NextPage } from 'next'
+import prisma, { PanelWithPhotos } from '@lib/prisma'
 import { useEffect, useState } from 'react'
 
 import Hero from '@components/ui/Hero'
 import LayoutFull from '@components/layouts/LayoutFull'
 import Meta from '@head/Meta'
 import Panel from '@components/ui/Panel'
-import { Panel as PanelType } from '@prisma/client'
-import booksPic from '@images/books.png'
-import { getImage } from 'utilities/getComponent'
-import htmlPic from '@images/html.png'
-import keyboardPic from '@images/keyboard.png'
-import macPic from '@images/mac.png'
-import prisma from '@lib/prisma'
 import { useTrackPad } from '@hooks/useTrackPad'
 
 type Props = {
-  panelData: PanelType[]
+  panelData: PanelWithPhotos[]
 }
-
-// const imagesMap = new Map([
-//   [1, booksPic],
-//   [2, htmlPic],
-//   [3, keyboardPic],
-//   [4, macPic]
-// ])
 
 const trackPadActive = () => {
   localStorage.setItem('trackPad', 'true')
@@ -33,10 +20,6 @@ const trackPadActive = () => {
 const Brochure = ({ panelData }: Props) => {
   const isTrackPad = useTrackPad()
   const [trackPadTrigger, setTrackPadTrigger] = useState(false)
-
-  useEffect(() => {
-    console.log('panelData :', panelData)
-  }, [panelData])
 
   useEffect(() => {
     if (isTrackPad) {

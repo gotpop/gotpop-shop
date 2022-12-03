@@ -1,7 +1,6 @@
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import ButtonIcon from '@components/ui/ButtonIcon'
 import { CSSProperties } from 'react'
-import { CartItem as CartItemType } from '@prisma/client'
 import Image from 'next/image'
 import { formatCurrency } from '@utilities/formatCurrency'
 import { shopItems } from '@data/shop'
@@ -13,7 +12,13 @@ const buttonRemoveVars = {
   ['--local-font-size']: 'var(--size-s-1)'
 } as CSSProperties
 
-export function CartItem({ id, quantity }: CartItemType) {
+type Props = {
+  id: number
+  baseQuanity: number
+  quantity: number
+}
+
+export function CartItem({ id, quantity }: Props) {
   const { removeFromCart } = useShoppingCart()
   const item = shopItems.find(i => i.id === id)
   if (item == null) return null
@@ -37,12 +42,12 @@ export function CartItem({ id, quantity }: CartItemType) {
             Total: {formatCurrency(item.price * quantity)}
           </div>
         </div>
-        <ButtonIcon
+        {/* <ButtonIcon
           icon={<AiOutlineCloseCircle />}
           text="Remove from cart"
           handleClick={() => removeFromCart(item.id)}
           vars={buttonRemoveVars}
-        />
+        /> */}
       </section>
     </section>
   )
