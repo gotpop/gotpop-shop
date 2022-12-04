@@ -18,27 +18,38 @@ model Panel {
 }
 
 model User {
-  id         String       @id @default(uuid())
-  email      String       @unique
-  password   String
-  name       String?
-  address    String?
-  role       Role         @default(USER)
-  createdAt  DateTime     @default(now())
-  updatedAt  DateTime     @default(now())
-  Purchase   Purchase[]
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String?
+  address   String?
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  Carts      Cart[]
   UserTokens UserTokens[]
+}
+
+model Cart {
+  id       String  @id @default(uuid())
+  isActive Boolean @unique @default(true)
+
+  CartItems CartItem[]
+  userId    String
+  user      User       @relation(fields: [userId], references: [id])
 }
 
 model UserTokens {
   id           String   @id @default(uuid())
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId       String
   refreshToken String
   family       String   @unique
   browserInfo  String?
   expiresAt    DateTime
   createdAt    DateTime @default(now())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Photo {
@@ -62,7 +73,7 @@ model Product {
   createdAt          DateTime   @default(now())
   photos             Photo[]
   categories         Category[]
-  Purchase           Purchase[]
+  CartItem           CartItem[]
 }
 
 model Category {
@@ -71,17 +82,19 @@ model Category {
   products Product[]
 }
 
-model Purchase {
+model CartItem {
   id            String   @id @default(uuid())
-  user          User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
-  userId        String?
-  product       Product  @relation(fields: [productId], references: [id])
-  productId     String
+  name          String   @unique
   amount        Int      @default(1)
-  totalPrice    Decimal
+  totalPrice    Decimal?
   reviewNote    Int?
   reviewComment String?
   createdAt     DateTime @default(now())
+
+  product   Product? @relation(fields: [productId], references: [id])
+  productId String?
+  Cart      Cart?    @relation(fields: [cartId], references: [id])
+  cartId    String?
 }
 
 enum Role {
