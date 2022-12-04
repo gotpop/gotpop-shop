@@ -14,26 +14,18 @@ async function main() {
     await prisma.photo.deleteMany({})
     await prisma.cart.deleteMany({})
 
-    await prisma.cart.create({
-        data: cart
-    })
+    await prisma.cart.create({ data: cart })
 
     for (let user of users) {
-        await prisma.user.create({
-            data: user
-        })
+        await prisma.user.create({ data: user })
     }
 
     for (let panel of panels) {
-        await prisma.panel.create({
-            data: panel
-        })
+        await prisma.panel.create({ data: panel })
     }
 
     for (let product of products) {
-        await prisma.product.create({
-            data: product
-        })
+        await prisma.product.create({ data: product })
     }
 }
 
