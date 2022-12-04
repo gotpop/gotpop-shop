@@ -18,8 +18,6 @@ async function main() {
         await prisma.user.create({ data: user })
     }
 
-    // await prisma.cart.create({ data: cart })
-
     for (let panel of panels) {
         await prisma.panel.create({ data: panel })
     }
