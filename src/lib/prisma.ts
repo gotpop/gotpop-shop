@@ -1,6 +1,6 @@
 import { Prisma, PrismaClient } from "@prisma/client"
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient({ log: ['query'] })
 
 const PanelWithPhotos = Prisma.validator<Prisma.PanelArgs>()({
     include: { photos: true }
