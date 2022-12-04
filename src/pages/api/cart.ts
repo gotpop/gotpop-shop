@@ -6,41 +6,36 @@ export default async function handler(
   _req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const bob = await prisma.user.findUnique({
-    where: {
-      email: 'bob@prisma.io',
-    },
-  })
+  if (_req.method !== 'POST') {
+    return res.status(405).json({ message: 'Method not allowed' })
+  }
 
-  const item = await prisma.cartItem.findUnique({
-    where: {
-      id: '6d1b7752-9e48-493f-88fd-11942312d3fc',
-    },
-  })
-
-  const theCart = await prisma.cartItem.update({
-    where: { id: 'de4889e1-4dcf-45d1-b295-10fd421c4ff7' },
-    data: {
-      Cart: {
-        connect: { id: 'c4517f2a-05e2-4d04-bc9c-e2de07b8fb3c' },
-      },
-    },
-  })
-
-  const makeCartItem = await prisma.cartItem.create({
-    data: {
-      name: 'liamz',
-      amount: 10,
-      product: {
-        connect: { id: 'c262889d-e2be-4e70-9769-6c93fe61e560' },
-      },
-      Cart: {
-        connect: { id: 'c4517f2a-05e2-4d04-bc9c-e2de07b8fb3c' },
-      },
+  const currentUser = await prisma.user.findUnique({
+    where: { loggedIn: true },
+    include: {
+      Carts: true
     }
   })
 
-  console.log('item :', item, bob);
+  const product = await prisma.product.findUnique({
+    where: { id: _req.body.id }
+  })
 
-  return res.status(200).json(item)
-} 
+  const makeCartItem = await prisma.cartItem.upsert({
+    where: { name: product.name },
+    update: { amount: _req.body.newAmount },
+    create: {
+      name: product.name,
+      product: {
+        connect: { id: _req.body.id },
+      },
+      Cart: {
+        connect: { id: currentUser.Carts[0].id },
+      },
+    },
+  })
+
+  console.log('makeCartItem :', makeCartItem);
+
+  return res.status(200).json(makeCartItem)
+}

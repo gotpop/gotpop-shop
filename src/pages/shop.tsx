@@ -29,10 +29,8 @@ async function postData(url = '', data = {}) {
 const handelClick = () => {
   const url = 'http://localhost:3000/api/cart'
   const body = {
-    ids: [
-      '97e974e0-cbde-4522-801e-ea0b196db1fa',
-      '338d6d22-5aea-401b-9be8-28d85ed6edb7'
-    ]
+    id: 'c1f2beda-1673-440d-93a2-c3c49a15065d',
+    newAmount: 999999
   }
 
   postData(url, body).then(data => {

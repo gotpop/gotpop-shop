@@ -21,7 +21,7 @@ model User {
   id        String   @id @default(uuid())
   email     String   @unique
   password  String
-  loggedIn  Boolean  @default(false)
+  loggedIn  Boolean  @unique @default(false)
   name      String?
   address   String?
   role      Role     @default(USER)
