@@ -1,3 +1,5 @@
+import { books, html, keyboard, mac } from "./photos";
+
 export const products = [
     {
         name: 'HTML & JS',
@@ -6,12 +8,7 @@ export const products = [
         stock: 11,
         description: 'A html book',
         photos: {
-            create: {
-                url: '/images/books.png',
-                alt: 'books',
-                width: 1000,
-                height: 640,
-            }
+            create: books
         }
     },
     {
@@ -21,12 +18,7 @@ export const products = [
         stock: 11,
         description: 'A css book',
         photos: {
-            create: {
-                url: '/images/html.png',
-                alt: 'html',
-                width: 1000,
-                height: 640,
-            }
+            create: html
         }
     },
     {
@@ -36,12 +28,7 @@ export const products = [
         stock: 11,
         description: 'A Keyboard',
         photos: {
-            create: {
-                url: '/images/keyboard.png',
-                alt: 'keyboard',
-                width: 1000,
-                height: 640,
-            }
+            create: keyboard
         }
     },
     {
@@ -51,12 +38,7 @@ export const products = [
         stock: 11,
         description: 'A mac',
         photos: {
-            create: {
-                url: '/images/mac.png',
-                alt: 'mac',
-                width: 1000,
-                height: 640,
-            }
+            create: mac
         }
     }
 ]
