@@ -35,7 +35,5 @@ export default async function handler(
     },
   })
 
-  console.log('makeCartItem :', makeCartItem);
-
   return res.status(200).json(makeCartItem)
 }
