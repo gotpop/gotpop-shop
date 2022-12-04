@@ -1,33 +1,40 @@
-import { alice, bob } from './user'
-import { cartItem1, cartItem2, cartItem3, cartItem4 } from './cartItem'
-import { panel1, panel2, panel3, panel4 } from './panel'
-
 import { PrismaClient } from '@prisma/client'
 import { cart } from './cart'
+import { panels } from './panel'
+import { products } from './product'
+import { users } from './user'
 
 const prisma = new PrismaClient()
 
 async function main() {
-    // await prisma.user.deleteMany({})
-    // await prisma.product.deleteMany({})
-    // await prisma.panel.deleteMany({})
-    // await prisma.cartItem.deleteMany({})
-    // await prisma.photo.deleteMany({})
-    // await prisma.cart.deleteMany({})
+    await prisma.user.deleteMany({})
+    await prisma.product.deleteMany({})
+    await prisma.panel.deleteMany({})
+    await prisma.cartItem.deleteMany({})
+    await prisma.photo.deleteMany({})
+    await prisma.cart.deleteMany({})
 
-    await prisma.user.upsert(alice)
+    await prisma.cart.create({
+        data: cart
+    })
 
-    await prisma.panel.upsert(panel1)
-    await prisma.panel.upsert(panel2)
-    await prisma.panel.upsert(panel3)
-    await prisma.panel.upsert(panel4)
+    for (let user of users) {
+        await prisma.user.create({
+            data: user
+        })
+    }
 
-    await prisma.cartItem.upsert(cartItem1)
-    await prisma.cartItem.upsert(cartItem2)
-    await prisma.cartItem.upsert(cartItem3)
-    await prisma.cartItem.upsert(cartItem4)
+    for (let panel of panels) {
+        await prisma.panel.create({
+            data: panel
+        })
+    }
 
-    await prisma.cart.upsert(cart)
+    for (let product of products) {
+        await prisma.product.create({
+            data: product
+        })
+    }
 }
 
 main()

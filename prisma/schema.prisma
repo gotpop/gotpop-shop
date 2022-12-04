@@ -37,7 +37,7 @@ model Cart {
 
   CartItems CartItem[]
   userId    String
-  user      User       @relation(fields: [userId], references: [id])
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model UserTokens {
@@ -91,9 +91,9 @@ model CartItem {
   reviewComment String?
   createdAt     DateTime @default(now())
 
-  product   Product? @relation(fields: [productId], references: [id])
+  product   Product? @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId String?
-  Cart      Cart?    @relation(fields: [cartId], references: [id])
+  Cart      Cart?    @relation(fields: [cartId], references: [id], onDelete: Cascade)
   cartId    String?
 }
 
@@ -101,65 +101,3 @@ enum Role {
   USER
   ADMIN
 }
-
-// model NavItem {
-//   id   Int    @id @default(autoincrement())
-//   text String
-//   test String
-//   href String
-// }
-
-// model Panel {
-//   id        Int    @id @default(autoincrement())
-//   direction String
-//   linktext  String
-//   linkhref  String
-//   excerpt   String
-//   title     String
-// }
-
-// model Photo {
-//   id      String    @id @default(uuid())
-//   height  Int
-//   width   Int
-//   url     String
-//   alt     String
-//   Product Product[]
-// }
-
-// model User {
-//   id       String @id @default(uuid())
-//   email    String @unique
-//   password String
-//   name     String
-//   userId   String @unique @default(uuid())
-//   Cart     Cart?  @relation(fields: [userId], references: [id])
-// }
-
-// model Product {
-//   id        String     @id @default(uuid())
-//   name      String     @unique
-//   price     Float
-//   stock     Int
-//   createdAt DateTime   @default(now())
-//   updatedAt DateTime   @updatedAt
-//   brand     String?
-//   photo     Photo?     @relation(fields: [photoId], references: [id])
-//   CartItem  CartItem[]
-//   photoId   String
-// }
-
-// model CartItem {
-//   id        String  @id @default(uuid())
-//   product   Product @relation(fields: [productId], references: [id])
-//   quantity  Int
-//   productId String
-//   Cart      Cart?   @relation(fields: [cartId], references: [id])
-//   cartId    String?
-// }
-
-// model Cart {
-//   id        String     @id @default(uuid())
-//   cartItems CartItem[]
-//   User      User?
-// }

@@ -1,7 +1,5 @@
-export const product1 = {
-    where: { name: 'HTML & JS' },
-    update: { basePrice: 10.99 },
-    create: {
+export const products = [
+    {
         name: 'HTML & JS',
         urlName: 'htmljs',
         basePrice: 10.99,
@@ -16,12 +14,7 @@ export const product1 = {
             }
         }
     },
-}
-
-export const product2 = {
-    where: { name: 'Stunning CSS' },
-    update: { basePrice: 20.00 },
-    create: {
+    {
         name: 'Stunning CSS',
         urlName: 'stunningcss',
         basePrice: 10.99,
@@ -36,12 +29,7 @@ export const product2 = {
             }
         }
     },
-}
-
-export const product3 = {
-    where: { name: 'Keyboard' },
-    update: { basePrice: 89.99 },
-    create: {
+    {
         name: 'Keyboard',
         urlName: 'Keyboard',
         basePrice: 10.99,
@@ -56,12 +44,7 @@ export const product3 = {
             }
         }
     },
-}
-
-export const product4 = {
-    where: { name: 'MacBook Pro' },
-    update: { basePrice: 120.99 },
-    create: {
+    {
         name: 'MacBook Pro',
         urlName: 'mac',
         basePrice: 10.99,
@@ -75,5 +58,5 @@ export const product4 = {
                 height: 640,
             }
         }
-    },
-}
+    }
+]

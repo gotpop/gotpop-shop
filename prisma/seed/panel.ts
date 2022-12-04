@@ -1,7 +1,5 @@
-export const panel1 = {
-    where: { title: '@container queries' },
-    update: {},
-    create: {
+export const panels = [
+    {
         direction: 'ltr',
         linktext: 'Find out more',
         linkhref: '/shop',
@@ -16,12 +14,7 @@ export const panel1 = {
             }
         }
     },
-}
-
-export const panel2 = {
-    where: { title: 'Color Contrast' },
-    update: {},
-    create: {
+    {
         direction: 'ltr',
         linktext: 'Find out more',
         linkhref: '/shop',
@@ -36,12 +29,7 @@ export const panel2 = {
             }
         }
     },
-}
-
-export const panel3 = {
-    where: { title: 'Select Menu Element' },
-    update: {},
-    create: {
+    {
         direction: 'ltr',
         linktext: 'Find out more',
         linkhref: '/shop',
@@ -56,12 +44,7 @@ export const panel3 = {
             }
         }
     },
-}
-
-export const panel4 = {
-    where: { title: '@custom-media' },
-    update: {},
-    create: {
+    {
         direction: 'ltr',
         linktext: 'Find out more',
         linkhref: '/shop',
@@ -75,5 +58,5 @@ export const panel4 = {
                 height: 640,
             }
         }
-    },
-}
+    }
+]
