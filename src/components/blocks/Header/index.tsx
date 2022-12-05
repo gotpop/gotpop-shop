@@ -21,7 +21,7 @@ const icons = new Map([
 ])
 
 type Props = {
-  vars: CSSProperties
+  vars: CSSProperties | null
 }
 
 const Header = ({ vars }: Props) => {
@@ -37,6 +37,10 @@ const Header = ({ vars }: Props) => {
       </GridWrap>
     </header>
   )
+}
+
+Header.defaultProps = {
+  vars: null
 }
 
 export default Header
