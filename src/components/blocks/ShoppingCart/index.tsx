@@ -1,4 +1,4 @@
-import { CSSProperties, useEffect } from 'react'
+import { CSSProperties, useEffect, useState } from 'react'
 
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import { BsFillCartCheckFill } from 'react-icons/bs'
@@ -7,7 +7,6 @@ import { CartItem } from '@blocks/CartItem'
 import { Drawer } from '@components/ui/Drawer'
 import Grid from '@components/ui/Grid'
 import { formatCurrency } from '@utilities/formatCurrency'
-import { shopItems } from '@data/shop'
 import styles from './ShoppingCart.module.css'
 import { useShoppingCart } from '@context/ShoppingCartContext'
 
@@ -20,8 +19,32 @@ const closeVars = {
   ['--local-font-size']: 'var(--size-s-1)'
 } as CSSProperties
 
+async function postData(url = '', data = {}) {
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  return response.json()
+}
+
 export function ShoppingCart({ isOpen }: ShoppingCartProps) {
-  const { closeCart, cartItems } = useShoppingCart()
+  const { closeCart } = useShoppingCart()
+  const [cartItems, setCartItems] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const url = 'api/cartget'
+    setIsLoading(true)
+    postData(url).then(data => {
+      console.log('DataCheck', data)
+
+      setCartItems(data.CartItems)
+      setIsLoading(false)
+    })
+  }, [isOpen])
 
   return (
     <Drawer isOpen={isOpen}>
@@ -39,20 +62,24 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
                 <BsFillCartCheckFill />
               </h2>
             </section>
-            {cartItems.map((item, i) => (
-              <CartItem key={i} id={item.id} quantity={item.quantity} />
-            ))}
-            <div className={styles.total}>
+            {cartItems &&
+              cartItems.map((item, i) => {
+                if (item.amount > 0) {
+                  return <CartItem key={i} item={item} />
+                }
+              })}
+            {/* <div className={styles.total}>
               <span>Cart total: </span>
-              {/* <span>
-                {formatCurrency(
-                  cartItems.reduce((total, cartItem) => {
-                    const item = shopItems.find(i => i.id === cartItem.id)
-                    return total + (item?.price || 0) * cartItem.quantity
-                  }, 0)
-                )}
-              </span> */}
-            </div>
+              <span>
+                {cartItems &&
+                  formatCurrency(
+                    cartItems.reduce((total, cartItem) => {
+                      const item = cartItems.find(i => i.id === cartItem.id)
+                      return total + (item?.basePrice || 0) * cartItem.amount
+                    }, 0)
+                  )}
+              </span>
+            </div> */}
           </>
         </Grid>
       </section>

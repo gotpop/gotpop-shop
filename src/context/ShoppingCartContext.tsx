@@ -107,7 +107,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
       }}
     >
       {children}
-      <ShoppingCart isOpen={isOpen} />
+      {isOpen && <ShoppingCart isOpen={isOpen} />}
     </ShoppingCartContext.Provider>
   )
 }

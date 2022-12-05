@@ -22,7 +22,15 @@ export default async function handler(
   const activeCart = await prisma.cart.findUnique({
     where: { id: theCart },
     include: {
-      CartItems: true
+      CartItems: {
+        include: {
+          product: {
+            include: {
+              photos: true
+            }
+          }
+        }
+      }
     }
   })
 

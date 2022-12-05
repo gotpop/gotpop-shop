@@ -14,37 +14,33 @@ const buttonRemoveVars = {
 } as CSSProperties
 
 type Props = {
-  id: string
-  quantity: number
+  item: any
 }
 
-export function CartItem({ id, quantity }: Props) {
+export function CartItem({ item }: Props) {
   const { removeFromCart } = useShoppingCart()
-  // const item = shopItems.find(i => i.id === id)
-
-  useEffect(() => {
-    console.log('id, quantity :', id, quantity)
-  }, [id, quantity])
-
-  // if (item == null) return null
+  const { amount, product } = item
+  const photo = product.photos[0]
 
   return (
     <section className={styles.cart}>
-      {/* <Image
-        src={item.photo.url}
-        width={item.photo.width}
-        height={item.photo.height}
-        alt={item.photo.alt}
-      /> */}
+      <Image
+        src={photo.url}
+        width={photo.width}
+        height={photo.height}
+        alt={photo.alt}
+      />
       <section className={styles.content}>
-        {/* <div className={styles.intro}>
+        <div className={styles.intro}>
           <div className={styles.title}>
-            {item.name}
-            {quantity > 1 && <span>x {quantity}</span>}
+            {product.name}
+            {amount > 1 && <span>x {amount}</span>}
           </div>
-          <div className={styles.price}>Item: {formatCurrency(item.price)}</div>
+          <div className={styles.price}>
+            Item: {formatCurrency(product.basePrice)}
+          </div>
           <div className={styles.total}>
-            Total: {formatCurrency(item.price * quantity)}
+            Total: {formatCurrency(product.basePrice * amount)}
           </div>
         </div>
         <ButtonIcon
@@ -52,7 +48,7 @@ export function CartItem({ id, quantity }: Props) {
           text="Remove from cart"
           handleClick={() => removeFromCart(item.id)}
           vars={buttonRemoveVars}
-        /> */}
+        />
       </section>
     </section>
   )
