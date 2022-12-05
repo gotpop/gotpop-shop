@@ -20,13 +20,13 @@ type Props = {
 
 export function CartItem({ id, quantity }: Props) {
   const { removeFromCart } = useShoppingCart()
-  const item = shopItems.find(i => i.id === id)
+  // const item = shopItems.find(i => i.id === id)
 
   useEffect(() => {
     console.log('id, quantity :', id, quantity)
   }, [id, quantity])
 
-  if (item == null) return null
+  // if (item == null) return null
 
   return (
     <section className={styles.cart}>
@@ -37,7 +37,7 @@ export function CartItem({ id, quantity }: Props) {
         alt={item.photo.alt}
       /> */}
       <section className={styles.content}>
-        <div className={styles.intro}>
+        {/* <div className={styles.intro}>
           <div className={styles.title}>
             {item.name}
             {quantity > 1 && <span>x {quantity}</span>}
@@ -52,7 +52,7 @@ export function CartItem({ id, quantity }: Props) {
           text="Remove from cart"
           handleClick={() => removeFromCart(item.id)}
           vars={buttonRemoveVars}
-        />
+        /> */}
       </section>
     </section>
   )

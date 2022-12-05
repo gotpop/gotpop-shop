@@ -44,14 +44,14 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
             ))}
             <div className={styles.total}>
               <span>Cart total: </span>
-              <span>
+              {/* <span>
                 {formatCurrency(
                   cartItems.reduce((total, cartItem) => {
                     const item = shopItems.find(i => i.id === cartItem.id)
                     return total + (item?.price || 0) * cartItem.quantity
                   }, 0)
                 )}
-              </span>
+              </span> */}
             </div>
           </>
         </Grid>
