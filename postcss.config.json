@@ -1,19 +1,13 @@
 {
     "plugins": [
-        "postcss-nesting",
-        [
-            "postcss-custom-media",
-            {
-                "importFrom": "./src/styles/media.css"
-            }
-        ],
+        "postcss-nested",
         [
             "postcss-preset-env",
             {
                 "stage": 0,
                 "features": {
-                    "custom-properties": true,
-                    "nesting-rules": true
+                    "media-query-ranges": true,
+                    "custom-media-queries": true
                 }
             }
         ]
