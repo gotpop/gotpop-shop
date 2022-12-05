@@ -3,10 +3,10 @@ import {
   AiFillPlusCircle,
   AiOutlineShoppingCart
 } from 'react-icons/ai'
+import { CSSProperties, useEffect } from 'react'
 
 import { BsTrash } from 'react-icons/bs'
 import ButtonIcon from '../ButtonIcon'
-import { CSSProperties } from 'react'
 import Image from 'next/image'
 import { ProductWithPhotos } from '@lib/prisma'
 import { formatCurrency } from '@utilities/formatCurrency'
@@ -22,6 +22,17 @@ const buttonRemoveVars = {
   ['--local-font-size']: 'var(--size-s-1)'
 } as CSSProperties
 
+async function postData(url = '', data = {}) {
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  return response.json()
+}
+
 const Product = ({ product }: Props) => {
   const { name, basePrice, id, photos } = product
   const photo = photos[0]
@@ -33,7 +44,14 @@ const Product = ({ product }: Props) => {
     removeFromCart
   } = useShoppingCart()
   const quantity = getItemQuantity(id)
-  // const quantity = 5
+
+  useEffect(() => {
+    const url = 'api/cart'
+
+    postData(url, { id: id, quantity: quantity }).then(data => {
+      console.log('DataCheck', data)
+    })
+  }, [id, quantity])
 
   return (
     <section className={styles.product}>

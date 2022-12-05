@@ -18,19 +18,19 @@ describe('Navigation', () => {
         cy.get('h3').contains('@container queries')
     })
 
-    it('should navigate to the forms page', () => {
-        // Start from the index page
-        cy.visit('http://localhost:3000/')
+    // it('should navigate to the forms page', () => {
+    //     // Start from the index page
+    //     cy.visit('http://localhost:3000/')
 
-        // Find a link with an href attribute containing "about" and click it
-        cy.get('a[data-test="forms"]').click()
+    //     // Find a link with an href attribute containing "about" and click it
+    //     cy.get('a[data-test="forms"]').click()
 
-        // The new url should include "/about"
-        cy.url().should('include', 'forms')
+    //     // The new url should include "/about"
+    //     cy.url().should('include', 'forms')
 
-        // The new page should contain an h1 with "About page"
-        cy.get('h3').contains('Form demo')
-    })
+    //     // The new page should contain an h1 with "About page"
+    //     cy.get('h3').contains('Form demo')
+    // })
 })
 
 // Prevent TypeScript from reading file as legacy script

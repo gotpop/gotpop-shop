@@ -38,10 +38,6 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [cartItems, setCartItems] = useState<CartItem[]>([])
 
-  useEffect(() => {
-    console.log('cartItems :', cartItems)
-  }, [cartItems])
-
   const cartQuantity = cartItems.reduce(
     (quantity, item) => item.quantity + quantity,
     0
@@ -53,19 +49,13 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   function getItemQuantity(id: string) {
     const quantity =
       cartItems.find(item => {
-        // console.log('item :', item)
-
         return item.id === id
       })?.quantity || 0
-
-    // console.log('quantity :', quantity)
 
     return quantity
   }
 
   function increaseCartQuantity(id: string) {
-    console.log('id :', id)
-
     setCartItems(currItems => {
       if (currItems.find(item => item.id === id) == null) {
         return [...currItems, { id, quantity: 1 }]
@@ -82,8 +72,6 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   }
 
   function decreaseCartQuantity(id: string) {
-    console.log('id :', id)
-
     setCartItems(currItems => {
       if (currItems.find(item => item.id === id)?.quantity === 1) {
         return currItems.filter(item => item.id !== id)
@@ -100,8 +88,6 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   }
 
   function removeFromCart(id: string) {
-    console.log('id :', id)
-
     setCartItems(currItems => {
       return currItems.filter(item => item.id !== id)
     })
@@ -121,7 +107,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
       }}
     >
       {children}
-      <ShoppingCart isOpen={isOpen} />
+      {isOpen && <ShoppingCart isOpen={isOpen} />}
     </ShoppingCartContext.Provider>
   )
 }

@@ -18,27 +18,39 @@ model Panel {
 }
 
 model User {
-  id         String       @id @default(uuid())
-  email      String       @unique
-  password   String
-  name       String?
-  address    String?
-  role       Role         @default(USER)
-  createdAt  DateTime     @default(now())
-  updatedAt  DateTime     @default(now())
-  Purchase   Purchase[]
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  loggedIn  Boolean  @unique @default(false)
+  name      String?
+  address   String?
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  Carts      Cart[]
   UserTokens UserTokens[]
+}
+
+model Cart {
+  id       String  @id @default(uuid())
+  isActive Boolean @default(false)
+
+  CartItems CartItem[]
+  userId    String?
+  user      User?      @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model UserTokens {
   id           String   @id @default(uuid())
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId       String
   refreshToken String
   family       String   @unique
   browserInfo  String?
   expiresAt    DateTime
   createdAt    DateTime @default(now())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Photo {
@@ -62,7 +74,7 @@ model Product {
   createdAt          DateTime   @default(now())
   photos             Photo[]
   categories         Category[]
-  Purchase           Purchase[]
+  CartItem           CartItem[]
 }
 
 model Category {
@@ -71,82 +83,22 @@ model Category {
   products Product[]
 }
 
-model Purchase {
+model CartItem {
   id            String   @id @default(uuid())
-  user          User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
-  userId        String?
-  product       Product  @relation(fields: [productId], references: [id])
-  productId     String
-  amount        Int      @default(1)
-  totalPrice    Decimal
+  name          String   @unique
+  amount        Int
+  totalPrice    Decimal?
   reviewNote    Int?
   reviewComment String?
   createdAt     DateTime @default(now())
+
+  product   Product? @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String?
+  Cart      Cart?    @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  cartId    String?
 }
 
 enum Role {
   USER
   ADMIN
 }
-
-// model NavItem {
-//   id   Int    @id @default(autoincrement())
-//   text String
-//   test String
-//   href String
-// }
-
-// model Panel {
-//   id        Int    @id @default(autoincrement())
-//   direction String
-//   linktext  String
-//   linkhref  String
-//   excerpt   String
-//   title     String
-// }
-
-// model Photo {
-//   id      String    @id @default(uuid())
-//   height  Int
-//   width   Int
-//   url     String
-//   alt     String
-//   Product Product[]
-// }
-
-// model User {
-//   id       String @id @default(uuid())
-//   email    String @unique
-//   password String
-//   name     String
-//   userId   String @unique @default(uuid())
-//   Cart     Cart?  @relation(fields: [userId], references: [id])
-// }
-
-// model Product {
-//   id        String     @id @default(uuid())
-//   name      String     @unique
-//   price     Float
-//   stock     Int
-//   createdAt DateTime   @default(now())
-//   updatedAt DateTime   @updatedAt
-//   brand     String?
-//   photo     Photo?     @relation(fields: [photoId], references: [id])
-//   CartItem  CartItem[]
-//   photoId   String
-// }
-
-// model CartItem {
-//   id        String  @id @default(uuid())
-//   product   Product @relation(fields: [productId], references: [id])
-//   quantity  Int
-//   productId String
-//   Cart      Cart?   @relation(fields: [cartId], references: [id])
-//   cartId    String?
-// }
-
-// model Cart {
-//   id        String     @id @default(uuid())
-//   cartItems CartItem[]
-//   User      User?
-// }
