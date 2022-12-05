@@ -24,7 +24,6 @@ export default function Shop({ shopData }: Props) {
     <LayoutStandard>
       <>
         <Intro content={content} />
-        {/* <button onClick={handelClick}>Click me baby!</button> */}
         {shopData.map((product: ProductWithPhotos, key: number) => (
           <Product key={key} product={product} />
         ))}
