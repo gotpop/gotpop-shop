@@ -56,29 +56,12 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   }
 
   function increaseCartQuantity(id: string) {
-    const url = 'http://localhost:3000/api/cart'
-
-    async function postData(url = '', data = {}) {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      })
-      return response.json()
-    }
-
     setCartItems(currItems => {
       if (currItems.find(item => item.id === id) == null) {
         return [...currItems, { id, quantity: 1 }]
       } else {
         return currItems.map(item => {
           if (item.id === id) {
-            postData(url, { id: id, quantity: item.quantity }).then(data => {
-              console.log('DataCheck', data)
-            })
-
             return { ...item, quantity: item.quantity + 1 }
           } else {
             return item

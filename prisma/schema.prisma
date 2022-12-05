@@ -86,7 +86,7 @@ model Category {
 model CartItem {
   id            String   @id @default(uuid())
   name          String   @unique
-  amount        Int      @default(1)
+  amount        Int
   totalPrice    Decimal?
   reviewNote    Int?
   reviewComment String?

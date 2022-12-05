@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 import { panels } from './panel'
-import prisma from '@lib/prisma'
+import prisma from '../../src/lib/prisma'
 import { products } from './product'
 import { users } from './user'
 

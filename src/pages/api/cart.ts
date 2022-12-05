@@ -6,28 +6,33 @@ export default async function handler(
   _req: NextApiRequest,
   res: NextApiResponse
 ) {
+  const body = _req.body
+
   if (_req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' })
   }
 
   const currentUser = await prisma.user.findUnique({
-    where: { loggedIn: true },
+    where: { email: 'alice@prisma.io' },
     include: {
       Carts: true
     }
   })
 
   const product = await prisma.product.findUnique({
-    where: { id: _req.body.id }
+    where: { id: body.id }
   })
 
+  const productName = `ci-${product.name}`
+
   const makeCartItem = await prisma.cartItem.upsert({
-    where: { name: product.name },
-    update: { amount: _req.body.quantity },
+    where: { name: productName },
+    update: { amount: body.quantity },
     create: {
-      name: product.name,
+      name: productName,
+      amount: body.quantity,
       product: {
-        connect: { id: _req.body.id },
+        connect: { id: body.id },
       },
       Cart: {
         connect: { id: currentUser.Carts[0].id },
