@@ -2,7 +2,7 @@ import { defineConfig } from "cypress";
 
 export default defineConfig({
   retries: {
-    runMode: 2,
+    runMode: 3,
     openMode: 2,
   },
   e2e: {
