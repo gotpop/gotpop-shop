@@ -1,10 +1,8 @@
 import { PrismaClient } from '@prisma/client'
-import { cart } from './cart'
 import { panels } from './panel'
+import prisma from '@lib/prisma'
 import { products } from './product'
 import { users } from './user'
-
-const prisma = new PrismaClient()
 
 async function main() {
     await prisma.user.deleteMany({})

@@ -34,7 +34,7 @@ model User {
 
 model Cart {
   id       String  @id @default(uuid())
-  isActive Boolean @default(true)
+  isActive Boolean @default(false)
 
   CartItems CartItem[]
   userId    String?

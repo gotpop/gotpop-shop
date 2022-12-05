@@ -1,4 +1,4 @@
-import { cart } from "./cart";
+import { cartActive, cartInactive } from "./cart";
 
 export const users = [
     {
@@ -8,7 +8,7 @@ export const users = [
         password: '1234',
         address: '1234',
         Carts: {
-            create: cart
+            create: cartActive
         }
     },
     {
@@ -18,7 +18,7 @@ export const users = [
         password: '1234',
         address: '1234',
         Carts: {
-            create: cart
+            create: cartInactive
         }
     }
 ]
