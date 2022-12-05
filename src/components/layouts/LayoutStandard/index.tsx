@@ -1,8 +1,6 @@
 import { CSSProperties, ReactElement, useEffect } from 'react'
 
 import Footer from '@blocks/Footer'
-import Grid from '@components/ui/Grid'
-import GridWrap from '@components/ui/GridWrap'
 import Header from '@blocks/Header'
 import Main from '@components/ui/Main'
 import Trigger from '@components/ui/Trigger'
