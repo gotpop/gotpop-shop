@@ -11,20 +11,20 @@ export default async function handler(
   }
 
   const currentUser = await prisma.user.findUnique({
-    where: { loggedIn: true },
+    where: { email: 'alice@prisma.io' },
     include: {
       Carts: true
     }
   })
 
-  const activeCart = await prisma.cart.findUnique({
-    where: { id: '007168a5-c5c1-4a50-882c-78b44bf5cf3b' },
-    // include: {
-    //   CartItems: true
-    // }
-  })
+  const theCart = currentUser.Carts[0].id
 
-  console.log('activeCart :', activeCart);
+  const activeCart = await prisma.cart.findUnique({
+    where: { id: theCart },
+    include: {
+      CartItems: true
+    }
+  })
 
   return res.status(200).json(activeCart)
 }
