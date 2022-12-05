@@ -14,10 +14,11 @@ import { useOnScreen } from '@hooks/useOnScreen'
 
 type Props = {
   compact: boolean
+  i: number
   page: PanelWithPhotos
 }
 
-const Panel = ({ compact, page }: Props) => {
+const Panel = ({ compact, page, i }: Props) => {
   const { linkhref, linktext, excerpt, title, id, direction, photos } = page
   const photo = photos[0]
 
@@ -37,7 +38,7 @@ const Panel = ({ compact, page }: Props) => {
     <section
       style={direction === 'rtl' ? vars : undefined}
       className={styles.panel}
-      id={`panel-${id}`}
+      id={`panel-${i}`}
       ref={sectionRef}
     >
       <GridWrap>

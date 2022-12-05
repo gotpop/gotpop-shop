@@ -38,7 +38,7 @@ const Brochure = ({ panelData }: Props) => {
         <Meta />
         <Hero />
         {panelData.map((page, i) => (
-          <Panel key={i} compact={trackPadTrigger} page={page} />
+          <Panel key={i} i={i} compact={trackPadTrigger} page={page} />
         ))}
       </>
     </LayoutFull>
