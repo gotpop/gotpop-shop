@@ -2,9 +2,9 @@ import { CSSProperties, useEffect } from 'react'
 
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import ButtonIcon from '@components/ui/ButtonIcon'
+import { CartItemWithProduct } from '@lib/prisma'
 import Image from 'next/image'
 import { formatCurrency } from '@utilities/formatCurrency'
-import { shopItems } from '@data/shop'
 import styles from './CartItem.module.css'
 import { useShoppingCart } from '@context/ShoppingCartContext'
 
@@ -14,7 +14,7 @@ const buttonRemoveVars = {
 } as CSSProperties
 
 type Props = {
-  item: any
+  item: CartItemWithProduct
 }
 
 export function CartItem({ item }: Props) {

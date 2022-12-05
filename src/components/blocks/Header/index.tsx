@@ -39,8 +39,4 @@ const Header = ({ vars }: Props) => {
   )
 }
 
-Header.defaultProps = {
-  vars: {}
-}
-
 export default Header

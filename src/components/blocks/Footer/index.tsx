@@ -36,8 +36,4 @@ const Footer = ({ vars }: props) => {
   )
 }
 
-Footer.defaultProps = {
-  vars: null
-}
-
 export default Footer
