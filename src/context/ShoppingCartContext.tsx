@@ -49,18 +49,25 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   function getItemQuantity(id: string) {
     const quantity =
       cartItems.find(item => {
-        // console.log('item :', item)
-
         return item.id === id
       })?.quantity || 0
-
-    // console.log('quantity :', quantity)
 
     return quantity
   }
 
   function increaseCartQuantity(id: string) {
-    console.log('id :', id)
+    const url = 'http://localhost:3000/api/cart'
+
+    async function postData(url = '', data = {}) {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      return response.json()
+    }
 
     setCartItems(currItems => {
       if (currItems.find(item => item.id === id) == null) {
@@ -68,6 +75,10 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
       } else {
         return currItems.map(item => {
           if (item.id === id) {
+            postData(url, { id: id, quantity: item.quantity }).then(data => {
+              console.log('DataCheck', data)
+            })
+
             return { ...item, quantity: item.quantity + 1 }
           } else {
             return item
@@ -78,8 +89,6 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   }
 
   function decreaseCartQuantity(id: string) {
-    console.log('id :', id)
-
     setCartItems(currItems => {
       if (currItems.find(item => item.id === id)?.quantity === 1) {
         return currItems.filter(item => item.id !== id)
@@ -96,8 +105,6 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   }
 
   function removeFromCart(id: string) {
-    console.log('id :', id)
-
     setCartItems(currItems => {
       return currItems.filter(item => item.id !== id)
     })

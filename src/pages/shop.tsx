@@ -15,29 +15,6 @@ type Props = {
   shopData: ProductWithPhotos[]
 }
 
-async function postData(url = '', data = {}) {
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-  return response.json()
-}
-
-const handelClick = () => {
-  const url = 'http://localhost:3000/api/cart'
-  const body = {
-    id: 'c1f2beda-1673-440d-93a2-c3c49a15065d',
-    newAmount: 999999
-  }
-
-  postData(url, body).then(data => {
-    console.log(data)
-  })
-}
-
 export default function Shop({ shopData }: Props) {
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -47,7 +24,7 @@ export default function Shop({ shopData }: Props) {
     <LayoutStandard>
       <>
         <Intro content={content} />
-        <button onClick={handelClick}>Click me baby!</button>
+        {/* <button onClick={handelClick}>Click me baby!</button> */}
         {shopData.map((product: ProductWithPhotos, key: number) => (
           <Product key={key} product={product} />
         ))}

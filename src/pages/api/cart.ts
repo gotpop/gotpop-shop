@@ -23,7 +23,7 @@ export default async function handler(
 
   const makeCartItem = await prisma.cartItem.upsert({
     where: { name: product.name },
-    update: { amount: _req.body.newAmount },
+    update: { amount: _req.body.quantity },
     create: {
       name: product.name,
       product: {

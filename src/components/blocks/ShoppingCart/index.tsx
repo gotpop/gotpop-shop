@@ -23,10 +23,6 @@ const closeVars = {
 export function ShoppingCart({ isOpen }: ShoppingCartProps) {
   const { closeCart, cartItems } = useShoppingCart()
 
-  useEffect(() => {
-    console.log('cartItems in ShoppingCart:', cartItems)
-  }, [cartItems])
-
   return (
     <Drawer isOpen={isOpen}>
       <section className={styles.cart}>
