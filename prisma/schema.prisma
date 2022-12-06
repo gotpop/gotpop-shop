@@ -93,7 +93,7 @@ model CartItem {
   createdAt     DateTime @default(now())
 
   product   Product? @relation(fields: [productId], references: [id], onDelete: Cascade)
-  productId String?
+  productId String?  @unique
   Cart      Cart?    @relation(fields: [cartId], references: [id], onDelete: Cascade)
   cartId    String?
 }
