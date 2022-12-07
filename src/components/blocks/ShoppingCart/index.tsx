@@ -2,10 +2,11 @@ import { CSSProperties, useEffect, useState } from 'react'
 
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import { BsFillCartCheckFill } from 'react-icons/bs'
-import ButtonIcon from '@components/ui/ButtonIcon'
+import ButtonIcon from '@ui/ButtonIcon'
 import { CartItem } from '@blocks/CartItem'
-import { Drawer } from '@components/ui/Drawer'
-import Grid from '@components/ui/Grid'
+import { Drawer } from '@ui/Drawer'
+import Grid from '@ui/Grid'
+import Loading from '@ui/Loading'
 import { formatCurrency } from '@utilities/formatCurrency'
 import styles from './ShoppingCart.module.css'
 import { useCartGetAll } from '@hooks/useCartGetAll'
@@ -41,12 +42,10 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
               </h2>
             </section>
             {isLoading ? (
-              <>
-                <h3>Loading</h3>
-              </>
+              <Loading />
             ) : (
               cart.CartItems.map((item, i) => {
-                if (item.amount > 0) {
+                if (item.quantity > 0) {
                   return <CartItem key={i} item={item} />
                 }
               })

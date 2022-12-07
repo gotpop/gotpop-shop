@@ -10,7 +10,7 @@ const fetcher = (url: string) =>
     }).then(res => res.json())
 
 export function useCartGetAll() {
-    const { data, error } = useSWR('api/cartget', fetcher)
+    const { data, error } = useSWR('api/cart/cartget', fetcher)
 
     return {
         cart: data,

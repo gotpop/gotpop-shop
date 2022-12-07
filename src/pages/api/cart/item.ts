@@ -9,6 +9,8 @@ export default async function handler(
   const { body } = req
   const { id, quantity } = body
 
+  console.log('id, quantity :', id, quantity);
+
   const currentUser = await prisma.user.findUnique({
     where: { email: 'alice@prisma.io' },
     include: {

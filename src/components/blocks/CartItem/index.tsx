@@ -23,14 +23,6 @@ export function CartItem({ item }: Props) {
   const { quantity, product } = item
   const photo = product.photos[0]
 
-  const { cartItem, isLoading, isError } = useCart({
-    method: 'POST',
-    payload: {
-      id: product,
-      quantity: quantity
-    }
-  })
-
   return (
     <section className={styles.cart}>
       <Image
