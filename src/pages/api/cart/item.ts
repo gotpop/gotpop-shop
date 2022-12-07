@@ -3,36 +3,32 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import prisma from '@lib/prisma'
 
 export default async function handler(
-  _req: NextApiRequest,
+  req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const body = _req.body
-
-  if (_req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' })
-  }
+  const { body } = req
+  const { id, quantity } = body
 
   const currentUser = await prisma.user.findUnique({
     where: { email: 'alice@prisma.io' },
     include: {
-      Carts: true
+      Carts: {
+        include: {
+          CartItems: true
+        }
+      }
     }
   })
 
-  const product = await prisma.product.findUnique({
-    where: { id: body.id }
-  })
-
-  const productName = `ci-${product.name}`
+  const updateQuantity = { quantity: quantity }
+  const dontUpdateQuantity = {}
 
   const makeCartItem = await prisma.cartItem.upsert({
-    where: { name: productName },
-    update: { amount: body.quantity },
+    where: { productId: id },
+    update: quantity ? updateQuantity : dontUpdateQuantity,
     create: {
-      name: productName,
-      amount: body.quantity,
       product: {
-        connect: { id: body.id },
+        connect: { id: id },
       },
       Cart: {
         connect: { id: currentUser.Carts[0].id },

@@ -18,7 +18,7 @@ model Panel {
 }
 
 model User {
-  id        String   @id @default(uuid())
+  id        String   @id @default(cuid())
   email     String   @unique
   password  String
   loggedIn  Boolean  @unique @default(false)
@@ -33,7 +33,7 @@ model User {
 }
 
 model Cart {
-  id       String  @id @default(uuid())
+  id       String  @id @default(cuid())
   isActive Boolean @default(false)
 
   CartItems CartItem[]
@@ -42,7 +42,7 @@ model Cart {
 }
 
 model UserTokens {
-  id           String   @id @default(uuid())
+  id           String   @id @default(cuid())
   refreshToken String
   family       String   @unique
   browserInfo  String?
@@ -54,7 +54,7 @@ model UserTokens {
 }
 
 model Photo {
-  id      String    @id @default(uuid())
+  id      String    @id @default(cuid())
   height  Int
   width   Int
   url     String
@@ -64,7 +64,7 @@ model Photo {
 }
 
 model Product {
-  id                 String     @id @default(uuid())
+  id                 String     @id @default(cuid())
   name               String     @unique
   urlName            String     @unique
   basePrice          Float
@@ -78,19 +78,15 @@ model Product {
 }
 
 model Category {
-  id       String    @id @default(uuid())
+  id       String    @id @default(cuid())
   name     String    @unique
   products Product[]
 }
 
 model CartItem {
-  id            String   @id @default(uuid())
-  name          String   @unique
-  amount        Int
-  totalPrice    Decimal?
-  reviewNote    Int?
-  reviewComment String?
-  createdAt     DateTime @default(now())
+  id        String   @id @default(cuid())
+  quantity  Int      @default(0)
+  createdAt DateTime @default(now())
 
   product   Product? @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId String?  @unique

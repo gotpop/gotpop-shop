@@ -1,19 +1,19 @@
 import useSWR from "swr"
 
-const fetcher = (url: string, payload) =>
+const fetcher = (url: string) =>
     fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify('')
     }).then(res => res.json())
 
-export function useCart(payload) {
-    const { data, error } = useSWR(['/api/cart/item', payload], fetcher)
+export function useCartGetAll() {
+    const { data, error } = useSWR('api/cartget', fetcher)
 
     return {
-        cartItem: data,
+        cart: data,
         isLoading: !error && !data,
         isError: error
     }

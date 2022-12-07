@@ -5,12 +5,12 @@ import { products } from './product'
 import { users } from './user'
 
 async function main() {
-    // await prisma.user.deleteMany({})
-    // await prisma.product.deleteMany({})
-    // await prisma.panel.deleteMany({})
-    // await prisma.cartItem.deleteMany({})
-    // await prisma.photo.deleteMany({})
-    // await prisma.cart.deleteMany({})
+    await prisma.user.deleteMany({})
+    await prisma.product.deleteMany({})
+    await prisma.panel.deleteMany({})
+    await prisma.cartItem.deleteMany({})
+    await prisma.photo.deleteMany({})
+    await prisma.cart.deleteMany({})
 
     for (let user of users) {
         await prisma.user.create({ data: user })

@@ -4,6 +4,7 @@ import {
   AiOutlineShoppingCart
 } from 'react-icons/ai'
 import { CSSProperties, useEffect } from 'react'
+import useSWR, { mutate } from 'swr'
 
 import { BsTrash } from 'react-icons/bs'
 import ButtonIcon from '../ButtonIcon'
@@ -11,6 +12,7 @@ import Image from 'next/image'
 import { ProductWithPhotos } from '@lib/prisma'
 import { formatCurrency } from '@utilities/formatCurrency'
 import styles from './Product.module.css'
+import { useCart } from '@hooks/useCart'
 import { useShoppingCart } from '@context/ShoppingCartContext'
 
 type Props = {
@@ -22,36 +24,47 @@ const buttonRemoveVars = {
   ['--local-font-size']: 'var(--size-s-1)'
 } as CSSProperties
 
-async function postData(url = '', data = {}) {
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-  return response.json()
-}
-
 const Product = ({ product }: Props) => {
   const { name, basePrice, id, photos } = product
   const photo = photos[0]
 
-  const {
-    getItemQuantity,
-    increaseCartQuantity,
-    decreaseCartQuantity,
-    removeFromCart
-  } = useShoppingCart()
-  const quantity = getItemQuantity(id)
+  // const payload = {
+  //   quantity: null,
+  //   id: id
+  // }
 
-  useEffect(() => {
-    const url = 'api/cart'
+  // const { cartItem, isLoading, isError } = useCart(payload)
 
-    postData(url, { id: id, quantity: quantity }).then(data => {
-      console.log('DataCheck', data)
-    })
-  }, [id, quantity])
+  // const removeFromCart = async () => {
+  //   const newComment = {
+  //     comment: 'This is a test comment',
+  //     email: 'rb@doe.com'
+  //   }
+
+  //   const payload = {
+  //     quantity: 0,
+  //     id: id
+  //   }
+
+  //   await fetcher(address, {
+  //     method: 'POST',
+  //     body: JSON.stringify(payload)
+  //   })
+
+  //   mutate(address)
+  // }
+
+  // const address = `/api/cart/item`
+  // const fetcher = (...args) => fetch(...args).then(res => res.json())
+
+  // const payloadNull = {
+  //   quantity: null,
+  //   id: id
+  // }
+
+  // const { data: cartItem, error } = useSWR(address, fetcher)
+
+  // const { data: cartItem, error } = useSWR([address, payloadNull], fetcher)
 
   return (
     <section className={styles.product}>
@@ -67,7 +80,21 @@ const Product = ({ product }: Props) => {
           <h3>{name}</h3>
           <span className={styles.basePrice}>{formatCurrency(basePrice)}</span>
         </section>
-        {quantity === 0 ? (
+
+        {/* {cartItem && (
+          <>
+            <p>{cartItem.quantity}</p>
+          </>
+        )} */}
+
+        <ButtonIcon
+          text={`Remove`}
+          vars={buttonRemoveVars}
+          handleClick={() => removeFromCart()}
+          icon={<BsTrash />}
+        />
+
+        {/* {quantity === 0 ? (
           <ButtonIcon
             handleClick={() => increaseCartQuantity(id)}
             text="Add to cart"
@@ -90,7 +117,7 @@ const Product = ({ product }: Props) => {
               handleClick={() => increaseCartQuantity(id)}
             />
           </div>
-        )}
+        )} */}
       </div>
     </section>
   )

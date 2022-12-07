@@ -8,7 +8,7 @@ import { Drawer } from '@components/ui/Drawer'
 import Grid from '@components/ui/Grid'
 import { formatCurrency } from '@utilities/formatCurrency'
 import styles from './ShoppingCart.module.css'
-import { useCart } from '@hooks/useCart'
+import { useCartGetAll } from '@hooks/useCartGetAll'
 import { useShoppingCart } from '@context/ShoppingCartContext'
 
 type ShoppingCartProps = {
@@ -22,7 +22,7 @@ const closeVars = {
 
 export function ShoppingCart({ isOpen }: ShoppingCartProps) {
   const { closeCart } = useShoppingCart()
-  const { cart, isLoading, isError } = useCart()
+  const { cart, isLoading, isError } = useCartGetAll()
 
   return (
     <Drawer isOpen={isOpen}>
@@ -41,7 +41,9 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
               </h2>
             </section>
             {isLoading ? (
-              <>Loading</>
+              <>
+                <h3>Loading</h3>
+              </>
             ) : (
               cart.CartItems.map((item, i) => {
                 if (item.amount > 0) {
