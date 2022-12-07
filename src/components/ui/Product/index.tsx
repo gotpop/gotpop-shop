@@ -14,7 +14,6 @@ import { ProductWithPhotos } from '@lib/prisma'
 import { formatCurrency } from '@utilities/formatCurrency'
 import styles from './Product.module.css'
 import { useCart } from '@hooks/useCart'
-import { useShoppingCart } from '@context/ShoppingCartContext'
 
 type Props = {
   product: ProductWithPhotos
@@ -70,8 +69,6 @@ const Product = ({ product }: Props) => {
           <h3>{name}</h3>
           <span className={styles.basePrice}>{formatCurrency(basePrice)}</span>
         </section>
-
-        <button onClick={handleUpdate}>Add User</button>
 
         <strong>Cart item quantity: {cartItem?.quantity}</strong>
         {cartItem?.quantity === 0 ? (
