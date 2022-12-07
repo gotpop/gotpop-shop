@@ -24,7 +24,9 @@ const buttonRemoveVars = {
   ['--local-font-size']: 'var(--size-s-1)'
 } as CSSProperties
 
-const fetcher = (...args) => fetch(...args).then(res => res.json())
+const fetcher = (
+  ...args: [input: RequestInfo, init?: RequestInit | undefined]
+) => fetch(...args).then(res => res.json())
 
 const Product = ({ product }: Props) => {
   const { name, basePrice, id, photos } = product
