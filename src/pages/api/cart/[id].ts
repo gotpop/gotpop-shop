@@ -6,10 +6,8 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { body } = req
-  const { id, quantity } = body
-
-  console.log('id, quantity :', id, quantity);
+  const { query } = req
+  const productId = Array.isArray(query.id) ? query.id[0] : query.id
 
   const currentUser = await prisma.user.findUnique({
     where: { email: 'alice@prisma.io' },
@@ -22,15 +20,12 @@ export default async function handler(
     }
   })
 
-  // const updateQuantity = 
-  // const dontUpdateQuantity = {}
-
   const makeCartItem = await prisma.cartItem.upsert({
-    where: { productId: id },
-    update: { quantity: quantity },
+    where: { productId: productId },
+    update: {},
     create: {
       product: {
-        connect: { id: id },
+        connect: { id: productId },
       },
       Cart: {
         connect: { id: currentUser.Carts[0].id },

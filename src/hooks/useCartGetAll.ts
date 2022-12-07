@@ -11,10 +11,12 @@ const fetcher = (url: string) =>
 
 export function useCartGetAll() {
     const { data, error } = useSWR('api/cart/cartget', fetcher)
+    const filteredData = data?.CartItems.filter(item => item.quantity > 0)
 
     return {
-        cart: data,
+        cart: filteredData,
         isLoading: !error && !data,
-        isError: error
+        isError: error,
+        isEmpty: filteredData?.length === 0 ? true : false
     }
 }

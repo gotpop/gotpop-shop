@@ -23,7 +23,13 @@ const closeVars = {
 
 export function ShoppingCart({ isOpen }: ShoppingCartProps) {
   const { closeCart } = useShoppingCart()
-  const { cart, isLoading, isError } = useCartGetAll()
+  const { cart, isLoading, isError, isEmpty } = useCartGetAll()
+
+  const CartEmpty = () => (
+    <>
+      <h2>Cart empty</h2>
+    </>
+  )
 
   return (
     <Drawer isOpen={isOpen}>
@@ -41,14 +47,11 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
                 <BsFillCartCheckFill />
               </h2>
             </section>
+            {isEmpty ? <CartEmpty /> : null}
             {isLoading ? (
               <Loading />
             ) : (
-              cart.CartItems.map((item, i) => {
-                if (item.quantity > 0) {
-                  return <CartItem key={i} item={item} />
-                }
-              })
+              cart?.map((item, i) => <CartItem key={i} item={item} />)
             )}
             {/* <div className={styles.total}>
               <span>Cart total: </span>

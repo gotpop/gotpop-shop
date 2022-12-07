@@ -29,17 +29,23 @@ const Product = ({ product }: Props) => {
   const { mutate } = useSWRConfig()
   const { name, basePrice, id, photos } = product
   const photo = photos[0]
-  const url = `/api/cart/item`
+
+  const url = `/api/cart/${id}`
+  const fetcher = (...args) => fetch(...args).then(res => res.json())
+  const { data: cartItem, error } = useSWR(url, fetcher)
 
   const [quantity, setQuantity] = useState(null)
 
   useEffect(() => {
+    if (quantity === null) return
+
+    const address = `/api/cart/item`
     const payload = {
-      quantity: null,
+      quantity: quantity,
       id: id
     }
 
-    fetch(url, {
+    fetch(address, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -48,40 +54,26 @@ const Product = ({ product }: Props) => {
     })
       .then(res => res.json())
       .then(res => {
-        console.log('res :', res.quantity)
+        // console.log('POST response :', res.quantity)
         setQuantity(res.quantity)
       })
-  }, [id, url])
+  }, [quantity])
 
-  // const removeFromCart = async payload => {
-  //   console.log('payload :', payload)
+  // useEffect(() => {
+  //   if (!cartItem) return
 
-  //   await fetcher(url, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(payload)
-  //   })
+  //   // setQuantity(cartItem.quantity)
+  // }, [cartItem])
 
-  //   mutate('/api/user')
-  // }
+  const handleMinus = () => {
+    setQuantity(prev => {
+      // console.log('prev :', prev)
 
-  // const fetcher = (url: string, payload) =>
-  //   fetch(url, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(payload)
-  //   }).then(res => res.json())
+      if (!prev) return 0
 
-  // const payloadNull = {
-  //   quantity: null,
-  //   id: id
-  // }
-
-  // const { data: cartItem, error } = useSWR([url, payloadNull], fetcher)
+      return prev - 1
+    })
+  }
 
   return (
     <section className={styles.product}>
@@ -98,29 +90,10 @@ const Product = ({ product }: Props) => {
           <span className={styles.basePrice}>{formatCurrency(basePrice)}</span>
         </section>
 
-        {quantity !== null ? <p>{quantity}</p> : <Loading />}
-
-        {/* {cartItem && (
-          <>
-            <p>{quantity}</p>
-          </>
-        )} */}
-
-        <ButtonIcon
-          text={`Remove`}
-          vars={buttonRemoveVars}
-          // handleClick={() =>
-          //   removeFromCart({
-          //     quantity: 0,
-          //     id: id
-          //   })
-          // }
-          icon={<BsTrash />}
-        />
-
-        {/* {quantity === 0 ? (
+        <strong>Cart item quantity: {cartItem?.quantity}</strong>
+        {!quantity ? (
           <ButtonIcon
-            handleClick={() => increaseCartQuantity(id)}
+            handleClick={() => setQuantity(1)}
             text="Add to cart"
             icon={<AiOutlineShoppingCart />}
           />
@@ -128,20 +101,20 @@ const Product = ({ product }: Props) => {
           <div className={styles.controls}>
             <ButtonIcon
               icon={<AiFillMinusCircle />}
-              handleClick={() => decreaseCartQuantity(id)}
+              handleClick={handleMinus}
             />
             <ButtonIcon
-              text={`Remove ${quantity}`}
+              text={quantity ? `Remove ${quantity}` : ''}
               vars={buttonRemoveVars}
-              handleClick={() => removeFromCart(id)}
+              handleClick={() => setQuantity(0)}
               icon={<BsTrash />}
             />
             <ButtonIcon
               icon={<AiFillPlusCircle />}
-              handleClick={() => increaseCartQuantity(id)}
+              handleClick={() => setQuantity(prev => prev + 1)}
             />
           </div>
-        )} */}
+        )}
       </div>
     </section>
   )
