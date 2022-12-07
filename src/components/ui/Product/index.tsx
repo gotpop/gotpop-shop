@@ -4,7 +4,7 @@ import {
   AiOutlineShoppingCart
 } from 'react-icons/ai'
 import { CSSProperties, useEffect, useState } from 'react'
-import useSWR, { useSWRConfig } from 'swr'
+import useSWR, { mutate } from 'swr'
 
 import { BsTrash } from 'react-icons/bs'
 import ButtonIcon from '../ButtonIcon'
@@ -25,55 +25,22 @@ const buttonRemoveVars = {
   ['--local-font-size']: 'var(--size-s-1)'
 } as CSSProperties
 
+const fetcher = (...args) => fetch(...args).then(res => res.json())
+
 const Product = ({ product }: Props) => {
-  const { mutate } = useSWRConfig()
   const { name, basePrice, id, photos } = product
   const photo = photos[0]
 
   const url = `/api/cart/${id}`
-  const fetcher = (...args) => fetch(...args).then(res => res.json())
-  const { data: cartItem, error } = useSWR(url, fetcher)
+  let user = { id: id, quantity: 999999 }
+  // const fetcher = (...args) => fetch(...args).then(res => res.json())
+  // const { data: cartItem, error } = useSWR(url, fetcher)
 
-  const [quantity, setQuantity] = useState(null)
+  // const [quantity, setQuantity] = useState(null)
 
-  useEffect(() => {
-    if (quantity === null) return
-
-    const address = `/api/cart/item`
-    const payload = {
-      quantity: quantity,
-      id: id
-    }
-
-    fetch(address, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    })
-      .then(res => res.json())
-      .then(res => {
-        // console.log('POST response :', res.quantity)
-        setQuantity(res.quantity)
-      })
-  }, [quantity])
-
-  // useEffect(() => {
-  //   if (!cartItem) return
-
-  //   // setQuantity(cartItem.quantity)
-  // }, [cartItem])
-
-  const handleMinus = () => {
-    setQuantity(prev => {
-      // console.log('prev :', prev)
-
-      if (!prev) return 0
-
-      return prev - 1
-    })
-  }
+  const { data: cartItem, error } = useSWR(url, fetcher, {
+    revalidateOnFocus: false
+  })
 
   return (
     <section className={styles.product}>
@@ -90,8 +57,23 @@ const Product = ({ product }: Props) => {
           <span className={styles.basePrice}>{formatCurrency(basePrice)}</span>
         </section>
 
+        <button
+          onClick={async () => {
+            await fetcher(url, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(user)
+            })
+            mutate(url)
+          }}
+        >
+          Add User
+        </button>
+
         <strong>Cart item quantity: {cartItem?.quantity}</strong>
-        {!quantity ? (
+        {/* {!quantity ? (
           <ButtonIcon
             handleClick={() => setQuantity(1)}
             text="Add to cart"
@@ -114,10 +96,49 @@ const Product = ({ product }: Props) => {
               handleClick={() => setQuantity(prev => prev + 1)}
             />
           </div>
-        )}
+        )} */}
       </div>
     </section>
   )
 }
 
 export default Product
+
+// useEffect(() => {
+//   if (quantity === null) return
+
+//   const address = `/api/cart/item`
+//   const payload = {
+//     quantity: quantity,
+//     id: id
+//   }
+
+//   fetch(address, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(payload)
+//   })
+//     .then(res => res.json())
+//     .then(res => {
+//       // console.log('POST response :', res.quantity)
+//       setQuantity(res.quantity)
+//     })
+// }, [quantity])
+
+// // useEffect(() => {
+// //   if (!cartItem) return
+
+// //   // setQuantity(cartItem.quantity)
+// // }, [cartItem])
+
+// const handleMinus = () => {
+//   setQuantity(prev => {
+//     // console.log('prev :', prev)
+
+//     if (!prev) return 0
+
+//     return prev - 1
+//   })
+// }

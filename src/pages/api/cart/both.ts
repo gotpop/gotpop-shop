@@ -9,7 +9,7 @@ export default async function handler(
   const { body } = req
   const { id, quantity } = body
 
-  console.log('id, quantity :', id, quantity);
+  console.log('id, quantity :', id, quantity)
 
   const currentUser = await prisma.user.findUnique({
     where: { email: 'alice@prisma.io' },
@@ -22,22 +22,21 @@ export default async function handler(
     }
   })
 
-  // const updateQuantity = 
-  // const dontUpdateQuantity = {}
+  const updateQuantity = { quantity: quantity }
+  const dontUpdateQuantity = {}
 
-  // const makeCartItem = await prisma.cartItem.upsert({
-  //   where: { productId: id },
-  //   update: { quantity: quantity },
-  //   create: {
-  //     product: {
-  //       connect: { id: id },
-  //     },
-  //     Cart: {
-  //       connect: { id: currentUser.Carts[0].id },
-  //     },
-  //   },
-  // })
+  const makeCartItem = await prisma.cartItem.upsert({
+    where: { productId: id },
+    update: quantity ? updateQuantity : dontUpdateQuantity,
+    create: {
+      product: {
+        connect: { id: id },
+      },
+      Cart: {
+        connect: { id: currentUser.Carts[0].id },
+      },
+    },
+  })
 
-  // return res.status(200).json(makeCartItem)
-  return res.status(200).json(currentUser)
+  return res.status(200).json(makeCartItem)
 }
