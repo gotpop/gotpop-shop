@@ -36,7 +36,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const openCart = () => setIsOpen(true)
   const closeCart = () => setIsOpen(false)
   const handleSetCart = data => setCart(data)
-  const handleGetCart = cart
+  const handleGetCart = cart?.filter(item => item.quantity > 0)
 
   return (
     <ShoppingCartContext.Provider

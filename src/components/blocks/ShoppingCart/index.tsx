@@ -31,6 +31,10 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
     </>
   )
 
+  // useEffect(() => {
+  //   console.log('cart :', cart)
+  // }, [cart])
+
   return (
     <Drawer isOpen={isOpen}>
       <section className={styles.cart}>
@@ -47,18 +51,10 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
                 <BsFillCartCheckFill />
               </h2>
             </section>
-            {/* {isEmpty ? <CartEmpty /> : null} */}
+            {cart?.length === 0 ? <CartEmpty /> : null}
 
-            {cart &&
-              cart
-                .filter(item => item.quantity > 0)
-                .map((item, i) => <CartItem key={i} item={item} />)}
+            {cart && cart.map((item, i) => <CartItem key={i} item={item} />)}
 
-            {/* {isLoading ? (
-              <Loading />
-            ) : (
-              cart?.map((item, i) => <CartItem key={i} item={item} />)
-            )} */}
             {/* <div className={styles.total}>
               <span>Cart total: </span>
               <span>
