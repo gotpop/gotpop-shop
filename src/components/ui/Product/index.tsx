@@ -4,7 +4,6 @@ import {
   AiOutlineShoppingCart
 } from 'react-icons/ai'
 import { CSSProperties, useEffect, useState } from 'react'
-import useSWR, { mutate } from 'swr'
 
 import { BsTrash } from 'react-icons/bs'
 import ButtonIcon from '../ButtonIcon'
@@ -14,6 +13,7 @@ import { ProductWithPhotos } from '@lib/prisma'
 import { formatCurrency } from '@utilities/formatCurrency'
 import styles from './Product.module.css'
 import { useCart } from '@hooks/useCart'
+import useSWR from 'swr'
 
 type Props = {
   product: ProductWithPhotos
@@ -33,14 +33,12 @@ const Product = ({ product }: Props) => {
   const photo = photos[0]
 
   const url = `/api/cart/${id}`
-
-  const { data: cartItem, error } = useSWR(url, fetcher, {
-    revalidateOnFocus: false
-  })
+  const { data: cartItem, error, mutate } = useSWR(url, fetcher)
 
   const handleUpdate = async quantity => {
     const payload = { id: id, quantity: quantity }
 
+    await mutate(payload, false)
     await fetcher(url, {
       method: 'POST',
       headers: {
@@ -48,14 +46,9 @@ const Product = ({ product }: Props) => {
       },
       body: JSON.stringify(payload)
     })
-    mutate(url)
   }
 
-  const handleMinus = () => {
-    if (!cartItem?.quantity) return 0
-
-    return cartItem?.quantity - 1
-  }
+  const handleMinus = val => (val ? val - 1 : 0)
 
   return (
     <section className={styles.product}>
@@ -83,7 +76,7 @@ const Product = ({ product }: Props) => {
           <div className={styles.controls}>
             <ButtonIcon
               icon={<AiFillMinusCircle />}
-              handleClick={() => handleUpdate(handleMinus())}
+              handleClick={() => handleUpdate(handleMinus(cartItem.quantity))}
             />
             <ButtonIcon
               text={cartItem?.quantity ? `Remove ${cartItem?.quantity}` : ''}
