@@ -9,11 +9,11 @@ const fetcher = (url: string, payload) =>
         body: JSON.stringify(payload)
     }).then(res => res.json())
 
-export function useCart() {
-    const { data, error } = useSWR('api/cartget', fetcher)
+export function useCart(payload) {
+    const { data, error } = useSWR(['/api/cart/item', payload], fetcher)
 
     return {
-        cart: data,
+        cartItem: data,
         isLoading: !error && !data,
         isError: error
     }

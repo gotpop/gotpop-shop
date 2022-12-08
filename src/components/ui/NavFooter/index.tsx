@@ -1,5 +1,4 @@
-// import { GetComponent } from '@utilities/getComponent'
-
+import { GetComponent } from '@ui/GetComponent'
 import { IconType } from 'react-icons'
 import styles from './NavFooter.module.css'
 
@@ -22,7 +21,7 @@ export function NavFooter({ navItems, iconsMap }: Props) {
         <a key={item.id} href={item.href} data-test={item.test}>
           <>
             <span>{item.text}</span>
-            {/* <GetComponent componentsMap={iconsMap} id={item.id} /> */}
+            <GetComponent componentsMap={iconsMap} id={item.id} />
           </>
         </a>
       ))}

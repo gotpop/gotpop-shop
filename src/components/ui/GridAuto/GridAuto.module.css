@@ -1,16 +1,16 @@
 .gridauto {
   display: grid;
-  grid-gap: calc(var(--padding) / 2);
-  margin: 0 var(--padding);
-  
+  grid-gap: var(--spacing-lg);
+  margin: 0 var(--spacing-lg);
+
   @media (width > 400px) {
-    grid-auto-flow: column;
+    grid-auto-flow: row;
     grid-template-rows: repeat(6, auto);
     grid-auto-columns: auto;
   }
-  
+
   @media (width > 600px) {
-    grid-auto-flow: column;
+    grid-auto-flow: row;
     grid-template-rows: repeat(3, auto);
     grid-auto-columns: 6fr 6fr;
   }

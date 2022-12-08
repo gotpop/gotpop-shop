@@ -2,13 +2,14 @@ import { CSSProperties, useEffect, useState } from 'react'
 
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import { BsFillCartCheckFill } from 'react-icons/bs'
-import ButtonIcon from '@components/ui/ButtonIcon'
+import ButtonIcon from '@ui/ButtonIcon'
 import { CartItem } from '@blocks/CartItem'
-import { Drawer } from '@components/ui/Drawer'
-import Grid from '@components/ui/Grid'
+import { Drawer } from '@ui/Drawer'
+import Grid from '@ui/Grid'
+import Loading from '@ui/Loading'
 import { formatCurrency } from '@utilities/formatCurrency'
 import styles from './ShoppingCart.module.css'
-import { useCart } from '@hooks/useCart'
+import { useCartGetAll } from '@hooks/useCartGetAll'
 import { useShoppingCart } from '@context/ShoppingCartContext'
 
 type ShoppingCartProps = {
@@ -22,7 +23,13 @@ const closeVars = {
 
 export function ShoppingCart({ isOpen }: ShoppingCartProps) {
   const { closeCart } = useShoppingCart()
-  const { cart, isLoading, isError } = useCart()
+  const { cart, isLoading, isError, isEmpty } = useCartGetAll()
+
+  const CartEmpty = () => (
+    <>
+      <h2>Cart empty</h2>
+    </>
+  )
 
   return (
     <Drawer isOpen={isOpen}>
@@ -40,14 +47,11 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
                 <BsFillCartCheckFill />
               </h2>
             </section>
+            {isEmpty ? <CartEmpty /> : null}
             {isLoading ? (
-              <>Loading</>
+              <Loading />
             ) : (
-              cart.CartItems.map((item, i) => {
-                if (item.amount > 0) {
-                  return <CartItem key={i} item={item} />
-                }
-              })
+              cart?.map((item, i) => <CartItem key={i} item={item} />)
             )}
             {/* <div className={styles.total}>
               <span>Cart total: </span>

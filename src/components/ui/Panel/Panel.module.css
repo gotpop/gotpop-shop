@@ -15,10 +15,7 @@
 .image {
   --local-grid-column: 1 / 13;
 
-  height: auto;
-  max-width: 100%;
   grid-column: var(--local-grid-column);
-  border-radius: var(--radius-lg);
   align-self: center;
 
   @media (width > 600px) {
@@ -26,5 +23,11 @@
 
     margin: 3rem 0 3rem 0;
     grid-row: 1;
+  }
+
+  & img {
+    border-radius: var(--radius-lg);
+    height: auto;
+    max-width: 100%;
   }
 }

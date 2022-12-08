@@ -1,6 +1,6 @@
+import { GetServerSideProps, GetStaticProps } from 'next'
 import prisma, { ProductWithPhotos } from '@lib/prisma'
 
-import { GetStaticProps } from 'next'
 import Intro from '@components/ui/Intro'
 import LayoutStandard from '@components/layouts/LayoutStandard'
 import Product from '@components/ui/Product'

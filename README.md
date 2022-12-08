@@ -25,3 +25,5 @@ https://vercel.com/dashboard
 ![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=gotpop-starter-teamgotpop)
 
 https://railway.app
+
+https://paco.me/writing/shared-hook-state-with-swr
