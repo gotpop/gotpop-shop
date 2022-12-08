@@ -3,6 +3,7 @@ import prisma, { ProductWithPhotos } from '@lib/prisma'
 
 import Intro from '@components/ui/Intro'
 import LayoutStandard from '@components/layouts/LayoutStandard'
+import Meta from '@components/head/Meta'
 import Product from '@components/ui/Product'
 import { useEffect } from 'react'
 
@@ -23,6 +24,7 @@ export default function Shop({ shopData }: Props) {
   return (
     <LayoutStandard>
       <>
+        <Meta />
         <Intro content={content} />
         {shopData.map((product: ProductWithPhotos, key: number) => (
           <Product key={key} product={product} />
