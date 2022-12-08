@@ -1,0 +1,18 @@
+{
+  "folders": [
+    {
+      "path": ".."
+    }
+  ],
+  "settings": {
+    "files.associations": {
+      "*.css": "postcss"
+    },
+    "spellchecker.ignoreFileExtensions": ["*.stylelintrc"],
+    "css.format.enable": false,
+    "workbench.colorTheme": "Solarized Dark",
+    "emmet.includeLanguages": {
+      "postcss": "css"
+    }
+  }
+}
