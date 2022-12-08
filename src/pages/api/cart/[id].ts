@@ -20,8 +20,7 @@ export default async function handler(
   if (req.method === 'GET') {
     const { query } = req
     const productId = Array.isArray(query.id) ? query.id[0] : query.id
-
-    console.log('productId :', productId)
+    const theCart = currentUser.Carts[0].id
 
     const makeCartItem = await prisma.cartItem.upsert({
       where: { productId: productId },
@@ -36,17 +35,35 @@ export default async function handler(
       },
     })
 
-    return res.status(200).json(makeCartItem)
+    const activeCart = await prisma.cart.findUnique({
+      where: { id: theCart },
+      include: {
+        CartItems: {
+          include: {
+            product: {
+              include: {
+                photos: true
+              }
+            }
+          }
+        }
+      }
+    })
+
+    const returnedCartItem = makeCartItem
+
+    // @ts-ignore
+    returnedCartItem.cart = activeCart.CartItems
+
+    return res.status(200).json(returnedCartItem)
   }
 
   if (req.method === 'POST') {
     const { body } = req
     const { id, quantity } = body
-
-    console.log('id, quantity :', id, quantity)
-
     const updateQuantity = { quantity: quantity }
     const dontUpdateQuantity = {}
+    const theCart = currentUser.Carts[0].id
 
     const makeCartItem = await prisma.cartItem.upsert({
       where: { productId: id },
@@ -61,6 +78,26 @@ export default async function handler(
       },
     })
 
-    return res.status(200).json(makeCartItem)
+    const activeCart = await prisma.cart.findUnique({
+      where: { id: theCart },
+      include: {
+        CartItems: {
+          include: {
+            product: {
+              include: {
+                photos: true
+              }
+            }
+          }
+        }
+      }
+    })
+
+    const returnedCartItem = makeCartItem
+
+    // @ts-ignore
+    returnedCartItem.cart = activeCart.CartItems
+
+    return res.status(200).json(returnedCartItem)
   }
 }

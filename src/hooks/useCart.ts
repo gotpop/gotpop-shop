@@ -1,18 +1,38 @@
 import useSWR from "swr"
-
-const fetcher = (
-    ...args: [input: RequestInfo, init?: RequestInit | undefined]
-) => fetch(...args).then(res => res.json())
+import { useShoppingCart } from "@context/ShoppingCartContext"
+import { useState } from "react"
 
 export function useCart(id) {
-    const url = `/api/cart/${id}`
-    const { data, error, mutate } = useSWR(url, fetcher)
+    const { handleSetCart, handleGetCart } = useShoppingCart()
+    const [localCart, setLocalCart] = useState([])
+
+    const fetcher = (
+        ...args: [input: RequestInfo, init?: RequestInit | undefined]
+    ) => fetch(...args).then(res => res.json())
+        .then(res => {
+            handleSetCart(res.cart)
+            setLocalCart(res.cart)
+
+            return res
+        })
+
+    const URL = `/api/cart/${id}`
+    const { data, error, mutate } = useSWR(URL, fetcher)
 
     const handleUpdate = async quantity => {
-        const payload = { id: id, quantity: quantity }
+        const updatedLocalCart = localCart.map(item => {
+            if (item.product.id === id) {
+                return { ...item, quantity: quantity };
+            }
+            return item;
+        })
 
-        await mutate(payload, false)
-        await fetcher(url, {
+        const payload = { id, quantity, cart: updatedLocalCart }
+        const returnedLocalCartData = await mutate(payload, false)
+
+        handleSetCart(payload.cart)
+
+        const returnedCartData = await fetcher(URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -24,6 +44,7 @@ export function useCart(id) {
     return {
         handleUpdate: handleUpdate,
         cartItem: data,
+        cart: handleGetCart,
         mutate: mutate,
         isLoading: !error && !data,
         isError: error
