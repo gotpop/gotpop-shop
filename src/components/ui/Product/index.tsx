@@ -3,17 +3,15 @@ import {
   AiFillPlusCircle,
   AiOutlineShoppingCart
 } from 'react-icons/ai'
-import { CSSProperties, useEffect, useState } from 'react'
 
 import { BsTrash } from 'react-icons/bs'
 import ButtonIcon from '../ButtonIcon'
+import { CSSProperties } from 'react'
 import Image from 'next/image'
-import Loading from '../Loading'
 import { ProductWithPhotos } from '@lib/prisma'
 import { formatCurrency } from '@utilities/formatCurrency'
 import styles from './Product.module.css'
 import { useCart } from '@hooks/useCart'
-import useSWR from 'swr'
 
 type Props = {
   product: ProductWithPhotos
@@ -24,31 +22,11 @@ const buttonRemoveVars = {
   ['--local-font-size']: 'var(--size-s-1)'
 } as CSSProperties
 
-const fetcher = (
-  ...args: [input: RequestInfo, init?: RequestInit | undefined]
-) => fetch(...args).then(res => res.json())
-
 const Product = ({ product }: Props) => {
   const { name, basePrice, id, photos } = product
   const photo = photos[0]
-
-  const url = `/api/cart/${id}`
-  const { data: cartItem, error, mutate } = useSWR(url, fetcher)
-
-  const handleUpdate = async quantity => {
-    const payload = { id: id, quantity: quantity }
-
-    await mutate(payload, false)
-    await fetcher(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    })
-  }
-
   const handleMinus = val => (val ? val - 1 : 0)
+  const { cartItem, isError, isLoading, handleUpdate } = useCart(id)
 
   return (
     <section className={styles.product}>
