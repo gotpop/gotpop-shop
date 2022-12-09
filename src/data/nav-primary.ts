@@ -1,9 +1,9 @@
 export const navPrimary = [
     {
         id: '2',
-        text: 'Forms',
-        test: 'forms',
-        href: '/forms',
+        text: 'Account',
+        test: 'account',
+        href: '/account',
         internal: true
     },
     {
