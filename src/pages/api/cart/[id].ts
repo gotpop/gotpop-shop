@@ -6,6 +6,10 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  if (req.method !== 'POST' && req.method !== 'GET') {
+    return res.status(401).send(`Method ${req.method} not allowed`)
+  }
+
   const currentUser = await prisma.user.findUnique({
     where: { email: 'alice@prisma.io' },
     include: {
@@ -17,10 +21,11 @@ export default async function handler(
     }
   })
 
+  const theCart = currentUser.Carts[0].id
+
   if (req.method === 'GET') {
     const { query } = req
     const productId = Array.isArray(query.id) ? query.id[0] : query.id
-    const theCart = currentUser.Carts[0].id
 
     const makeCartItem = await prisma.cartItem.upsert({
       where: { productId: productId },
@@ -30,32 +35,12 @@ export default async function handler(
           connect: { id: productId },
         },
         Cart: {
-          connect: { id: currentUser.Carts[0].id },
+          connect: { id: theCart },
         },
       },
     })
 
-    const activeCart = await prisma.cart.findUnique({
-      where: { id: theCart },
-      include: {
-        CartItems: {
-          include: {
-            product: {
-              include: {
-                photos: true
-              }
-            }
-          }
-        }
-      }
-    })
-
-    const returnedCartItem = makeCartItem
-
-    // @ts-ignore
-    returnedCartItem.cart = activeCart.CartItems
-
-    return res.status(200).json(returnedCartItem)
+    return res.status(200).json(makeCartItem)
   }
 
   if (req.method === 'POST') {
@@ -63,7 +48,6 @@ export default async function handler(
     const { id, quantity } = body
     const updateQuantity = { quantity: quantity }
     const dontUpdateQuantity = {}
-    const theCart = currentUser.Carts[0].id
 
     const makeCartItem = await prisma.cartItem.upsert({
       where: { productId: id },
@@ -73,31 +57,11 @@ export default async function handler(
           connect: { id: id },
         },
         Cart: {
-          connect: { id: currentUser.Carts[0].id },
+          connect: { id: theCart },
         },
       },
     })
 
-    const activeCart = await prisma.cart.findUnique({
-      where: { id: theCart },
-      include: {
-        CartItems: {
-          include: {
-            product: {
-              include: {
-                photos: true
-              }
-            }
-          }
-        }
-      }
-    })
-
-    const returnedCartItem = makeCartItem
-
-    // @ts-ignore
-    returnedCartItem.cart = activeCart.CartItems
-
-    return res.status(200).json(returnedCartItem)
+    return res.status(200).json(makeCartItem)
   }
 }
