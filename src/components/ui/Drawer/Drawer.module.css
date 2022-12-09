@@ -27,6 +27,17 @@
   height: 100vh;
   top: 0;
   left: 0;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(15px);
   background-color: hwb(0deg 0% 100% / 70%);
+  animation: blur 1s ease;
+}
+
+@keyframes blur {
+  from {
+    backdrop-filter: blur(0px);
+  }
+
+  to {
+    backdrop-filter: blur(15px);
+  }
 }
