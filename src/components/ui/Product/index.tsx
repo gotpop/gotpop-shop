@@ -43,7 +43,7 @@ const Product = ({ product }: Props) => {
           <span className={styles.basePrice}>{formatCurrency(basePrice)}</span>
         </section>
 
-        <strong>Cart item quantity: {cartItem?.quantity}</strong>
+        <strong>Items in cart: {cartItem?.quantity}</strong>
         {cartItem?.quantity === 0 ? (
           <ButtonIcon
             handleClick={() => handleUpdate(1)}
