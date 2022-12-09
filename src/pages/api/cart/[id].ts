@@ -10,7 +10,6 @@ export default async function handler(
     return res.status(401).send(`Method ${req.method} not allowed`)
   }
 
-
   const currentUser = await prisma.user.findUnique({
     where: { email: 'alice@prisma.io' },
     include: {
