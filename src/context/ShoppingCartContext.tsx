@@ -36,7 +36,9 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const openCart = () => setIsOpen(true)
   const closeCart = () => setIsOpen(false)
   const handleSetCart = data => setCart(data)
-  const handleGetCart = cart?.filter(item => item.quantity > 0)
+  const handleGetCart = cart
+    ?.filter(item => item.quantity > 0)
+    .sort((a, b) => a.id.localeCompare(b.id))
 
   return (
     <ShoppingCartContext.Provider

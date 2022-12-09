@@ -43,8 +43,9 @@ const Product = ({ product }: Props) => {
           <span className={styles.basePrice}>{formatCurrency(basePrice)}</span>
         </section>
 
-        <strong>Items in cart: {cartItem?.quantity}</strong>
-        {cartItem?.quantity === 0 ? (
+        {isLoading ? (
+          <>Loading</>
+        ) : cartItem?.quantity === 0 ? (
           <ButtonIcon
             handleClick={() => handleUpdate(1)}
             text="Add to cart"
