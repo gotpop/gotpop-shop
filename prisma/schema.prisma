@@ -18,15 +18,16 @@ model Panel {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  password  String
-  loggedIn  Boolean  @unique @default(false)
-  name      String?
-  address   String?
-  role      Role     @default(USER)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  id           String   @id @default(cuid())
+  email        String   @unique
+  cartActiveID String
+  password     String
+  loggedIn     Boolean  @default(false)
+  name         String?
+  address      String?
+  role         Role     @default(USER)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now())
 
   Carts      Cart[]
   UserTokens UserTokens[]
