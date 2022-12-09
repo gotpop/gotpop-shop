@@ -19,7 +19,7 @@ type Props = {
 }
 
 export function CartItem({ item }: Props) {
-  const { handleUpdate } = useCart(item.productId)
+  const { cartItemUpdate } = useCart(item.productId)
   const { quantity, product } = item
   const photo = product.photos[0]
 

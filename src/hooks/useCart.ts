@@ -12,7 +12,7 @@ export function useCart(id) {
     const URL = `/api/cart/${id}`
     const { data, error, mutate } = useSWR(URL, fetcher)
 
-    const handleUpdate = async quantity => {
+    const cartItemUpdate = async quantity => {
         const payload = { id, quantity }
 
         mutate(payload, false)
@@ -28,7 +28,7 @@ export function useCart(id) {
 
     return {
         cartItem: data,
-        cartItemUpdate: handleUpdate,
+        cartItemUpdate: cartItemUpdate,
         isCartItemError: error,
         isCartItemLoading: !error && !data
     }
