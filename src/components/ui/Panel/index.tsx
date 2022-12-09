@@ -38,7 +38,7 @@ const Panel = ({ compact, page, i }: Props) => {
     <section
       style={direction === 'rtl' ? vars : undefined}
       className={styles.panel}
-      id={`panel-${i}`}
+      id={`panel-${i + 1}`}
       ref={sectionRef}
     >
       <GridWrap>
