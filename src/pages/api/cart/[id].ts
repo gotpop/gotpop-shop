@@ -23,18 +23,6 @@ export default async function handler(
 
   const theCart = currentUser.Carts[0].id
 
-  const nestedCartItems = {
-    CartItems: {
-      include: {
-        product: {
-          include: {
-            photos: true
-          }
-        }
-      }
-    }
-  }
-
   if (req.method === 'GET') {
     const { query } = req
     const productId = Array.isArray(query.id) ? query.id[0] : query.id
@@ -52,17 +40,7 @@ export default async function handler(
       },
     })
 
-    const activeCart = await prisma.cart.findUnique({
-      where: { id: theCart },
-      include: nestedCartItems
-    })
-
-    const returnedCartItem = makeCartItem
-
-    // @ts-ignore
-    returnedCartItem.cart = activeCart.CartItems
-
-    return res.status(200).json(returnedCartItem)
+    return res.status(200).json(makeCartItem)
   }
 
   if (req.method === 'POST') {
@@ -84,16 +62,6 @@ export default async function handler(
       },
     })
 
-    const activeCart = await prisma.cart.findUnique({
-      where: { id: theCart },
-      include: nestedCartItems
-    })
-
-    const returnedCartItem = makeCartItem
-
-    // @ts-ignore
-    returnedCartItem.cart = activeCart.CartItems
-
-    return res.status(200).json(returnedCartItem)
+    return res.status(200).json(makeCartItem)
   }
 }

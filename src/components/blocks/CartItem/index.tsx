@@ -44,7 +44,6 @@ export function CartItem({ item }: Props) {
             Total: {formatCurrency(product.basePrice * quantity)}
           </div>
         </div>
-        <AiOutlineCloseCircle onClick={() => handleUpdate(0)} />
       </section>
     </section>
   )

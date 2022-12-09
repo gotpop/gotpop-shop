@@ -9,6 +9,8 @@ import Grid from '@ui/Grid'
 import Loading from '@ui/Loading'
 import { formatCurrency } from '@utilities/formatCurrency'
 import styles from './ShoppingCart.module.css'
+import { useCart } from '@hooks/useCart'
+import { useCartGetAll } from '@hooks/useCartGetAll'
 import { useShoppingCart } from '@context/ShoppingCartContext'
 
 type ShoppingCartProps = {
@@ -21,11 +23,12 @@ const closeVars = {
 } as CSSProperties
 
 export function ShoppingCart({ isOpen }: ShoppingCartProps) {
-  const { closeCart, handleGetCart: cart } = useShoppingCart()
+  const { closeCart } = useShoppingCart()
+  const { cart, isLoading, isEmpty } = useCartGetAll(isOpen)
 
   const CartEmpty = () => (
     <>
-      <h2>Cart empty</h2>
+      <p>Cart empty</p>
     </>
   )
 
@@ -45,10 +48,13 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
                 <BsFillCartCheckFill />
               </h2>
             </section>
-            {cart?.length === 0 ? <CartEmpty /> : null}
-
-            {cart && cart.map((item, i) => <CartItem key={i} item={item} />)}
-
+            {isLoading ? (
+              <>Loading...</>
+            ) : isEmpty ? (
+              <CartEmpty />
+            ) : (
+              cart.map((item, i) => <CartItem item={item} key={i} />)
+            )}
             <div className={styles.total}>
               <span>Cart total: </span>
               <span></span>

@@ -26,7 +26,8 @@ const Product = ({ product }: Props) => {
   const { name, basePrice, id, photos } = product
   const photo = photos[0]
   const handleMinus = val => (val ? val - 1 : 0)
-  const { cartItem, isError, isLoading, handleUpdate } = useCart(id)
+  const { cartItem, cartItemUpdate, isCartItemError, isCartItemLoading } =
+    useCart(id)
 
   return (
     <section className={styles.product}>
@@ -43,11 +44,11 @@ const Product = ({ product }: Props) => {
           <span className={styles.basePrice}>{formatCurrency(basePrice)}</span>
         </section>
 
-        {isLoading ? (
-          <>Loading</>
+        {isCartItemLoading ? (
+          <>Loading...</>
         ) : cartItem?.quantity === 0 ? (
           <ButtonIcon
-            handleClick={() => handleUpdate(1)}
+            handleClick={() => cartItemUpdate(1)}
             text="Add to cart"
             icon={<AiOutlineShoppingCart />}
           />
@@ -55,17 +56,17 @@ const Product = ({ product }: Props) => {
           <div className={styles.controls}>
             <ButtonIcon
               icon={<AiFillMinusCircle />}
-              handleClick={() => handleUpdate(handleMinus(cartItem.quantity))}
+              handleClick={() => cartItemUpdate(handleMinus(cartItem.quantity))}
             />
             <ButtonIcon
               text={cartItem?.quantity ? `Remove ${cartItem?.quantity}` : ''}
               vars={buttonRemoveVars}
-              handleClick={() => handleUpdate(0)}
+              handleClick={() => cartItemUpdate(0)}
               icon={<BsTrash />}
             />
             <ButtonIcon
               icon={<AiFillPlusCircle />}
-              handleClick={() => handleUpdate(cartItem?.quantity + 1)}
+              handleClick={() => cartItemUpdate(cartItem?.quantity + 1)}
             />
           </div>
         )}
