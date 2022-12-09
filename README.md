@@ -1,14 +1,10 @@
-# GotPop Starter
+# GotPop Shop
 
-A Next.js starter template.
-
-<h1 align="center">
-	<img width="100%" src="./public/next.png" alt="Next.js logo">
-</h1>
+A full stack e-commerce application built with Next.js, Prisma/PostgresQL & raw CSS, deployed on Vercel & Railway
 
 ## Live example
 
-https://gotpop-starter.vercel.app
+https://gotpop-shop.vercel.app
 
 <h1 align="center">
 	<img width="100%" src="./public/starter.png" alt="Image of starter website">
