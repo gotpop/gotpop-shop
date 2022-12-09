@@ -44,12 +44,7 @@ export function CartItem({ item }: Props) {
             Total: {formatCurrency(product.basePrice * quantity)}
           </div>
         </div>
-        <ButtonIcon
-          icon={<AiOutlineCloseCircle />}
-          text="Remove from cart"
-          handleClick={() => handleUpdate(0)}
-          vars={buttonRemoveVars}
-        />
+        <AiOutlineCloseCircle onClick={() => handleUpdate(0)} />
       </section>
     </section>
   )
