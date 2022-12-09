@@ -3,6 +3,8 @@
   "less.validate": false,
   "scss.validate": false,
   "editor.formatOnSave": true,
+  "eslint.packageManager": "yarn",
+  "npm.packageManager": "yarn",
   "files.associations": {
     "*.css": "postcss"
   },
