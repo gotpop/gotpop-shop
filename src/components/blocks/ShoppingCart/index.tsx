@@ -9,8 +9,6 @@ import Grid from '@ui/Grid'
 import Loading from '@ui/Loading'
 import { formatCurrency } from '@utilities/formatCurrency'
 import styles from './ShoppingCart.module.css'
-import { useCart } from '@hooks/useCart'
-import { useCartGetAll } from '@hooks/useCartGetAll'
 import { useShoppingCart } from '@context/ShoppingCartContext'
 
 type ShoppingCartProps = {
@@ -47,30 +45,14 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
                 <BsFillCartCheckFill />
               </h2>
             </section>
-            {/* {isEmpty ? <CartEmpty /> : null} */}
+            {cart?.length === 0 ? <CartEmpty /> : null}
 
-            {cart &&
-              cart
-                .filter(item => item.quantity > 0)
-                .map((item, i) => <CartItem key={i} item={item} />)}
+            {cart && cart.map((item, i) => <CartItem key={i} item={item} />)}
 
-            {/* {isLoading ? (
-              <Loading />
-            ) : (
-              cart?.map((item, i) => <CartItem key={i} item={item} />)
-            )} */}
-            {/* <div className={styles.total}>
+            <div className={styles.total}>
               <span>Cart total: </span>
-              <span>
-                {cartItems &&
-                  formatCurrency(
-                    cartItems.reduce((total, cartItem) => {
-                      const item = cartItems.find(i => i.id === cartItem.id)
-                      return total + (item?.basePrice || 0) * cartItem.amount
-                    }, 0)
-                  )}
-              </span>
-            </div> */}
+              <span></span>
+            </div>
           </>
         </Grid>
       </section>

@@ -1,19 +1,32 @@
 .cart {
   background-color: var(--white);
-  grid-column: span 6;
+  grid-column: span 12;
   overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
 
   @media (width > 600px) {
     border-radius: var(--radius);
   }
 
-  .content {
-    padding: var(--padding);
-  }
-
   & img {
+    grid-column: span 2;
     max-width: 100%;
     height: auto;
+  }
+
+  .content {
+    padding: calc(var(--padding) / 4);
+    grid-column: span 10;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    justify-content: space-between;
+
+    & svg {
+      color: var(--error);
+      cursor: pointer;
+      justify-self: end;
+    }
   }
 
   & span {
@@ -22,12 +35,14 @@
 }
 
 .intro {
-  margin-bottom: var(--padding);
+  grid-column: span 7;
+  /* margin-bottom: var(--padding); */
 }
 
 .title {
   display: flex;
   gap: var(--padding);
+  font-size: var(--size-s-1);
 
   & span {
     font-weight: 700;
@@ -35,9 +50,11 @@
 }
 
 .price {
+  font-size: var(--size-s-1);
   font-style: italic;
 }
 
 .total {
+  font-size: var(--size-s-1);
   font-weight: 900;
 }

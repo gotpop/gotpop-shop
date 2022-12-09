@@ -19,7 +19,7 @@ type Props = {
 }
 
 export function CartItem({ item }: Props) {
-  // const { handleUpdate } = useCart(item.productId)
+  const { handleUpdate } = useCart(item.productId)
   const { quantity, product } = item
   const photo = product.photos[0]
 
@@ -44,12 +44,7 @@ export function CartItem({ item }: Props) {
             Total: {formatCurrency(product.basePrice * quantity)}
           </div>
         </div>
-        <ButtonIcon
-          icon={<AiOutlineCloseCircle />}
-          text="Remove from cart"
-          // handleClick={() => handleUpdate(0)}
-          vars={buttonRemoveVars}
-        />
+        <AiOutlineCloseCircle onClick={() => handleUpdate(0)} />
       </section>
     </section>
   )
