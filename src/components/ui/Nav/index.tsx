@@ -22,7 +22,7 @@ type Props = {
 }
 
 export default function Nav({ navItems, iconsMap }: Props) {
-  const { openCart, cartQuantity } = useShoppingCart()
+  const { openCart } = useShoppingCart()
   const { setMenu } = useContext(MenuContext)
 
   const handleClick = () => {
