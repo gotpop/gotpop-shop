@@ -1,17 +1,8 @@
-import { GetStaticProps, NextPage } from 'next'
-
-import Card from '@ui/Card'
-import { IForm } from '@types'
 import LayoutStandard from '@layouts/LayoutStandard'
-import Loading from '@ui/Loading'
 import Meta from '@head/Meta'
-import { server } from '@config'
+import { NextPage } from 'next'
 
-interface Props {
-  forms: object[]
-}
-
-const Profile: NextPage<Props> = ({ Profile }) => {
+const Profile: NextPage = () => {
   return (
     <LayoutStandard>
       <>
