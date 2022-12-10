@@ -20,18 +20,6 @@
 
   --accent: hwb(321 6% 24%);
 
-  /* --scale: 1.333;
-  --font-size-xl: calc(1rem * var(--scale));
-  --size-l-2: calc(var(--font-size-xl) * var(--scale));
-  --size-l-3: calc(var(--size-l-2) * var(--scale));
-  --size-l-4: calc(var(--size-l-3) * var(--scale));
-  --size-l-5: calc(var(--size-l-4) * var(--scale));
-  --size-l-6: calc(var(--size-l-5) * var(--scale));
-  --size-l-7: calc(var(--size-l-6) * var(--scale));
-  --font-size-sm: calc(1rem / var(--scale));
-  --size-s-2: calc(var(--font-size-sm) / var(--scale));
-  --size-s-3: calc(var(--size-s-2) / var(--scale)); */
-
   --font-size-sm: clamp(0.7rem, 0.35vw + 0.61rem, 0.89rem);
   --font-size-base: clamp(0.88rem, 0.57vw + 0.73rem, 1.19rem);
   --font-size-md: clamp(1.09rem, 0.89vw + 0.87rem, 1.58rem);
