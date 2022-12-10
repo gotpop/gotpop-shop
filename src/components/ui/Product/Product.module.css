@@ -19,15 +19,15 @@
   flex-direction: column;
   gap: var(--spacing-lg);
   padding: var(--local-padding);
-  
+
   @media (--ipad) {
     --local-padding: var(--padding);
   }
-  
+
   & h3 {
-    margin: 0;
-    font-weight: 700;
+    font-weight: 600;
     margin: 0 0 calc(var(--text-mb) * 2) 0;
+    font-size: var(--font-size-md);
 
     &::after {
       background-color: currentColor;
@@ -74,5 +74,5 @@
   border-radius: var(--radius-xl);
   align-items: center;
   font-weight: 600;
-  font-size: var(--size-s-1);
+  font-size: var(--font-size-sm);
 }

@@ -27,7 +27,7 @@
   & .message {
     color: var(--error);
     position: absolute;
-    font-size: var(--size-s-1);
+    font-size: var(--font-size-sm);
     bottom: 0.2em;
   }
 }

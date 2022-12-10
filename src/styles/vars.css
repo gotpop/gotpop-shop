@@ -20,17 +20,25 @@
 
   --accent: hwb(321 6% 24%);
 
-  --scale: 1.333;
-  --size-l-1: calc(1rem * var(--scale));
-  --size-l-2: calc(var(--size-l-1) * var(--scale));
+  /* --scale: 1.333;
+  --font-size-xl: calc(1rem * var(--scale));
+  --size-l-2: calc(var(--font-size-xl) * var(--scale));
   --size-l-3: calc(var(--size-l-2) * var(--scale));
   --size-l-4: calc(var(--size-l-3) * var(--scale));
   --size-l-5: calc(var(--size-l-4) * var(--scale));
   --size-l-6: calc(var(--size-l-5) * var(--scale));
   --size-l-7: calc(var(--size-l-6) * var(--scale));
-  --size-s-1: calc(1rem / var(--scale));
-  --size-s-2: calc(var(--size-s-1) / var(--scale));
-  --size-s-3: calc(var(--size-s-2) / var(--scale));
+  --font-size-sm: calc(1rem / var(--scale));
+  --size-s-2: calc(var(--font-size-sm) / var(--scale));
+  --size-s-3: calc(var(--size-s-2) / var(--scale)); */
+
+  --font-size-sm: clamp(0.7rem, 0.35vw + 0.61rem, 0.89rem);
+  --font-size-base: clamp(0.88rem, 0.57vw + 0.73rem, 1.19rem);
+  --font-size-md: clamp(1.09rem, 0.89vw + 0.87rem, 1.58rem);
+  --font-size-lg: clamp(1.37rem, 1.35vw + 1.03rem, 2.11rem);
+  --font-size-xl: clamp(1.71rem, 2.01vw + 1.21rem, 2.81rem);
+  --font-size-xxl: clamp(2.14rem, 2.93vw + 1.4rem, 3.75rem);
+  --font-size-xxxl: clamp(2.67rem, 4.23vw + 1.61rem, 5rem);
 
   --text-opacity: 0.9;
   --font-primary: "Roboto Flex";

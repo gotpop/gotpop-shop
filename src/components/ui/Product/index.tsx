@@ -19,7 +19,7 @@ type Props = {
 
 const buttonRemoveVars = {
   ['--local-bg-colour']: 'var(--error)',
-  ['--local-font-size']: 'var(--size-s-1)'
+  ['--local-font-size']: 'var(--font-size-sm)'
 } as CSSProperties
 
 const Product = ({ product }: Props) => {

@@ -9,7 +9,7 @@
   border-radius: 0 0 var(--radius) 0;
   cursor: pointer;
   display: var(--local-display);
-  font-size: var(--size-l-1);
+  font-size: var(--font-size-xl);
   gap: calc(var(--padding-btn) / 2);
   padding: calc(var(--padding-btn) / 2);
   transition: background-color var(--timing) ease;

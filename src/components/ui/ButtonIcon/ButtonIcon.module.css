@@ -1,7 +1,7 @@
 .button {
   --icon-colour: var(--white);
   --local-bg-colour: var(--hwb-grape-4);
-  --local-font-size: var(--size-s-1);
+  --local-font-size: var(--font-size-sm);
   --local-font-colour: var(--white);
 
   align-items: center;
