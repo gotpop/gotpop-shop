@@ -10,14 +10,14 @@
   }
 
   & img {
-    grid-column: span 2;
+    grid-column: span 3;
     max-width: 100%;
     height: auto;
   }
 
   .content {
-    padding: calc(var(--padding) / 4);
-    grid-column: span 10;
+    padding: calc(var(--padding) / 2);
+    grid-column: span 9;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     justify-content: space-between;
@@ -36,13 +36,13 @@
 
 .intro {
   grid-column: span 7;
-  /* margin-bottom: var(--padding); */
 }
 
 .title {
   display: flex;
   gap: var(--padding);
-  font-size: var(--size-s-1);
+  font-size: var(--font-size-sm);
+  margin-bottom: calc(var(--text-mb) / 2);
 
   & span {
     font-weight: 700;
@@ -50,11 +50,12 @@
 }
 
 .price {
-  font-size: var(--size-s-1);
+  font-size: var(--font-size-sm);
   font-style: italic;
+  margin-bottom: calc(var(--text-mb) / 2);
 }
 
 .total {
-  font-size: var(--size-s-1);
+  font-size: var(--font-size-sm);
   font-weight: 900;
 }

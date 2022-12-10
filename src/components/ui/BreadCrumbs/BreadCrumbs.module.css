@@ -1,8 +1,8 @@
 .breadcrumbs {
-  font-size: var(--size-s-1);
+  font-size: var(--font-size-sm);
 
   & .iconhome {
-    margin: 0 .3rem 0 0;
+    margin: 0 0.3rem 0 0;
   }
 
   & ol {
@@ -31,7 +31,7 @@
     display: inline-flex;
     color: var(--hwb-grape-4);
     text-transform: capitalize;
-    
+
     &:hover {
       color: var(--accent);
     }

@@ -19,7 +19,7 @@ type ShoppingCartProps = {
 
 const closeVars = {
   ['--local-bg-colour']: 'var(--error)',
-  ['--local-font-size']: 'var(--size-s-1)'
+  ['--local-font-size']: 'var(--font-size-sm)'
 } as CSSProperties
 
 export function ShoppingCart({ isOpen }: ShoppingCartProps) {
@@ -38,15 +38,15 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
         <Grid>
           <>
             <section className={styles.intro}>
+              <h2>
+                <span>Cart</span>
+                <BsFillCartCheckFill />
+              </h2>
               <ButtonIcon
                 icon={<AiOutlineCloseCircle />}
                 handleClick={closeCart}
                 vars={closeVars}
               />
-              <h2>
-                <span>Cart</span>
-                <BsFillCartCheckFill />
-              </h2>
             </section>
             {isLoading ? (
               <>Loading...</>

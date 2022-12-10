@@ -8,7 +8,7 @@
   color: var(--white);
   display: flex;
   flex-direction: var(--local-direction);
-  font-size: var(--size-s-1);
+  font-size: var(--font-size-sm);
   gap: calc(var(--padding) / 2);
   grid-column: var(--local-grid-column);
 

@@ -4,12 +4,19 @@
   gap: var(--spacing);
   justify-content: space-between;
   align-items: center;
+  margin-bottom: calc(var(--spacing) * 2);
 
   & h2 {
     display: flex;
     gap: 1rem;
     align-items: center;
     margin: 0;
+    font-size: var(--font-size-lg);
+    font-weight: 200;
+
+    & svg {
+      color: var(--hwb-grey-5);
+    }
   }
 }
 
@@ -20,7 +27,7 @@
 .total {
   grid-column: span 12;
   font-weight: 900;
-  font-size: var(--size-l-1);
+  font-size: var(--font-size-md);
   display: flex;
   gap: var(--padding);
 }

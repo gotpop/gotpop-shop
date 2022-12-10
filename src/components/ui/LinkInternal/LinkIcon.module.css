@@ -1,5 +1,5 @@
 .link {
-  --local-font-size: var(--size-s-1);
+  --local-font-size: var(--font-size-sm);
   --local-icon-colour: var(--white);
 
   align-items: center;
@@ -23,7 +23,7 @@
     font-size: var(--local-font-size);
 
     @media (--ipad) {
-      --local-font-size: var(--size-l-1);
+      --local-font-size: var(--font-size-xl);
     }
   }
 

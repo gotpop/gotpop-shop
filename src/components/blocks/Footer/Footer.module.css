@@ -27,6 +27,6 @@
   margin: var(--spacing) 0 0 0;
   grid-column: span 12;
   color: var(--white);
-  font-size: var(--size-s-1);
+  font-size: var(--font-size-sm);
   text-align: center;
 }
