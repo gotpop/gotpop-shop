@@ -28,7 +28,7 @@ const Panel = ({ compact, page, i }: Props) => {
   const isOnScreen = useOnScreen(sectionRef)
 
   const vars = { ['--local-direction']: 'rtl' } as CSSProperties
-  const varsGrid = { ['--local-min-height']: '100vh' } as CSSProperties
+  const varsGrid = { ['--local-min-height']: '100dvh' } as CSSProperties
 
   useEffect(() => {
     panelAnimations(contentRef.current, imageRef.current, isOnScreen)
