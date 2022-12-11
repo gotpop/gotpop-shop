@@ -21,8 +21,9 @@ type ShoppingCartProps = {
 
 type UseCart = {
   cart: CartItemWithProduct[] | undefined
-  isLoading: boolean
+  cartTotal: number | undefined
   isEmpty: boolean
+  isLoading: boolean
 }
 
 const closeVars = {
@@ -30,15 +31,15 @@ const closeVars = {
   ['--local-font-size']: 'var(--font-size-sm)'
 } as CSSProperties
 
+const CartEmpty = () => (
+  <>
+    <p>Cart empty</p>
+  </>
+)
+
 export function ShoppingCart({ isOpen }: ShoppingCartProps) {
   const { closeCart } = useShoppingCart()
-  const { cart, isLoading, isEmpty }: UseCart = useCartGetAll(isOpen)
-
-  const CartEmpty = () => (
-    <>
-      <p>Cart empty</p>
-    </>
-  )
+  const { cart, cartTotal, isLoading, isEmpty }: UseCart = useCartGetAll(isOpen)
 
   return (
     <Drawer isOpen={isOpen}>
@@ -65,7 +66,7 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
             )}
             <div className={styles.total}>
               <span>Cart total: </span>
-              <span></span>
+              <span>{formatCurrency(cartTotal as number)}</span>
             </div>
           </>
         </Grid>
