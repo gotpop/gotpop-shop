@@ -19,7 +19,7 @@ export default function LayoutStandard({ children }: props) {
   }, [])
 
   return (
-    <div className="site">
+    <div className={styles.site}>
       <Header />
       <Main fullWidth={false}>
         <>
