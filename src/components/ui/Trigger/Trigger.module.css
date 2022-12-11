@@ -19,11 +19,6 @@
     --local-display: none;
   }
 
-  &:hover {
-    background-color: var(--accent);
-    color: var(--white);
-  }
-
   & span {
     color: var(--hwb-grape-4);
     transition: color var(--timing) ease;

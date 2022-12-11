@@ -40,3 +40,4 @@ cypress/screenshots
 
 # Env
 .env
+cypress/downloads/downloads.htm

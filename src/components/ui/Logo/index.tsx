@@ -1,28 +1,18 @@
+import { CSSProperties } from 'react'
 import { GiSpiralLollipop } from 'react-icons/gi'
 import Link from 'next/link'
-import MenuContext from '@context/MenuContext'
-import { set } from '@utilities/setPropsOnRoot'
 import styles from './Logo.module.css'
-import { useContext } from 'react'
+import { useCloseMenu } from '@hooks/useCloseMenu'
 
 type Props = {
-  vars: object
+  vars: CSSProperties
 }
 
 const Logo = ({ vars }: Props) => {
-  // const { setMenu } = useContext(MenuContext)
-
-  // const handleClick = () => {
-  //   setMenu((prevState: { open: boolean }) => {
-  //     set('--menu-state', 'var(--menu-closed)')
-
-  //     return { open: false }
-  //   })
-  // }
+  const { handleCloseMenu } = useCloseMenu()
 
   return (
-    <Link className={styles.logo} href="/">
-      {/* <Link className={styles.logo} href="/" onClick={handleClick}> */}
+    <Link className={styles.logo} href="/" onClick={handleCloseMenu}>
       <h1 id="logo">
         <GiSpiralLollipop />
         <span>Starter</span>
@@ -32,7 +22,7 @@ const Logo = ({ vars }: Props) => {
 }
 
 Logo.defaultProps = {
-  vars: null
+  vars: undefined
 }
 
 export default Logo

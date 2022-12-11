@@ -5,10 +5,6 @@
     animation-name: topOut;
     background-color: var(--error);
   }
-
-  @nest button:hover [open*="true"] & {
-    background-color: var(--white);
-  }
 }
 
 .middle {
@@ -27,10 +23,6 @@
   @nest [open*="true"] & {
     background-color: var(--error);
     animation-name: bottomOut;
-  }
-
-  @nest button:hover [open*="true"] & {
-    background-color: var(--white);
   }
 }
 
