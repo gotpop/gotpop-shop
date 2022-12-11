@@ -7,6 +7,19 @@
       "problemMatcher": [],
       "label": "npm: dev",
       "detail": "next dev"
+    },
+    {
+      "label": "tsc",
+      "type": "shell",
+      "command": "./node_modules/.bin/tsc",
+      "args": ["--noEmit"],
+      "presentation": {
+          "reveal":"never",
+          "echo": false,
+          "focus": false,
+          "panel": "dedicated"
+      },
+      "problemMatcher": "$tsc-watch"
     }
   ]
 }

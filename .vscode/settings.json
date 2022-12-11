@@ -2,9 +2,11 @@
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
+  "markdown.validate.enabled": false,
   "eslint.packageManager": "yarn",
   "npm.packageManager": "yarn",
+  "typescript.tsserver.enableProjectDiagnostics": true,
   "files.associations": {
     "*.css": "postcss"
   },

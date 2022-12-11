@@ -20,3 +20,4 @@ A full stack e-commerce application built with Next.js, Prisma/PostgresQL & raw 
 ## Reference
 
 https://paco.me/writing/shared-hook-state-with-swr
+https://www.fluid-type-scale.com

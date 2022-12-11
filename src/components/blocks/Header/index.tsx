@@ -21,7 +21,7 @@ const icons = new Map([
 ])
 
 type Props = {
-  vars: CSSProperties | null
+  vars: CSSProperties | undefined
 }
 
 const Header = ({ vars }: Props) => {
@@ -40,7 +40,7 @@ const Header = ({ vars }: Props) => {
 }
 
 Header.defaultProps = {
-  vars: null
+  vars: undefined
 }
 
 export default Header

@@ -3,18 +3,30 @@ import { useEffect, useRef } from 'react'
 import styles from './TriggerIcon.module.css'
 import stylesSpan from './Span.module.css'
 
-export default function TriggerIcon({ menuState }) {
-  const trigger = useRef(null)
+type Menu = {
+  open: boolean | null
+}
+
+type Props = {
+  menuState: Menu
+}
+
+export default function TriggerIcon({ menuState }: Props) {
+  const triggerRef = useRef<HTMLElement>(null)
   const { open } = menuState
 
   useEffect(() => {
+    const trigger = triggerRef.current
+
+    if (trigger === null) return
+
     open
-      ? trigger.current.setAttribute('open', true)
-      : trigger.current.setAttribute('open', false)
+      ? trigger.setAttribute('open', 'true')
+      : trigger.setAttribute('open', 'false')
   }, [menuState, open])
 
   return (
-    <span className={styles.icon} ref={trigger}>
+    <span className={styles.icon} ref={triggerRef}>
       <span className={stylesSpan.top} data-test="top"></span>
       <span className={stylesSpan.middle}></span>
       <span className={stylesSpan.bottom}></span>

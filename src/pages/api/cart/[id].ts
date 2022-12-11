@@ -21,7 +21,7 @@ export default async function handler(
     }
   })
 
-  const theCart = currentUser.Carts[0].id
+  const theCart = currentUser?.Carts[0].id
 
   if (req.method === 'GET') {
     const { query } = req

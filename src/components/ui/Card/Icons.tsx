@@ -6,9 +6,6 @@ import { FaEdge } from 'react-icons/fa'
 import { TfiGithub } from 'react-icons/tfi'
 import stylesIcon from './Icons.module.css'
 
-// import { getComponent } from 'utilities/getComponent'
-
-
 const icons = new Map([
   [1, TfiGithub],
   [2, SiCsswizardry],
@@ -18,12 +15,20 @@ const icons = new Map([
   [6, SiMozilla]
 ])
 
-const Icons = ({ links }) => (
+type Link = {
+    href: string
+    name: string
+}
+
+type Props = {
+  links: Link[]
+}
+
+const Icons = ({ links }: Props) => (
   <aside className={stylesIcon.icons}>
     {links.map(link => (
       <a key={link.name} href={link.href} className={stylesIcon.link}>
         <span className={stylesIcon.text}>{link.name}</span>
-        {/* {getComponent(icons, link.id)} */}
       </a>
     ))}
   </aside>

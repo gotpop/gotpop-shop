@@ -1,9 +1,22 @@
-import { createContext, useState } from 'react'
+import { Dispatch, ReactNode, SetStateAction, createContext, useState } from 'react'
 
-const MenuContext = createContext(null)
+const MenuContext = createContext<MenuContextType | null>(null)
 
-export function MenuProvider({ children }) {
-  const [menu, setMenu] = useState({ open: false })
+type Props = {
+  children: ReactNode
+}
+
+type Menu = {
+  open: boolean | null
+}
+
+type MenuContextType = {
+  menu: Menu | null
+  setMenu: Dispatch<SetStateAction<Menu | null>>
+}
+
+export function MenuProvider({ children }: Props) {
+  const [menu, setMenu] = useState<Menu | null>({ open: false })
 
   return (
     <MenuContext.Provider value={{ menu, setMenu }}>

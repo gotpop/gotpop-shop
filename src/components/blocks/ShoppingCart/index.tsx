@@ -4,6 +4,8 @@ import { AiOutlineCloseCircle } from 'react-icons/ai'
 import { BsFillCartCheckFill } from 'react-icons/bs'
 import ButtonIcon from '@ui/ButtonIcon'
 import { CartItem } from '@blocks/CartItem'
+import { CartItem as CartItemType } from '@prisma/client'
+import { CartItemWithProduct } from '@lib/prisma'
 import { Drawer } from '@ui/Drawer'
 import Grid from '@ui/Grid'
 import Loading from '@ui/Loading'
@@ -17,6 +19,12 @@ type ShoppingCartProps = {
   isOpen: boolean
 }
 
+type UseCart = {
+  cart: CartItemWithProduct[] | undefined
+  isLoading: boolean
+  isEmpty: boolean
+}
+
 const closeVars = {
   ['--local-bg-colour']: 'var(--error)',
   ['--local-font-size']: 'var(--font-size-sm)'
@@ -24,7 +32,7 @@ const closeVars = {
 
 export function ShoppingCart({ isOpen }: ShoppingCartProps) {
   const { closeCart } = useShoppingCart()
-  const { cart, isLoading, isEmpty } = useCartGetAll(isOpen)
+  const { cart, isLoading, isEmpty }: UseCart = useCartGetAll(isOpen)
 
   const CartEmpty = () => (
     <>
@@ -53,7 +61,7 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
             ) : isEmpty ? (
               <CartEmpty />
             ) : (
-              cart.map((item, i) => <CartItem item={item} key={i} />)
+              cart?.map((item, i) => <CartItem item={item} key={i} />)
             )}
             <div className={styles.total}>
               <span>Cart total: </span>
