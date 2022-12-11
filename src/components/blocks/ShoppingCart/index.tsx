@@ -37,6 +37,12 @@ const CartEmpty = () => (
   </>
 )
 
+const CartLoading = () => (
+  <>
+    <p>Cart loading</p>
+  </>
+)
+
 export function ShoppingCart({ isOpen }: ShoppingCartProps) {
   const { closeCart } = useShoppingCart()
   const { cart, cartTotal, isLoading, isEmpty }: UseCart = useCartGetAll(isOpen)
@@ -58,16 +64,20 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
               />
             </section>
             {isLoading ? (
-              <>Loading...</>
+              <CartLoading />
             ) : isEmpty ? (
               <CartEmpty />
             ) : (
               cart?.map((item, i) => <CartItem item={item} key={i} />)
             )}
-            <div className={styles.total}>
-              <span>Cart total: </span>
-              <span>{formatCurrency(cartTotal as number)}</span>
-            </div>
+            {!isLoading && !isEmpty && (
+              <>
+                <div className={styles.total}>
+                  <span>Cart total: </span>
+                  <span>{formatCurrency(cartTotal as number)}</span>
+                </div>
+              </>
+            )}
           </>
         </Grid>
       </section>
