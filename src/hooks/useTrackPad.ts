@@ -3,6 +3,11 @@ import { useEffect, useState } from 'react'
 export function useTrackPad() {
     const [isTrackPad, setIsTrackPad] = useState(false)
 
+    const trackPadActive = () => {
+        localStorage.setItem('trackPad', 'true')
+        document.documentElement.style.setProperty('--scroll-type', 'proximity')
+    }
+
     useEffect(() => {
         let timesEventFired = 0
 
@@ -18,5 +23,14 @@ export function useTrackPad() {
         return () => document.removeEventListener('wheel', handleWheel, false)
     }, [])
 
-    return isTrackPad;
+    useEffect(() => {
+        if (!isTrackPad) return
+
+        trackPadActive()
+
+    }, [isTrackPad])
+
+    return {
+        isTrackPad
+    }
 }
