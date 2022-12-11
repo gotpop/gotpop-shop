@@ -2,7 +2,26 @@ import Icons from './Icons'
 import LinkIcon from '@ui/LinkIcon'
 import styles from './Card.module.css'
 
-const Card = ({ content, fullCard, childPath }) => {
+type Link = {
+  id: string
+  name: string
+  href: string
+}
+
+type Content = {
+  id: string
+  title: string
+  text: string
+  links: Link[]
+}
+
+type Props = {
+  fullCard: boolean
+  childPath: string
+  content: Content
+}
+
+const Card = ({ content, fullCard, childPath }: Props) => {
   const { id, title, text, links } = content
 
   return (

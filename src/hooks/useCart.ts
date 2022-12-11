@@ -6,11 +6,11 @@ const fetcher = (
     ...args: [input: RequestInfo, init?: RequestInit | undefined]
 ) => fetch(...args).then(res => res.json())
 
-export function useCart(id) {
+export function useCart(id: string | null) {
     const URL = `/api/cart/${id}`
     const { data, error, mutate } = useSWR(URL, fetcher)
 
-    const cartItemUpdate = async quantity => {
+    const cartItemUpdate = async (quantity: number) => {
         const payload = { id, quantity }
 
         mutate(payload, false)

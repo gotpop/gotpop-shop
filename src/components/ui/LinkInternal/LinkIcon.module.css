@@ -23,7 +23,7 @@
     font-size: var(--local-font-size);
 
     @media (--ipad) {
-      --local-font-size: var(--font-size-xl);
+      --local-font-size: var(--font-size-md);
     }
   }
 

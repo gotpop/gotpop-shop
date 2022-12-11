@@ -17,7 +17,7 @@ export default async function handler(
     }
   })
 
-  const theCart = currentUser.Carts[0].id
+  const theCart = currentUser?.Carts[0].id
 
   const activeCart = await prisma.cart.findUnique({
     where: { id: theCart },
@@ -39,5 +39,5 @@ export default async function handler(
     }
   })
 
-  return res.status(200).json(activeCart.CartItems)
+  return res.status(200).json(activeCart?.CartItems)
 }

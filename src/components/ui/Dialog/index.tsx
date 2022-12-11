@@ -1,15 +1,22 @@
-import { CSSProperties, useEffect, useRef } from 'react'
+import { CSSProperties, ReactNode, useEffect, useRef } from 'react'
 
 import ButtonIcon from '@ui/ButtonIcon'
 import { ImCross } from 'react-icons/im'
 import styles from './Dialog.module.css'
 
-const Dialog = ({ children, handleClose }) => {
-  const dialogRef = useRef(null)
+type Props = {
+  children: ReactNode
+  handleClose: () => void
+}
+
+const Dialog = ({ children, handleClose }: Props) => {
+  const dialogRef = useRef<HTMLDialogElement | null>(null)
 
   useEffect(() => {
     const dialog = dialogRef.current
 
+    if (dialog === null ) return
+    
     dialog.showModal()
 
     return () => dialog.close()

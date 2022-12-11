@@ -1,11 +1,13 @@
-import { useEffect } from "react"
-import useSWR from "swr"
+import useSWR, { Fetcher } from "swr"
 
-const fetcher = (
+import { CartItem } from "@prisma/client"
+import { CartItemWithProduct } from "@lib/prisma"
+
+const fetcher: Fetcher<CartItemWithProduct[]> = (
     ...args: [input: RequestInfo, init?: RequestInit | undefined]
 ) => fetch(...args).then(res => res.json())
 
-export function useCartGetAll(isOpen) {
+export function useCartGetAll(isOpen: boolean) {
     const options = { refreshInterval: 2000 }
     const { data, error, isValidating } = useSWR(isOpen ? 'api/cart/cartget' : null, fetcher, options)
 

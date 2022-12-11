@@ -25,7 +25,7 @@ const buttonRemoveVars = {
 const Product = ({ product }: Props) => {
   const { name, basePrice, id, photos } = product
   const photo = photos[0]
-  const handleMinus = val => (val ? val - 1 : 0)
+  const handleMinus = (val: number) => (val ? val - 1 : 0)
   const { cartItem, cartItemUpdate, isCartItemError, isCartItemLoading } =
     useCart(id)
 

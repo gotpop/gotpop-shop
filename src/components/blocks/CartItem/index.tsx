@@ -1,13 +1,10 @@
-import { CSSProperties, useEffect } from 'react'
-
-import { AiOutlineCloseCircle } from 'react-icons/ai'
-import ButtonIcon from '@components/ui/ButtonIcon'
+import { CSSProperties } from 'react'
 import { CartItemWithProduct } from '@lib/prisma'
 import Image from 'next/image'
+import { Photo } from '@prisma/client'
 import { formatCurrency } from '@utilities/formatCurrency'
 import styles from './CartItem.module.css'
 import { useCart } from '@hooks/useCart'
-import { useShoppingCart } from '@context/ShoppingCartContext'
 
 const buttonRemoveVars = {
   ['--local-bg-colour']: 'var(--error)',
@@ -21,7 +18,7 @@ type Props = {
 export function CartItem({ item }: Props) {
   const { cartItemUpdate } = useCart(item.productId)
   const { quantity, product } = item
-  const photo = product.photos[0]
+  const photo = product?.photos[0] as Photo
 
   return (
     <section className={styles.cart}>
@@ -34,14 +31,15 @@ export function CartItem({ item }: Props) {
       <section className={styles.content}>
         <div className={styles.intro}>
           <div className={styles.title}>
-            {product.name}
+            {product?.name}
             {quantity > 1 && <span>x {quantity}</span>}
           </div>
           <div className={styles.price}>
-            Item: {formatCurrency(product.basePrice)}
+            Item: {product ? formatCurrency(product.basePrice) : null}
           </div>
           <div className={styles.total}>
-            Total: {formatCurrency(product.basePrice * quantity)}
+            Total:
+            {product ? formatCurrency(product.basePrice * quantity) : null}
           </div>
         </div>
       </section>
