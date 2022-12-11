@@ -1,3 +1,5 @@
+@custom-media --ipad (width > 600px);
+
 .trigger {
   --icon-colour: var(--white);
   --local-display: flex;
