@@ -20,9 +20,9 @@ const Meta = ({ title, keywords, description }: Props) => {
 }
 
 Meta.defaultProps = {
-  title: 'GotPop Starter',
+  title: 'GotPop Shop',
   keywords: 'web development, programming',
-  description: 'A Next.js starter template'
+  description: 'A Next.js e-commerce site'
 }
 
 export default Meta
