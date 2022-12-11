@@ -54,4 +54,6 @@
   --menu-state: var(--menu-closed);
 
   --backdrop: blur(5px);
+
+  --scrollbar-width: 0px;
 }
