@@ -6,7 +6,7 @@
   display: grid;
   place-content: center;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   background-color: var(--white);
   background-image: var(--local-image);
   background-repeat: no-repeat;
