@@ -1,6 +1,7 @@
 import GridAuto from '../GridAuto'
 import GridWrap from '../GridWrap'
 import { ReactElement } from 'react'
+import Trigger from '../Trigger'
 import styles from './Main.module.css'
 
 type Props = {
@@ -14,9 +15,12 @@ const Main = ({ children, fullWidth }: Props) => {
       {fullWidth ? (
         children
       ) : (
-        <GridWrap>
-          <GridAuto>{children}</GridAuto>
-        </GridWrap>
+        <>
+          <Trigger />
+          <GridWrap>
+            <GridAuto>{children}</GridAuto>
+          </GridWrap>
+        </>
       )}
     </main>
   )

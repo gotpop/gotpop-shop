@@ -1,7 +1,8 @@
+import { CSSProperties, ReactElement } from 'react'
+
 import Footer from '@blocks/Footer'
 import Header from '@blocks/Header'
 import Main from '@components/ui/Main'
-import { ReactElement } from 'react'
 import Trigger from '@components/ui/Trigger'
 import styles from './Site.module.css'
 import { useScrollBarWidth } from '@hooks/useScrollBarWidth'
@@ -18,7 +19,6 @@ export default function LayoutStandard({ children }: props) {
       <Header />
       <Main fullWidth={false}>
         <>
-          <Trigger />
           {children}
         </>
       </Main>

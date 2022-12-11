@@ -1,13 +1,10 @@
-import { Dispatch, SetStateAction, useContext } from 'react'
-
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import ButtonIcon from '../ButtonIcon'
 import { GetComponent } from '@ui/GetComponent'
 import { IconType } from 'react-icons'
 import Link from 'next/link'
-import MenuContext from '@context/MenuContext'
-import { set } from '@utilities/setPropsOnRoot'
 import styles from './Nav.module.css'
+import { useCloseMenu } from '@hooks/useCloseMenu'
 import { useShoppingCart } from '@context/ShoppingCartContext'
 
 type NavItem = {
@@ -22,29 +19,9 @@ type Props = {
   iconsMap: Map<number, IconType>
 }
 
-type Menu = {
-  open: boolean | null
-}
-
-type MenuContextType = {
-  setMenu: Dispatch<SetStateAction<Menu | null>>
-}
-
 export default function Nav({ navItems, iconsMap }: Props) {
   const { openCart } = useShoppingCart()
-  const { setMenu } = useContext(MenuContext) as MenuContextType
-
-  const handleClick = () => {
-    setMenu((prevState) => {
-      const newState = !prevState?.open
-
-      newState
-        ? set('--menu-state', 'var(--menu-open)')
-        : set('--menu-state', 'var(--menu-closed)')
-
-      return { open: newState }
-    })
-  }
+  const { handleCloseMenu } = useCloseMenu()
 
   return (
     <nav className={styles.nav}>
@@ -53,7 +30,7 @@ export default function Nav({ navItems, iconsMap }: Props) {
           key={item.id}
           href={item.href}
           data-test={item.test}
-          onClick={handleClick}
+          onClick={handleCloseMenu}
         >
           <>
             <span>{item.text}</span>
