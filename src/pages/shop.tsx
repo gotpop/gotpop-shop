@@ -5,7 +5,6 @@ import Intro from '@components/ui/Intro'
 import LayoutStandard from '@components/layouts/LayoutStandard'
 import Meta from '@components/head/Meta'
 import Product from '@components/ui/Product'
-import { useScrollToTop } from '@hooks/useScrollToTop'
 
 const content = {
   title: 'Shop',
@@ -17,8 +16,6 @@ type Props = {
 }
 
 export default function Shop({ shopData }: Props) {
-  useScrollToTop()
-
   return (
     <LayoutStandard>
       <>

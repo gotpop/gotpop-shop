@@ -6,7 +6,6 @@ import Hero from '@components/ui/Hero'
 import LayoutFull from '@components/layouts/LayoutFull'
 import Meta from '@head/Meta'
 import Panel from '@components/ui/Panel'
-import { useScrollToTop } from '@hooks/useScrollToTop'
 import { useTrackPad } from '@hooks/useTrackPad'
 
 type Props = {
@@ -15,7 +14,6 @@ type Props = {
 
 const Brochure = ({ panelData }: Props) => {
   const { isTrackPad } = useTrackPad()
-  useScrollToTop()
 
   return (
     <LayoutFull>
