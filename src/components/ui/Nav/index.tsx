@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction, useContext } from 'react'
+
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import ButtonIcon from '../ButtonIcon'
 import { GetComponent } from '@ui/GetComponent'
@@ -6,7 +8,6 @@ import Link from 'next/link'
 import MenuContext from '@context/MenuContext'
 import { set } from '@utilities/setPropsOnRoot'
 import styles from './Nav.module.css'
-import { useContext } from 'react'
 import { useShoppingCart } from '@context/ShoppingCartContext'
 
 type NavItem = {
@@ -21,13 +22,21 @@ type Props = {
   iconsMap: Map<number, IconType>
 }
 
+type Menu = {
+  open: boolean | null
+}
+
+type MenuContextType = {
+  setMenu: Dispatch<SetStateAction<Menu | null>>
+}
+
 export default function Nav({ navItems, iconsMap }: Props) {
   const { openCart } = useShoppingCart()
-  const { setMenu } = useContext(MenuContext)
+  const { setMenu } = useContext(MenuContext) as MenuContextType
 
   const handleClick = () => {
-    setMenu((prevState: { open: boolean }) => {
-      const newState = !prevState.open
+    setMenu((prevState) => {
+      const newState = !prevState?.open
 
       newState
         ? set('--menu-state', 'var(--menu-open)')

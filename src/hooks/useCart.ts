@@ -6,7 +6,7 @@ const fetcher = (
     ...args: [input: RequestInfo, init?: RequestInit | undefined]
 ) => fetch(...args).then(res => res.json())
 
-export function useCart(id: string) {
+export function useCart(id: string | null) {
     const URL = `/api/cart/${id}`
     const { data, error, mutate } = useSWR(URL, fetcher)
 

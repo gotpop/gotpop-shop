@@ -25,7 +25,7 @@ export default function LayoutFull({ children }: props) {
       <Header vars={varsHeader as CSSProperties} />
       <Main fullWidth={true}>
         <>
-          <Trigger vars={varsTrigger} />
+          <Trigger vars={varsTrigger as CSSProperties} />
           {children}
         </>
       </Main>
