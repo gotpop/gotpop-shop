@@ -21,7 +21,7 @@ export default function LayoutFull({ children }: props) {
   }, [])
 
   return (
-    <div className={styles.site}>
+    <div className="site">
       <Header vars={varsHeader as CSSProperties} />
       <Main fullWidth={true}>
         <>
