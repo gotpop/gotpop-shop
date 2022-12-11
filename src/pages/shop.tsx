@@ -1,11 +1,11 @@
-import { GetServerSideProps, GetStaticProps } from 'next'
 import prisma, { ProductWithPhotos } from '@lib/prisma'
 
+import { GetStaticProps } from 'next'
 import Intro from '@components/ui/Intro'
 import LayoutStandard from '@components/layouts/LayoutStandard'
 import Meta from '@components/head/Meta'
 import Product from '@components/ui/Product'
-import { useEffect } from 'react'
+import { useScrollToTop } from '@hooks/useScrollToTop'
 
 const content = {
   title: 'Shop',
@@ -17,9 +17,7 @@ type Props = {
 }
 
 export default function Shop({ shopData }: Props) {
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+  useScrollToTop()
 
   return (
     <LayoutStandard>
@@ -27,7 +25,7 @@ export default function Shop({ shopData }: Props) {
         <Meta />
         <Intro content={content} />
         {shopData.map((product: ProductWithPhotos, key: number) => (
-          <Product key={key} product={product} />
+          <Product product={product} key={key} />
         ))}
       </>
     </LayoutStandard>

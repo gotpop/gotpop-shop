@@ -6,31 +6,16 @@ import Hero from '@components/ui/Hero'
 import LayoutFull from '@components/layouts/LayoutFull'
 import Meta from '@head/Meta'
 import Panel from '@components/ui/Panel'
+import { useScrollToTop } from '@hooks/useScrollToTop'
 import { useTrackPad } from '@hooks/useTrackPad'
 
 type Props = {
   panelData: PanelWithPhotos[]
 }
 
-const trackPadActive = () => {
-  localStorage.setItem('trackPad', 'true')
-  document.documentElement.style.setProperty('--scroll-type', 'proximity')
-}
-
 const Brochure = ({ panelData }: Props) => {
-  const isTrackPad = useTrackPad()
-  const [trackPadTrigger, setTrackPadTrigger] = useState(false)
-
-  useEffect(() => {
-    if (isTrackPad) {
-      setTrackPadTrigger(true)
-      trackPadActive()
-    }
-  }, [isTrackPad])
-
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+  const { isTrackPad } = useTrackPad()
+  useScrollToTop()
 
   return (
     <LayoutFull>
@@ -38,7 +23,7 @@ const Brochure = ({ panelData }: Props) => {
         <Meta />
         <Hero />
         {panelData.map((page, i) => (
-          <Panel key={i} i={i} compact={trackPadTrigger} page={page} />
+          <Panel page={page} key={i} i={i} compact={isTrackPad} />
         ))}
       </>
     </LayoutFull>

@@ -4,32 +4,30 @@ import Footer from '@blocks/Footer'
 import Header from '@blocks/Header'
 import Main from '@components/ui/Main'
 import Trigger from '@components/ui/Trigger'
-import { getScrollBarWidth } from '@utilities/scrollBarWidth'
 import styles from './Site.module.css'
+import { useScrollBarWidth } from '@hooks/useScrollBarWidth'
 
 type props = {
   children: ReactElement
 }
 
-export const varsHeader = { ['--local-position']: 'fixed' }
-export const varsFooter = { ['--local-scroll-snap-align']: 'end' }
-const varsTrigger = { ['--local-position']: 'absolute' }
+export const varsHeader = { ['--local-position']: 'fixed' } as CSSProperties
+export const varsFooter = { ['--local-scroll-snap-align']: 'end' } as CSSProperties
+const varsTrigger = { ['--local-position']: 'absolute' } as CSSProperties
 
 export default function LayoutFull({ children }: props) {
-  useEffect(() => {
-    getScrollBarWidth()
-  }, [])
+  useScrollBarWidth()
 
   return (
     <div className={styles.site}>
-      <Header vars={varsHeader as CSSProperties} />
+      <Header vars={varsHeader} />
       <Main fullWidth={true}>
         <>
-          <Trigger vars={varsTrigger as CSSProperties} />
+          <Trigger vars={varsTrigger} />
           {children}
         </>
       </Main>
-      <Footer vars={varsFooter as CSSProperties} />
+      <Footer vars={varsFooter} />
     </div>
   )
 }
