@@ -1,0 +1,69 @@
+@custom-media --ipad (width > 600px);
+
+@keyframes logoStartUp {
+  0% {
+    fill-opacity: 0;
+    fill: var(--hwb-grey-5);
+    stroke-dashoffset: 1000;
+  }
+
+  20% {
+    fill-opacity: 1;
+    stroke-opacity: 1;
+  }
+
+  80% {
+    stroke-opacity: 0;
+  }
+
+  100% {
+    fill-opacity: 1;
+    stroke-dashoffset: 0;
+    stroke-opacity: 0;
+  }
+}
+
+.logo {
+  --local-margin: var(--spacing) 0 var(--text-mb) 0;
+  --local-grid-column: 1 / 4;
+  --local-gap: 0.5rem;
+
+  display: flex;
+
+  @media (--ipad) {
+    grid-column: var(--local-grid-column);
+    padding: calc(var(--padding) / 2) 0;
+    align-self: start;
+  }
+
+  & svg {
+    max-width: 150px;
+
+    & path {
+      animation: logoStartUp 6s linear forwards;
+      animation-delay: 0.5s;
+      fill-opacity: 0;
+      fill: var(--hwb-grey-5);
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      stroke-width: 0.2px;
+    }
+  }
+
+  & h1 {
+    align-items: center;
+    color: var(--local-colour);
+    display: flex;
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 200;
+    gap: var(--local-gap);
+    justify-content: space-between;
+    margin: var(--local-margin);
+    padding: 0;
+
+    @media (--ipad) {
+      --local-margin: 0;
+      --local-gap: 1rem;
+    }
+  }
+}
