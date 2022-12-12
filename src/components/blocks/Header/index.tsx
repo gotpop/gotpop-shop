@@ -9,6 +9,7 @@ import { CgCardSpades } from 'react-icons/cg'
 import Grid from '@ui/Grid'
 import GridWrap from '@ui/GridWrap'
 import Logo from '@ui/Logo'
+import LogoSVG from '@ui/LogoSVG'
 import Nav from '@ui/Nav'
 import { navPrimary } from 'data/nav-primary'
 import styles from './Header.module.css'
@@ -30,7 +31,7 @@ const Header = ({ vars }: Props) => {
       <GridWrap>
         <Grid>
           <>
-            <Logo />
+            <LogoSVG />
             <Nav navItems={navPrimary} iconsMap={icons} />
           </>
         </Grid>
