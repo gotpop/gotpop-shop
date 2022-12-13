@@ -25,6 +25,10 @@
     color: var(--hwb-grape-5);
     align-items: center;
 
+    & svg {
+      scale: 1.2;
+    }
+
     & span {
       color: var(--hwb-grape-5);
     }
@@ -47,6 +51,10 @@
     transition: background-color var(--timing) ease;
     flex: auto;
     align-items: center;
+
+    & svg {
+      scale: 1.2;
+    }
 
     &:hover {
       background-color: var(--accent);
