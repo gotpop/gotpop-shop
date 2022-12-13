@@ -3,7 +3,7 @@
   --local-icon-colour: var(--white);
 
   align-items: center;
-  background-color: var(--hwb-grape-4);
+  background-color: var(--pink-1000);
   border-radius: var(--radius);
   color: var(--local-icon-colour);
   cursor: pointer;
@@ -29,5 +29,6 @@
 
   & svg {
     transition: fill var(--timing) ease;
+    scale: 1.5;
   }
 }
