@@ -2,7 +2,7 @@
 @custom-media --desktop (width > 1200px);
 
 .footer {
-  --local-bg: var(--hwb-grape-4);
+  --local-bg: var(--pink-1000);
   --local-radius: var(--radius-lg);
   --local-border-radius: var(--local-radius) var(--local-radius) 0 0;
   --local-scroll-snap-align: initial;
