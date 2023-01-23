@@ -6,7 +6,6 @@ import GridWrap from '../GridWrap'
 import Image from 'next/image'
 import LinkIcon from '@ui/LinkIcon'
 import { PanelWithPhotos } from '@lib/prisma'
-import macPic from '@images/mac.png'
 import { panelAnimations } from './Panel.animation'
 import styles from './Panel.module.css'
 import stylesContent from './PanelContent.module.css'
@@ -16,9 +15,10 @@ type Props = {
   compact: boolean
   i: number
   page: PanelWithPhotos
+  testing: boolean
 }
 
-const Panel = ({ compact, page, i }: Props) => {
+const Panel = ({ compact, page, i, testing }: Props) => {
   const { linkhref, linktext, excerpt, title, id, direction, photos } = page
   const photo = photos[0]
 
@@ -53,6 +53,7 @@ const Panel = ({ compact, page, i }: Props) => {
             </div>
             <div ref={imageRef} className={styles.image}>
               <Image
+                unoptimized={testing}
                 src={photo.url}
                 alt={photo.alt}
                 width={photo.width}
@@ -67,18 +68,7 @@ const Panel = ({ compact, page, i }: Props) => {
 }
 
 Panel.defaultProps = {
-  image: macPic,
-  page: {
-    id: '1',
-    direction: 'ltr',
-    link: {
-      href: '/cards',
-      text: 'Find out more'
-    },
-    excerpt:
-      'Size queries in Container Queries provide a way to query the size of a container, and conditionally apply CSS to the content of that container.',
-    title: 'Panel title'
-  }
+  testing: false
 }
 
 export default Panel

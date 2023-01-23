@@ -12,7 +12,8 @@
   & img {
     grid-column: span 3;
     max-width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
   }
 
   .content {
