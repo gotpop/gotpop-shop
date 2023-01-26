@@ -108,8 +108,8 @@ export interface IInputText {
 }
 
 export interface IData3 {
-    first?: string
-    last?: string
+    first?: string;
+    last?: string;
 }
 
 export interface IPage {
