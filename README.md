@@ -17,7 +17,3 @@ A full stack e-commerce application built with Next.js, Prisma/PostgresQL & raw 
 	<img width="100%" src="./public/starter.png" alt="Image of starter website">
 </h1>
 
-## Reference
-
-https://paco.me/writing/shared-hook-state-with-swr
-https://www.fluid-type-scale.com
