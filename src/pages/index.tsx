@@ -13,15 +13,13 @@ type Props = {
 }
 
 const Brochure = ({ panelData }: Props) => {
-  const { isTrackPad } = useTrackPad()
-
   return (
     <LayoutFull>
       <>
         <Meta />
         <Hero />
         {panelData.map((page, i) => (
-          <Panel page={page} key={i} i={i} compact={isTrackPad} />
+          <Panel page={page} key={i} i={i} />
         ))}
       </>
     </LayoutFull>

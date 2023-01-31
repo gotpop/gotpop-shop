@@ -20,7 +20,7 @@ const panelData = {
 
 describe('Panel', () => {
   it('Has correct Panel title', () => {
-    cy.mount(<Panel compact={false} i={0} page={panelData} testing={true} />)
+    cy.mount(<Panel i={0} page={panelData} testing={true} />)
     cy.get('h3').contains('@custom-media')
   })
 })
