@@ -3,10 +3,10 @@ import {
   AiFillPlusCircle,
   AiOutlineShoppingCart
 } from 'react-icons/ai'
+import { CSSProperties, useEffect, useRef } from 'react'
 
 import { BsTrash } from 'react-icons/bs'
 import ButtonIcon from '../ButtonIcon'
-import { CSSProperties } from 'react'
 import Image from 'next/image'
 import { ProductWithPhotos } from '@lib/prisma'
 import { formatCurrency } from '@utilities/formatCurrency'
@@ -15,22 +15,41 @@ import { useCart } from '@hooks/useCart'
 
 type Props = {
   product: ProductWithPhotos
+  iteration: number
 }
 
 const buttonRemoveVars = {
+  ['--local-font-size']: 'var(--font-size-sm)',
   ['--local-bg-colour']: 'var(--error)',
-  ['--local-font-size']: 'var(--font-size-sm)'
+  ['--local-svg-width']: '1.5em'
 } as CSSProperties
 
-const Product = ({ product }: Props) => {
+const buttonModifyVars = {
+  ['--local-svg-width']: '1.5em'
+} as CSSProperties
+
+const Product = ({ product, iteration }: Props) => {
   const { name, basePrice, id, photos } = product
   const photo = photos[0]
   const handleMinus = (val: number) => (val ? val - 1 : 0)
-  const { cartItem, cartItemUpdate, isCartItemError, isCartItemLoading } =
-    useCart(id)
+  const { cartItem, cartItemUpdate, isCartItemLoading } = useCart(id)
+  const productRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const theProduct = productRef.current
+    const theDelay = iteration + 1
+    const animations = [{ opacity: 0 }, { opacity: 1 }]
+    const config = {
+      duration: 500,
+      delay: 100 * theDelay,
+      fill: 'forwards'
+    } as KeyframeAnimationOptions
+
+    theProduct?.animate(animations, config)
+  }, [iteration, product])
 
   return (
-    <section className={styles.product}>
+    <section className={styles.product} ref={productRef}>
       <Image
         className={styles.image}
         src={photo.url}
@@ -57,6 +76,7 @@ const Product = ({ product }: Props) => {
             <ButtonIcon
               icon={<AiFillMinusCircle />}
               handleClick={() => cartItemUpdate(handleMinus(cartItem.quantity))}
+              vars={buttonModifyVars}
             />
             <ButtonIcon
               text={cartItem?.quantity ? `Remove ${cartItem?.quantity}` : ''}
@@ -67,6 +87,7 @@ const Product = ({ product }: Props) => {
             <ButtonIcon
               icon={<AiFillPlusCircle />}
               handleClick={() => cartItemUpdate(cartItem?.quantity + 1)}
+              vars={buttonModifyVars}
             />
           </div>
         )}

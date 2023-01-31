@@ -33,8 +33,13 @@
       color: var(--hwb-grape-5);
     }
 
+    &:hover span {
+      color: var(--white);
+    }
+
     &:hover {
-      border-color: var(--hwb-grape-5);
+      border-color: var(--accent);
+      color: var(--white);
     }
   }
 
@@ -58,6 +63,8 @@
 
     &:hover {
       background-color: var(--accent);
+      color: var(--white);
+      border-color: var(--accent);
     }
   }
 }

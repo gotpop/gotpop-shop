@@ -5,6 +5,7 @@
   background: var(--hwb-grey-1);
   border-radius: var(--radius-lg);
   overflow: hidden;
+  opacity: 0;
 
   &:last-of-type {
     @media (--phone) {
@@ -50,6 +51,7 @@
   display: flex;
   justify-content: space-between;
   gap: var(--spacing);
+  padding: .5rem 1rem 0 1rem;
 }
 
 .controls {
