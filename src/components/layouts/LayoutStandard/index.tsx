@@ -10,6 +10,10 @@ type props = {
   children: ReactElement
 }
 
+const footerVars = {
+  ['--local-top-margin']: '4rem'
+} as CSSProperties
+
 export default function LayoutStandard({ children }: props) {
   useScrollBarWidth()
 
@@ -21,7 +25,7 @@ export default function LayoutStandard({ children }: props) {
           {children}
         </>
       </Main>
-      <Footer />
+      <Footer vars={footerVars}/>
     </div>
   )
 }

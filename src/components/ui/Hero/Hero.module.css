@@ -21,6 +21,7 @@
 .content {
   --local-padding: var(--padding);
 
+  animation: fadeIn .4s ease forwards;
   align-items: center;
   backdrop-filter: blur(5px);
   background-color: hwb(0 100% 0% / 0.8);
@@ -59,5 +60,17 @@
 
   @media (width > 600px) {
     --local-display: block;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    translate: 0 4rem;
+  }
+
+  100% {
+    opacity: 1;
+    translate: 0 0;
   }
 }

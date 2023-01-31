@@ -12,13 +12,12 @@ import stylesContent from './PanelContent.module.css'
 import { useOnScreen } from '@hooks/useOnScreen'
 
 type Props = {
-  compact: boolean
   i: number
   page: PanelWithPhotos
   testing: boolean
 }
 
-const Panel = ({ compact, page, i, testing }: Props) => {
+const Panel = ({ page, i, testing }: Props) => {
   const { linkhref, linktext, excerpt, title, id, direction, photos } = page
   const photo = photos[0]
 
@@ -42,7 +41,7 @@ const Panel = ({ compact, page, i, testing }: Props) => {
       ref={sectionRef}
     >
       <GridWrap>
-        <Grid vars={!compact ? varsGrid : undefined}>
+        <Grid vars={varsGrid}>
           <>
             <div ref={contentRef} className={stylesContent.content}>
               <h3>{title}</h3>

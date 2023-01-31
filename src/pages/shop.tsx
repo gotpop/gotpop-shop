@@ -22,7 +22,7 @@ export default function Shop({ shopData }: Props) {
         <Meta />
         <Intro content={content} />
         {shopData.map((product: ProductWithPhotos, key: number) => (
-          <Product product={product} key={key} />
+          <Product product={product} key={key} iteration={key} />
         ))}
       </>
     </LayoutStandard>

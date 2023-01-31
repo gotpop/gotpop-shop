@@ -3,6 +3,7 @@
   --local-bg-colour: var(--hwb-grape-4);
   --local-font-size: var(--font-size-sm);
   --local-font-colour: var(--white);
+  --local-svg-width: 1em;
 
   align-items: center;
   background-color: var(--local-bg-colour);
@@ -11,7 +12,7 @@
   color: var(--icon-colour);
   cursor: pointer;
   display: flex;
-  gap: calc(var(--padding-btn) / 2);
+  gap: var(--padding-btn);
   padding: calc(var(--padding-btn) / 2) var(--padding-btn);
   transition: background-color var(--timing) ease;
   justify-content: space-between;
@@ -34,5 +35,7 @@
 
   & svg {
     transition: fill var(--timing) ease;
+    height: auto;
+    width: var(--local-svg-width);
   }
 }

@@ -6,12 +6,14 @@
   --local-radius: var(--radius-lg);
   --local-border-radius: var(--local-radius) var(--local-radius) 0 0;
   --local-scroll-snap-align: initial;
+  --local-top-margin: 0;
 
   grid-area: foot;
   background: var(--local-bg);
   padding: calc(var(--spacing-lg) * 3) 0;
   scroll-snap-align: var(--local-scroll-snap-align);
   scroll-snap-stop: always;
+  margin-top: var(--local-top-margin);
 
   @media (--ipad) {
     border-radius: var(--local-border-radius);
