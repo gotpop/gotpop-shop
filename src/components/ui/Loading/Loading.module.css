@@ -4,6 +4,7 @@
   min-height: 80vh;
   place-content: center;
   width: 100%;
+  grid-column: span 12;
 }
 
 .spinner {

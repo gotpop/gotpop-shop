@@ -27,6 +27,7 @@ type UseCart = {
 }
 
 const closeVars = {
+  ['--local-svg-width']: '1.5em',
   ['--local-bg-colour']: 'var(--error)',
   ['--local-font-size']: 'var(--font-size-sm)'
 } as CSSProperties
@@ -64,7 +65,7 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
               />
             </section>
             {isLoading ? (
-              <CartLoading />
+              <Loading />
             ) : isEmpty ? (
               <CartEmpty />
             ) : (

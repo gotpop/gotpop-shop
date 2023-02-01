@@ -12,7 +12,7 @@
     align-items: center;
     margin: 0;
     font-size: var(--font-size-lg);
-    font-weight: 200;
+    font-weight: 700;
 
     & svg {
       color: var(--hwb-grey-5);
@@ -26,8 +26,9 @@
 
 .total {
   grid-column: span 12;
-  font-weight: 900;
+  font-weight: 700;
   font-size: var(--font-size-md);
   display: flex;
   gap: var(--padding);
+  margin-top: 2rem;
 }

@@ -4,6 +4,7 @@
   overflow: hidden;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  margin-bottom: 0.5rem;
 
   @media (width > 600px) {
     border-radius: var(--radius);
@@ -17,9 +18,9 @@
   }
 
   .content {
-    padding: calc(var(--padding) / 2);
+    padding: calc(var(--padding) / 2) var(--padding) calc(var(--padding) / 2)
+      calc(var(--padding) / 2);
     grid-column: span 9;
-    display: grid;
     grid-template-columns: repeat(8, 1fr);
     justify-content: space-between;
 
@@ -29,14 +30,11 @@
       justify-self: end;
     }
   }
-
-  & span {
-    align-self: center;
-  }
 }
 
 .intro {
-  grid-column: span 7;
+  display: flex;
+  gap: 3rem;
 }
 
 .title {
@@ -52,11 +50,19 @@
 
 .price {
   font-size: var(--font-size-sm);
-  font-style: italic;
   margin-bottom: calc(var(--text-mb) / 2);
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+}
+.quantity {
+  font-size: var(--font-size-sm);
 }
 
 .total {
   font-size: var(--font-size-sm);
-  font-weight: 900;
+  font-weight: bold;
+  margin-top: 1rem;
 }
