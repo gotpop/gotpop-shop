@@ -3,6 +3,6 @@
   
   display: grid;
   grid-area: var(--local-grid-area);
-  grid-template-columns: minmax(100px, 1000px);
+  grid-template-columns: minmax(100px, 900px);
   justify-content: center;
 }
