@@ -14,6 +14,5 @@ A full stack e-commerce application built with Next.js, Prisma/PostgresQL & raw 
 | [Dashboard](https://vercel.com/dashboard) | [Dashboard](https://railway.app) |
 
 <h1 align="center">
-	<img width="100%" src="./public/starter.png" alt="Image of starter website">
+	<img width="100%" src="./public/shop.png" alt="Image of shop website">
 </h1>
-
