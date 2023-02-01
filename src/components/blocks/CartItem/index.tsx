@@ -30,16 +30,22 @@ export function CartItem({ item }: Props) {
       />
       <section className={styles.content}>
         <div className={styles.intro}>
-          <div className={styles.title}>
-            {product?.name}
-            {quantity > 1 && <span>x {quantity}</span>}
+          <div className={styles.setup}>
+            <span className={styles.title}>{product?.name}</span>
+            <span className={styles.price}>
+              Item: {product ? formatCurrency(product.basePrice) : null}
+            </span>
           </div>
-          <div className={styles.price}>
-            Item: {product ? formatCurrency(product.basePrice) : null}
-          </div>
-          <div className={styles.total}>
-            Total:
-            {product ? formatCurrency(product.basePrice * quantity) : null}
+
+          <div className={styles.summary}>
+            <span className={styles.quantity}>
+              {quantity > 1 && <>{quantity} items</>}
+              {quantity === 1 && <>1 items</>}
+            </span>
+            <span className={styles.total}>
+              <span>Total: </span> 
+              {product ? formatCurrency(product.basePrice * quantity) : null}
+            </span>
           </div>
         </div>
       </section>
