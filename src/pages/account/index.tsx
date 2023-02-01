@@ -18,6 +18,7 @@ const Account: NextPage = () => {
           <li>More testing coverage</li>
           <li>Server > client type saftey with Trpc</li>
           <li>Large dataset of dummy products to enable searching etc</li>
+          <li>Continued performance, browser testing & UX improvments</li>
         </ul>
         </article>
       </>
