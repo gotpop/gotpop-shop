@@ -1,20 +1,30 @@
 # GotPop Shop
 
-A full stack e-commerce application built with Next.js, Prisma/PostgresQL & raw CSS, deployed on Vercel & Railway
+A full stack e-commerce application.
+
+## Tech Stack
+
+* Next.js (13)
+* Raw CSS transpiled with PostCSS
+* Prisma
+* TypeScript
+* PostgreSQL
+* Cypress (E2E & component)
+* GitHub Actions
 
 ## Getting Started
 
-This app was developed with Node 18. 
+This app was developed with `Node 18`. 
 
 ### Local 
 
 First you must set up the `.env` file in order to connect to the database. You can use the starter `.env.sample` located in the root.
 
-```shell
+```java
 DATABASE_URL=DATABASSECRETKEY
 ```
 
-Once you have the database environment variable set you can install and run the project. If you would like to use your own database you can host them for free at railway.app. You can grab the full connection string from the connect tab in the settings page. Building the project should automatically seed the new db.
+Once you have the database environment variable set you can install and run the project. If you would like to use your own database you can host them for free at [railway.app](https://railway.app). You can grab the full connection string from the connect tab in the settings page. Building the project should automatically seed the new db.
 
 * `yarn`
 * `yarn build`
