@@ -32,7 +32,7 @@ This app was developed with `Node 18`.
 First you must set up the `.env` file in order to connect to the database. You can use the starter `.env.sample` located in the root.
 
 ```java
-DATABASE_URL=DATABASSECRETKEY
+DATABASE_URL=DATABASE_SECRET_KEY
 ```
 
 Once you have the database environment variable set you can install and run the project. If you would like to use your own database you can host them for free at [railway.app](https://railway.app). You can grab the full connection string from the connect tab in the settings page. Building the project should automatically seed the new db.
