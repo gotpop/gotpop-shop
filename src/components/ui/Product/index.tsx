@@ -70,6 +70,7 @@ const Product = ({ product, iteration }: Props) => {
             handleClick={() => cartItemUpdate(1)}
             text="Add to cart"
             icon={<AiOutlineShoppingCart />}
+            testing={`add-to-cart-${theDelay}`}
           />
         ) : (
           <div className={styles.controls}>

@@ -45,6 +45,7 @@ export default function Nav({ navItems, iconsMap }: Props) {
       ))}
       <ButtonIcon
         handleClick={handleClicks}
+        data-cy="button-cart"
         text="Cart"
         icon={<AiOutlineShoppingCart />}
       />
