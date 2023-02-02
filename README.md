@@ -20,7 +20,7 @@ This app was developed with Node 18.
 
 First you must set up the `.env` file in order to connect to the database. You can use the starter `.env.sample` located in the root.
 
-```shell
+```java
 DATABASE_URL=DATABASSECRETKEY
 ```
 
