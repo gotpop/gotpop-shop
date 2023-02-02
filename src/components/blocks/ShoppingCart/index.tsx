@@ -62,6 +62,7 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
                 icon={<AiOutlineCloseCircle />}
                 handleClick={closeCart}
                 vars={closeVars}
+                testing="button-cart-close"
               />
             </section>
             {isLoading ? (

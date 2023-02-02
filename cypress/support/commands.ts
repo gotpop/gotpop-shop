@@ -1,39 +1,29 @@
 /// <reference types="cypress" />
-// ***********************************************
-// This example commands.ts shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-//
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
+
+declare global {
+    namespace Cypress {
+        interface Chainable {
+            products(): Chainable<void>
+        }
+    }
+}
+
+Cypress.Commands.add('products', () => {
+    cy.intercept("GET", "/api/cart/clc3riz4k000spzqj2g5gh2ce", {
+        fixture: "product-1.json",
+    }).as("mockedProduct1")
+
+    cy.intercept("GET", "/api/cart/clc3rj01o000ypzqj4vukpps0", {
+        fixture: "product-2.json",
+    }).as("mockedProduct2")
+
+    cy.intercept("GET", "/api/cart/clc3rj0nx0014pzqj3mso1sev", {
+        fixture: "product-3.json",
+    }).as("mockedProduct3")
+
+    cy.intercept("GET", "/api/cart/clc3rj19z001apzqjmvmk145x", {
+        fixture: "product-4.json",
+    }).as("mockedProduct4")
+})
 
 export { }
