@@ -35,7 +35,7 @@ First you must set up the `.env` file in order to connect to the database. You c
 DATABASE_URL=DATABASE_SECRET_KEY
 ```
 
-Once you have the database environment variable set you can install and run the project. If you would like to use your own database you can host them for free at [railway.app](https://railway.app). You can grab the full connection string from the connect tab in the settings page. Building the project should automatically seed the new db.
+Once you have the database environment variable set you can install and run the project. If you would like to use your own database you can host them for free at [railway.app](https://railway.app). You can grab the full connection string from the connect tab in the settings page. You can seed the database with `yarn seed` or `npx prisma db seed`. More information here in the [Prisma](https://www.prisma.io/docs/guides/database/seed-database) docs.
 
 * `yarn`
 * `yarn build`
