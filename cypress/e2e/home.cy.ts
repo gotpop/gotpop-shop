@@ -4,7 +4,7 @@
 // https://github.com/cypress-io/eslint-plugin-cypress
 
 describe('Navigation', () => {
-    it('should navigate to the shop page', () => {
+    it('should have homepage title', () => {
         cy.visit('http://localhost:3000/')
 
         cy.get('h3').contains('GotPop Shop')
