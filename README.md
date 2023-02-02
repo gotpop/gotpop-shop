@@ -14,7 +14,7 @@ A full stack e-commerce application.
 
 ## Getting Started
 
-This app was developed with Node 18. 
+This app was developed with `Node 18`. 
 
 ### Local 
 
