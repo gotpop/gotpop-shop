@@ -1,0 +1,28 @@
+[
+    {
+        "id": "clc3rxkgw0000pzd36w0qj0m2",
+        "quantity": 1,
+        "createdAt": "2022-12-25T19:39:08.384Z",
+        "productId": "clc3riz4k000spzqj2g5gh2ce",
+        "cartId": "clc3riui50001pzqjfoadg6ug",
+        "product": {
+            "id": "clc3riz4k000spzqj2g5gh2ce",
+            "name": "HTML & JS",
+            "urlName": "htmljs",
+            "basePrice": 10.99,
+            "discountPercentage": 0,
+            "stock": 11,
+            "description": "A html book",
+            "createdAt": "2022-12-25T19:27:47.540Z",
+            "photos": [
+                {
+                    "id": "clc3riz4k000tpzqjfi6op5f9",
+                    "height": 640,
+                    "width": 1000,
+                    "url": "/images/books.png",
+                    "alt": "books"
+                }
+            ]
+        }
+    }
+]
