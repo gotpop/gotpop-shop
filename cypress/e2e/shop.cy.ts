@@ -3,8 +3,8 @@
 // If you're using ESLint on your project, we recommend installing the ESLint Cypress plugin instead:
 // https://github.com/cypress-io/eslint-plugin-cypress
 
-describe('Navigation', () => {
-    it('should navigate to the shop page', () => {
+describe('Shop', () => {
+    it('Should navigate to the shop page', () => {
         cy.visit('http://localhost:3000/')
 
         cy.get('[data-test="shop"]').click()
@@ -13,5 +13,4 @@ describe('Navigation', () => {
     })
 })
 
-// Prevent TypeScript from reading file as legacy script
 export { }

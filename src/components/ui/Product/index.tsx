@@ -34,10 +34,10 @@ const Product = ({ product, iteration }: Props) => {
   const handleMinus = (val: number) => (val ? val - 1 : 0)
   const { cartItem, cartItemUpdate, isCartItemLoading } = useCart(id)
   const productRef = useRef<HTMLElement>(null)
+  const theDelay = iteration + 1
 
   useEffect(() => {
     const theProduct = productRef.current
-    const theDelay = iteration + 1
     const animations = [{ opacity: 0 }, { opacity: 1 }]
     const config = {
       duration: 500,
@@ -46,7 +46,7 @@ const Product = ({ product, iteration }: Props) => {
     } as KeyframeAnimationOptions
 
     theProduct?.animate(animations, config)
-  }, [iteration, product])
+  }, [theDelay, product])
 
   return (
     <section className={styles.product} ref={productRef}>
@@ -83,6 +83,7 @@ const Product = ({ product, iteration }: Props) => {
               vars={buttonRemoveVars}
               handleClick={() => cartItemUpdate(0)}
               icon={<BsTrash />}
+              testing={`button-delete-${theDelay}`}
             />
             <ButtonIcon
               icon={<AiFillPlusCircle />}

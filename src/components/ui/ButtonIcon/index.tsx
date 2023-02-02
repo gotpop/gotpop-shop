@@ -8,6 +8,7 @@ type ButtonIconProps = {
   handleClick?: (event: MouseEvent<HTMLButtonElement>) => void
   vars?: CSSProperties
   disabled?: boolean
+  testing?: string
 }
 
 const ButtonIcon = ({
@@ -15,6 +16,7 @@ const ButtonIcon = ({
   handleClick,
   icon,
   vars,
+  testing,
   ...rest
 }: ButtonIconProps) => {
   const ButtonIcon = icon
@@ -24,6 +26,7 @@ const ButtonIcon = ({
       className={styles.button}
       onClick={handleClick}
       style={vars}
+      data-cy={testing}
       {...rest}
     >
       <>
