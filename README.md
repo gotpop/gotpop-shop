@@ -1,6 +1,6 @@
 # GotPop Shop
 
-A full stack e-commerce application built with Next.js, Prisma/PostgresQL & raw CSS, deployed on Vercel & Railway.
+A full stack e-commerce application.
 
 ## Tech Stack
 
@@ -9,6 +9,8 @@ A full stack e-commerce application built with Next.js, Prisma/PostgresQL & raw 
 * Prisma
 * TypeScript
 * PostgreSQL
+* Cypress (E2E & component)
+* GitHub Actions
 
 ## Getting Started
 
