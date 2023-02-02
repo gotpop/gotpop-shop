@@ -2,6 +2,17 @@
 
 A full stack e-commerce application.
 
+## Project Goals
+
+The initial goal of this application is to demonstrate a Next.js application performing CRUD operations to a PostgreSQL database. I also wanted to create a component system using raw CSS rather than a UI framework to demonstrate website layout with CSS Grid Layout.
+
+## Caveats
+
+This is an ongoing project, right now there's no user login so every user hits the same database user. The next feature will be to add NextAuth.js.
+
+This will open the door to separate carts, wish lists & delivery details etc. The Prisma schema is already set up to allow this.
+
+
 ## Tech Stack
 
 * Next.js (13)
