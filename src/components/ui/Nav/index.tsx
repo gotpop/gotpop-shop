@@ -1,4 +1,7 @@
-import { AiOutlineShoppingCart } from 'react-icons/ai'
+import { AiOutlineForm, AiOutlineShoppingCart } from 'react-icons/ai'
+import { signIn, useSession } from 'next-auth/react'
+
+import { BiLogInCircle } from 'react-icons/bi'
 import ButtonIcon from '../ButtonIcon'
 import { GetComponent } from '@ui/GetComponent'
 import { IconType } from 'react-icons'
@@ -22,14 +25,32 @@ type Props = {
 export default function Nav({ navItems, iconsMap }: Props) {
   const { openCart } = useShoppingCart()
   const { handleCloseMenu } = useCloseMenu()
+  const { data: session } = useSession()
 
-  const handleClicks = () => {
+  const handleCart = () => {
     handleCloseMenu()
     openCart()
   }
 
   return (
     <nav className={styles.nav}>
+      {!session ? (
+        <>
+          <ButtonIcon
+            handleClick={() => signIn()}
+            data-cy="button-login"
+            text="Login"
+            icon={<BiLogInCircle />}
+          />
+        </>
+      ) : (
+        <Link href={'/account'} data-cy="link-account">
+          <>
+            <span>Account</span>
+            <AiOutlineForm />
+          </>
+        </Link>
+      )}
       {navItems?.map(item => (
         <Link
           key={item.id}
@@ -44,7 +65,7 @@ export default function Nav({ navItems, iconsMap }: Props) {
         </Link>
       ))}
       <ButtonIcon
-        handleClick={handleClicks}
+        handleClick={handleCart}
         data-cy="button-cart"
         text="Cart"
         icon={<AiOutlineShoppingCart />}
