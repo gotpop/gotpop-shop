@@ -10,8 +10,10 @@ import ButtonIcon from '../ButtonIcon'
 import Image from 'next/image'
 import { ProductWithPhotos } from '@lib/prisma'
 import { formatCurrency } from '@utilities/formatCurrency'
+import router from 'next/router'
 import styles from './Product.module.css'
 import { useCart } from '@hooks/useCart'
+import { useSession } from 'next-auth/react'
 
 type Props = {
   product: ProductWithPhotos
@@ -33,6 +35,7 @@ const Product = ({ product, iteration }: Props) => {
   const photo = photos[0]
   const handleMinus = (val: number) => (val ? val - 1 : 0)
   const { cartItem, cartItemUpdate, isCartItemLoading } = useCart(id)
+  const { data: session } = useSession()
   const productRef = useRef<HTMLElement>(null)
   const theDelay = iteration + 1
 
@@ -47,6 +50,14 @@ const Product = ({ product, iteration }: Props) => {
 
     theProduct?.animate(animations, config)
   }, [theDelay, product])
+
+  const handleAddToCart = () => {
+    if (session) {
+      cartItemUpdate(1)
+    } else {
+      router.push('/login')
+    }
+  }
 
   return (
     <section className={styles.product} ref={productRef}>
@@ -63,11 +74,18 @@ const Product = ({ product, iteration }: Props) => {
           <span className={styles.basePrice}>{formatCurrency(basePrice)}</span>
         </section>
 
-        {isCartItemLoading ? (
+        {!session ? (
+          <ButtonIcon
+            handleClick={() => handleAddToCart()}
+            text="Add to cart"
+            icon={<AiOutlineShoppingCart />}
+            testing={`add-to-cart-${theDelay}`}
+          />
+        ) : isCartItemLoading ? (
           <>Loading...</>
         ) : cartItem?.quantity === 0 ? (
           <ButtonIcon
-            handleClick={() => cartItemUpdate(1)}
+            handleClick={() => handleAddToCart()}
             text="Add to cart"
             icon={<AiOutlineShoppingCart />}
             testing={`add-to-cart-${theDelay}`}

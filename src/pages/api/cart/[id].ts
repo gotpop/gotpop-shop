@@ -1,5 +1,8 @@
+import { AuthOptions, Session } from 'next-auth/core/types'
 import { NextApiRequest, NextApiResponse } from 'next'
 
+import { authOptions } from '../auth/[...nextauth]'
+import { getServerSession } from 'next-auth/next'
 import prisma from '@lib/prisma'
 
 export default async function handler(
@@ -10,8 +13,11 @@ export default async function handler(
     return res.status(401).send(`Method ${req.method} not allowed`)
   }
 
+  const session = await getServerSession(req, res, authOptions)
+  const theEmail = session?.user?.email
+
   const currentUser = await prisma.user.findUnique({
-    where: { email: 'alice@prisma.io' },
+    where: { email:  theEmail ? theEmail : ''},
     include: {
       Carts: {
         include: {
