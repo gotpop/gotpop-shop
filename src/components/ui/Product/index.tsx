@@ -74,7 +74,14 @@ const Product = ({ product, iteration }: Props) => {
           <span className={styles.basePrice}>{formatCurrency(basePrice)}</span>
         </section>
 
-        {isCartItemLoading ? (
+        {!session ? (
+          <ButtonIcon
+            handleClick={() => handleAddToCart()}
+            text="Add to cart"
+            icon={<AiOutlineShoppingCart />}
+            testing={`add-to-cart-${theDelay}`}
+          />
+        ) : isCartItemLoading ? (
           <>Loading...</>
         ) : cartItem?.quantity === 0 ? (
           <ButtonIcon

@@ -7,12 +7,12 @@ const fetcher = (
 
 export function useCart(id: string | null) {
     const URL = `/api/cart/${id}`
-    const { data, error, mutate } = useSWR(URL, fetcher)
     const { data: session } = useSession()
+    const { data, error, mutate } = useSWR(session ? URL : null, fetcher)
 
     const cartItemUpdate = async (quantity: number) => {
         const email = session?.user?.email
-        const payload = { id, quantity, email}
+        const payload = { id, quantity, email }
 
         mutate(payload, false)
 

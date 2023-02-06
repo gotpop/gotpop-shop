@@ -12,26 +12,47 @@ const buttonRemoveVars = {
   ['--local-svg-width']: '1.5em'
 } as CSSProperties
 
+const buttonSignInVars = {
+  ['--local-font-size']: 'var(--font-size-sm)',
+  ['--local-bg-colour']: 'var(--success)',
+  ['--local-svg-width']: '1.5em'
+} as CSSProperties
+
 function Login() {
   const { data: session } = useSession()
-  console.log('session :', session);
-  
+  console.log('session :', session)
+
   return (
     <LayoutStandard>
       <>
         <Meta />
         <article>
           <h2>Login</h2>
-          <div>{session ? <>Youre logged in!</> : <>Youre not logged in!!!!</>}</div>
-          {/* <div>Hello, {session?.user.email ?? session?.user.name}</div> */}
-          {/* {session.user.name} */}
-          <ButtonIcon
-            text={'Sign in'}
-            vars={buttonRemoveVars}
-            handleClick={() => signIn()}
-            icon={<BsTrash />}
-            testing={`button-sign-in`}
-          />
+          <div>
+            {session ? (
+              <>
+                Youre logged in!
+                <ButtonIcon
+                  text={'Sign out'}
+                  vars={buttonRemoveVars}
+                  handleClick={() => signOut()}
+                  icon={<BsTrash />}
+                  testing={`button-sign-out`}
+                />
+              </>
+            ) : (
+              <>
+                <ButtonIcon
+                  text={'Sign in'}
+                  vars={buttonSignInVars}
+                  handleClick={() => signIn()}
+                  icon={<BsTrash />}
+                  testing={`button-sign-in`}
+                />
+                Youre not logged in!!!!
+              </>
+            )}
+          </div>
         </article>
       </>
     </LayoutStandard>
