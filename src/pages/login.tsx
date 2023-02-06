@@ -22,7 +22,7 @@ function Login() {
         <Meta />
         <article>
           <h2>Login</h2>
-          <div>{session ? <>You're logged in!</> : <>You're not logged in!!!!</>}</div>
+          <div>{session ? <>Youre logged in!</> : <>Youre not logged in!!!!</>}</div>
           {/* <div>Hello, {session?.user.email ?? session?.user.name}</div> */}
           {/* {session.user.name} */}
           <ButtonIcon
