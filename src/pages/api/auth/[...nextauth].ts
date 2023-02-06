@@ -1,9 +1,10 @@
+import NextAuth, { NextAuthOptions } from "next-auth"
+
 import GoogleProvider from "next-auth/providers/google"
-import NextAuth from "next-auth"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import prisma from "@lib/prisma"
 
-export default NextAuth({
+export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
@@ -11,4 +12,23 @@ export default NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
   ],
-}) 
+  secret: process.env.JWT_SECRET,
+  events: {
+    createUser: async ({user}) => {
+      const theCart = await prisma.cart.create({
+        data: {
+          user: {
+            connect: {
+              id: user.id
+            }
+          }
+        }
+      })
+    },
+    signIn: ({ user, isNewUser }) => {
+      // console.log('user, isNewUser :', user, isNewUser);
+    },
+  }
+}
+
+export default NextAuth(authOptions)

@@ -1,6 +1,5 @@
 import useSWR from "swr"
-import { useShoppingCart } from "@context/ShoppingCartContext"
-import { useState } from "react"
+import { useSession } from "next-auth/react"
 
 const fetcher = (
     ...args: [input: RequestInfo, init?: RequestInit | undefined]
@@ -9,9 +8,11 @@ const fetcher = (
 export function useCart(id: string | null) {
     const URL = `/api/cart/${id}`
     const { data, error, mutate } = useSWR(URL, fetcher)
+    const { data: session } = useSession()
 
     const cartItemUpdate = async (quantity: number) => {
-        const payload = { id, quantity }
+        const email = session?.user?.email
+        const payload = { id, quantity, email}
 
         mutate(payload, false)
 

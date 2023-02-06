@@ -17,15 +17,6 @@ model Panel {
   photos    Photo[]
 }
 
-model Cart {
-  id       String  @id @default(cuid())
-  isActive Boolean @default(false)
-
-  CartItems CartItem[]
-  userId    String?
-  user      User?      @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
 // model UserTokens {
 //   id           String   @id @default(cuid())
 //   refreshToken String
@@ -136,6 +127,13 @@ model User {
   accounts      Account[]
   sessions      Session[]
   Carts         Cart[]
+}
+
+model Cart {
+  id        String     @id @default(cuid())
+  CartItems CartItem[]
+  userId    String?
+  user      User?      @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model VerificationToken {
