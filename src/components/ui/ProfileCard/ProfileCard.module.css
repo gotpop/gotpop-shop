@@ -1,0 +1,29 @@
+.card {
+  background-color: var(--gray-200);
+  display: flex;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  gap: var(--spacing);
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+
+  & h3 {
+    font-size: var(--font-size-md);
+    margin-top: 0;
+    display: flex;
+    gap: var(--spacing);
+    align-items: center;
+  }
+
+  p {
+    margin: 0;
+    display: flex;
+    gap: var(--spacing);
+    align-items: center;
+  }
+}
+
+.image {
+  border-radius: 50%;
+}
