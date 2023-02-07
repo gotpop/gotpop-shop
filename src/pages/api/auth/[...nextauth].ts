@@ -24,10 +24,7 @@ export const authOptions: NextAuthOptions = {
           }
         }
       })
-    },
-    signIn: ({ user, isNewUser }) => {
-      // console.log('user, isNewUser :', user, isNewUser);
-    },
+    }
   }
 }
 

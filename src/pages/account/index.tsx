@@ -15,7 +15,7 @@ const buttonRemoveVars = {
 } as CSSProperties
 
 const Account: NextPage = () => {
-  const { data: session } = useSession()
+  const { data: session } = useSession({ required: true })
 
   return (
     <LayoutStandard>
@@ -27,7 +27,7 @@ const Account: NextPage = () => {
           <ButtonIcon
             text={'Sign out'}
             vars={buttonRemoveVars}
-            handleClick={() => signOut()}
+            handleClick={() => signOut({ callbackUrl: process.env.NEXT_PUBLIC_NEXTAUTH_URL })}
             icon={<AiOutlineLogout />}
             testing={`button-sign-out`}
           />
