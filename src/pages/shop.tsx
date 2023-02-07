@@ -1,3 +1,4 @@
+import { GetStaticProps, NextPage } from 'next'
 import prisma, { ProductWithPhotos } from '@lib/prisma'
 
 import Intro from '@components/ui/Intro'
@@ -14,7 +15,7 @@ type Props = {
   shopData: ProductWithPhotos[]
 }
 
-export default function Shop({ shopData }: Props) {
+const Shop: NextPage<Props> = ({ shopData }: Props) => {
   return (
     <LayoutStandard>
       <>
@@ -28,7 +29,9 @@ export default function Shop({ shopData }: Props) {
   )
 }
 
-export const getServerSideProps = async () => {
+export default Shop
+
+export const getStaticProps: GetStaticProps = async () => {
   const shopData = await prisma.product.findMany({
     include: {
       photos: true
