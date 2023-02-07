@@ -23,7 +23,6 @@ const Account: NextPage = () => {
         <Meta />
         <section>
           <h2>Account</h2>
-          <h4>Env: {process.env.NEXTAUTH_URL}</h4>
           {session ? <ProfileCard session={session} /> : null}
           <ButtonIcon
             text={'Sign out'}
