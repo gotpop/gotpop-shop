@@ -1,18 +1,16 @@
 import prisma, { PanelWithPhotos } from '@lib/prisma'
-import { useEffect, useState } from 'react'
 
 import Hero from '@components/ui/Hero'
 import LayoutFull from '@components/layouts/LayoutFull'
 import Meta from '@head/Meta'
-import { NextPage } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 import Panel from '@components/ui/Panel'
-import { useTrackPad } from '@hooks/useTrackPad'
 
 type Props = {
   panelData: PanelWithPhotos[]
 }
 
-const Brochure = ({ panelData }: Props) => {
+const Brochure: NextPage<Props> = ({ panelData }: Props) => {
   return (
     <LayoutFull>
       <>
@@ -28,7 +26,7 @@ const Brochure = ({ panelData }: Props) => {
 
 export default Brochure
 
-export const getServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const panelData = await prisma.panel.findMany({
     include: {
       photos: true
