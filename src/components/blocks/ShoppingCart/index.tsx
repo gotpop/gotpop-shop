@@ -1,17 +1,16 @@
-import { CSSProperties, useEffect, useState } from 'react'
-
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import { BsFillCartCheckFill } from 'react-icons/bs'
 import ButtonIcon from '@ui/ButtonIcon'
+import { CSSProperties } from 'react'
 import { CartItem } from '@blocks/CartItem'
-import { CartItem as CartItemType } from '@prisma/client'
 import { CartItemWithProduct } from '@lib/prisma'
 import { Drawer } from '@ui/Drawer'
 import Grid from '@ui/Grid'
 import Loading from '@ui/Loading'
+import { Login } from './Login'
+import { Session } from 'next-auth/core/types'
 import { formatCurrency } from '@utilities/formatCurrency'
 import styles from './ShoppingCart.module.css'
-import { useCart } from '@hooks/useCart'
 import { useCartGetAll } from '@hooks/useCartGetAll'
 import { useShoppingCart } from '@context/ShoppingCartContext'
 
@@ -24,6 +23,7 @@ type UseCart = {
   cartTotal: number | undefined
   isEmpty: boolean
   isLoading: boolean
+  isLoggedIn: Session | null
 }
 
 const closeVars = {
@@ -38,15 +38,10 @@ const CartEmpty = () => (
   </>
 )
 
-const CartLoading = () => (
-  <>
-    <p>Cart loading</p>
-  </>
-)
-
 export function ShoppingCart({ isOpen }: ShoppingCartProps) {
   const { closeCart } = useShoppingCart()
-  const { cart, cartTotal, isLoading, isEmpty }: UseCart = useCartGetAll(isOpen)
+  const { cart, cartTotal, isLoading, isLoggedIn, isEmpty }: UseCart =
+    useCartGetAll(isOpen)
 
   return (
     <Drawer isOpen={isOpen}>
@@ -65,7 +60,9 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
                 testing="button-cart-close"
               />
             </section>
-            {isLoading ? (
+            {!isLoggedIn ? (
+              <Login />
+            ) : isLoading ? (
               <Loading />
             ) : isEmpty ? (
               <CartEmpty />
