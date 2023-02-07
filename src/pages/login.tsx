@@ -1,7 +1,8 @@
 import React, { CSSProperties } from 'react'
 import { signIn, signOut, useSession } from 'next-auth/react'
 
-import { BsTrash } from 'react-icons/bs'
+import { AiOutlineLogout } from 'react-icons/ai'
+import { BiLogInCircle } from 'react-icons/bi'
 import ButtonIcon from '@components/ui/ButtonIcon'
 import LayoutStandard from '@components/layouts/LayoutStandard'
 import Meta from '@components/head/Meta'
@@ -20,7 +21,6 @@ const buttonSignInVars = {
 
 function Login() {
   const { data: session } = useSession()
-  console.log('session :', session)
 
   return (
     <LayoutStandard>
@@ -31,25 +31,29 @@ function Login() {
           <div>
             {session ? (
               <>
-                Youre logged in!
+                <p>Youre not logged in!</p>
                 <ButtonIcon
                   text={'Sign out'}
                   vars={buttonRemoveVars}
                   handleClick={() => signOut()}
-                  icon={<BsTrash />}
+                  icon={<AiOutlineLogout />}
                   testing={`button-sign-out`}
                 />
               </>
             ) : (
               <>
+                <p>Log in and start shopping!</p>
                 <ButtonIcon
                   text={'Sign in'}
                   vars={buttonSignInVars}
-                  handleClick={() => signIn()}
-                  icon={<BsTrash />}
+                  handleClick={() =>
+                    signIn(undefined, {
+                      callbackUrl: `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/shop`
+                    })
+                  }
+                  icon={<BiLogInCircle />}
                   testing={`button-sign-in`}
                 />
-                Youre not logged in!!!!
               </>
             )}
           </div>
