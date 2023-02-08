@@ -28,7 +28,7 @@ export default function Shop({ shopData }: Props) {
   )
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const shopData = await prisma.product.findMany({
     include: {
       photos: true
