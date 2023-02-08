@@ -14,7 +14,7 @@ export const authOptions: NextAuthOptions = {
   ],
   secret: process.env.JWT_SECRET,
   events: {
-    createUser: async ({user}) => {
+    createUser: async ({ user }) => {
       const theCart = await prisma.cart.create({
         data: {
           user: {
@@ -24,6 +24,21 @@ export const authOptions: NextAuthOptions = {
           }
         }
       })
+
+      const allProducts = await prisma.product.findMany()
+
+      for (let product of allProducts) {
+        await prisma.cartItem.create({
+          data: {
+            product: {
+              connect: {
+                id: product.id
+              }
+            },
+            cartId: theCart.id
+          }
+        })
+      }
     }
   }
 }

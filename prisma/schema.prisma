@@ -53,21 +53,20 @@ model Product {
   CartItem           CartItem[]
 }
 
-model Category {
-  id       String    @id @default(cuid())
-  name     String    @unique
-  products Product[]
-}
-
 model CartItem {
   id        String   @id @default(cuid())
   quantity  Int      @default(0)
   createdAt DateTime @default(now())
 
-  product   Product? @relation(fields: [productId], references: [id], onDelete: Cascade)
-  productId String?  @unique
+  product   Product []
   Cart      Cart?    @relation(fields: [cartId], references: [id], onDelete: Cascade)
   cartId    String?
+}
+
+model Category {
+  id       String    @id @default(cuid())
+  name     String    @unique
+  product Product[]
 }
 
 enum Role {

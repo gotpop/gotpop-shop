@@ -17,7 +17,7 @@ export default async function handler(
   const theEmail = session?.user?.email
 
   const currentUser = await prisma.user.findUnique({
-    where: { email:  theEmail ? theEmail : ''},
+    where: { email: theEmail ? theEmail : '' },
     include: {
       Carts: {
         include: {
@@ -33,20 +33,32 @@ export default async function handler(
     const { query } = req
     const productId = Array.isArray(query.id) ? query.id[0] : query.id
 
-    const makeCartItem = await prisma.cartItem.upsert({
-      where: { productId: productId },
-      update: {},
-      create: {
-        product: {
-          connect: { id: productId },
-        },
-        Cart: {
-          connect: { id: theCart },
-        },
-      },
-    })
+    // console.log('productId >>>>>>>>>>>>:', productId);
+    // console.log('theCart >>>>>>>>>>>>>>:', theCart);
 
-    return res.status(200).json(makeCartItem)
+
+    let theCartItem = await prisma.cartItem.findFirst({
+      where: {
+        product: productId,
+        cartId: theCart
+      },
+    });
+
+    // console.log('theCartItem :', theCartItem);
+
+    // const theCartItem = await prisma.cartItem.upsert({
+    //   where: {
+    //     // productId: productId,
+    //     createdAt: new Date()
+    //   },
+    //   update: {},
+    //   create: {
+    //     productId: productId,
+    //     cartId: theCart
+    //   }
+    // })
+
+    return res.status(200).json(theCartItem)
   }
 
   if (req.method === 'POST') {
@@ -55,19 +67,31 @@ export default async function handler(
     const updateQuantity = { quantity: quantity }
     const dontUpdateQuantity = {}
 
-    const makeCartItem = await prisma.cartItem.upsert({
-      where: { productId: id },
-      update: quantity !== null ? updateQuantity : dontUpdateQuantity,
-      create: {
-        product: {
-          connect: { id: id },
-        },
-        Cart: {
-          connect: { id: theCart },
-        },
+    let theCartItem = await prisma.cartItem.findFirst({
+      where: {
+        productId: id,
+        cartId: theCart
       },
+    });
+
+    const updatedCartItem = await prisma.cartItem.update({
+      where: { id: theCartItem?.id },
+      data: { quantity },
     })
 
-    return res.status(200).json(makeCartItem)
+    // const makeCartItem = await prisma.cartItem.upsert({
+    //   where: { productId: id },
+    //   update: quantity !== null ? updateQuantity : dontUpdateQuantity,
+    //   create: {
+    //     product: {
+    //       connect: { id: id },
+    //     },
+    //     Cart: {
+    //       connect: { id: theCart },
+    //     },
+    //   },
+    // })
+
+    return res.status(200).json(updatedCartItem)
   }
 }
