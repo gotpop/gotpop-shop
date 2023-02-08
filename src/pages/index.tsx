@@ -28,7 +28,7 @@ const Brochure = ({ panelData }: Props) => {
 
 export default Brochure
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const panelData = await prisma.panel.findMany({
     include: {
       photos: true
